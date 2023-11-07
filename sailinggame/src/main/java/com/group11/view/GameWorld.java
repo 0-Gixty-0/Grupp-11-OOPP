@@ -47,13 +47,10 @@ public class GameWorld {
      * @return A JLabel representing a tile which consists of size and location.
      */
     private Tile initializeTile(int id, int columnIndex, int rowIndex) {
-        JLabel newComponent = new JLabel();
+        Dimension dimension = new Dimension(this.tileWidth, this.tileHeight);
         Point matrixPosition = new Point(rowIndex, columnIndex);
         Point pixelPosition = new Point(columnIndex * this.tileWidth, rowIndex * this.tileHeight);
-        newComponent.setSize(this.tileWidth,this.tileHeight);
-        newComponent.setLocation(columnIndex * this.tileWidth, rowIndex * this.tileHeight);
-        newComponent.setText(String.format("%d", id));
-        return new Tile(id, this.tileWidth, matrixPosition, newComponent, pixelPosition);
+        return new Tile(id, dimension, matrixPosition, pixelPosition);
     }
 
     /**
