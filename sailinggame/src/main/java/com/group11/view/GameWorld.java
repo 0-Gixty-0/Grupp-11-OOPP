@@ -1,6 +1,7 @@
 package com.group11.view;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  */
 public class GameWorld {
     private List<List<Integer>> terrainMatrix;
-    private ArrayList<ArrayList<JLabel>> tileMatrix = new ArrayList<>();
+    private ArrayList<ArrayList<Tile>> tileMatrix = new ArrayList<>();
     private final int tileWidth = 16;
     private final int tileHeight = 16;
     private int windowWidth;
@@ -26,64 +27,47 @@ public class GameWorld {
         this.terrainMatrix = matrix;
         this.windowHeight = height;
         this.windowWidth = width;
-        this.createTileComponents();
+        this.createTileMatrix();
     }
 
     /**
-     * Returns a matrix of Jlabels representing tiles
-     * @return A matrix of Jlabels representing tiles
+     * Returns a matrix of Tile objects
+     * @return A matrix of Tile objects
      */
-    public ArrayList<ArrayList<JLabel>> getTileMatrix() {
+    public ArrayList<ArrayList<Tile>> getTileMatrix() {
         return tileMatrix;
     }
 
 
     /**
-     * Helper function for initializing a single tile which consists of a JLabel
-     * @param tileIndex The index of which spot in the row the tile is to be placed
+     * Helper function for initializing an object of type Tile
+     * @param id The id of the terrain type
+     * @param columnIndex The index of which spot in the row the tile is to be placed
      * @param rowIndex The index of which row the tile is to be placed in
      * @return A JLabel representing a tile which consists of size and location.
      */
-    private JLabel initializeTile(int tileIndex, int rowIndex) {
-        JLabel newTile = new JLabel();
-        newTile.setSize(this.tileWidth,this.tileHeight);
-        newTile.setLocation(tileIndex * this.tileWidth, rowIndex * this.tileHeight);
-        return newTile;
+    private Tile initializeTile(int id, int columnIndex, int rowIndex) {
+        JLabel newComponent = new JLabel();
+        Point matrixPosition = new Point(rowIndex, columnIndex);
+        Point pixelPosition = new Point(columnIndex * this.tileWidth, rowIndex * this.tileHeight);
+        newComponent.setSize(this.tileWidth,this.tileHeight);
+        newComponent.setLocation(columnIndex * this.tileWidth, rowIndex * this.tileHeight);
+        newComponent.setText(String.format("%d", id));
+        return new Tile(id, this.tileWidth, matrixPosition, newComponent, pixelPosition);
     }
 
     /**
-     * Creates a matrix consisting of JLabels which each represent a tile in the world.
+     * Creates a matrix consisting of Tile objects which each represent a tile in the world.
      * The size of the matrix is dependent on the number of rows and columns in
      * the attribute terrainMatrix.
-     * The id of each tile must be in the interval 1-4
      */
-    private void createTileComponents() {
+    private void createTileMatrix() {
          for (int rowIndex = 0; rowIndex < this.terrainMatrix.size(); rowIndex++) {
              List<Integer> terrainRow = this.terrainMatrix.get(rowIndex);
-             ArrayList<JLabel> tileRow = new ArrayList<>();
-             for (int tileIndex = 0; tileIndex < terrainRow.size(); tileIndex++) {
-                 int id = terrainRow.get(tileIndex);
-                 JLabel newTile = this.initializeTile(tileIndex, rowIndex);
-                 // Below code is to be removed once a functional tileset system is in place
-                 // Testing purposes below!!!
-                 switch(id) {
-                     case 1:
-                         newTile.setText("1");
-                         tileRow.add(newTile);
-                         break;
-                     case 2:
-                         newTile.setText("2");
-                         tileRow.add(newTile);
-                         break;
-                     case 3:
-                         newTile.setText("3");
-                         tileRow.add(newTile);
-                         break;
-                     case 4:
-                         newTile.setText("4");
-                         tileRow.add(newTile);
-                         break;
-                 }
+             ArrayList<Tile> tileRow = new ArrayList<>();
+             for (int columnIndex = 0; columnIndex < terrainRow.size(); columnIndex++) {
+                 int id = terrainRow.get(columnIndex);
+                 tileRow.add(this.initializeTile(id, columnIndex, rowIndex));
              }
              this.tileMatrix.add(tileRow);
          }
