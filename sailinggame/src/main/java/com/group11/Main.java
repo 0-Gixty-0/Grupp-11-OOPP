@@ -13,6 +13,9 @@ public class Main {
         Main.appWindow = new AppWindow(windowWidth, windowHeight);
     }
 
+    /**
+     * Starts the game
+     */
     public void run() {
         Main.appWindow.drawGame();
     }

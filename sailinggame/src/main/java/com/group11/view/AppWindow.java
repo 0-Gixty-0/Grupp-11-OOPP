@@ -65,7 +65,6 @@ public class AppWindow {
         ArrayList<ArrayList<JLabel>> tileMatrix = this.gameWorld.getTileMatrix();
         for (ArrayList<JLabel> tileRow : tileMatrix) {
             for (JLabel tile : tileRow) {
-                System.out.println(tile);
                 mainFrame.add(tile);
             }
         }

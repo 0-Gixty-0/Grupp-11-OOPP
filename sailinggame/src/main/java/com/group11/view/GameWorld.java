@@ -55,6 +55,7 @@ public class GameWorld {
      * Creates a matrix consisting of JLabels which each represent a tile in the world.
      * The size of the matrix is dependent on the number of rows and columns in
      * the attribute terrainMatrix.
+     * The id of each tile must be in the interval 1-4
      */
     private void createTileComponents() {
          for (int rowIndex = 0; rowIndex < this.terrainMatrix.size(); rowIndex++) {
@@ -63,6 +64,8 @@ public class GameWorld {
              for (int tileIndex = 0; tileIndex < terrainRow.size(); tileIndex++) {
                  int id = terrainRow.get(tileIndex);
                  JLabel newTile = this.initializeTile(tileIndex, rowIndex);
+                 // Below code is to be removed once a functional tileset system is in place
+                 // Testing purposes below!!!
                  switch(id) {
                      case 1:
                          newTile.setText("1");
