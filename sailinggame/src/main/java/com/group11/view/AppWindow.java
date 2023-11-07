@@ -9,8 +9,8 @@ import java.util.List;
  * It is responsible for drawing the map terrain and entities on the map
  */
 public class AppWindow {
-    private final int windowWidth = 800;
-    private final int windowHeight = 800;
+    private static int windowWidth;
+    private static int windowHeight;
     private final GameWorld gameWorld;
     private final GameEntities gameEntities;
 
@@ -22,9 +22,11 @@ public class AppWindow {
     /**
      * Constructor creates a new GameWorld object, a new GameEntities object, and initializes the window
      */
-    AppWindow() {
+    public AppWindow(int windowWidth, int windowHeight) {
+        AppWindow.windowWidth = windowWidth;
+        AppWindow.windowHeight = windowHeight;
         this.terrainMatrix = this.initializeTerrainTest();
-        gameWorld = new GameWorld(terrainMatrix, this.windowWidth, this.windowHeight);
+        gameWorld = new GameWorld(terrainMatrix, windowWidth, windowHeight);
         gameEntities = new GameEntities(entityMatrix);
         mainFrame = new JFrame("Sailing Game");
         this.initializeWindow();
@@ -74,10 +76,5 @@ public class AppWindow {
      */
     public void drawGame() {
         mainFrame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        AppWindow window = new AppWindow();
-        window.drawGame();
     }
 }
