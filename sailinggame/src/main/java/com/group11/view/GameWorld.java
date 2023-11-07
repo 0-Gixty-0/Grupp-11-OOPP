@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The GameWorld class represents the functionality and interface for represent the
+ * terrain aspects of the game world such as tiles.
+ */
 public class GameWorld {
     private List<List<Integer>> terrainMatrix;
     private ArrayList<ArrayList<JLabel>> tileMatrix = new ArrayList<>();
@@ -12,6 +16,12 @@ public class GameWorld {
     private int windowWidth;
     private int windowHeight;
 
+    /**
+     * GameWorld constructor sets attributes and creates tile components.
+     * @param matrix A matrix consisting of tileset id:s
+     * @param width  The width of the window frame
+     * @param height The height of the window frame
+     */
     GameWorld(List<List<Integer>> matrix, int width, int height) {
         this.terrainMatrix = matrix;
         this.windowHeight = height;
@@ -19,10 +29,21 @@ public class GameWorld {
         this.createTileComponents();
     }
 
+    /**
+     * Returns a matrix of Jlabels representing tiles
+     * @return A matrix of Jlabels representing tiles
+     */
     public ArrayList<ArrayList<JLabel>> getTileMatrix() {
         return tileMatrix;
     }
 
+
+    /**
+     * Helper function for initializing a single tile which consists of a JLabel
+     * @param tileIndex The index of which spot in the row the tile is to be placed
+     * @param rowIndex The index of which row the tile is to be placed in
+     * @return A JLabel representing a tile which consists of size and location.
+     */
     private JLabel initializeTile(int tileIndex, int rowIndex) {
         JLabel newTile = new JLabel();
         newTile.setSize(this.tileWidth,this.tileHeight);
@@ -30,6 +51,11 @@ public class GameWorld {
         return newTile;
     }
 
+    /**
+     * Creates a matrix consisting of JLabels which each represent a tile in the world.
+     * The size of the matrix is dependent on the number of rows and columns in
+     * the attribute terrainMatrix.
+     */
     private void createTileComponents() {
          for (int rowIndex = 0; rowIndex < this.terrainMatrix.size(); rowIndex++) {
              List<Integer> terrainRow = this.terrainMatrix.get(rowIndex);
