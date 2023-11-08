@@ -7,7 +7,11 @@ package com.group11.Model;
  */
 public abstract class AWorldGenerator {
     
-
-    // public abstract World generateWorld();
+    /**
+     * Method for generating a World object.
+     * @param mapGenerator provides a mapgenerator which creates a map for the world.
+     * @return (World) 
+     */
+    public abstract World generateWorld(AMapGenerator mapGenerator);
 
 }
