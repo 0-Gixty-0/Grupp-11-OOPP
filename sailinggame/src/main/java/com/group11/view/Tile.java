@@ -12,7 +12,7 @@ import java.awt.*;
  * pixelPosition - tile position on window frame in x and y pixels
  * component - JLabel component for use in rendering tile
  */
-public class Tile {
+public class Tile extends AbstractTile {
     private int id;
     private Dimension dimension;
     private Point matrixPosition;
@@ -27,33 +27,6 @@ public class Tile {
      * @param pixelPosition - tile position on window frame in x and y pixels
      */
     public Tile(int id, Dimension dimension, Point matrixPosition, Point pixelPosition) {
-        JLabel component = new JLabel(String.format("%d", id));
-        component.setSize(dimension);
-        component.setLocation(matrixPosition.y * dimension.width, matrixPosition.x * dimension.height);
-        this.id = id;
-        this.dimension = dimension;
-        this.matrixPosition = matrixPosition;
-        this.pixelPosition = pixelPosition;
-        this.component = component;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public Dimension getDimension() {
-        return dimension;
-    }
-
-    public Point getMatrixPosition() {
-        return matrixPosition;
-    }
-
-    public Point getPixelPosition() {
-        return pixelPosition;
-    }
-
-    public JLabel getComponent() {
-        return component;
+        super(id, dimension, matrixPosition, pixelPosition);
     }
 }

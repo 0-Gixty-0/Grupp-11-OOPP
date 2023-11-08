@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class GameWorld {
     private List<List<Integer>> terrainMatrix;
-    private ArrayList<ArrayList<Tile>> tileMatrix = new ArrayList<>();
+    private ArrayList<ArrayList<AbstractTile>> tileMatrix = new ArrayList<>();
     private final int tileWidth = 16;
     private final int tileHeight = 16;
     private int windowWidth;
@@ -34,7 +34,7 @@ public class GameWorld {
      * Returns a matrix of Tile objects
      * @return A matrix of Tile objects
      */
-    public ArrayList<ArrayList<Tile>> getTileMatrix() {
+    public ArrayList<ArrayList<AbstractTile>> getTileMatrix() {
         return tileMatrix;
     }
 
@@ -61,7 +61,7 @@ public class GameWorld {
     private void createTileMatrix() {
          for (int rowIndex = 0; rowIndex < this.terrainMatrix.size(); rowIndex++) {
              List<Integer> terrainRow = this.terrainMatrix.get(rowIndex);
-             ArrayList<Tile> tileRow = new ArrayList<>();
+             ArrayList<AbstractTile> tileRow = new ArrayList<>();
              for (int columnIndex = 0; columnIndex < terrainRow.size(); columnIndex++) {
                  int id = terrainRow.get(columnIndex);
                  tileRow.add(this.initializeTile(id, columnIndex, rowIndex));
