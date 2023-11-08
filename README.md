@@ -1,14 +1,17 @@
-# Grupp-11-OOPP
+# SailingGame - Group-11-OOPP
 
-## TAS-25: Implement Basic View Module
+## Implemented features
+Following is a list of implemented features in the form of tasks, these tasks are represented by solved GitHub issues with the same name. To get a deeper look into how each task was implemented, check the issues.
+
+### TAS-25: Implement Basic View Module
 Date of completion: 07/11/2023  
 Completed by: Erik Andreasson
-### What:
+#### What:
 Implement a basic view module that can display the map according to specifications obtained from the model. 
 This should also be fairly simple so that other features can be integrated quickly. 
 Essentially it should draw the map and the player. 
 
-### How:
+#### How:
 No particular design patterns were used in this task. Instead, the purpose was to create a simple and general
 interface and functionality for drawing tiles obtained from the model to the screen. In a sense it follows MVC
 by keeping model logic as far removed from the view as possible.
@@ -24,9 +27,9 @@ It has a simple getter for retrieving this matrix.
 GameEntities: GameEntities currently has no functionality and is essentially just boilerplate code from the UMl diagram.
 It is meant to be implemented in later tasks.
 
-### Why:
+#### Why:
 This module is integral to actually displaying information from the model to the player. Without it the game would be
 unplayable or testable.
 
-### Tutorial:
+#### Tutorial:
 Upon starting the game a window will be displayed. This window will contain tiles representing terrain in the game
