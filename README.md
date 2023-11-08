@@ -61,3 +61,22 @@ instead of the GameWorld. The abstract class and interface makes the Tile module
 
 #### Tutorial:
 This feature does not require a tutorial for the player since tiles being separate objects is not represented visually.
+
+
+### TAS-10 Design player model
+Date of completion: 08/11/2023  
+Completed by: Alexander Muhr
+
+There is a player model that can be displayed on the screen. 
+
+#### What
+Created png using pixel-art that have 8 different rotations that can be switched to depending on what direction the player is moving.
+
+#### How
+I completed the class by creating a png containing 8 models of the player ship in the form of pixelart, all att the same y-height and with 16px increments in x directions.
+
+#### Why
+I chose to do it this way so that it could be easily extended to implement animation of the sprite by adding more sprites "below" each direction respectively. Since all sprites take up 16px with no space in between this could easily be done using a loop incrementing the y-value representing what part of the png to draw and then start over on the first sprite.
+
+#### Tutorial
+This feature does not require a tutorial since it doesnt have functionality for the player other than visual
