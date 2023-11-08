@@ -80,3 +80,24 @@ I chose to do it this way so that it could be easily extended to implement anima
 
 #### Tutorial
 This feature does not require a tutorial since it doesnt have functionality for the player other than visual
+
+### TAS-20: Create Tile Designs For Terrain Types
+Date of completion: 08/11/2023  
+Completed by: Erik Andreasson
+
+Create tile designs for different types of terrain meaning that we should create unique tiles that have different appearance and color. 
+At this point in development only two tile designs are necessary for future tasks, That being a land tile and a sea tile.
+
+#### What
+Created two PNGS:s using pixel-art that represent a land tile and a water tile respectively
+
+#### How
+I completed the task by creating two PNG:s with the same dimensions 16x16 pixels.
+
+#### Why
+I created the two PNG:s separately filling the entire 16x16 area. I did this in orde to allow for different ways to access
+the tile image. We may create a tile set containing all tiles and we may not. With this approach we keep our options open which
+is important this early in development.
+
+#### Tutorial
+This feature does not require a tutorial since it doesn't have functionality for the player other than visual
