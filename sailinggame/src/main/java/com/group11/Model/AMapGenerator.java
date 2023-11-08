@@ -1,7 +1,6 @@
 package com.group11.Model;
 
 import java.io.NotActiveException;
-import java.security.InvalidAlgorithmParameterException;
 
 /**
  * AMapGenerator is an abstract baseclass for all types of
