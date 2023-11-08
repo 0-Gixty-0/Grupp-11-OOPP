@@ -34,7 +34,7 @@ public class AppWindow {
 
     /**
      * Testing purposes. Will be removed later.
-     * @return {List<List<Integer>>} Matrix of integers corresponding to terrain id:s
+     * @return Matrix of integers corresponding to terrain id:s
      */
     private List<List<Integer>> initializeTerrainTest() {
         List<List<Integer>> testTerrainList = new ArrayList<>();
@@ -59,13 +59,13 @@ public class AppWindow {
     }
 
     /**
-     * Adds each JLabel component which corresponds to a tile on the map to the main window frame
+     * Adds each JLabel component, obtained from the Tile object, on the map to the main window frame
      */
     private void addTilesToFrame() {
-        ArrayList<ArrayList<JLabel>> tileMatrix = this.gameWorld.getTileMatrix();
-        for (ArrayList<JLabel> tileRow : tileMatrix) {
-            for (JLabel tile : tileRow) {
-                mainFrame.add(tile);
+        ArrayList<ArrayList<AbstractTile>> tileMatrix = this.gameWorld.getTileMatrix();
+        for (ArrayList<AbstractTile> tileRow : tileMatrix) {
+            for (AbstractTile tile : tileRow) {
+                mainFrame.add(tile.getComponent());
             }
         }
     }
