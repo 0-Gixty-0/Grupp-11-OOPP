@@ -1,0 +1,2 @@
+SeaTile = 0
+LandTile = 1
