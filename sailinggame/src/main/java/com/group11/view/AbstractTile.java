@@ -3,6 +3,10 @@ package com.group11.view;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Abstract class representing an abstract tile. Implements the drawable interface since
+ * as tile is an object that is drawn on the screen.
+ */
 public abstract class AbstractTile implements Drawable {
     private int id;
     private Dimension dimension;
