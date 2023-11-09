@@ -1,6 +1,5 @@
-package com.group11.view;
+package com.group11.View;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;

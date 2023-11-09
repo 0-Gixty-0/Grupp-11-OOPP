@@ -1,10 +1,10 @@
-package com.group11.view;
+package com.group11.View;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * Tile class representing a tile for the view module.
+ * Tile class representing a tile for the View module.
  * Contains attributes for:
  * id - terrain type number
  * size - width and height of tile
