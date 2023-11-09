@@ -101,3 +101,36 @@ is important this early in development.
 
 #### Tutorial
 This feature does not require a tutorial since it doesn't have functionality for the player other than visual
+
+### TAS-24: Implement Basic Map Generation
+Dare of completion: 09/11/2023
+Completed by: William Norland
+
+Implement basic map generation according to the UML diagram. Basic generation meaning that it should be barebones and simply generate a map consisting of Tiles in a certain order. I suggest the following order of implementation:
+
+#### What
+Implementing a basic inheritance hierarchy and interface for the world generation and creating basic world generation.
+
+#### How
+I completed the task by implementing the followign classes as specified by the UML-diagram.
+Two abstract baseclasses (AWorldGenerator, AMapGenerator).
+A filler class ATile (a class that is really meant to be created in another unfinished task).
+Two classes (Map, World) to be used in the model/logic of the game.
+Two concrete implementations of abstract classes (BasicMapGenerator, BasicWorldGenerator) for creating Map and World.
+
+#### Why
+I choose to make AWorldGenerator and AMapGenerator to follow the DIP, so that the game may use any type of world and map generation.
+These two classes can/should be interfaces as they only contain one method each, i choose to make them abstract classes for four reasons. This also uses the factory pattern which is a great way to do the same thing different ways with a common interface.
+
+(1) I dont wany any class to be able to be a Map/World generator, making classes that are Map/World generators be subclasses of abstract classes rather than interface implementors makes it so it cant be subclasses of anything else.
+
+(2) There probably will be additions to these classes that makes it so they cant be interfaces.
+
+(3) Semantically it makese a little more sense if you imagine inheritance as "is a" and interface implementations as "can do".
+
+(4) In the current state there is no practical difference.
+
+I choose to make the ATile class because my task could not be implemented in a functional way without it. I am aware that this is not ideal and that tasks shouldnt be made in such a way that it is dependent on other taks, however, we as a group decided that this time we solve it with a hack (The task that involves making the real Tile class is underway) and in the future we construct tasks in a better way. By doing it this way we dont need to change two tasks (which might have cascading effects) and nobody is confused because we had a discussion about it.
+
+I choose to make Map an aggregation of a ATile matrix and Integer matrix to make View less dependent on model, if view uses the integer matrix (with each Integer representing a certain texture) it doesnt need to know about the ATile type.
+

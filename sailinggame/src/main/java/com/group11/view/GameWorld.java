@@ -1,6 +1,5 @@
 package com.group11.view;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
  */
 public class GameWorld {
     private List<List<Integer>> terrainMatrix;
-    private ArrayList<ArrayList<AbstractTile>> tileMatrix = new ArrayList<>();
+    private ArrayList<ArrayList<AbstractViewTile>> tileMatrix = new ArrayList<>();
     private final int tileWidth = 16;
     private final int tileHeight = 16;
     private int windowWidth;
@@ -31,37 +30,37 @@ public class GameWorld {
     }
 
     /**
-     * Returns a matrix of Tile objects
-     * @return A matrix of Tile objects
+     * Returns a matrix of ViewTile objects
+     * @return A matrix of ViewTile objects
      */
-    public ArrayList<ArrayList<AbstractTile>> getTileMatrix() {
+    public ArrayList<ArrayList<AbstractViewTile>> getTileMatrix() {
         return tileMatrix;
     }
 
 
     /**
-     * Helper function for initializing an object of type Tile
+     * Helper function for initializing an object of type ViewTile
      * @param id The id of the terrain type
      * @param columnIndex The index of which spot in the row the tile is to be placed
      * @param rowIndex The index of which row the tile is to be placed in
      * @return A JLabel representing a tile which consists of size and location.
      */
-    private Tile initializeTile(int id, int columnIndex, int rowIndex) {
+    private ViewTile initializeTile(int id, int columnIndex, int rowIndex) {
         Dimension dimension = new Dimension(this.tileWidth, this.tileHeight);
         Point matrixPosition = new Point(rowIndex, columnIndex);
         Point pixelPosition = new Point(columnIndex * this.tileWidth, rowIndex * this.tileHeight);
-        return new Tile(id, dimension, matrixPosition, pixelPosition);
+        return new ViewTile(id, dimension, matrixPosition, pixelPosition);
     }
 
     /**
-     * Creates a matrix consisting of Tile objects which each represent a tile in the world.
+     * Creates a matrix consisting of ViewTile objects which each represent a tile in the world.
      * The size of the matrix is dependent on the number of rows and columns in
      * the attribute terrainMatrix.
      */
     private void createTileMatrix() {
          for (int rowIndex = 0; rowIndex < this.terrainMatrix.size(); rowIndex++) {
              List<Integer> terrainRow = this.terrainMatrix.get(rowIndex);
-             ArrayList<AbstractTile> tileRow = new ArrayList<>();
+             ArrayList<AbstractViewTile> tileRow = new ArrayList<>();
              for (int columnIndex = 0; columnIndex < terrainRow.size(); columnIndex++) {
                  int id = terrainRow.get(columnIndex);
                  tileRow.add(this.initializeTile(id, columnIndex, rowIndex));

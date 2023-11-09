@@ -59,12 +59,12 @@ public class AppWindow {
     }
 
     /**
-     * Adds each JLabel component, obtained from the Tile object, on the map to the main window frame
+     * Adds each JLabel component, obtained from the ViewTile object, on the map to the main window frame
      */
     private void addTilesToFrame() {
-        ArrayList<ArrayList<AbstractTile>> tileMatrix = this.gameWorld.getTileMatrix();
-        for (ArrayList<AbstractTile> tileRow : tileMatrix) {
-            for (AbstractTile tile : tileRow) {
+        ArrayList<ArrayList<AbstractViewTile>> tileMatrix = this.gameWorld.getTileMatrix();
+        for (ArrayList<AbstractViewTile> tileRow : tileMatrix) {
+            for (AbstractViewTile tile : tileRow) {
                 mainFrame.add(tile.getComponent());
             }
         }
