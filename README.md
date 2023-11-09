@@ -103,7 +103,7 @@ is important this early in development.
 This feature does not require a tutorial since it doesn't have functionality for the player other than visual
 
 ### TAS-24: Implement Basic Map Generation
-Dare of completion: 09/11/2023
+Dare of completion: 09/11/2023 <br>
 Completed by: William Norland
 
 Implement basic map generation according to the UML diagram. Basic generation meaning that it should be barebones and simply generate a map consisting of Tiles in a certain order. I suggest the following order of implementation:
