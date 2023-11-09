@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Map {
     
-    private Integer area;
+    private int area;
     private ArrayList<ArrayList<ATile>> tileMatrix;
     private ArrayList<ArrayList<Integer>> graphicMatrix;
 
@@ -17,7 +17,8 @@ public class Map {
      * @param graphicsMatrix a matrix of ints each representing a certain tile texture.
      * @param side the size of a side in a map, a map is always a square.
      */
-    protected Map(ArrayList<ArrayList<ATile>> tileMatrix, ArrayList<ArrayList<Integer>> graphicMatrix, Integer side) {
+    protected Map(ArrayList<ArrayList<ATile>> tileMatrix, ArrayList<ArrayList<Integer>> graphicMatrix, int side) {
+        this.tileMatrix = tileMatrix;
         this.graphicMatrix = graphicMatrix;
         this.area = side*side;
     }
@@ -34,7 +35,7 @@ public class Map {
      * A getter for the area attribute of the Map object.
      * @return (Integer) area of the map
      */
-    public Integer getArea() {
+    public int getArea() {
         return area;
     }
 
@@ -43,7 +44,7 @@ public class Map {
      *  @return (ArrayList<ArrayList<Tile>>) matrix of Tiles representing the map in the game logic.
      */
     public ArrayList<ArrayList<ATile>> getTileMatrix() {
-    return tileMatrix;
+        return tileMatrix;
     }
 
 }
