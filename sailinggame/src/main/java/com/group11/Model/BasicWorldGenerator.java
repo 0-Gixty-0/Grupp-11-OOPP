@@ -2,10 +2,16 @@ package com.group11.Model;
 
 public class BasicWorldGenerator extends AWorldGenerator {
 
-    @Override
-    public World generateWorld(AMapGenerator mapGenerator) {
+    AMapGenerator mapGenerator;
 
-        Map map = mapGenerator.generateMap(100);
+    public BasicWorldGenerator(AMapGenerator mapGenerator) {
+        this.mapGenerator = mapGenerator;
+    }
+
+    @Override
+    public World generateWorld(Integer side) {
+
+        Map map = this.mapGenerator.generateMap(side);
 
         World world = new World(map);
 
