@@ -2,8 +2,8 @@ package com.group11.Model;
 
 public class SmallShip extends AShip {
 
-    public SmallShip(int sailArea, int armor, int cannons, ArrayList<Item> inventory) {
-        super(sailArea, armor, cannons, inventory);
+    public SmallShip(int sailArea, int armor, int cannons) {
+        super(sailArea, armor, cannons);
     }
 
     @Override
@@ -11,6 +11,6 @@ public class SmallShip extends AShip {
     }
 
     @Override
-    public void fireCannons(int) {
+    public void fireCannons(int damage) {
     }
 }
