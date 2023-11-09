@@ -4,6 +4,6 @@ public abstract class ADrawable {
     private int TEXTURE;
 
     public int getTextureId(){
-        return TEXTURE;
+        return this.TEXTURE;
     }
 }
