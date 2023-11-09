@@ -9,9 +9,9 @@ public abstract class AWorldGenerator {
     
     /**
      * Method for generating a World object.
-     * @param mapGenerator provides a mapgenerator which creates a map for the world.
+     * @param side the size of the side of the square world.
      * @return (World) 
      */
-    public abstract World generateWorld(AMapGenerator mapGenerator);
+    public abstract World generateWorld(Integer side);
 
 }
