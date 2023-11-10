@@ -3,7 +3,7 @@ package com.group11.Model;
 import java.awt.*;
 import java.util.ArrayList;
 
-public abstract class AMovableBody extends ABody implements IMovable{
+public abstract class AMovableBody extends ABody implements IMovable {
 
 
     public AMovableBody(int velocity){
