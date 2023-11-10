@@ -136,3 +136,6 @@ I choose to make the ATile class because my task could not be implemented in a f
 
 I choose to make Map an aggregation of a ATile matrix and Integer matrix to make View less dependent on model, if view uses the integer matrix (with each Integer representing a certain texture) it doesnt need to know about the ATile type.
 
+#### Tutorial
+The player will see the implementation of this task by seeing different worlds in the game.
+
