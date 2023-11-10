@@ -4,8 +4,8 @@ import java.awt.*;
 
 public class SmallShip extends AShip {
 
-    public SmallShip(int sailArea, int armor, int cannons) {
-        super(sailArea, armor, cannons);
+    public SmallShip(int sailLevel, int armor, int cannons, boolean sailStatus) {
+        super(sailLevel, armor, cannons, sailStatus);
     }
 
     @Override

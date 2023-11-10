@@ -17,12 +17,26 @@ public abstract class ABody implements IDamageable {
         this.velocity = velocity;
     }
 
-
     @Override
     public void takeDamage(int damage){
         this.hitPoints -= damage;
     }
 
+    public int getHitPoints() {
+        return this.hitPoints;
+    }
+
+    public void setHitPoints(int new_hitpoints) {
+        this.hitPoints = new_hitpoints;
+    }
+
+    public void setVelocity(int new_velocity) {
+        this.velocity = new_velocity;
+    }
+
+    public int getVelocity() {
+        return this.velocity;
+    }
 
     public Point getPos(){
         return this.pos;

@@ -4,8 +4,8 @@ import java.awt.*;
 
 public class LargeShip extends AShip {
 
-    public LargeShip(int sailArea, int armor, int cannons) {
-        super(sailArea, armor, cannons);
+    public LargeShip(int sailLevel, int armor, int cannons, boolean sailStatus) {
+        super(sailLevel, armor, cannons, sailStatus);
     }
 
     @Override
