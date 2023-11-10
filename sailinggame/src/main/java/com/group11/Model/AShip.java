@@ -6,13 +6,13 @@ public abstract class AShip extends AMovableBody {
     private int armor;
     private int cannons;
 
-    private int velocity = getVelocity();
-
 
     public AShip(int sailLevel, int armor, int cannons){
+        super(0);
         this.sailLevel = sailLevel;
         this.armor = armor;
         this.cannons = cannons;
+        setVelocity(getVelocity());
     }
 
     public void setSail() {boolean sailUp = true;

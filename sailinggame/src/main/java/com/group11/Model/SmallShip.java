@@ -8,6 +8,7 @@ public class SmallShip extends AShip {
 
     @Override
     public void move(int x, int y) {
+
     }
 
     @Override
