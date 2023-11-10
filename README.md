@@ -119,8 +119,8 @@ Two classes (Map, World) to be used in the model/logic of the game.
 Two concrete implementations of abstract classes (BasicMapGenerator, BasicWorldGenerator) for creating Map and World.
 
 #### Why
-I choose to make AWorldGenerator and AMapGenerator to follow the DIP, so that the game may use any type of world and map generation.
-These two classes can/should be interfaces as they only contain one method each, i choose to make them abstract classes for four reasons. This also uses the factory pattern which is a great way to do the same thing different ways with a common interface.
+I choose to make AWorldGenerator and AMapGenerator abstract to follow the DIP, so that the game may use any type of world and map generation.
+These two classes can/should be interfaces as they only contain one method each, i choose to make them abstract classes for four reasons.
 
 (1) I dont wany any class to be able to be a Map/World generator, making classes that are Map/World generators be subclasses of abstract classes rather than interface implementors makes it so it cant be subclasses of anything else.
 
@@ -129,6 +129,8 @@ These two classes can/should be interfaces as they only contain one method each,
 (3) Semantically it makese a little more sense if you imagine inheritance as "is a" and interface implementations as "can do".
 
 (4) In the current state there is no practical difference.
+
+This also uses the abstract factory pattern which is a great way to do the same thing different ways with a common interface.
 
 I choose to make the ATile class because my task could not be implemented in a functional way without it. I am aware that this is not ideal and that tasks shouldnt be made in such a way that it is dependent on other taks, however, we as a group decided that this time we solve it with a hack (The task that involves making the real Tile class is underway) and in the future we construct tasks in a better way. By doing it this way we dont need to change two tasks (which might have cascading effects) and nobody is confused because we had a discussion about it.
 
