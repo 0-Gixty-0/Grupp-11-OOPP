@@ -1,5 +1,7 @@
 package com.group11.Model;
 
+import java.awt.*;
+
 public class SmallShip extends AShip {
 
     public SmallShip(int sailArea, int armor, int cannons) {
@@ -8,7 +10,8 @@ public class SmallShip extends AShip {
 
     @Override
     public void move(int x, int y) {
-
+        Point new_position = new Point (x, y);
+        this.setPos(new_position);
     }
 
     @Override

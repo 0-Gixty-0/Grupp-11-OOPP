@@ -22,4 +22,13 @@ public abstract class ABody implements IDamageable {
     public void takeDamage(int damage){
         this.hitPoints -= damage;
     }
+
+
+    public Point getPos(){
+        return this.pos;
+    }
+
+    public void setPos(Point new_position){
+        this.pos = new_position;
+    }
 }

@@ -6,6 +6,8 @@ public abstract class AShip extends AMovableBody {
     private int armor;
     private int cannons;
 
+    private boolean anchorDown = false;
+
 
     public AShip(int sailLevel, int armor, int cannons){
         super(0);
@@ -23,8 +25,8 @@ public abstract class AShip extends AMovableBody {
 
     abstract public void fireCannons(int damage);
     public void anchor(){
-        boolean anchorDown = false;
-        if(anchorDown == true){
+        this.anchorDown = !anchorDown;
+        if(anchorDown){
             setVelocity(0);
         }
     }
