@@ -17,7 +17,7 @@ public class Main {
      * Starts the game
      */
     public void run() {
-        Main.appWindow.drawGame();
+        Main.appWindow.showGame();
     }
 
     public static void main(String[] args) {
