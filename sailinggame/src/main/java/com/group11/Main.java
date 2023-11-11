@@ -1,6 +1,6 @@
 package com.group11;
 
-import com.group11.view.AppWindow;
+import com.group11.View.AppWindow;
 
 public class Main {
     private static AppWindow appWindow;

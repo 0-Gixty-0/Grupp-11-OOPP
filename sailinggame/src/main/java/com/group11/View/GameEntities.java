@@ -1,4 +1,4 @@
-package com.group11.view;
+package com.group11.View;
 
 import java.util.ArrayList;
 
