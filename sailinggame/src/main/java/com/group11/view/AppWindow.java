@@ -3,6 +3,7 @@ package com.group11.view;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * AppWindow is the top-level class for the View component of the MVC design.
@@ -38,11 +39,12 @@ public class AppWindow {
      */
     private List<List<Integer>> initializeTerrainTest() {
         List<List<Integer>> testTerrainList = new ArrayList<>();
-        List<Integer> row = new ArrayList<>();
+        Random rand = new Random();
         for (int i = 0; i < 45; i++) {
-            row.add(1);
-        }
-        for (int i = 0; i < 45; i++) {
+            List<Integer> row = new ArrayList<>();
+            for (int k = 0; k < 45; k++) {
+                row.add(rand.nextInt(2));
+            }
             testTerrainList.add(row);
         }
         return testTerrainList;
