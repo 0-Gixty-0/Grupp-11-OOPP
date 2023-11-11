@@ -52,6 +52,16 @@ public abstract class AbstractViewTile implements Drawable {
         return component;
     }
 
+    /**
+     * The method creates the ImageIcon for a terrain type based on the texture map file.
+     * The image icon is a scaled and sliced portion of the texture map based on the terrain type id
+     * and desired width and height.
+     * @param id The terrain type id
+     * @param width The desired width of the image
+     * @param height The desired height of the image
+     * @param scale The scale of the image, ex: 16 bit, 32 bit, 64 bit....
+     * @return ImageIcon containing the tile image associated with the terrain type id
+     */
     private ImageIcon createImageIcon(int id, int width, int height, int scale) {
         ImageIcon fullTexture = new ImageIcon("sailinggame/src/main/resources/textureMapSailingGame.png");
         Image textureImage = fullTexture.getImage();
@@ -68,10 +78,23 @@ public abstract class AbstractViewTile implements Drawable {
         return new ImageIcon(bufferedImage);
     }
 
+    /**
+     * Gets the coordinates for a tile image in the texture map based on a tile id number
+     * @param id The id for terrain type
+     * @return The point coordinate in the texture map matrix
+     */
     private Point getTextureMatrixCoordinate(int id) {
         return new Point((int) Math.floor(id/4), id % 4);
     }
 
+    /**
+     * Creates the JLabel component associated with a ViewTile. The JLabel component is what is
+     * drawn to screen.
+     * @param dimension The dimensions for the tile in (width, height) format
+     * @param matrixPosition The matrix position of the tile in the world
+     * @param imageIcon The imageIcon object containing the image to be drawn
+     * @return A JLabel component for drawing the tile to the screen
+     */
     private JLabel createComponent(Dimension dimension, Point matrixPosition, ImageIcon imageIcon) {
         JLabel component = new JLabel();
         component.setSize(dimension);
