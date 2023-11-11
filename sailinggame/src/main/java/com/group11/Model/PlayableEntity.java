@@ -2,26 +2,46 @@ package com.group11.model;
 
 public class PlayableEntity extends AMovableEntity {
 
-    /*
-     * @Override
+    public PlayableEntity(AMovableBody body, String name) {
+        super(body, name, true);
+
+    }
+
+
+    @Override
     public void moveCommand(Integer direction) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'moveCommand'");
+        switch(direction) {
+            case 0:
+              
+              break;
+            case 1:
+              // code block
+              break;
+            case 2:
+              // code block
+              break;
+            case 3:
+              // code block
+              break;
+            case 4:
+              // code block
+              break;
+            case 5:
+              // code block
+              break;
+            default:
+              // code block
+          }
     }
 
     @Override
     public void attackCommand(Integer direction) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'attackCommand'");
+        
     }
 
     @Override
     public void interactCommand() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'interactCommand'");
+        
     }
-     * 
-     */
-    
-    
+  
 }
