@@ -1,4 +1,4 @@
-package com.group11.Model;
+package com.group11.model;
 
 /**
  * World is a composition of Maps.

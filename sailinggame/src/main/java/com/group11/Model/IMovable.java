@@ -1,4 +1,4 @@
-package com.group11.Model;
+package com.group11.model;
 
 /**
  * Interface IMovable represents the methods used for objects that are able to move.
