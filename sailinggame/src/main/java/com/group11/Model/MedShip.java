@@ -1,10 +1,10 @@
-package com.group11.Model;
+package com.group11.model;
 
 import java.awt.*;
 
-public class MediumShip extends AShip {
+public class MedShip extends AShip {
 
-    public MediumShip(int sailLevel, int armor, int cannons, boolean sailStatus) {
+    public MedShip(int sailLevel, int armor, int cannons, boolean sailStatus) {
         super(sailLevel, armor, cannons, sailStatus);
     }
 

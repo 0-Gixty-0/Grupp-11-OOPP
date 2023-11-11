@@ -1,15 +1,16 @@
-import com.group11.Model.MediumShip;
-import com.group11.Model.SmallShip;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
-import com.group11.Model.AShip;
+import com.group11.model.AShip;
+import com.group11.model.MedShip;
+import com.group11.model.SmallShip;
+
+import static org.junit.Assert.*;
 
 import java.awt.*;
 
 public class AMovableBodyTest {
 
-    MediumShip mediumShip = new MediumShip(1,10,0, true);
+    MedShip mediumShip = new MedShip(1,10,0, true);
 
     @Test
     public void testMove() {

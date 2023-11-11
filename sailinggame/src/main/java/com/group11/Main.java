@@ -1,6 +1,6 @@
 package com.group11;
 
-import com.group11.View.AppWindow;
+import com.group11.view.AppWindow;
 
 public class Main {
     private static AppWindow appWindow;
@@ -17,7 +17,7 @@ public class Main {
      * Starts the game
      */
     public void run() {
-        Main.appWindow.drawGame();
+        Main.appWindow.showGame();
     }
 
     public static void main(String[] args) {

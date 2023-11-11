@@ -1,9 +1,10 @@
-import com.group11.Model.LargeShip;
-import com.group11.Model.SmallShip;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
-import com.group11.Model.AShip;
+import com.group11.model.AShip;
+import com.group11.model.LargeShip;
+import com.group11.model.SmallShip;
+
+import static org.junit.Assert.*;
 
 public class AShipTest {
 

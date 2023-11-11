@@ -1,8 +1,8 @@
-package com.group11.Model;
+package com.group11.model;
 
 import java.awt.Point;
 
-public abstract class ATile extends ADrawable{
+public abstract class ATile extends ATextureIdentifiable{
     private Point pos;
     private Boolean passable;
 

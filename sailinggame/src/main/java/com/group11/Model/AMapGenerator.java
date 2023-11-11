@@ -1,4 +1,4 @@
-package com.group11.Model;
+package com.group11.model;
 
 /**
  * AMapGenerator is an abstract baseclass for all types of

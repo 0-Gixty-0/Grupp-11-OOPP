@@ -1,9 +1,11 @@
 import org.junit.Test;
-import static org.junit.Assert.*;
 
-import com.group11.Model.BasicMapGenerator;
-import com.group11.Model.Map;
-import com.group11.Model.ATile;
+import com.group11.model.ATile;
+import com.group11.model.BasicMapGenerator;
+import com.group11.model.LandTile;
+import com.group11.model.Map;
+
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
@@ -26,7 +28,7 @@ public class MapTest {
     public void testGetTileMatrix() {
         Map map = (new BasicMapGenerator()).generateMap(100);
         ATile tile = map.getTileMatrix().get(50).get(50);
-        assertSame(ATile.class, tile.getClass());
+        assertSame(LandTile.class, tile.getClass());
     }
 
 }

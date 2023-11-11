@@ -1,4 +1,4 @@
-package com.group11.View;
+package com.group11.view;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class GameWorld {
     private List<List<Integer>> terrainMatrix;
-    private ArrayList<ArrayList<AbstractViewTile>> tileMatrix = new ArrayList<>();
+    private ArrayList<ArrayList<AViewTile>> tileMatrix = new ArrayList<>();
     private final int tileWidth = 16;
     private final int tileHeight = 16;
     private int windowWidth;
@@ -33,7 +33,7 @@ public class GameWorld {
      * Returns a matrix of ViewTile objects
      * @return A matrix of ViewTile objects
      */
-    public ArrayList<ArrayList<AbstractViewTile>> getTileMatrix() {
+    public ArrayList<ArrayList<AViewTile>> getTileMatrix() {
         return tileMatrix;
     }
 
@@ -60,7 +60,7 @@ public class GameWorld {
     private void createTileMatrix() {
          for (int rowIndex = 0; rowIndex < this.terrainMatrix.size(); rowIndex++) {
              List<Integer> terrainRow = this.terrainMatrix.get(rowIndex);
-             ArrayList<AbstractViewTile> tileRow = new ArrayList<>();
+             ArrayList<AViewTile> tileRow = new ArrayList<>();
              for (int columnIndex = 0; columnIndex < terrainRow.size(); columnIndex++) {
                  int id = terrainRow.get(columnIndex);
                  tileRow.add(this.initializeTile(id, columnIndex, rowIndex));

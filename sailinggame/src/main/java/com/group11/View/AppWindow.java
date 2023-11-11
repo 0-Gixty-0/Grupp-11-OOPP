@@ -1,4 +1,4 @@
-package com.group11.View;
+package com.group11.view;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -62,9 +62,9 @@ public class AppWindow {
      * Adds each JLabel component, obtained from the ViewTile object, on the map to the main window frame
      */
     private void addTilesToFrame() {
-        ArrayList<ArrayList<AbstractViewTile>> tileMatrix = this.gameWorld.getTileMatrix();
-        for (ArrayList<AbstractViewTile> tileRow : tileMatrix) {
-            for (AbstractViewTile tile : tileRow) {
+        ArrayList<ArrayList<AViewTile>> tileMatrix = this.gameWorld.getTileMatrix();
+        for (ArrayList<AViewTile> tileRow : tileMatrix) {
+            for (AViewTile tile : tileRow) {
                 mainFrame.add(tile.getComponent());
             }
         }
@@ -73,7 +73,7 @@ public class AppWindow {
     /**
      * Sets visibility of the main window to true
      */
-    public void drawGame() {
+    public void showGame() {
         mainFrame.setVisible(true);
     }
 }
