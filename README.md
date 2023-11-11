@@ -61,3 +61,81 @@ instead of the GameWorld. The abstract class and interface makes the Tile module
 
 #### Tutorial:
 This feature does not require a tutorial for the player since tiles being separate objects is not represented visually.
+
+
+### TAS-10 Design player model
+Date of completion: 08/11/2023  
+Completed by: Alexander Muhr
+
+There is a player model that can be displayed on the screen. 
+
+#### What
+Created png using pixel-art that have 8 different rotations that can be switched to depending on what direction the player is moving.
+
+#### How
+I completed the class by creating a png containing 8 models of the player ship in the form of pixelart, all att the same y-height and with 16px increments in x directions.
+
+#### Why
+I chose to do it this way so that it could be easily extended to implement animation of the sprite by adding more sprites "below" each direction respectively. Since all sprites take up 16px with no space in between this could easily be done using a loop incrementing the y-value representing what part of the png to draw and then start over on the first sprite.
+
+#### Tutorial
+This feature does not require a tutorial since it doesnt have functionality for the player other than visual
+
+### TAS-20: Create Tile Designs For Terrain Types
+Date of completion: 08/11/2023  
+Completed by: Erik Andreasson
+
+Create tile designs for different types of terrain meaning that we should create unique tiles that have different appearance and color. 
+At this point in development only two tile designs are necessary for future tasks, That being a land tile and a sea tile.
+
+#### What
+Created two PNGS:s using pixel-art that represent a land tile and a water tile respectively
+
+#### How
+I completed the task by creating two PNG:s with the same dimensions 16x16 pixels.
+
+#### Why
+I created the two PNG:s separately filling the entire 16x16 area. I did this in orde to allow for different ways to access
+the tile image. We may create a tile set containing all tiles and we may not. With this approach we keep our options open which
+is important this early in development.
+
+#### Tutorial
+This feature does not require a tutorial since it doesn't have functionality for the player other than visual
+
+### TAS-24: Implement Basic Map Generation
+Dare of completion: 09/11/2023 <br>
+Completed by: William Norland
+
+Implement basic map generation according to the UML diagram. Basic generation meaning that it should be barebones and simply generate a map consisting of Tiles in a certain order. I suggest the following order of implementation:
+
+#### What
+Implementing a basic inheritance hierarchy and interface for the world generation and creating basic world generation.
+
+#### How
+I completed the task by implementing the followign classes as specified by the UML-diagram.
+Two abstract baseclasses (AWorldGenerator, AMapGenerator).
+A filler class ATile (a class that is really meant to be created in another unfinished task).
+Two classes (Map, World) to be used in the model/logic of the game.
+Two concrete implementations of abstract classes (BasicMapGenerator, BasicWorldGenerator) for creating Map and World.
+
+#### Why
+I choose to make AWorldGenerator and AMapGenerator abstract to follow the DIP, so that the game may use any type of world and map generation.
+These two classes can/should be interfaces as they only contain one method each, i choose to make them abstract classes for four reasons.
+
+(1) I dont wany any class to be able to be a Map/World generator, making classes that are Map/World generators be subclasses of abstract classes rather than interface implementors makes it so it cant be subclasses of anything else.
+
+(2) There probably will be additions to these classes that makes it so they cant be interfaces.
+
+(3) Semantically it makese a little more sense if you imagine inheritance as "is a" and interface implementations as "can do".
+
+(4) In the current state there is no practical difference.
+
+This also uses the abstract factory pattern which is a great way to do the same thing different ways with a common interface.
+
+I choose to make the ATile class because my task could not be implemented in a functional way without it. I am aware that this is not ideal and that tasks shouldnt be made in such a way that it is dependent on other taks, however, we as a group decided that this time we solve it with a hack (The task that involves making the real Tile class is underway) and in the future we construct tasks in a better way. By doing it this way we dont need to change two tasks (which might have cascading effects) and nobody is confused because we had a discussion about it.
+
+I choose to make Map an aggregation of a ATile matrix and Integer matrix to make View less dependent on model, if view uses the integer matrix (with each Integer representing a certain texture) it doesnt need to know about the ATile type.
+
+#### Tutorial
+The player will see the implementation of this task by seeing different worlds in the game.
+
