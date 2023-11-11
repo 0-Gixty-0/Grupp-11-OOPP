@@ -1,4 +1,4 @@
-package com.group11.Model;
+package com.group11.model;
 
 public abstract class AEntity implements ICommandable {
     

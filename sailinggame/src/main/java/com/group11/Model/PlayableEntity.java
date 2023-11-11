@@ -1,9 +1,9 @@
-package com.group11.Model;
+package com.group11.model;
 
 public class PlayableEntity extends AMovableEntity {
 
-    
-    @Override
+    /*
+     * @Override
     public void moveCommand(Integer direction) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'moveCommand'");
@@ -20,5 +20,8 @@ public class PlayableEntity extends AMovableEntity {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'interactCommand'");
     }
+     * 
+     */
+    
     
 }
