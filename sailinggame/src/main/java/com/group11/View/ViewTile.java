@@ -1,4 +1,4 @@
-package com.group11.View;
+package com.group11.view;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +16,7 @@ import java.awt.*;
  * pixelPosition - tile position on window frame in x and y pixels
  * component - JLabel component for use in rendering tile
  */
-public class ViewTile extends AbstractViewTile {
+public class ViewTile extends AViewTile {
     private int id;
     private Dimension dimension;
     private Point matrixPosition;

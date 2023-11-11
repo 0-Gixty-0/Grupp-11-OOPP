@@ -1,4 +1,4 @@
-package com.group11.View;
+package com.group11.view;
 
 /**
  * Interface drawable represents the methods used for objects that are able to be drawn to the screen.
