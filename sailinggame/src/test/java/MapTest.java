@@ -1,9 +1,10 @@
 import org.junit.Test;
-import static org.junit.Assert.*;
 
-import com.group11.Model.BasicMapGenerator;
-import com.group11.Model.Map;
-import com.group11.Model.ATile;
+import com.group11.model.ATile;
+import com.group11.model.BasicMapGenerator;
+import com.group11.model.Map;
+
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 

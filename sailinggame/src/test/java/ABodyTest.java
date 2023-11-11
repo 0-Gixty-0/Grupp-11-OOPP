@@ -1,5 +1,7 @@
-import com.group11.Model.SmallShip;
 import org.junit.Test;
+
+import com.group11.model.SmallShip;
+
 import static org.junit.Assert.*;
 
 import java.awt.*;
