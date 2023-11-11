@@ -1,4 +1,4 @@
-package com.group11.Model;
+package com.group11.model;
 import java.util.ArrayList;
 
 /**
@@ -27,12 +27,12 @@ public class BasicMapGenerator extends AMapGenerator {
 
                 //Creates a square of land in the middle of the matrix withe a quarterSide distance to the edge
                 if ((k >= quarterSide) && (k <= side-quarterSide) && (i >= quarterSide) && (i <= side-quarterSide)) { //Add landtiles
-                    tileRow.add(new ATile()); //Should add landtile
+                    tileRow.add(new LandTile()); //Should add landtile
                     graphicRow.add(1); //Add landtile id to graphicmap
                 }
 
                 else {
-                    tileRow.add(new ATile()); //Should add seatile
+                    tileRow.add(new SeaTile()); //Should add seatile
                     graphicRow.add(0); //Add seatile id to graphicmap
                 }
 

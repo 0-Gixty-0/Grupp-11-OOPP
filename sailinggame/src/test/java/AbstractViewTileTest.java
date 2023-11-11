@@ -1,4 +1,3 @@
-import com.group11.view.AbstractViewTile;
 import com.group11.view.ViewTile;
 import org.junit.Test;
 import static org.junit.Assert.*;

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * Tile class representing a tile for the View module.
  * ViewTile class representing a tile for the view module.
  * Contains attributes for:
  * id - terrain type number
@@ -12,7 +13,7 @@ import java.awt.*;
  * pixelPosition - tile position on window frame in x and y pixels
  * component - JLabel component for use in rendering tile
  */
-public class ViewTile extends AbstractViewTile {
+public class ViewTile extends AViewTile {
     private int id;
     private Dimension dimension;
     private Point matrixPosition;

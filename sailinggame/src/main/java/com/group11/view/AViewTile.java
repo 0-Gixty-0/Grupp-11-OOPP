@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
  * Abstract class representing an abstract tile. Implements the drawable interface since
  * as tile is an object that is drawn on the screen.
  */
-public abstract class AbstractViewTile implements Drawable {
+public abstract class AViewTile implements Drawable {
     private int id;
     private Dimension dimension;
     private Point matrixPosition;
@@ -23,7 +23,7 @@ public abstract class AbstractViewTile implements Drawable {
      * @param matrixPosition - tile position in matrix (row, column)
      * @param pixelPosition - tile position on window frame in x and y pixels
      */
-    public AbstractViewTile(int id, Dimension dimension, Point matrixPosition, Point pixelPosition) {
+    public AViewTile(int id, Dimension dimension, Point matrixPosition, Point pixelPosition) {
         if (id < 0 || id > 15) {
             throw new IllegalArgumentException("Invalid terrain ID");
         }

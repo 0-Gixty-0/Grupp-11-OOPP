@@ -1,4 +1,4 @@
-package com.group11.Model;
+package com.group11.model;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ public class Map {
     /**
      * Creates a Map object out of a TileMatrix and a GraphicsMatrix, Constructor is package procted because
      * Maps should be created by map generator.
-     * @param graphicsMatrix a matrix of ints each representing a certain tile texture.
+     * @param graphicMatrix a matrix of ints each representing a certain tile texture.
      * @param side the size of a side in a map, a map is always a square.
      */
     protected Map(ArrayList<ArrayList<ATile>> tileMatrix, ArrayList<ArrayList<Integer>> graphicMatrix, int side) {
