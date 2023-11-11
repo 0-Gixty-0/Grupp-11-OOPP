@@ -103,7 +103,7 @@ is important this early in development.
 This feature does not require a tutorial since it doesn't have functionality for the player other than visual
 
 ### TAS-24: Implement Basic Map Generation
-Dare of completion: 09/11/2023 <br>
+Date of completion: 09/11/2023 <br>
 Completed by: William Norland
 
 Implement basic map generation according to the UML diagram. Basic generation meaning that it should be barebones and simply generate a map consisting of Tiles in a certain order. I suggest the following order of implementation:
@@ -139,3 +139,41 @@ I choose to make Map an aggregation of a ATile matrix and Integer matrix to make
 #### Tutorial
 The player will see the implementation of this task by seeing different worlds in the game.
 
+### TAS-29: Implement Drawing Basic Terrain Types
+Date of completion: 11/11/2023  
+Completed by: Erik Andreasson
+
+Implement ability to draw certain graphical icons / pictures based on tile id to the view. 
+This should be integrated into the View Module and the Tile code. 
+The drawing logic should be generalized for all possible terrain ID:s and all possible "tile sets". 
+Essentially ability to switch out which images correspond to which id and in turn which terrain type is to be drawn. 
+At current development focus should be put into how the land and sea tile should be drawn.
+
+#### What
+Implementing drawing tiles of different terrain types to the screen according to specifications from the model.
+The implementation is to be semi-general and independent of the models representation of terrain.
+
+#### How
+I began by creating a png texture map which is 64x64 pixels from merging the two land and sea tile png:s and scaling up.
+I then implemented an extension to the AbstractViewTile class by implementing the methods createImageIcon and getTextureMatrixCoordinate.
+I also modified the constructor and the method createComponent. 
+
+The method getTextureMatrixCoordinate takes a terrain id and converts that number to a matrix position (row, column). 
+This matrix position is the position of the tile image for that terrain type in the texture map. This method is 
+currently dependent on the size of the texture map being a 4x4 matrix.
+
+The method createImageIcon creates an object of type ImageIcon which is then later applied to the JLabel component in createComponent.
+It creates the icon by loading in the texture map and then creating a BufferedImage based on the pixel position of the two opposite
+corners of the tile in the texture map. This pixel position is obtained by scaling the matrix position previously obtained.
+It then adds the BufferedImage to the ImageIcon and returns.
+
+#### Why
+I tried to make the code as general as possible. Granted it is dependent on the size and layout of the texture map, but I made
+a reasonability assessment and concluded that 16 different terrain textures is more than enough to start with. This way we can add
+14 more terrains before having to change a number or two in the code. Something I don't believe will happen.
+However, it is general in the sense that one can change the representations of tiles by simply exchanging the texture map png
+for another one. Furthermore, the whole system is based on terrain id:s which is just a number between 0 - 15 which has no other
+information from the model. Instead, the number simply points to a certain tile in the texture map.
+
+#### Tutorial
+This feature does not require a tutorial since it doesn't have functionality for the player other than visual
