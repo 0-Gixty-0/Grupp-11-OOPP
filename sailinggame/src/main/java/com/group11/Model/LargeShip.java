@@ -10,8 +10,8 @@ public class LargeShip extends AShip {
 
     @Override
     public void move(int x, int y) {
-        Point new_position = new Point (x, y);
-        this.setPos(new_position);
+        Point newPosition = new Point (x, y);
+        this.setPos(newPosition);
     }
 
     @Override
