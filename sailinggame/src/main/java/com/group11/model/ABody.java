@@ -13,20 +13,17 @@ public abstract class ABody implements IDamageable {
     private ArrayList<Integer> dimension;
     private Point pos;
     private int hitPoints;
-    private int velocity;
 
     /**
      * Constructor for creating objects of type ABody.
      * @param dimension - the dimension of the body
      * @param pos       - the position of the body in the tilemap
      * @param hitPoints - the hitpoints of the body
-     * @param velocity  - the velocity of the body
      */
-    public ABody(ArrayList<Integer> dimension, Point pos, int hitPoints, int velocity){
-        this.dimension = dimension;
-        this.pos = pos;
-        this.hitPoints = hitPoints;
-        this.velocity = velocity;
+    public ABody(ArrayList<Integer> dimension, Point pos, int hitPoints){
+        this.dimension  = dimension;
+        this.pos        = pos;
+        this.hitPoints  = hitPoints;
     }
 
     /**
@@ -55,24 +52,6 @@ public abstract class ABody implements IDamageable {
      */
     public void setHitPoints(int newHitpoints) {
         this.hitPoints = newHitpoints;
-    }
-
-    /**
-     * Returns the current velocity of the body
-     *
-     * @return the current velocity of the body
-     */
-    public int getVelocity() {
-        return this.velocity;
-    }
-
-    /**
-     * Sets the velocity of the body
-     *
-     * @param newVelocity - the new velocity of the body
-     */
-    public void setVelocity(int newVelocity) {
-        this.velocity = newVelocity;
     }
 
     /**
