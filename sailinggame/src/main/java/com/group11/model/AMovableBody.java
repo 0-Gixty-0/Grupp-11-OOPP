@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public abstract class AMovableBody extends ABody implements IMovable {
 
-    int velocity;
+    private int velocity;
 
     /**
      * Constructor for creating objects of type AMovableBody.
