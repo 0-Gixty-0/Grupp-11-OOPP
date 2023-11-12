@@ -34,6 +34,8 @@ unplayable or testable.
 #### Tutorial:
 Upon starting the game a window will be displayed. This window will contain tiles representing terrain in the game
 
+---
+
 ### TAS-28: Create A Tile Class In View Module
 Date of completion: 08/11/2023  
 Completed by: Erik Andreasson  
@@ -62,6 +64,7 @@ instead of the GameWorld. The abstract class and interface makes the Tile module
 #### Tutorial:
 This feature does not require a tutorial for the player since tiles being separate objects is not represented visually.
 
+---
 
 ### TAS-10 Design player model
 Date of completion: 08/11/2023  
@@ -80,6 +83,8 @@ I chose to do it this way so that it could be easily extended to implement anima
 
 #### Tutorial
 This feature does not require a tutorial since it doesnt have functionality for the player other than visual
+
+---
 
 ### TAS-20: Create Tile Designs For Terrain Types
 Date of completion: 08/11/2023  
@@ -101,6 +106,8 @@ is important this early in development.
 
 #### Tutorial
 This feature does not require a tutorial since it doesn't have functionality for the player other than visual
+
+---
 
 ### TAS-24: Implement Basic Map Generation
 Date of completion: 09/11/2023 <br>
@@ -138,6 +145,8 @@ I choose to make Map an aggregation of a ATile matrix and Integer matrix to make
 
 #### Tutorial
 The player will see the implementation of this task by seeing different worlds in the game.
+
+---
 
 ### TAS-29: Implement Drawing Basic Terrain Types
 Date of completion: 11/11/2023  
