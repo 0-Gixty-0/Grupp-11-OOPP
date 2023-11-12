@@ -177,3 +177,35 @@ information from the model. Instead, the number simply points to a certain tile 
 
 #### Tutorial
 This feature does not require a tutorial since it doesn't have functionality for the player other than visual
+
+---
+
+### TAS-22: Implement Ship Module 
+Date of completion: 12/11/2023  
+Completed by: Noa Cavassi
+
+Implement Ship Module as declared in UML diagram. This task encompasses creating abstract classes and interfaces.
+
+#### What
+Implementing interfaces and abstract classes as templates for the concrete class Ship. The functionality and methods
+will be updated and changed during the course of the project.
+
+#### How
+The task had a checklist with the intefaces and classes required, and the UML diagram showed what methods and variables that was needed.
+During the course of implementing the module, I understood better which ones was necessary and which ones that was not.
+
+The abstract class ABody is a template for a body. It's implemented such that it contains a dimension, a position, it has hitpoints, and a velocity.
+It uses the interface IDamageable, since every body can take damage.
+
+The abstract class AMovableBody is the structure for every body that can move around on the map. It is a subclass of ABody. It contains the method "move", which changes the position (x,y) of the body.
+
+The class Ship is the concrete class of the module. It gets the general structure of ABody and AMovableBody, and also implements It's own specific functionality, altough at the moment It's very limited.
+It has a level, armor, cannons, and sailStatus, which tells if the sail is up or down. It also has an anchor which can reduce the velocity of the ship to 0 when lowered down.
+
+#### Why
+The functionality of the code is very limited for the moment, since specific functionality is not in the main focus now. The code should follow the Open-closed principle. It should be easy to extend the code, add more functionality, without the need to modify the already existing code.
+
+The whole module is needed to get a good structure of how instances of objects, specifically movable objects, are created in the game. 
+
+#### Tutorial
+This module will be updated during the course of the project. For the moment no tutorial is needed.
