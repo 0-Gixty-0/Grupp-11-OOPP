@@ -51,9 +51,9 @@ public abstract class AShip extends AMovableBody {
     /**
      * Fires the cannon of the ship
      *
-     * @param damage - the amount of damage the cannon does
+     * @param direction - the amount of damage the cannon does
      */
-    abstract public void fireCannons(int damage);
+    abstract public void fireCannons(int direction);
 
     /**
      * Returns the anchorStatus of the ship. Down (true) up (false)
