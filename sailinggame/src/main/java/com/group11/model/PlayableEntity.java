@@ -1,4 +1,5 @@
 package com.group11.model;
+import java.awt.Point;
 
 public class PlayableEntity extends AMovableEntity {
 
@@ -7,41 +8,47 @@ public class PlayableEntity extends AMovableEntity {
 
     }
 
+    /**
+     * A Helper method for movecommand implementation in PlayableEntity using pseudo linear algebra.
+     * @param velocity The amount of tiles each move moves.
+     * @param dirVector The direction the body should move in.
+     */
+    private void moveHelper(int velocity, int [] dirVector) {
+      for (int i = 0; i < velocity; i++ ) {
+          Point currPos = this.getBody().getPos();
+          int currX = (int) currPos.getX();
+          int currY = (int) currPos.getY();
+          this.getBody().move(currX + dirVector[0],currY + dirVector[1]);
+      }
+    }
 
+    /**
+     * Issue a move command to a entity in 8 difference directions using these integers as arguments:
+     * 0 moves straight up,
+     * 1 moves at a right angle up,
+     * 2 moves straight right,
+     * 3 moves at a right angle down,
+     * 4 moves at straight down,
+     * 5 moves at a left angle down,
+     * 6 moves straight left,
+     * 7 move at a left angle up,
+     * @param direction Moves the Entity in the chosen direction (see the index above).
+     */
     @Override
     public void moveCommand(Integer direction) {
-        switch(direction) {
-            case 0:
-              
-              break;
-            case 1:
-              // code block
-              break;
-            case 2:
-              // code block
-              break;
-            case 3:
-              // code block
-              break;
-            case 4:
-              // code block
-              break;
-            case 5:
-              // code block
-              break;
-            default:
-              // code block
-          }
+        int velocity = this.getBody().getVelocity();
+        int[][] directions = {{0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}, {-1,0}, {-1,1}};
+        this.moveHelper(velocity, directions[direction]);
     }
 
     @Override
     public void attackCommand(Integer direction) {
-        
+        //Placeholder for later implementation.
     }
 
     @Override
     public void interactCommand() {
-        
+        //Placeholder for later implementation.
     }
   
 }
