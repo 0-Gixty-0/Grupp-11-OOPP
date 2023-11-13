@@ -1,5 +1,9 @@
 # SailingGame - Group-11-OOPP
 
+## ❗ A note about issues
+In the beginning of this project we followed another form of workflow for creating issues which we now deem as confusing and inefficient. Issues created during this time will have titles starting with
+TAS while new issues will have titles starting with US. Take a note of this while reading about issues in the project.
+
 ## Implemented features
 Following is a list of implemented features in the form of tasks, these tasks are represented by solved GitHub issues with the same name. To get a deeper look into how each task was implemented, check the issues.
 
