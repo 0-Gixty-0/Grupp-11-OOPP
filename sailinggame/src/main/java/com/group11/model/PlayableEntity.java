@@ -1,11 +1,18 @@
 package com.group11.model;
 import java.awt.Point;
 
+/**
+ * The PlayableEntity class represents an instance of the player in the game world. 
+ */
 public class PlayableEntity extends AMovableEntity {
 
+ /**
+  * Constructor for a playable entity (commonly just the player)
+  * @param body The body the player should use.
+  * @param name The name of the player..
+  */
   public PlayableEntity(AMovableBody body, String name) {
       super(body, name, true);
-
   }
 
   /**
