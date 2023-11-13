@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public abstract class AMovableBody extends ABody implements IMovable {
 
+    private int velocity;
 
     /**
      * Constructor for creating objects of type AMovableBody.
@@ -17,7 +18,26 @@ public abstract class AMovableBody extends ABody implements IMovable {
      * @param velocity - the initial velocity of the body
      */
     public AMovableBody(int velocity){
-        super(new ArrayList<>(), (new Point()), 100, velocity);
+        super(new ArrayList<>(), (new Point()), 0);
+        this.velocity = velocity;
+    }
+
+    /**
+     * Returns the current velocity of the body
+     *
+     * @return the current velocity of the body
+     */
+    public int getVelocity() {
+        return this.velocity;
+    }
+
+    /**
+     * Sets the velocity of the body
+     *
+     * @param newVelocity - the new velocity of the body
+     */
+    public void setVelocity(int newVelocity) {
+        this.velocity = newVelocity;
     }
 
     /**

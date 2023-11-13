@@ -1,8 +1,6 @@
 import org.junit.Test;
 
-import com.group11.model.AShip;
-import com.group11.model.MedShip;
-import com.group11.model.SmallShip;
+import com.group11.model.Ship;
 
 import static org.junit.Assert.*;
 
@@ -10,14 +8,21 @@ import java.awt.*;
 
 public class AMovableBodyTest {
 
-    MedShip mediumShip = new MedShip(1,10,0, true);
+    Ship testShip = new Ship(1,10,0, true);
 
     @Test
     public void testMove() {
         Point newPosition = new Point(10,10);
-        mediumShip.setPos(newPosition);
-        mediumShip.move(20,20);
+        testShip.setPos(newPosition);
+        testShip.move(20,20);
         Point secondPosition = new Point(20,20);
-        assertEquals(mediumShip.getPos(), secondPosition);
+        assertEquals(testShip.getPos(), secondPosition);
+    }
+
+    @Test
+    public void testVelocity() {
+        testShip.setVelocity(10);
+        int velocity = testShip.getVelocity();
+        assertEquals(velocity, 10);
     }
 }
