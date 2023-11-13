@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class ShipTest {
 
-    Ship testShip = new Ship(1,10,0, true);
+    Ship testShip = new Ship(null, null, 0, 0, 0, 0);
 
     @Test
     public void testAnchor() {
