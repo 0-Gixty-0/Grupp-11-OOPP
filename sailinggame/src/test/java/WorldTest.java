@@ -1,10 +1,10 @@
 import org.junit.Test;
 
-import com.group11.Model.AMapGenerator;
-import com.group11.Model.BasicMapGenerator;
-import com.group11.Model.BasicWorldGenerator;
-import com.group11.Model.Map;
-import com.group11.Model.World;
+import com.group11.model.AMapGenerator;
+import com.group11.model.BasicMapGenerator;
+import com.group11.model.BasicWorldGenerator;
+import com.group11.model.Map;
+import com.group11.model.World;
 
 import static org.junit.Assert.*;
 
