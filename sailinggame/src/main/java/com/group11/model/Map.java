@@ -9,7 +9,6 @@ public class Map {
     
     private int area;
     private ArrayList<ArrayList<ATile>> tileMatrix;
-    private ArrayList<ArrayList<Integer>> graphicMatrix;
 
     /**
      * Creates a Map object out of a TileMatrix and a GraphicsMatrix, Constructor is package procted because
@@ -17,18 +16,9 @@ public class Map {
      * @param graphicMatrix a matrix of ints each representing a certain tile texture.
      * @param side the size of a side in a map, a map is always a square.
      */
-    protected Map(ArrayList<ArrayList<ATile>> tileMatrix, ArrayList<ArrayList<Integer>> graphicMatrix, int side) {
+    protected Map(ArrayList<ArrayList<ATile>> tileMatrix, int side) {
         this.tileMatrix = tileMatrix;
-        this.graphicMatrix = graphicMatrix;
         this.area = side*side;
-    }
-
-    /**
-     * A getter for the graphicMatris attribute of the Map object.
-     * @return (ArrayList<ArrayList<Integer>>) matrix of integers representing a certain tile texture.
-     */
-    public ArrayList<ArrayList<Integer>> getGraphicMatrix() {
-        return graphicMatrix;
     }
 
     /**

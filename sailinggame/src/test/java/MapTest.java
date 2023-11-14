@@ -12,13 +12,6 @@ import java.util.ArrayList;
 public class MapTest {
 
     @Test
-    public void testGetGraphicMatrix() {
-        Map map = (new BasicMapGenerator()).generateMap(100);
-        ArrayList<ArrayList<Integer>> graphicMatrix = map.getGraphicMatrix();
-        assertEquals(graphicMatrix.size(), 100);
-    }
-
-    @Test
     public void testGetArea() {
         Map map = (new BasicMapGenerator()).generateMap(100);
         assertEquals(map.getArea(), 10000);
