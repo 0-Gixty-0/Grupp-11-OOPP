@@ -229,6 +229,8 @@ This module will be updated during the course of the project. For the moment no 
 Date of completion: 14/11/2023
 Completed by: William Norland
 
+As a user i want to be able to do basic movement of the player on the screen.
+
 #### What
 Implementing a class for the player including the movement logic, the purpose of this task was to make the player able to move so we can work on producing a MVP as soon as possible. The player class is going to be further expanded on in later user stories.
 
@@ -236,7 +238,28 @@ Implementing a class for the player including the movement logic, the purpose of
 By making am abstract superclass called Entity which has the subclasses PlayableEntity (A entity coontroller by the player), the entity has a body (the physical representation of the entity) this body is specifically a AMovableBody. I also made LocationEntity because it didnt take long and i was in the neighborhood (representing static immovable entities like cities) which should have something like an AImmovableBody, right now however they use ABody
 
 #### Why
-I choose to make the inheritance hierarchy like this to follow the OCP (keeping code open for extension, one player (PlayableEntity) can use many different bodies (AMovableBody)) by using subtype-polymorphism, the DIP (depend on abstractions) by using abstract classes. There is a small "why?" in the test class of PlayableEntityTest, there im making pretty much the same test for testing moving in different directions. Im pretty sure i could use parametrized testing here but since there is a time constraint and efficient testing isnt the primary scope (dont read this as "we dont care about testing") of this course i chosse to write them like that. Im leaving this choice open for discussion since we might want to change this at a later state of the project.
+I choose to make the inheritance hierarchy like this to follow the OCP (keeping code open for extension), one player (PlayableEntity) can use many different bodies (AMovableBody) by using subtype-polymorphism, the DIP (depend on abstractions) by using abstract classes. There is a small "why?" in the test class of PlayableEntityTest, there im making pretty much the same test for testing moving in different directions. Im pretty sure i could use parametrized testing here but since there is a time constraint and efficient testing isnt the primary scope (dont read this as "we dont care about testing") of this course i chosse to write them like that. Im leaving this choice open for discussion since we might want to change this at a later state of the project.
 
 #### Tutorial
 The user will interact heavily with the PlayableEntity when controlling the player in the game world.
+
+---
+
+### US-33
+Date of completion: 14/11/2023
+Completed by: William Norland
+
+As a developer I want to separate creation of the integer matrix in the Map object to another class so that Map has one single responsibility because this follows the SOLID principles making it simpler to maintain and use.
+
+#### What
+Implementening a way of converting Matrixes of ATile into Matrixes of Int and removing that capability from BasicMapGenerator.
+
+#### How
+Implementing a utility class to host a function for converting a matrix of ATiles into a matrix of ints that the view then converts to its domain specific language 
+and finally draws as the game on the screen. The method decode simply goes through all elements in the argument ATile Matrix and pastes over the textureIds to the int Matrix.
+
+#### Why
+I implemented TileMatrixDecoder as a final class because no subclasses of this should exist because its a utility class. It has a private constructor because its functions are static and this class is not intended to be used as an object. The algorithm converting the matrixes is as simple as it can be, you could probably improve it by using vectorization or some paralell process but at this point in the project you dont really need to make it more efficient. If you have a large map you can improve performance by rendering the map in smaller pieces.
+
+#### Tutorial
+The user wont really interact with this in anyway more explicit than looking at the game world this class (helped) made.
