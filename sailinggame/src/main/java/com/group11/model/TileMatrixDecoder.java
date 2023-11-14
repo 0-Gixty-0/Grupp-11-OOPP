@@ -16,10 +16,9 @@ public final class TileMatrixDecoder {
     }
 
     /**
-     * 
-     * @param matrix A Matrix<Tile> (ArrayList of ArrayLists) you want to convert to a Matrix<Integer>.
-     * @return 
-     * @return (Matrix<Integer>)
+     * Function used to decode a matrix of tiles, representing a map, into a matrix of ints that can be used by the view.
+     * @param matrix A Matrix<Tile> (ArrayList of ArrayLists) you want to convert.
+     * @return (Matrix<Integer>) representation of map in textureId's.
      */
     public static ArrayList<ArrayList<Integer>> decode(ArrayList<ArrayList<ATile>> matrix) {
         
