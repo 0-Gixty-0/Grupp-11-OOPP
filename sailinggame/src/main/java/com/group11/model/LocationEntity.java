@@ -15,6 +15,7 @@ public class LocationEntity extends AEntity {
      */
     public LocationEntity(ABody body, String name, Boolean friendly) {
         super(name, friendly);
+        this.body = body;
     }
 
     /**
