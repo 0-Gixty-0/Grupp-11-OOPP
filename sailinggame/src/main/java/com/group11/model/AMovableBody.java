@@ -1,6 +1,6 @@
 package com.group11.model;
 
-import java.awt.*;
+import java.awt.Point;
 import java.util.ArrayList;
 
 /**
@@ -13,13 +13,14 @@ public abstract class AMovableBody extends ABody implements IMovable {
     private int velocity;
 
     /**
-     * Constructor for creating objects of type AMovableBody.
-     *
-     * @param velocity - the initial velocity of the body
+     * Constructor for a movable body, like a body but its meant to move around the game world.
+     * @param dimensions The dimensions of the body represented as a matrix of true (uses that square) or false (does not use that square)
+     * @param pos The starting position of the body as a Java Point
+     * @param hitPoints The hitpooints of the body
      */
-    public AMovableBody(int velocity){
-        super(new ArrayList<>(), (new Point()), 0);
-        this.velocity = velocity;
+    protected AMovableBody(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int hitPoints){
+        super(dimensions, pos, hitPoints);
+        this.velocity = 0;
     }
 
     /**
@@ -47,6 +48,6 @@ public abstract class AMovableBody extends ABody implements IMovable {
      * @param y - the new y position for the body
      */
     public void move(int x, int y) {
-        this.setPos(new Point(x,y));
+        this.getPos().setLocation(x, y);
     }
 }
