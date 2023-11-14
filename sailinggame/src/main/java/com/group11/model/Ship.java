@@ -1,5 +1,8 @@
 package com.group11.model;
 
+import java.awt.Point;
+import java.util.ArrayList;
+
 /**
  * Class representing a ship. This class extends AMovableBody.
  */
@@ -8,8 +11,8 @@ public class Ship extends AMovableBody {
     private int shipLevel;
     private int armor;
     private int cannons;
-    private boolean sailStatus;
-    private boolean anchorDown = false;
+    private boolean sailIsUp;
+    private boolean anchorDown;
 
     /**
      * Constructor for creating objects of type AShip.
@@ -18,26 +21,35 @@ public class Ship extends AMovableBody {
      * @param cannons     - the cannons of the ship
      * @param sailStatus  - the sail status. Either up (true) or down (false)
      */
-    public Ship(int shipLevel, int armor, int cannons, boolean sailStatus){
-        super(0);
+    public Ship(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int shipLevel, int armor, int cannons, int hitPoints){
+        super(dimensions, pos, hitPoints);
         this.shipLevel   = shipLevel;
         this.armor       = armor;
         this.cannons     = cannons;
-        this.sailStatus  = sailStatus;
+        this.sailIsUp  = false;
+        this.anchorDown = true;
     }
 
     /**
      * Raises the sail of the ship
      */
     public void raiseSail() {
-        sailStatus = true;
+        if (!this.sailIsUp) {
+            sailIsUp = true;
+            int currVelocity = this.getVelocity();
+            this.setVelocity(currVelocity*2);
+        } 
     }
 
     /**
      * Lower the sail of the ship
      */
     public void lowerSail() {
-        sailStatus = false;
+        if (this.sailIsUp) {
+            sailIsUp = false;
+            int currVelocity = this.getVelocity();
+            this.setVelocity(currVelocity/2);
+        } 
     }
 
     /**
@@ -46,7 +58,7 @@ public class Ship extends AMovableBody {
      * @return the sailStatus of the ship
      */
     public boolean getSailStatus() {
-        return this.sailStatus;
+        return this.sailIsUp;
     }
 
     /**
@@ -54,7 +66,9 @@ public class Ship extends AMovableBody {
      *
      * @param damage - the amount of damage the cannon does
      */
-    public void fireCannons(int damage){}
+    public void fireCannons(int direction){
+        //Not implemented in the current state of the game, view this as a placeholder
+    }
 
     /**
      * Returns the anchorStatus of the ship. Down (true) up (false)
