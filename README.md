@@ -226,11 +226,17 @@ This module will be updated during the course of the project. For the moment no 
 ---
 
 ### TAS-11
+Date of completion: 14/11/2023
+Completed by: William Norland
 
 #### What
+Implementing a class for the player including the movement logic, the purpose of this task was to make the player able to move so we can work on producing a MVP as soon as possible. The player class is going to be further expanded on in later user stories.
 
 #### How
+By making am abstract superclass called Entity which has the subclasses PlayableEntity (A entity coontroller by the player), the entity has a body (the physical representation of the entity) this body is specifically a AMovableBody. I also made LocationEntity because it didnt take long and i was in the neighborhood (representing static immovable entities like cities) which should have something like an AImmovableBody, right now however they use ABody
 
 #### Why
+I choose to make the inheritance hierarchy like this to follow the OCP (keeping code open for extension, one player (PlayableEntity) can use many different bodies (AMovableBody)) by using subtype-polymorphism, the DIP (depend on abstractions) by using abstract classes. There is a small "why?" in the test class of PlayableEntityTest, there im making pretty much the same test for testing moving in different directions. Im pretty sure i could use parametrized testing here but since there is a time constraint and efficient testing isnt the primary scope (dont read this as "we dont care about testing") of this course i chosse to write them like that. Im leaving this choice open for discussion since we might want to change this at a later state of the project.
 
 #### Tutorial
+The user will interact heavily with the PlayableEntity when controlling the player in the game world.
