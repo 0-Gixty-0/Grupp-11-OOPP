@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class AMovableBodyTest {
 
-    Ship testShip = new Ship(null, null, 0, 0, 0, 0);
+    Ship testShip = new Ship(null, null, 0, 0, 0, 0, 2);
 
     @Test
     public void testMove() {

@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * since a body can take damage.
  */
 
-public abstract class ABody implements IDamageable {
+public abstract class ABody extends ATextureIdentifiable implements IDamageable {
 
     private ArrayList<ArrayList<Boolean>> dimensions;
     private Point pos;
@@ -20,7 +20,8 @@ public abstract class ABody implements IDamageable {
      * @param pos       - the position of the body in the tilemap
      * @param hitPoints - the hitpoints of the body
      */
-    protected ABody(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int hitPoints){
+    protected ABody(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int hitPoints, int textureId) {
+        super(textureId);
         this.dimensions = dimensions;
         this.pos        = pos;
         this.hitPoints  = hitPoints;
