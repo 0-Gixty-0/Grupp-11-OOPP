@@ -263,3 +263,20 @@ I implemented TileMatrixDecoder as a final class because no subclasses of this s
 
 #### Tutorial
 The user wont really interact with this in anyway more explicit than looking at the game world this class (helped) made.
+
+---
+
+### US-36
+Date of completion: 15/11/2023
+Completed by: William Norland
+
+As a developer i dont want LocationEntity to be able to have a AMovabelBody. Because a location entity is not supposed to have body capable of moving.
+
+#### What
+Making it impossible for a LocationEntity to have a AMovableBody.
+
+#### How
+Implementing a new abstract class AImmovableBody and making LocationEntity use an AImmovableBody instead of an ABody.
+
+#### Why
+Even though LocationEntity couldnt really move because it had an ABody and therefore could not use the Interface of AMovableBody it could still use a AMovableBody object like a Ship, this is not how its intended and therefore we changed it to AImmovableBody

@@ -2,26 +2,27 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.group11.model.ABody;
+import com.group11.model.AImmovableBody;
 import com.group11.model.LocationEntity;
-import com.group11.model.Ship;
 
 public class LocationEntityTest {
     
     @Test
     public void testGetBody() {
-        ABody ship = new Ship(null, null, 0, 0, 0, 0, 2);
-        LocationEntity location = new LocationEntity(ship, "ShipTown", false);
-        assertEquals(ship, location.getBody());
+        // THis tests use null right now because there are no concrete implementations of AImmovableBody
+        AImmovableBody body = null;
+        LocationEntity location = new LocationEntity(body, "ShipTown", false);
+        assertEquals(null, location.getBody());
     }
 
     @Test
     public void testSetBody() {
-        ABody ship = new Ship(null, null, 0, 0, 0, 0, 2);
+        // THis tests use null right now because there are no concrete implementations of AImmovableBody
+        AImmovableBody body = null;
         LocationEntity location = new LocationEntity(null, "ShipTown", false);
         assertEquals(null, location.getBody());
-        location.setBody(ship);
-        assertEquals(ship, location.getBody());
+        location.setBody(null);
+        assertEquals(null, location.getBody());
     }
 }
   
