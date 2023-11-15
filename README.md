@@ -280,3 +280,21 @@ Implementing a new abstract class AImmovableBody and making LocationEntity use a
 
 #### Why
 Even though LocationEntity couldnt really move because it had an ABody and therefore could not use the Interface of AMovableBody it could still use a AMovableBody object like a Ship, this is not how its intended and therefore we changed it to AImmovableBody
+
+---
+
+### TAS-23: Implement Tile Module 
+Date of completion: 13/11/2023  
+Completed by: Adam Kvarnsund
+
+#### What
+Creating a base structure for the tiles used in the game. This includes an abstraction of the general tile and two specific concrete implementations. Also implementing an attribute that says which tile the instance is.
+
+#### How
+The task was carried out with the help of a list of subtasks directly states in the issue o GitHub. The concrete implementations of the classes and their methods were constructed according to the UML diagram we created before the coding process.
+
+#### Why
+This particular task is necessary for the game to be able to display and for the player able to interact with the world. Tiles have their own texture which the world generator will be able to take into account when building a realistic map.
+
+#### Tutorial
+A tutorial is not needed in this state of the process.
