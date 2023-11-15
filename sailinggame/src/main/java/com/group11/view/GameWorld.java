@@ -45,11 +45,11 @@ public class GameWorld {
      * @param rowIndex The index of which row the tile is to be placed in
      * @return A JLabel representing a tile which consists of size and location.
      */
-    private ViewTile initializeTile(int id, int columnIndex, int rowIndex) {
+    private TerrainTile initializeTile(int id, int columnIndex, int rowIndex) {
         Dimension dimension = new Dimension(this.tileWidth, this.tileHeight);
         Point matrixPosition = new Point(rowIndex, columnIndex);
         Point pixelPosition = new Point(columnIndex * this.tileWidth, rowIndex * this.tileHeight);
-        return new ViewTile(id, dimension, matrixPosition, pixelPosition);
+        return new TerrainTile(id, dimension, matrixPosition, pixelPosition);
     }
 
     /**

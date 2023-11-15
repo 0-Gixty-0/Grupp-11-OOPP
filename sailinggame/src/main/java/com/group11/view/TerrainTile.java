@@ -13,7 +13,7 @@ import java.awt.*;
  * pixelPosition - tile position on window frame in x and y pixels
  * component - JLabel component for use in rendering tile
  */
-public class ViewTile extends AViewTile {
+public class TerrainTile extends AViewTile {
     private int id;
     private Dimension dimension;
     private Point matrixPosition;
@@ -27,7 +27,19 @@ public class ViewTile extends AViewTile {
      * @param matrixPosition - tile position in matrix (row, column)
      * @param pixelPosition - tile position on window frame in x and y pixels
      */
-    public ViewTile(int id, Dimension dimension, Point matrixPosition, Point pixelPosition) {
+    public TerrainTile(int id, Dimension dimension, Point matrixPosition, Point pixelPosition) {
         super(id, dimension, matrixPosition, pixelPosition);
+    }
+
+    /**
+     * Gets the coordinates for a tile image in the texture map based on a tile id number.
+     * Coordinates are (row, column) with values 0 - 3
+     *
+     * @param id The id for terrain type.
+     * @return The point coordinate in the texture map matrix (row, column)
+     */
+    @Override
+    Point getTextureMatrixCoordinate(int id) {
+        return new Point((int) Math.floor(id/4), id % 4);
     }
 }

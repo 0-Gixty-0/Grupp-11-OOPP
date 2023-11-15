@@ -1,10 +1,10 @@
-import com.group11.view.ViewTile;
+import com.group11.view.TerrainTile;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 import java.awt.*;
 
-public class AbstractViewTileTest {
+public class AbstractTerrainTileTest {
     // Wanted to test this method which is private since it is important that it functions.
     // To run this test first make getTextureMatrixCoordinate public
 //    @Test
@@ -20,11 +20,11 @@ public class AbstractViewTileTest {
 
     @Test
     public void constructorThrowsIllegalArgumentExceptionLowID() {
-        assertThrows(IllegalArgumentException.class, () -> new ViewTile(-1, new Dimension(16,16), new Point(0,0), new Point(0,0)));
+        assertThrows(IllegalArgumentException.class, () -> new TerrainTile(-1, new Dimension(16,16), new Point(0,0), new Point(0,0)));
     }
 
     @Test
     public void constructorThrowsIllegalArgumentExceptionHighID() {
-        assertThrows(IllegalArgumentException.class, () -> new ViewTile(16, new Dimension(16,16), new Point(0,0), new Point(0,0)));
+        assertThrows(IllegalArgumentException.class, () -> new TerrainTile(16, new Dimension(16,16), new Point(0,0), new Point(0,0)));
     }
 }

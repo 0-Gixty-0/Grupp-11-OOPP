@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
  * Abstract class representing an abstract tile. Implements the drawable interface since
  * as tile is an object that is drawn on the screen.
  */
-public abstract class AViewTile implements Drawable {
+public abstract class AViewTile implements IDrawable {
     private int id;
     private Dimension dimension;
     private Point matrixPosition;
@@ -83,13 +83,10 @@ public abstract class AViewTile implements Drawable {
 
     /**
      * Gets the coordinates for a tile image in the texture map based on a tile id number.
-     * Coordinates are (row, column) with values 0 - 3
      * @param id The id for terrain type.
      * @return The point coordinate in the texture map matrix (row, column)
      */
-    private Point getTextureMatrixCoordinate(int id) {
-        return new Point((int) Math.floor(id/4), id % 4);
-    }
+     abstract Point getTextureMatrixCoordinate(int id);
 
     /**
      * Creates the JLabel component associated with a ViewTile. The JLabel component is what is
