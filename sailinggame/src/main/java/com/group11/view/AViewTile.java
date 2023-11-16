@@ -56,6 +56,13 @@ public abstract class AViewTile implements IDrawable {
     }
 
     /**
+     * Gets the coordinates for a tile image in the texture map based on a tile id number.
+     * @param id The id for terrain type.
+     * @return The point coordinate in the texture map matrix (row, column)
+     */
+    abstract Point getTextureMatrixCoordinate(int id);
+
+    /**
      * The method creates the ImageIcon for a terrain type based on the texture map file.
      * The image icon is a scaled and sliced portion of the texture map based on the terrain type id
      * and desired width and height.
@@ -66,8 +73,7 @@ public abstract class AViewTile implements IDrawable {
      * @return ImageIcon containing the tile image associated with the terrain type id
      */
     private ImageIcon createImageIcon(int id, int width, int height, int scale) {
-        ImageIcon fullTexture = new ImageIcon("sailinggame/src/main/resources/textureMapSailingGame.png");
-        Image textureImage = fullTexture.getImage();
+        Image textureImage = createTextureImage();
 
         Point textureMapMatrixPosition = this.getTextureMatrixCoordinate(id);
         Point textureMapPixelPosition = new Point(textureMapMatrixPosition.y * scale, textureMapMatrixPosition.x * scale);
@@ -81,12 +87,7 @@ public abstract class AViewTile implements IDrawable {
         return new ImageIcon(bufferedImage);
     }
 
-    /**
-     * Gets the coordinates for a tile image in the texture map based on a tile id number.
-     * @param id The id for terrain type.
-     * @return The point coordinate in the texture map matrix (row, column)
-     */
-     abstract Point getTextureMatrixCoordinate(int id);
+    abstract Image createTextureImage();
 
     /**
      * Creates the JLabel component associated with a ViewTile. The JLabel component is what is

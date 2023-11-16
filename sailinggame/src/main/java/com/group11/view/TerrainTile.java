@@ -42,4 +42,13 @@ public class TerrainTile extends AViewTile {
     Point getTextureMatrixCoordinate(int id) {
         return new Point((int) Math.floor(id/4), id % 4);
     }
+
+    /**
+     * @return An image of the terrain texture map
+     */
+    @Override
+    Image createTextureImage() {
+        ImageIcon fullTexture = new ImageIcon("sailinggame/src/main/resources/textureMapSailingGame.png");
+        return fullTexture.getImage();
+    }
 }

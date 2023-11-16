@@ -1,5 +1,6 @@
 package com.group11.view;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class EntityTile extends AViewTile {
@@ -24,5 +25,14 @@ public class EntityTile extends AViewTile {
     @Override
     Point getTextureMatrixCoordinate(int id) {
         return new Point((int) Math.floor(id/4), id % 4);
+    }
+
+    /**
+     * @return An image of the entity texture map
+     */
+    @Override
+    Image createTextureImage() {
+        ImageIcon fullTexture = new ImageIcon("sailinggame/src/main/resources/textureMapSailingGame.png");
+        return fullTexture.getImage();
     }
 }
