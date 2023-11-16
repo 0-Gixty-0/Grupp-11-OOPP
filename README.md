@@ -302,6 +302,8 @@ A tutorial is not needed in this state of the process.
 ---
 
 ### US-37
+Date of completion: 16/11/2023  
+Completed by: William Norlan d
 
 As a user i dont want the player to be able to move on land because the player is a ship, a watercraft.
 
