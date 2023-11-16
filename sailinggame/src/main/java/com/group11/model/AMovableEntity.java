@@ -29,22 +29,16 @@ public abstract class AMovableEntity extends AEntity implements ICommandable {
         if (MovementUtility.movementIsPossible(currPos, dirVector)) {
             int currX = (int) currPos.getX();
             int currY = (int) currPos.getY();
-            this.getBody().move(currX + dirVector[0],currY + dirVector[1]);
+            AMovableBody body = (AMovableBody) this.getBody();
+            body.move(currX + dirVector[0],currY + dirVector[1]);
         }
     }
 
     /**
-     * @return (AMovableBody) body of the entity
+     * Sets the body of the movable entity.
+     * @param body The new body of the movable entity.
      */
-    @Override
-    protected AMovableBody getBody() {
-        return (AMovableBody) this.getBody();
-    }
-
-    /**
-     * @param body New body of the entity
-     */
-    public void setBody(AMovableBody body) {
+    public void setMovableBody(AMovableBody body) {
         this.setBody(body);
     }
 

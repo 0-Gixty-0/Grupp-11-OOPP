@@ -23,8 +23,8 @@ public class PlayableEntityTest {
         Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         player.moveCommand(0);
-        int playerY = (int) player.getBody().getPos().getY();
-        int playerX = (int) player.getBody().getPos().getX();
+        int playerY = (int) player.getPos().getY();
+        int playerX = (int) player.getPos().getX();
         assertEquals(1, playerY);
         assertEquals(0, playerX);
     }
@@ -36,8 +36,8 @@ public class PlayableEntityTest {
         Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         player.moveCommand(1);
-        int playerY = (int) player.getBody().getPos().getY();
-        int playerX = (int) player.getBody().getPos().getX();
+        int playerY = (int) player.getPos().getY();
+        int playerX = (int) player.getPos().getX();
         assertEquals(1, playerY);
         assertEquals(1, playerX);
     }
@@ -49,8 +49,8 @@ public class PlayableEntityTest {
         Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         player.moveCommand(2);
-        int playerY = (int) player.getBody().getPos().getY();
-        int playerX = (int) player.getBody().getPos().getX();
+        int playerY = (int) player.getPos().getY();
+        int playerX = (int) player.getPos().getX();
         assertEquals(0, playerY);
         assertEquals(1, playerX);
     }
@@ -62,62 +62,62 @@ public class PlayableEntityTest {
         Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         player.moveCommand(3);
-        int playerY = (int) player.getBody().getPos().getY();
-        int playerX = (int) player.getBody().getPos().getX();
-        assertEquals(-1, playerY);
-        assertEquals(1, playerX);
+        int playerY = (int) player.getPos().getY();
+        int playerX = (int) player.getPos().getX();
+        assertEquals(1, playerY);
+        assertEquals(3, playerX);
     }
 
     @Test
     public void testMoveDown() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 0, 2);
+        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         player.moveCommand(4);
-        int playerY = (int) player.getBody().getPos().getY();
-        int playerX = (int) player.getBody().getPos().getX();
-        assertEquals(-1, playerY);
-        assertEquals(0, playerX);
+        int playerY = (int) player.getPos().getY();
+        int playerX = (int) player.getPos().getX();
+        assertEquals(1, playerY);
+        assertEquals(2, playerX);
     }
 
     @Test
     public void testMoveDownLeftAngle() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 0, 2);
+        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         player.moveCommand(5);
-        int playerY = (int) player.getBody().getPos().getY();
-        int playerX = (int) player.getBody().getPos().getX();
-        assertEquals(-1, playerY);
-        assertEquals(-1, playerX);
+        int playerY = (int) player.getPos().getY();
+        int playerX = (int) player.getPos().getX();
+        assertEquals(1, playerY);
+        assertEquals(1, playerX);
     }
 
     @Test
     public void testMoveLeft() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 0, 2);
+        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         player.moveCommand(6);
-        int playerY = (int) player.getBody().getPos().getY();
-        int playerX = (int) player.getBody().getPos().getX();
-        assertEquals(0, playerY);
-        assertEquals(-1, playerX);
+        int playerY = (int) player.getPos().getY();
+        int playerX = (int) player.getPos().getX();
+        assertEquals(2, playerY);
+        assertEquals(1, playerX);
     }
 
     @Test
     public void testMoveUpLeftAngle() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 0, 2);
+        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         player.moveCommand(7);
-        int playerY = (int) player.getBody().getPos().getY();
-        int playerX = (int) player.getBody().getPos().getX();
-        assertEquals(1, playerY);
-        assertEquals(-1, playerX);
+        int playerY = (int) player.getPos().getY();
+        int playerX = (int) player.getPos().getX();
+        assertEquals(3, playerY);
+        assertEquals(1, playerX);
     }
 
     @Test
