@@ -300,6 +300,7 @@ This particular task is necessary for the game to be able to display and for the
 A tutorial is not needed in this state of the process.
 
 ---
+
 ### US-15 Design An Enemy Ship Model
 Date of completion: 16/11/2023
 Completed by: Noa Cavassi
