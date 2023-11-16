@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class ABodyTest {
 
-    Ship testShip = new Ship(null, null, 0, 0, 0, 0, 2);
+    Ship testShip = new Ship(null, null, 0, 0, 0, 0, 2); 
 
     @Test
     public void testTakeDamage() {
