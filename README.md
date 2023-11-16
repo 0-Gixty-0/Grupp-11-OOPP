@@ -298,3 +298,23 @@ This particular task is necessary for the game to be able to display and for the
 
 #### Tutorial
 A tutorial is not needed in this state of the process.
+
+---
+
+### US-15 Design An Enemy Ship Model
+Date of completion: 16/11/2023  
+Completed by: Noa Cavassi
+
+Design a model for an enemy pirate ship.
+
+#### What
+Created an enemy pirate ship in pixel art with the dimension 16x16.
+
+#### How
+I created the model by using Pixilart.com. First i took the water model, and then drew over it so the background of the ship matches and lines up with the rest of the water tiles.
+
+#### Why
+To make it easier to distinguish if an entity on the map is friendly or an enemy. 
+
+#### Tutorial
+This feature does not require a tutorial since it doesnt have functionality for the player other than visual
