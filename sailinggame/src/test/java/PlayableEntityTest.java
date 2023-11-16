@@ -14,7 +14,24 @@ import com.group11.model.Ship;
 
 public class PlayableEntityTest {
 
-    
+    @Test
+    public void testTryingToMoveOverImpassableTerrain() {
+        Map map = (new BasicMapGenerator()).generateMap(50);
+        MovementUtility.setMap(map);
+        
+        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 0, 2);
+        PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
+        
+        //Starting position is (0,0) which is the bottom left corner of the map
+        for (int i = 0; i < 50; i++) { //Try to move player to the top of the map. Through the big middle island created by BasicMapNGenerator.
+            player.moveCommand(1); //1 is a right up diagonal move
+        }
+        
+        int playerY = (int) player.getPos().getY();
+        int playerX = (int) player.getPos().getX();
+        assertEquals(11, playerY);
+        assertEquals(11, playerX);
+    }
 
     @Test
     public void testMoveUp() {

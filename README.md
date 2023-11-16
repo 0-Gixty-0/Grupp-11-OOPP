@@ -298,3 +298,9 @@ This particular task is necessary for the game to be able to display and for the
 
 #### Tutorial
 A tutorial is not needed in this state of the process.
+
+---
+
+### US-37
+
+As a user i dont want the player to be able to move on land because the player is a ship, a watercraft.
