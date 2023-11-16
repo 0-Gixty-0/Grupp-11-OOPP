@@ -6,15 +6,15 @@ package com.group11.model;
 public abstract class AEntity {
     
     private String name;
-
     private Boolean friendly;
+    private ABody body;
 
     /**
      * Used to construct a entity
      * @param name The entities name
      * @param friendly A single factor which assigns the life long allegience of the entity
      */
-    protected AEntity(String name, Boolean friendly) {
+    protected AEntity(ABody body, String name, Boolean friendly) {
         this.name = name;
         this.friendly = friendly;
     }
@@ -41,5 +41,13 @@ public abstract class AEntity {
      */
     public void setFriendly(Boolean friendly) {
         this.friendly = friendly;
+    }
+
+    /**
+     * 
+     * @return (ABody) The body of the entity
+     */
+    protected ABody getBody() {
+        return body;
     }
 }

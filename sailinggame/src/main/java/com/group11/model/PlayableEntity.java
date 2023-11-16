@@ -1,5 +1,4 @@
 package com.group11.model;
-import java.awt.Point;
 
 /**
  * The PlayableEntity class represents an instance of the player in the game world. 
@@ -16,20 +15,6 @@ public class PlayableEntity extends AMovableEntity {
   }
 
   /**
-   * A Helper method for movecommand implementation in PlayableEntity using pseudo linear algebra.
-   * @param velocity The amount of tiles each move moves.
-   * @param dirVector The direction the body should move in.
-   */
-  private void moveHelper(int velocity, int [] dirVector) {
-    for (int i = 0; i < velocity; i++ ) {
-        Point currPos = this.getBody().getPos();
-        int currX = (int) currPos.getX();
-        int currY = (int) currPos.getY();
-        this.getBody().move(currX + dirVector[0],currY + dirVector[1]);
-    }
-  }
-
-  /**
    * Issue a move command to a entity in 8 difference directions using these integers as arguments:
    * 0 moves straight up,
    * 1 moves at a right angle up,
@@ -43,9 +28,8 @@ public class PlayableEntity extends AMovableEntity {
    */
   @Override
   public void moveCommand(Integer direction) {
-      int velocity = this.getBody().getVelocity();
       int[][] directions = {{0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}, {-1,0}, {-1,1}};
-      this.moveHelper(velocity, directions[direction]);
+      this.moveHelper(directions[direction]);
   }
 
   @Override
