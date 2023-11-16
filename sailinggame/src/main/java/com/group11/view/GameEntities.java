@@ -18,6 +18,10 @@ public class GameEntities {
         this.createTileMatrix();
     }
 
+    public List<List<AViewTile>> getTileMatrix() {
+        return this.tileMatrix;
+    }
+
     private AViewTile initializeEntityTile(int id, int columnIndex, int rowIndex) {
         Dimension dimension = new Dimension(this.tileWidth, this.tileHeight);
         Point matrixPosition = new Point(rowIndex, columnIndex);
@@ -30,8 +34,12 @@ public class GameEntities {
             List<Integer> terrainRow = this.entityMatrix.get(rowIndex);
             ArrayList<AViewTile> tileRow = new ArrayList<>();
             for (int columnIndex = 0; columnIndex < terrainRow.size(); columnIndex++) {
-                int id = terrainRow.get(columnIndex);
-                tileRow.add(this.initializeEntityTile(id, columnIndex, rowIndex));
+                try {
+                    int id = terrainRow.get(columnIndex);
+                    tileRow.add(this.initializeEntityTile(id, columnIndex, rowIndex));
+                } catch (NullPointerException e) {
+                    tileRow.add(null);
+                }
             }
             this.tileMatrix.add(tileRow);
         }
