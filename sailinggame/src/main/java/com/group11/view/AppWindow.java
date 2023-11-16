@@ -18,7 +18,7 @@ public class AppWindow {
     private final JFrame mainFrame;
 
     private List<List<Integer>> terrainMatrix;
-    private ArrayList<Integer> entityMatrix;
+    private List<List<Integer>> entityMatrix;
 
     /**
      * Constructor creates a new GameWorld object, a new GameEntities object, and initializes the window
@@ -27,6 +27,7 @@ public class AppWindow {
         AppWindow.windowWidth = windowWidth;
         AppWindow.windowHeight = windowHeight;
         this.terrainMatrix = this.initializeTerrainTest();
+        this.entityMatrix = this.initializeTerrainTest();
         gameWorld = new GameWorld(terrainMatrix, windowWidth, windowHeight);
         gameEntities = new GameEntities(entityMatrix);
         mainFrame = new JFrame("Sailing Game");
