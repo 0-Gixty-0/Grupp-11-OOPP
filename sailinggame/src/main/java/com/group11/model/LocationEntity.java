@@ -5,8 +5,6 @@ package com.group11.model;
  */
 public class LocationEntity extends AEntity {
 
-    private AImmovableBody body;
-
     /**
      * Constructor used to create LocationEntities.
      * @param body The body of the location.
@@ -14,24 +12,16 @@ public class LocationEntity extends AEntity {
      * @param friendly If the location is of friendly allegience to the player.
      */
     public LocationEntity(AImmovableBody body, String name, Boolean friendly) {
-        super(name, friendly);
-        this.body = body;
+        super(body, name, friendly);
     }
 
-    /**
-     * 
-     * @return (ABody) of the LocationEntity
-     */
-    public AImmovableBody getBody() {
-        return body;
-    }
 
     /**
-     * 
-     * @param body New body for the LocationEntity
+     * Sets the body of the location entity.
+     * @param body The new body of the location entity.
      */
-    public void setBody(AImmovableBody body) {
-        this.body = body;
+    public void setImmovableBody(AImmovableBody body) {
+        this.setBody(body);
     }
 
 }

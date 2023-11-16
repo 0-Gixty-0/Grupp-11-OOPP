@@ -13,6 +13,7 @@ public abstract class ABody extends ATextureIdentifiable implements IDamageable 
     private ArrayList<ArrayList<Boolean>> dimensions;
     private Point pos;
     private int hitPoints;
+    String description;
 
     /**
      * Constructor for creating objects of type ABody, the physical part of an entity in the game.
@@ -20,7 +21,7 @@ public abstract class ABody extends ATextureIdentifiable implements IDamageable 
      * @param pos       - the position of the body in the tilemap
      * @param hitPoints - the hitpoints of the body
      */
-    protected ABody(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int hitPoints, int textureId) {
+    protected ABody(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int hitPoints, int textureId, String description) {
         super(textureId);
         this.dimensions = dimensions;
         this.pos        = pos;
@@ -29,7 +30,6 @@ public abstract class ABody extends ATextureIdentifiable implements IDamageable 
 
     /**
      * Reduces the hitpoints of the body
-     *
      * @param damage - the amount of damage taken by the body
      */
     @Override
@@ -39,7 +39,6 @@ public abstract class ABody extends ATextureIdentifiable implements IDamageable 
 
     /**
      * Returns the current hitpoints of the body
-     *
      * @return the current hitpoints of the body
      */
     public int getHitPoints() {
@@ -48,7 +47,6 @@ public abstract class ABody extends ATextureIdentifiable implements IDamageable 
 
     /**
      * Sets the hitpoints of the body
-     *
      * @param newHitpoints - the new hitpoints value of the body
      */
     public void setHitPoints(int newHitpoints) {
@@ -56,17 +54,28 @@ public abstract class ABody extends ATextureIdentifiable implements IDamageable 
     }
 
     /**
-     * Returns the current position of the body
-     *
-     * @return the current position of the body
+     * A safe (wihout giving outside access and possibilty to modify position) 
+     * way to return the positon of the entities body.
+     * @return (Point) The position of the entities body
      */
-    public Point getPos(){
+    public Point getPos() {
+        int currentX = (int) this.pos.getX();
+        int currentY = (int) this.pos.getY();
+        Point safePosCopy = new Point(currentX, currentY);
+        return safePosCopy;
+    }
+
+    /**
+     * Used within the model package to get the true position of the body
+     * not a safe copy.
+     * @return (Point) The position of the entities body.
+     */
+    protected Point getTruePos() {
         return this.pos;
     }
 
     /**
      * Sets the position of the body
-     *
      * @param newPosition - the new position of the body
      */
     public void setPos(Point newPosition){

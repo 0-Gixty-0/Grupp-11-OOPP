@@ -12,15 +12,15 @@ public final class TileMatrixDecoder {
      * Dont use this class by instantiation use it by its static methods.
      */
     private TileMatrixDecoder() {
-        throw new AssertionError("Utility class should not be instantiated.");
+        throw new IllegalStateException("Utility class");
     }
 
     /**
-     * Function used to decode a matrix of tiles, representing a map, into a matrix of ints that can be used by the view.
+     * Function used to decode a matrix of tiles, representing a map, into a matrix of ints that is used by the view.
      * @param matrix A Matrix<Tile> (ArrayList of ArrayLists) you want to convert.
      * @return (Matrix<Integer>) representation of map in textureId's.
      */
-    public static ArrayList<ArrayList<Integer>> decode(ArrayList<ArrayList<ATile>> matrix) {
+    public static ArrayList<ArrayList<Integer>> decodeIntoIntMatrix(ArrayList<ArrayList<ATile>> matrix) {
         
         ArrayList<ArrayList<Integer>> intMatrix = new ArrayList<ArrayList<Integer>>();
 
@@ -30,15 +30,14 @@ public final class TileMatrixDecoder {
 
             for (int col = 0; col < matrix.get(row).size(); col++) {
 
-                int value = matrix.get(row).get(col).getTextureId();
+                int textureId = matrix.get(row).get(col).getTextureId();
 
-                intMatrix.get(row).add(col, value);
+                intMatrix.get(row).add(col, textureId);
             
             }
         }
 
         return intMatrix;
     }
-
 
 }

@@ -302,7 +302,7 @@ A tutorial is not needed in this state of the process.
 ---
 
 ### US-15 Design An Enemy Ship Model
-Date of completion: 16/11/2023  
+Date of completion: 16/11/2023
 Completed by: Noa Cavassi
 
 Design a model for an enemy pirate ship.
@@ -314,7 +314,27 @@ Created an enemy pirate ship in pixel art with the dimension 16x16.
 I created the model by using Pixilart.com. First i took the water model, and then drew over it so the background of the ship matches and lines up with the rest of the water tiles.
 
 #### Why
-To make it easier to distinguish if an entity on the map is friendly or an enemy. 
+To make it easier to distinguish if an entity on the map is friendly or an enemy.
 
 #### Tutorial
 This feature does not require a tutorial since it doesnt have functionality for the player other than visual
+
+---
+
+### US-37
+Date of completion: 16/11/2023  
+Completed by: William Norland
+
+As a user i dont want the player to be able to move on land because the player is a ship, a watercraft.
+
+#### What
+Preventing any AMovableEntity from moving outside the map or moving over impassable terrain. I also implemented a safe way to get an ABody position, which was through safe copying.
+
+#### How
+I Achieved this by making a Utility class MovementUtility, this class is static so it always exists the only thing you have to do is give the map you are using to it during game setup and it will check if any movement trying to be made is legal. 
+
+#### Why
+I made the position you get from ABody a safe copy so that outside classes cant modify the true position but they can know about it. I made the utlity class into a static class because its purpose is to house a function, a map, and to act as a middleman between Map and AmovableEntity to prevent dependencies between map and Entity. The function checking if the move is possible is nothing special, it just checks if the tiles in the direction you want to are passable.
+
+#### Tutorial
+The player will use this feature a lot when trying to sail over islands or over the edge of the world, or rather, they wont be able to, thanks to this.

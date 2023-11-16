@@ -42,6 +42,7 @@ public abstract class ATile extends ATextureIdentifiable{
     public Boolean isPassable(){
         return this.passable;
     }
+
 }
 
 
