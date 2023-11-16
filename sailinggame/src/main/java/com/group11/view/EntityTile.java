@@ -24,7 +24,7 @@ public class EntityTile extends AViewTile {
      */
     @Override
     Point getTextureMatrixCoordinate(int id) {
-        return new Point((int) Math.floor(id/4), id % 4);
+        return new Point(0, id % 8);
     }
 
     /**
@@ -32,7 +32,7 @@ public class EntityTile extends AViewTile {
      */
     @Override
     Image createTextureImage() {
-        ImageIcon fullTexture = new ImageIcon("sailinggame/src/main/resources/textureMapSailingGame.png");
+        ImageIcon fullTexture = new ImageIcon("sailinggame/src/main/resources/player_ship.png");
         return fullTexture.getImage();
     }
 }
