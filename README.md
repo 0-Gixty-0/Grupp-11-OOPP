@@ -298,3 +298,47 @@ This particular task is necessary for the game to be able to display and for the
 
 #### Tutorial
 A tutorial is not needed in this state of the process.
+
+---
+
+### US-38: Implement Drawing Player To Map
+Date of completion: 17/11/2023  
+Completed by: Erik Andreasson
+
+As a player I want to be able to see myself on the map in order to play the game.
+
+Implement drawing the player to the map in the view module based on an int matrix representing entities on the screen.
+
+#### What
+Implementing functionality to create entity tiles that are drawn to the screen. This means that the functionality
+of GameEntities is extended, AViewTile is refactored for subclass overrides, creating EntityTile class, and 
+extending AppWindow methods to draw entity tiles.
+
+#### How
+Since GameEntities and GameWorld are quite similar extending the functionality was quite simple. I simply added the methods
+from GameWorld and made small adjustments for entity tiles instead of terrain tiles. More interesting was refactoring
+AViewTile. I realized in the method createImageIcon that two of the steps in the algorithm needed to be abstract for
+subsequent subclasses, such as the new EntityTile class. Since most of the algorithm was general to all subclasses I decided
+to use the template method design pattern to tackle this problem. The first step to make abstract was for loading in
+the texture map. This is because the entity and terrain texture map are two separate  images and I felt that passing down 
+the path through a constructor was more difficult than simply hardcoding the path since in the projects lifespan it 
+should never change. Similarly, the step for translating the texture id into a matrix position in the texture map needed 
+to be generalized because the size (rows, columns) of each texture map could differ. 
+This makes the calculation vary across subclasses. Following this I created the EntityTile class which essentially just
+overrides the abstract methods for the template method in the superclass. Finally, I extended the functionality of AppWindow to
+add a terrain tile component to the frame only if there was not an entity to draw in the same position.
+
+#### Why
+This task is essential since being able to see yourself as the player is integral to playing the game. In regard to using the
+template method in AViewTile, I felt that it was the most natural solution for the issue, Since only small parts of the algorithm
+needed to be overriden in the subclasses. Using this pattern instead of for example, if statements for subclass behaviour, 
+has many benefits such as following the open closed principle by being easy to extend and the liskov substitution principle since
+the subclasses only override steps in the algorithm which ultimately lead to the same result / behavior for the algorithm as defined
+in the superclass. So one can use the AViewTile type in AppWindow and expect the same behavior regardless of the
+object being TerrainTile or EntityTile. Another thing to note is why I chose the Template Method pattern and not Strategy.
+This is because the Template Method decides the behaviour of subclasses statically and Strategy allows the behaviour to change
+during runtime. There is no need for the behaviour in these steps to be decided at runtime and I wanted to reduce over-engineering the 
+code by bloating the view module with classes and interfaces for each behaviour. So Template Method was the better choice.
+
+#### Tutorial
+A tutorial is not quite necessary for this user story other than that the player is represented by a ship on the map.

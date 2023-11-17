@@ -61,6 +61,7 @@ public abstract class AViewTile implements IDrawable {
      * @return The point coordinate in the texture map matrix (row, column)
      */
     abstract Point getTextureMatrixCoordinate(int id);
+    abstract Image createTextureImage();
 
     /**
      * The method creates the ImageIcon for a terrain type based on the texture map file.
@@ -86,8 +87,6 @@ public abstract class AViewTile implements IDrawable {
 
         return new ImageIcon(bufferedImage);
     }
-
-    abstract Image createTextureImage();
 
     /**
      * Creates the JLabel component associated with a ViewTile. The JLabel component is what is
