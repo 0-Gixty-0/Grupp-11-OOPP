@@ -8,10 +8,9 @@ import java.util.ArrayList;
  * since a body can take damage.
  */
 
-public abstract class ABody extends ATextureIdentifiable implements IDamageable {
+public abstract class ABody extends APositonable implements IDamageable {
 
     private ArrayList<ArrayList<Boolean>> dimensions;
-    private Point pos;
     private int hitPoints;
     String description;
 
@@ -22,9 +21,8 @@ public abstract class ABody extends ATextureIdentifiable implements IDamageable 
      * @param hitPoints - the hitpoints of the body
      */
     protected ABody(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int hitPoints, int textureId, String description) {
-        super(textureId);
+        super(textureId, pos);
         this.dimensions = dimensions;
-        this.pos        = pos;
         this.hitPoints  = hitPoints;
     }
 
@@ -51,35 +49,6 @@ public abstract class ABody extends ATextureIdentifiable implements IDamageable 
      */
     public void setHitPoints(int newHitpoints) {
         this.hitPoints = newHitpoints;
-    }
-
-    /**
-     * A safe (wihout giving outside access and possibilty to modify position) 
-     * way to return the positon of the entities body.
-     * @return (Point) The position of the entities body
-     */
-    public Point getPos() {
-        int currentX = (int) this.pos.getX();
-        int currentY = (int) this.pos.getY();
-        Point safePosCopy = new Point(currentX, currentY);
-        return safePosCopy;
-    }
-
-    /**
-     * Used within the model package to get the true position of the body
-     * not a safe copy.
-     * @return (Point) The position of the entities body.
-     */
-    protected Point getTruePos() {
-        return this.pos;
-    }
-
-    /**
-     * Sets the position of the body
-     * @param newPosition - the new position of the body
-     */
-    public void setPos(Point newPosition){
-        this.pos = newPosition;
     }
 
     /**
