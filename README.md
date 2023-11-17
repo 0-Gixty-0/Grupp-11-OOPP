@@ -301,6 +301,46 @@ A tutorial is not needed in this state of the process.
 
 ---
 
+### US-15 Design An Enemy Ship Model
+Date of completion: 16/11/2023
+Completed by: Noa Cavassi
+
+Design a model for an enemy pirate ship.
+
+#### What
+Created an enemy pirate ship in pixel art with the dimension 16x16.
+
+#### How
+I created the model by using Pixilart.com. First i took the water model, and then drew over it so the background of the ship matches and lines up with the rest of the water tiles.
+
+#### Why
+To make it easier to distinguish if an entity on the map is friendly or an enemy.
+
+#### Tutorial
+This feature does not require a tutorial since it doesnt have functionality for the player other than visual
+
+---
+
+### US-37
+Date of completion: 16/11/2023  
+Completed by: William Norland
+
+As a user i dont want the player to be able to move on land because the player is a ship, a watercraft.
+
+#### What
+Preventing any AMovableEntity from moving outside the map or moving over impassable terrain. I also implemented a safe way to get an ABody position, which was through safe copying.
+
+#### How
+I Achieved this by making a Utility class MovementUtility, this class is static so it always exists the only thing you have to do is give the map you are using to it during game setup and it will check if any movement trying to be made is legal. 
+
+#### Why
+I made the position you get from ABody a safe copy so that outside classes cant modify the true position but they can know about it. I made the utlity class into a static class because its purpose is to house a function, a map, and to act as a middleman between Map and AmovableEntity to prevent dependencies between map and Entity. The function checking if the move is possible is nothing special, it just checks if the tiles in the direction you want to are passable.
+
+#### Tutorial
+The player will use this feature a lot when trying to sail over islands or over the edge of the world, or rather, they wont be able to, thanks to this.
+
+---
+
 ### US-38: Implement Drawing Player To Map
 Date of completion: 17/11/2023  
 Completed by: Erik Andreasson
@@ -311,7 +351,7 @@ Implement drawing the player to the map in the view module based on an int matri
 
 #### What
 Implementing functionality to create entity tiles that are drawn to the screen. This means that the functionality
-of GameEntities is extended, AViewTile is refactored for subclass overrides, creating EntityTile class, and 
+of GameEntities is extended, AViewTile is refactored for subclass overrides, creating EntityTile class, and
 extending AppWindow methods to draw entity tiles.
 
 #### How
@@ -320,10 +360,10 @@ from GameWorld and made small adjustments for entity tiles instead of terrain ti
 AViewTile. I realized in the method createImageIcon that two of the steps in the algorithm needed to be abstract for
 subsequent subclasses, such as the new EntityTile class. Since most of the algorithm was general to all subclasses I decided
 to use the template method design pattern to tackle this problem. The first step to make abstract was for loading in
-the texture map. This is because the entity and terrain texture map are two separate  images and I felt that passing down 
-the path through a constructor was more difficult than simply hardcoding the path since in the projects lifespan it 
-should never change. Similarly, the step for translating the texture id into a matrix position in the texture map needed 
-to be generalized because the size (rows, columns) of each texture map could differ. 
+the texture map. This is because the entity and terrain texture map are two separate  images and I felt that passing down
+the path through a constructor was more difficult than simply hardcoding the path since in the projects lifespan it
+should never change. Similarly, the step for translating the texture id into a matrix position in the texture map needed
+to be generalized because the size (rows, columns) of each texture map could differ.
 This makes the calculation vary across subclasses. Following this I created the EntityTile class which essentially just
 overrides the abstract methods for the template method in the superclass. Finally, I extended the functionality of AppWindow to
 add a terrain tile component to the frame only if there was not an entity to draw in the same position.
@@ -331,13 +371,13 @@ add a terrain tile component to the frame only if there was not an entity to dra
 #### Why
 This task is essential since being able to see yourself as the player is integral to playing the game. In regard to using the
 template method in AViewTile, I felt that it was the most natural solution for the issue, Since only small parts of the algorithm
-needed to be overriden in the subclasses. Using this pattern instead of for example, if statements for subclass behaviour, 
+needed to be overriden in the subclasses. Using this pattern instead of for example, if statements for subclass behaviour,
 has many benefits such as following the open closed principle by being easy to extend and the liskov substitution principle since
 the subclasses only override steps in the algorithm which ultimately lead to the same result / behavior for the algorithm as defined
 in the superclass. So one can use the AViewTile type in AppWindow and expect the same behavior regardless of the
 object being TerrainTile or EntityTile. Another thing to note is why I chose the Template Method pattern and not Strategy.
 This is because the Template Method decides the behaviour of subclasses statically and Strategy allows the behaviour to change
-during runtime. There is no need for the behaviour in these steps to be decided at runtime and I wanted to reduce over-engineering the 
+during runtime. There is no need for the behaviour in these steps to be decided at runtime and I wanted to reduce over-engineering the
 code by bloating the view module with classes and interfaces for each behaviour. So Template Method was the better choice.
 
 #### Tutorial

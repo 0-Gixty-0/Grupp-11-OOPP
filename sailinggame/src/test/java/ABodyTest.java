@@ -8,7 +8,8 @@ import java.awt.*;
 
 public class ABodyTest {
 
-    Ship testShip = new Ship(null, null, 0, 0, 0, 0, 2);
+    Point testPosition = new Point(10, 20);
+    Ship testShip = new Ship(null, testPosition, 0, 0, 0, 0, 2); 
 
     @Test
     public void testTakeDamage() {
@@ -22,9 +23,7 @@ public class ABodyTest {
 
     @Test
     public void testPosition() {
-        Point testPosition = new Point(10, 20);
-        testShip.setPos(testPosition);
-        Point secondPosition = testShip.getPos();
-        assertEquals(testPosition, secondPosition);
+        Point pos = testShip.getPos();
+        assertEquals(pos, new Point(10,20));
     }
 }

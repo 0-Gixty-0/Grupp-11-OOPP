@@ -15,9 +15,8 @@ public class AImmovableBody extends ABody {
      * @param hitPoints The hitpoints of the body
      * @param textureId The id represnting the texture of the body
      */
-    protected AImmovableBody(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int hitPoints, int textureId) {
-        super(dimensions, pos, hitPoints, textureId);
-        
+    protected AImmovableBody(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int hitPoints, int textureId, String description) {
+        super(dimensions, pos, hitPoints, textureId, description);
     }
     
 }

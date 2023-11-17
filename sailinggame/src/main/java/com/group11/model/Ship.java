@@ -22,7 +22,7 @@ public class Ship extends AMovableBody {
      * @param sailStatus  - the sail status. Either up (true) or down (false)
      */
     public Ship(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int shipLevel, int armor, int cannons, int hitPoints, int textureId){
-        super(dimensions, pos, hitPoints, textureId);
+        super(dimensions, pos, hitPoints, textureId, "A basic ship");
         this.shipLevel   = shipLevel;
         this.armor       = armor;
         this.cannons     = cannons;

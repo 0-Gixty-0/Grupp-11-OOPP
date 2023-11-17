@@ -4,12 +4,7 @@ import java.awt.Point;
 /**
  * This class is used as an abstraction for the tile object
  */
-public abstract class ATile extends ATextureIdentifiable{
-
-    /**
-     * The position of a tile as a Java Point.
-     */
-    private Point pos;
+public abstract class ATile extends APositonable{
 
     /**
      * Boolean that checks if the tile is passable.
@@ -23,18 +18,10 @@ public abstract class ATile extends ATextureIdentifiable{
     * @param passable - Boolean that checks if the tile is passable
     */
     protected ATile(int textureId, Point pos, Boolean passable ) {
-        super(textureId);
-        this.pos = pos;
+        super(textureId, pos);
         this.passable = passable;
     }
 
-    /**
-    * Returns the position of a tile
-    * @return A Java Point for the position of the tile
-    */
-    public Point getPos(){
-        return this.pos;
-    }
     /**
     * Returns if the tile is passable or not
     * @return A boolean that says if the current point is passable or not
@@ -42,6 +29,7 @@ public abstract class ATile extends ATextureIdentifiable{
     public Boolean isPassable(){
         return this.passable;
     }
+
 }
 
 
