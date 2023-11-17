@@ -16,6 +16,15 @@ public class EntityTile extends AViewTile {
         super(id, dimension, matrixPosition, pixelPosition);
     }
 
+    @Override
+    protected int validateTerrainID(int id) {
+        if (id < 0 || id > 7) {
+            throw new IllegalArgumentException("Invalid terrain ID for entity tile");
+        } else {
+            return id;
+        }
+    }
+
     /**
      * Gets the coordinates for a tile image in the texture map based on a tile id number.
      * Coordinates are (row, column) with values 0 - 3
@@ -23,7 +32,7 @@ public class EntityTile extends AViewTile {
      * @return The point coordinate in the texture map matrix (row, column)
      */
     @Override
-    Point getTextureMatrixCoordinate(int id) {
+    protected Point getTextureMatrixCoordinate(int id) {
         return new Point(0, id % 8);
     }
 
@@ -31,7 +40,7 @@ public class EntityTile extends AViewTile {
      * @return An image of the entity texture map
      */
     @Override
-    Image createTextureImage() {
+    protected Image createTextureImage() {
         ImageIcon fullTexture = new ImageIcon("sailinggame/src/main/resources/player_ship.png");
         return fullTexture.getImage();
     }

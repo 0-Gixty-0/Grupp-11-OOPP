@@ -31,6 +31,15 @@ public class TerrainTile extends AViewTile {
         super(id, dimension, matrixPosition, pixelPosition);
     }
 
+    @Override
+    protected int validateTerrainID(int id) {
+        if (id < 0 || id > 15) {
+            throw new IllegalArgumentException("Invalid terrain ID for terrain tile");
+        } else {
+            return id;
+        }
+    }
+
     /**
      * Gets the coordinates for a tile image in the texture map based on a tile id number.
      * Coordinates are (row, column) with values 0 - 3
@@ -39,7 +48,7 @@ public class TerrainTile extends AViewTile {
      * @return The point coordinate in the texture map matrix (row, column)
      */
     @Override
-    Point getTextureMatrixCoordinate(int id) {
+    protected Point getTextureMatrixCoordinate(int id) {
         return new Point((int) Math.floor(id/4), id % 4);
     }
 
@@ -47,7 +56,7 @@ public class TerrainTile extends AViewTile {
      * @return An image of the terrain texture map
      */
     @Override
-    Image createTextureImage() {
+    protected Image createTextureImage() {
         ImageIcon fullTexture = new ImageIcon("sailinggame/src/main/resources/textureMapSailingGame.png");
         return fullTexture.getImage();
     }
