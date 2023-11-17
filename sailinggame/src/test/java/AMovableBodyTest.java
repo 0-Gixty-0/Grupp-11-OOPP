@@ -8,12 +8,11 @@ import java.awt.*;
 
 public class AMovableBodyTest {
 
-    Ship testShip = new Ship(null, null, 0, 0, 0, 0, 2);
+    Point position = new Point(10,10);
+    Ship testShip = new Ship(null, position, 0, 0, 0, 0, 2);
 
     @Test
     public void testMove() {
-        Point newPosition = new Point(10,10);
-        testShip.setPos(newPosition);
         testShip.move(20,20);
         Point secondPosition = new Point(20,20);
         assertEquals(testShip.getPos(), secondPosition);
