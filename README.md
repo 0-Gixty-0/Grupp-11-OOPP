@@ -382,3 +382,21 @@ code by bloating the view module with classes and interfaces for each behaviour.
 
 #### Tutorial
 A tutorial is not quite necessary for this user story other than that the player is represented by a ship on the map.
+
+---
+
+### US-39: Reduce code duplication for the position attribute
+Date of completion: 17/11/2023  
+Completed by: Adam Kvarnsund
+
+#### What
+Reduced the code duplication for the position attribute by creating a new abstract class called APositionable and refactored the already existing subclasses.
+
+#### How
+Created a new abstract class APositionable and refactored the old classes to inherit from this instead of the ATextureIdentifiable
+
+#### Why
+This reduces code duplication which is a practice we go by
+
+#### Tutorial
+No tutorial needed
