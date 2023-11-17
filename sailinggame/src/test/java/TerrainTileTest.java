@@ -1,10 +1,11 @@
 import com.group11.view.TerrainTile;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 import java.awt.*;
 
-public class AbstractTerrainTileTest {
+import static org.junit.Assert.assertThrows;
+
+public class TerrainTileTest {
     // Wanted to test this method which is private since it is important that it functions.
     // To run this test first make getTextureMatrixCoordinate public
 //    @Test

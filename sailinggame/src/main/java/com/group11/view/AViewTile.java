@@ -24,6 +24,8 @@ public abstract class AViewTile implements IDrawable {
      * @param pixelPosition - tile position on window frame in x and y pixels
      */
     public AViewTile(int id, Dimension dimension, Point matrixPosition, Point pixelPosition) {
+        // TODO
+        // Add validation to constructor for if terrain id for entities is out of range.
         if (id < 0 || id > 15) {
             throw new IllegalArgumentException("Invalid terrain ID");
         }
