@@ -24,7 +24,7 @@ public abstract class AViewTile implements IDrawable {
      * @param pixelPosition - tile position on window frame in x and y pixels
      */
     public AViewTile(int id, Dimension dimension, Point matrixPosition, Point pixelPosition) {
-        this.id = this.validateTerrainID(id);
+        this.id = this.validateTextureID(id);
         this.dimension = dimension;
         this.matrixPosition = matrixPosition;
         this.pixelPosition = pixelPosition;
@@ -65,7 +65,12 @@ public abstract class AViewTile implements IDrawable {
      */
     abstract protected Image createTextureImage();
 
-    abstract protected int validateTerrainID(int id);
+    /**
+     * Validates texture id input to constructor
+     * @param id the texture id
+     * @return the texture id
+     */
+    abstract protected int validateTextureID(int id);
 
     /**
      * The method creates the ImageIcon for a terrain type based on the texture map file.

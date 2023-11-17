@@ -16,8 +16,13 @@ public class EntityTile extends AViewTile {
         super(id, dimension, matrixPosition, pixelPosition);
     }
 
+    /**
+     * Validates texture id input to constructor. Allows ints in range 0 - 8
+     * @param id the texture id
+     * @return the texture id
+     */
     @Override
-    protected int validateTerrainID(int id) {
+    protected int validateTextureID(int id) {
         if (id < 0 || id > 7) {
             throw new IllegalArgumentException("Invalid terrain ID for entity tile");
         } else {
