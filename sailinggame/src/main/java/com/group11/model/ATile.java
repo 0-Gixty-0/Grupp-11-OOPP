@@ -29,6 +29,7 @@ public abstract class ATile extends APositonable{
     public Boolean isPassable(){
         return this.passable;
     }
+
 }
 
 
