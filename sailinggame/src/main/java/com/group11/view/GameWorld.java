@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The GameWorld class represents the functionality and interface for represent the
- * terrain aspects of the game world such as tiles.
+ * The GameWorld class represents the functionality and interface for representing the
+ * terrain aspects of the game world through tiles.
  */
 public class GameWorld {
     private List<List<Integer>> terrainMatrix;
@@ -43,17 +43,17 @@ public class GameWorld {
      * @param id The id of the terrain type
      * @param columnIndex The index of which spot in the row the tile is to be placed
      * @param rowIndex The index of which row the tile is to be placed in
-     * @return A JLabel representing a tile which consists of size and location.
+     * @return A TerrainTile object representing a terrain tile
      */
-    private ViewTile initializeTile(int id, int columnIndex, int rowIndex) {
+    private AViewTile initializeTerrainTile(int id, int columnIndex, int rowIndex) {
         Dimension dimension = new Dimension(this.tileWidth, this.tileHeight);
         Point matrixPosition = new Point(rowIndex, columnIndex);
         Point pixelPosition = new Point(columnIndex * this.tileWidth, rowIndex * this.tileHeight);
-        return new ViewTile(id, dimension, matrixPosition, pixelPosition);
+        return new TerrainTile(id, dimension, matrixPosition, pixelPosition);
     }
 
     /**
-     * Creates a matrix consisting of ViewTile objects which each represent a tile in the world.
+     * Creates a matrix consisting of TerrainTile objects which each represent a tile in the world.
      * The size of the matrix is dependent on the number of rows and columns in
      * the attribute terrainMatrix.
      */
@@ -63,7 +63,7 @@ public class GameWorld {
              ArrayList<AViewTile> tileRow = new ArrayList<>();
              for (int columnIndex = 0; columnIndex < terrainRow.size(); columnIndex++) {
                  int id = terrainRow.get(columnIndex);
-                 tileRow.add(this.initializeTile(id, columnIndex, rowIndex));
+                 tileRow.add(this.initializeTerrainTile(id, columnIndex, rowIndex));
              }
              this.tileMatrix.add(tileRow);
          }

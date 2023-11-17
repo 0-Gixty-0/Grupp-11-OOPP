@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
  * Abstract class representing an abstract tile. Implements the drawable interface since
  * as tile is an object that is drawn on the screen.
  */
-public abstract class AViewTile implements Drawable {
+public abstract class AViewTile implements IDrawable {
     private int id;
     private Dimension dimension;
     private Point matrixPosition;
@@ -24,10 +24,7 @@ public abstract class AViewTile implements Drawable {
      * @param pixelPosition - tile position on window frame in x and y pixels
      */
     public AViewTile(int id, Dimension dimension, Point matrixPosition, Point pixelPosition) {
-        if (id < 0 || id > 15) {
-            throw new IllegalArgumentException("Invalid terrain ID");
-        }
-        this.id = id;
+        this.id = this.validateTextureID(id);
         this.dimension = dimension;
         this.matrixPosition = matrixPosition;
         this.pixelPosition = pixelPosition;
@@ -56,6 +53,26 @@ public abstract class AViewTile implements Drawable {
     }
 
     /**
+     * Gets the coordinates for a tile image in the texture map based on a tile id number.
+     * @param id The id for terrain type.
+     * @return The point coordinate in the texture map matrix (row, column)
+     */
+    abstract protected Point getTextureMatrixCoordinate(int id);
+
+    /**
+     * Loads in the texture map used for creating the tile and contains the image within an object of type Image
+     * @return Object of type Image containing the texture map
+     */
+    abstract protected Image createTextureImage();
+
+    /**
+     * Validates texture id input to constructor
+     * @param id the texture id
+     * @return the texture id
+     */
+    abstract protected int validateTextureID(int id);
+
+    /**
      * The method creates the ImageIcon for a terrain type based on the texture map file.
      * The image icon is a scaled and sliced portion of the texture map based on the terrain type id
      * and desired width and height.
@@ -66,8 +83,7 @@ public abstract class AViewTile implements Drawable {
      * @return ImageIcon containing the tile image associated with the terrain type id
      */
     private ImageIcon createImageIcon(int id, int width, int height, int scale) {
-        ImageIcon fullTexture = new ImageIcon("sailinggame/src/main/resources/textureMapSailingGame.png");
-        Image textureImage = fullTexture.getImage();
+        Image textureImage = createTextureImage();
 
         Point textureMapMatrixPosition = this.getTextureMatrixCoordinate(id);
         Point textureMapPixelPosition = new Point(textureMapMatrixPosition.y * scale, textureMapMatrixPosition.x * scale);
@@ -79,16 +95,6 @@ public abstract class AViewTile implements Drawable {
         g.dispose();
 
         return new ImageIcon(bufferedImage);
-    }
-
-    /**
-     * Gets the coordinates for a tile image in the texture map based on a tile id number.
-     * Coordinates are (row, column) with values 0 - 3
-     * @param id The id for terrain type.
-     * @return The point coordinate in the texture map matrix (row, column)
-     */
-    private Point getTextureMatrixCoordinate(int id) {
-        return new Point((int) Math.floor(id/4), id % 4);
     }
 
     /**
