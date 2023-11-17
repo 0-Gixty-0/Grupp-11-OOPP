@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The GameEntities class represents the interface and functionality of each entity in the game.
+ * The GameEntities class represents the interface and functionality for representing the
+ * entities in the world through entity tiles.
  */
 public class GameEntities {
     private List<List<Integer>> entityMatrix;
@@ -22,6 +23,13 @@ public class GameEntities {
         return this.tileMatrix;
     }
 
+    /**
+     * Initializes construction parameters and creates an EntityTile object.
+     * @param id Texture id of entity
+     * @param columnIndex The index of which column in a row the tile is to be placed
+     * @param rowIndex The index of which row the tile is to be placed
+     * @return An EntityTile object representing an entity tile
+     */
     private AViewTile initializeEntityTile(int id, int columnIndex, int rowIndex) {
         Dimension dimension = new Dimension(this.tileWidth, this.tileHeight);
         Point matrixPosition = new Point(rowIndex, columnIndex);
@@ -29,6 +37,10 @@ public class GameEntities {
         return new EntityTile(id, dimension, matrixPosition, pixelPosition);
     }
 
+    /**
+     * Creates a matrix consisting of EntityTile objects which each represent an entity tile in the world.
+     * The size of the matrix is dependent on the number of rows and columns in the attribute terrainMatrix.
+     */
     private void createTileMatrix() {
         for (int rowIndex = 0; rowIndex < this.entityMatrix.size(); rowIndex++) {
             List<Integer> terrainRow = this.entityMatrix.get(rowIndex);

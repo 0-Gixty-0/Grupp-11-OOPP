@@ -61,6 +61,11 @@ public abstract class AViewTile implements IDrawable {
      * @return The point coordinate in the texture map matrix (row, column)
      */
     abstract Point getTextureMatrixCoordinate(int id);
+
+    /**
+     * Loads in the texture map used for creating the tile and contains the image within an object of type Image
+     * @return Object of type Image containing the texture map
+     */
     abstract Image createTextureImage();
 
     /**

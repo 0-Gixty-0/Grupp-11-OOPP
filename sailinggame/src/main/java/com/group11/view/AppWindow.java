@@ -35,6 +35,10 @@ public class AppWindow {
         this.initializeWindow();
     }
 
+    /**
+     * Testing purposes. Will be removed later.
+     * @return Matrix of integers corresponding to entity texture id:s
+     */
     private List<List<Integer>> initializeEntityTest() {
         List<List<Integer>> testEntityList = new ArrayList<>();
         Random rand = new Random();
@@ -55,7 +59,7 @@ public class AppWindow {
 
     /**
      * Testing purposes. Will be removed later.
-     * @return Matrix of integers corresponding to terrain id:s
+     * @return Matrix of integers corresponding to terrain texture id:s
      */
     private List<List<Integer>> initializeTerrainTest() {
         List<List<Integer>> testTerrainList = new ArrayList<>();
@@ -81,7 +85,9 @@ public class AppWindow {
     }
 
     /**
-     * Adds each JLabel component, obtained from the ViewTile object, on the map to the main window frame
+     * Adds each JLabel component, obtained from the AViewTile object, on the map to the main window frame.
+     * If a position in the entity tile matrix is null then the terrain component will be added.
+     * Otherwise, the entity tile component for that position will be added.
      */
     private void addTilesToFrame() {
         ArrayList<ArrayList<AViewTile>> tileMatrix = this.gameWorld.getTileMatrix();

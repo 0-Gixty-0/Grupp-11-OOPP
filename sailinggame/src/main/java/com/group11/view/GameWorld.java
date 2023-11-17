@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The GameWorld class represents the functionality and interface for represent the
- * terrain aspects of the game world such as tiles.
+ * The GameWorld class represents the functionality and interface for representing the
+ * terrain aspects of the game world through tiles.
  */
 public class GameWorld {
     private List<List<Integer>> terrainMatrix;
@@ -43,7 +43,7 @@ public class GameWorld {
      * @param id The id of the terrain type
      * @param columnIndex The index of which spot in the row the tile is to be placed
      * @param rowIndex The index of which row the tile is to be placed in
-     * @return A JLabel representing a tile which consists of size and location.
+     * @return A TerrainTile object representing a terrain tile
      */
     private AViewTile initializeTerrainTile(int id, int columnIndex, int rowIndex) {
         Dimension dimension = new Dimension(this.tileWidth, this.tileHeight);
