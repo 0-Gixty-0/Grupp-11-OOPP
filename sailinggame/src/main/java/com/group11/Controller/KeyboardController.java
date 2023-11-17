@@ -77,7 +77,7 @@ public class KeyboardController extends AController implements KeyListener, Runn
             System.out.println(inputSet);
 			
             try {
-                Thread.sleep(100); // Adjust the sleep duration as needed
+                Thread.sleep(50); // Adjust the sleep duration as needed
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
