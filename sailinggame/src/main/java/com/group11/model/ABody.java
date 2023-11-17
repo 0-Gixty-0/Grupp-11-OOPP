@@ -8,10 +8,9 @@ import java.util.ArrayList;
  * since a body can take damage.
  */
 
-public abstract class ABody extends ATextureIdentifiable implements IDamageable {
+public abstract class ABody extends APositonable implements IDamageable {
 
     private ArrayList<ArrayList<Boolean>> dimensions;
-    private Point pos;
     private int hitPoints;
 
     /**
@@ -21,9 +20,8 @@ public abstract class ABody extends ATextureIdentifiable implements IDamageable 
      * @param hitPoints - the hitpoints of the body
      */
     protected ABody(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int hitPoints, int textureId) {
-        super(textureId);
+        super(textureId, pos);
         this.dimensions = dimensions;
-        this.pos        = pos;
         this.hitPoints  = hitPoints;
     }
 
@@ -55,23 +53,6 @@ public abstract class ABody extends ATextureIdentifiable implements IDamageable 
         this.hitPoints = newHitpoints;
     }
 
-    /**
-     * Returns the current position of the body
-     *
-     * @return the current position of the body
-     */
-    public Point getPos(){
-        return this.pos;
-    }
-
-    /**
-     * Sets the position of the body
-     *
-     * @param newPosition - the new position of the body
-     */
-    public void setPos(Point newPosition){
-        this.pos = newPosition;
-    }
 
     /**
      * 
