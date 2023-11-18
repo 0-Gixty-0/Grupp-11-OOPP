@@ -400,3 +400,34 @@ This reduces code duplication which is a practice we go by
 
 #### Tutorial
 No tutorial needed
+
+---
+
+### US-40: Implement Factory Hierarchy For Movable Game Entities
+Date of completion: 18/11/2023
+Completed by: Erik Andreasson
+
+As a developer I want to make use of factories when creating movable entities in the game because it makes the code easier to understand and follows “high cohesion, low coupling”
+
+This user story is about creating a hierarchy of classes following the factory design pattern in order to make the process of creating entities, in this case including creating bodies for such entities, more intuitive and automated. This makes the code easier to understand and allows our modules to be usable without having to depend on everything, i.e. high cohesion low coupling.
+
+#### What
+Implement a factory class and interface according to the Factory design pattern in order to create
+movable game entities such as the player and enemies
+
+#### How
+I created an interface IMovableEntityFactory which states that there should be a method for creating a player
+and creating an enemy. I also created a concrete class StandardMovableEntityFactory which implements the above two methods.
+Currently, createEnemy only returns null since I later realized UnmovableEntity had not been implemented yet.
+Also, createPlayer creates an essentially blank ship with the name player.
+
+#### Why
+I felt this user story was important to complete since it aid in creating a readable and intuitive code base. The factory pattern
+makes our code follow high cohesion and low coupling better by letting client code such as an enemy placer class depend on the factory
+instead of each component of an enemy, that being an entity and a body. Essentially it is a nice interface to have when implementing other
+user stories. However, during this US I realized that most of the core functionality for these classes was not finished. Such as
+default constructors for a Ship. I decided to finish the US anyway with the intent of extending and modifying it once these other
+issues are resolved.
+
+#### Tutorial
+This US does not require a tutorial since it is for developers.
