@@ -18,8 +18,8 @@ public abstract class AMovableBody extends ABody implements IMovable {
      * @param pos The starting position of the body as a Java Point
      * @param hitPoints The hitpooints of the body
      */
-    protected AMovableBody(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int hitPoints, int textureId, String description){
-        super(dimensions, pos, hitPoints, textureId, description);
+    protected AMovableBody(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int hitPoints, String description){
+        super(dimensions, pos, hitPoints, description);
         this.velocity = 0;
     }
 
