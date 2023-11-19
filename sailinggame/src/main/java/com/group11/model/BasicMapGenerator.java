@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * A very basic and crude MapGenerator implementation.
  */
-public class BasicMapGenerator extends AMapGenerator {
+public class BasicMapGenerator implements IMapGenerator {
 
     @Override
     /*

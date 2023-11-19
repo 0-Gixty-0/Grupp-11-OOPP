@@ -434,7 +434,7 @@ This US does not require a tutorial since it is for developers.
 
 ---
 
-### US-43: Remove ATextureIdentifiable from model
+### US-43: As a developer I want to remove ATextureIdentifiable from model
 Date of completion: 19/11/2023
 Completed by: William Norland
 
@@ -444,12 +444,30 @@ As a developer, I want to remove the dependency on the ATextureIdentifiable clas
 The goal of this user story is to remove the ATextureIdentifiable class from the model and update the TileMatrixDecoder to rely on type checking instead of the getTextureId method.
 
 #### How
-I made TileMatrixDecoder use a hashmap mapping .class attributes of types to certain Integers
+I made TileMatrixDecoder use a list mapping .class attributes of types to certain Integers.
 
 #### Why
-Its very easy to add support for new types, instead of having to write a new if statement you can just add a simple put to the hashmap.
+Its very easy to add support for new types, instead of having to write a new if statement you can just write a simple ".add()" to the list.
 
 #### Tutorial
 No tutorial is required for this user story, as it is intended for developers familiar with the codebase.
 
+---
+
+### US-44: As a developer i want to make AWorldGenerator and AMapGenerator into Interfaces
+Date of completion: 19/11/2023
+Completed by: William Norland
+
+They only contain abstract methods and if we should follow convention in other parts of the codebase they should be interfaces.
+
+#### What
+Making AWorldGenerator and AMapGenerator into IWorldGenerator and IMapGenerator, pretty much nothing more.
+
+#### How
+By refactoring class names into interfaces and changing 2 keywords.
+
+#### Why
+When i implemented basic map generation in one of the old TAS's (TAS-24) i debated if the interface (Interface as in not the literal Java ense) for world and map gen should be an abstract class or an interface. I chose abstract class to limit unsolicited use of the interface and to make it easier to add methods that all Map/WorldGens need in the future (Can pretty much be done just as easily with interfaces). But since interfaces are favored in the rest of the codebase im now changing abstract classes to interfaces without any cons.
+
+This is also a much more traditional way of implementing the abstract factory pattern.
 

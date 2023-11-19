@@ -25,7 +25,6 @@ public class StandardMovableEntityFactoryTest {
         int shipLevel = 0;
         int armor = 0;
         int cannons = 0;
-        int textureID = 0;
         ArrayList<ArrayList<Boolean>> dimensions = new ArrayList<>();
         ArrayList<Boolean> tile = new ArrayList<>();
         tile.add(true);
