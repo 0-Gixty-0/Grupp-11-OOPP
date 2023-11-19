@@ -20,8 +20,8 @@ public abstract class ABody extends APositonable implements IDamageable {
      * @param pos       - the position of the body in the tilemap
      * @param hitPoints - the hitpoints of the body
      */
-    protected ABody(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int hitPoints, int textureId, String description) {
-        super(textureId, pos);
+    protected ABody(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int hitPoints, String description) {
+        super(pos);
         this.dimensions = dimensions;
         this.hitPoints  = hitPoints;
     }

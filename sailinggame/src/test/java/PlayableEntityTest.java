@@ -19,7 +19,7 @@ public class PlayableEntityTest {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
         
-        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 0, 2);
+        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         
         //Starting position is (0,0) which is the bottom left corner of the map
@@ -37,7 +37,7 @@ public class PlayableEntityTest {
     public void testMoveUp() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 0, 2);
+        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         player.moveCommand(0);
         int playerY = (int) player.getPos().getY();
@@ -50,7 +50,7 @@ public class PlayableEntityTest {
     public void testMoveUpRightAngle() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 0, 2);
+        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         player.moveCommand(1);
         int playerY = (int) player.getPos().getY();
@@ -63,7 +63,7 @@ public class PlayableEntityTest {
     public void testMoveRight() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 0, 2);
+        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         player.moveCommand(2);
         int playerY = (int) player.getPos().getY();
@@ -76,7 +76,7 @@ public class PlayableEntityTest {
     public void testMoveDownRightAngle() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 0, 2);
+        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         player.moveCommand(3);
         int playerY = (int) player.getPos().getY();
@@ -89,7 +89,7 @@ public class PlayableEntityTest {
     public void testMoveDown() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 0, 2);
+        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         player.moveCommand(4);
         int playerY = (int) player.getPos().getY();
@@ -102,7 +102,7 @@ public class PlayableEntityTest {
     public void testMoveDownLeftAngle() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 0, 2);
+        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         player.moveCommand(5);
         int playerY = (int) player.getPos().getY();
@@ -115,7 +115,7 @@ public class PlayableEntityTest {
     public void testMoveLeft() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 0, 2);
+        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         player.moveCommand(6);
         int playerY = (int) player.getPos().getY();
@@ -128,7 +128,7 @@ public class PlayableEntityTest {
     public void testMoveUpLeftAngle() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 0, 2);
+        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 2);
         PlayableEntity player = new PlayableEntity(testShip, "testy mcTest");
         player.moveCommand(7);
         int playerY = (int) player.getPos().getY();

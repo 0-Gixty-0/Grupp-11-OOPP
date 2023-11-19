@@ -18,7 +18,7 @@ public abstract class ATile extends APositonable{
     * @param passable - Boolean that checks if the tile is passable
     */
     protected ATile(int textureId, Point pos, Boolean passable ) {
-        super(textureId, pos);
+        super(pos);
         this.passable = passable;
     }
 

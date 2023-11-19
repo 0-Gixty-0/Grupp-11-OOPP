@@ -9,7 +9,7 @@ import java.awt.*;
 public class ABodyTest {
 
     Point testPosition = new Point(10, 20);
-    Ship testShip = new Ship(null, testPosition, 0, 0, 0, 0, 2); 
+    Ship testShip = new Ship(null, testPosition, 0, 0, 0, 2); 
 
     @Test
     public void testTakeDamage() {
