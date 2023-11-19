@@ -5,7 +5,7 @@ import java.awt.Point;
 /**
  * A class that is used as an abstraction that gives tiles and entities their position attribute
  */
-public abstract class APositonable extends ATextureIdentifiable {
+public abstract class APositonable {
 
     /**
      * The position of a tile or entity as a Java Point.
@@ -18,7 +18,6 @@ public abstract class APositonable extends ATextureIdentifiable {
      * @param pos - The position of a tile or entity as a Java Point 
      */
     protected APositonable(int textureId, Point pos){
-        super(textureId);
         this.pos = pos;
     }
 
