@@ -7,8 +7,6 @@ import com.group11.model.Map;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
 public class MapTest {
 
     @Test
