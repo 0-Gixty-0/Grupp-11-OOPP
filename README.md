@@ -431,3 +431,25 @@ issues are resolved.
 
 #### Tutorial
 This US does not require a tutorial since it is for developers.
+
+---
+
+### US-43: Remove ATextureIdentifiable from model
+Date of completion: 19/11/2023
+Completed by: William Norland
+
+As a developer, I want to remove the dependency on the ATextureIdentifiable class in the model, as it introduces unnecessary code and complexity. Instead, I will use type checking in the TileMatrixDecoder to determine the type of value for different entities.
+
+#### What
+The goal of this user story is to remove the ATextureIdentifiable class from the model and update the TileMatrixDecoder to rely on type checking instead of the getTextureId method.
+
+#### How
+I made TileMatrixDecoder use a hashmap mapping .class attributes of types to certain Integers
+
+#### Why
+Its very easy to add support for new types, instead of having to write a new if statement you can just add a simple put to the hashmap.
+
+#### Tutorial
+No tutorial is required for this user story, as it is intended for developers familiar with the codebase.
+
+
