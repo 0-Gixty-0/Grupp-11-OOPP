@@ -9,10 +9,31 @@ import java.util.ArrayList;
 public final class TileMatrixDecoder {
     
     /**
+     * Mapping of Tile classes to textureId's.
+     */
+    private static ArrayList<Class<? extends ATile>> tileMap = new ArrayList<>();
+    static {
+        tileMap.add(SeaTile.class); // 0
+        tileMap.add(LandTile.class); // 1
+    }
+
+    /**
      * Dont use this class by instantiation use it by its static methods.
      */
     private TileMatrixDecoder() {
         throw new IllegalStateException("Utility class");
+    }
+
+    /**
+     * Function used to get the textureId of a tile.
+     * @param tile The tile you want to get the textureId of.
+     * @return (int) textureId of the tile.
+     */ 
+    private static int getTextureId(ATile tile) {
+        Class<? extends ATile> tileClass = tile.getClass();
+        Integer textureId = tileMap.indexOf(tileClass);
+        if (textureId == -1) throw new IllegalArgumentException("Tile class not found in tileMap");
+        return textureId;
     }
 
     /**
@@ -30,7 +51,9 @@ public final class TileMatrixDecoder {
 
             for (int col = 0; col < matrix.get(row).size(); col++) {
 
-                int textureId = matrix.get(row).get(col).getTextureId();
+                ATile tile = matrix.get(row).get(col);
+
+                Integer textureId = TileMatrixDecoder.getTextureId(tile);
 
                 intMatrix.get(row).add(col, textureId);
             
@@ -41,3 +64,4 @@ public final class TileMatrixDecoder {
     }
 
 }
+
