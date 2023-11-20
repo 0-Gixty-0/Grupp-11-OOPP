@@ -1,4 +1,22 @@
-# SailingGame - Group-11-OOPP
+# SailingGame
+A 2d, openworld adventure game made in Java with Maven for the TDA367/DIT213 course at Chalemers University of Technology with focus on perfect MVC implementation, OOP principles and extendability.
+
+**License:** Released under (Placeholder) License
+
+**Installation:** Any alpha release source code is available for compilation under the releases tab, the final release of the project has a downloadable runnable Jar file included.
+
+**Dependencies:** Junit 4.13.2 is used for testing in the source code, the runnable Jar only requires you to have a JRE (>= v.1.8).
+
+**Documentation:** Indepth docs of all project features is available under the **Implemented features** tab of this README, JavaDoc for the project is available [here](placeholderlink).
+
+**Credit:** <br>
+Noa Cavassi ([@cavassi](https://github.com/cavassi)), <br>
+William Norland ([@willayy](https://github.com/willayy)), <br>
+Alexander Muhr ([@DuchessMuhr](https://github.com/DuchessMuhr)), <br>
+Adam Kvarnsund ([@adamkvarnsund](https://github.com/adamkvarnsund)), <br>
+Erik Andreasson ([@0-Gixty-0](https://github.com/0-Gixty-0)), <br>
+
+**Acknowledgements:** Thanks to Arthur for mentoring this project.
 
 ## ❗ A note about Issues
 In the beginning of this project we followed another form of workflow for creating issues which we now deem as confusing and inefficient. Issues created during this time will have titles starting with
