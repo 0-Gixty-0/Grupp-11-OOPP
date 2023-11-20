@@ -225,7 +225,7 @@ This module will be updated during the course of the project. For the moment no 
 
 ---
 
-### TAS-11
+### TAS-11 Implementing basic player movement
 Date of completion: 14/11/2023
 Completed by: William Norland
 
@@ -245,7 +245,7 @@ The user will interact heavily with the PlayableEntity when controlling the play
 
 ---
 
-### US-33
+### US-33 Extracting decoding of Matrix<Tile> from Map class into a TileMatrixDecoder class
 Date of completion: 14/11/2023
 Completed by: William Norland
 
@@ -266,7 +266,7 @@ The user wont really interact with this in anyway more explicit than looking at 
 
 ---
 
-### US-36
+### US-36: Removing possibility for LocationEntity to have a AMovabelBody
 Date of completion: 15/11/2023
 Completed by: William Norland
 
@@ -321,7 +321,7 @@ This feature does not require a tutorial since it doesnt have functionality for 
 
 ---
 
-### US-37
+### US-37 Restricting player to only being able to move over passable terrain
 Date of completion: 16/11/2023  
 Completed by: William Norland
 
@@ -434,7 +434,7 @@ This US does not require a tutorial since it is for developers.
 
 ---
 
-### US-43: As a developer I want to remove ATextureIdentifiable from model
+### US-43: Removing ATextureIdentifiable from model
 Date of completion: 19/11/2023
 Completed by: William Norland
 
@@ -454,11 +454,11 @@ No tutorial is required for this user story, as it is intended for developers fa
 
 ---
 
-### US-44: As a developer i want to make AWorldGenerator and AMapGenerator into Interfaces
+### US-44: Making AWorldGenerator and AMapGenerator into Interfaces
 Date of completion: 19/11/2023
 Completed by: William Norland
 
-They only contain abstract methods and if we should follow convention in other parts of the codebase they should be interfaces.
+As a developer i want to make AWorldGenerator and AMapGenerator into Interfaces as they only contain abstract methods and if we should follow convention in other parts of the codebase they should be interfaces.
 
 #### What
 Making AWorldGenerator and AMapGenerator into IWorldGenerator and IMapGenerator, pretty much nothing more.
