@@ -139,7 +139,7 @@ public class PlayableEntityTest {
 
     @Test
     public void testAttackCommand() {
-        //Placeholder for later implementation.
+        // Currently impossible to test since the side effects of the method are not implemented
     }
 
     @Test

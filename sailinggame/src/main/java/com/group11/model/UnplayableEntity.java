@@ -9,7 +9,7 @@ public class UnplayableEntity extends AMovableEntity {
      * @param name     The entities name
      * @param friendly A single factor which assigns the life long allegience of the entity
      */
-    protected UnplayableEntity(AMovableBody body, String name, Boolean friendly) {
+    public UnplayableEntity(AMovableBody body, String name, Boolean friendly) {
         super(body, name, friendly);
     }
 
