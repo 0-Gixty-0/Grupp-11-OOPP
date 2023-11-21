@@ -21,7 +21,10 @@ public class UnplayableEntity extends AMovableEntity {
 
     @Override
     public void attackCommand(Integer direction) {
-        // Currently not implemented
+        int[][] directions = {{0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}, {-1,0}, {-1,1}};
+        if (this.getBody() instanceof HasWeapon) {
+            ((HasWeapon) this.getBody()).fireWeapon(directions[direction]);
+        }
     }
 
     @Override
