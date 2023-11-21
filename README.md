@@ -471,3 +471,24 @@ When i implemented basic map generation in one of the old TAS's (TAS-24) i debat
 
 This is also a much more traditional way of implementing the abstract factory pattern.
 
+---
+
+### US-43: Implement UnplayableEntity Class
+Date of completion: 21/11/2023
+Completed by: Erik Andreasson
+
+As a user I want there to be other ships and locations in the world to make the game more interesting to play
+
+User story is about implementing the unplayable entity class and it's implemented interface ai commandable. This in order to allow enemy ships to exist in the game
+
+#### What
+Creating the class UnplayableEntity
+
+#### How
+By creating the class and letting it extend AMovableEntity and therefore implementing the inherited methods
+
+#### Why
+There is no specific design choice related to this task, instead it is just a necessary component to the game
+
+#### Tutorial
+No tutorial is required
