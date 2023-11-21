@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Class representing a ship. This class extends AMovableBody.
  */
-public class Ship extends AMovableBody {
+public class Ship extends AMovableBody implements HasWeapon {
 
     private int shipLevel;
     private int armor;
@@ -92,5 +92,14 @@ public class Ship extends AMovableBody {
     public void anchorDown() {
         this.anchorDown = true;
         setVelocity(0);
+    }
+
+    /**
+     * This method fires the weapon of the ship in a certain direction
+     * @param direction Direction to fire the weapon in
+     */
+    @Override
+    public void fireWeapon(int[] direction) {
+        // Not yet implemented
     }
 }
