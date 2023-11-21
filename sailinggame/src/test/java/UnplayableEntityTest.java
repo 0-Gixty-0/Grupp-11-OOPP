@@ -132,7 +132,12 @@ public class UnplayableEntityTest {
     }
 
     @Test
-    public void testAttackCommand() {
+    public void testAttackCommandHasWeapon() {
+        // Currently impossible to test since the side effects of the method are not implemented
+    }
+
+    @Test
+    public void testAttackCommandDoesNotHaveWeapon() {
         // Currently impossible to test since the side effects of the method are not implemented
     }
 
