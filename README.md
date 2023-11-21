@@ -492,3 +492,42 @@ There is no specific design choice related to this task, instead it is just a ne
 
 #### Tutorial
 No tutorial is required
+
+---
+
+### US-51: Implement Interface HasWeapon
+Date of completion: 21/11/2023
+Completed by: Erik Andreasson
+
+As a developer I want to implement an interface for objects having weapons so that other classes can depend on abstractions and not implementations
+
+When implementing the class UnplayableEntity I realized that the attack method needed to check if the body actually has the ability to attack which will be done through some form of weapon. Therefore we need some form of interface for how weapons are to be used and changed. A Ship and a static turret may have different implementations of firing a weapon and may have different weapon types in the future.
+
+#### What
+I wanted there to be a layer of abstraction between the PlayableEntity and UnplayableEntity class, and their body. 
+This is because I realized that a body does not necessarily have a weapon to fire if the attackCommand is called.
+The most direct way in the codes current state to check this is to see if the body is of type Ship since it is
+the only class with a weapon. However, this is not very extendable so instead I wanted some sort of type that
+represented an object having a weapon. I thought this is best achieved through an interface that all objects with a weapon
+must implement.
+
+#### How
+I created the interface HasWeapon with the method fireWeapon. I then made the class Ship implement this interface
+and therefore create the implementation for it. I then implemented the attackCommand method in PlayableEntity
+and UnplayableEntity which depends on the HasWeapon interface for checking if the body has a weapon.
+
+#### Why
+Creating this layer of abstraction does multiple positive things to the codebase. It clearly signals to the developer
+that an object has some form of weapon. Furthermore, the interface allows the code to be more extendable since adding a new
+object with a weapon will not break the code since it depends on the interface that the class should implement. This also means 
+that any "body" tied to an entity will be able to run the attack command without issues. This makes the code better 
+follow the open closed and dependency inversion principles. 
+
+#### Notes
+During this User Story I noticed some other issues that should be fixed. Such as code duplication in the MovableEntity
+hierarchy for implemented interfaces and unnecessary dual dependencies. For example both PlayableEntity and UnplayableEntity
+depend on HasWeapon and have code duplication. Since the MovableEntity classes are more or less just an interface to command
+the body I think changes should be made
+
+#### Tutorial
+This user story does not require a tutorial
