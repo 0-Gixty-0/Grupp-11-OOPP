@@ -32,9 +32,16 @@ public class PlayableEntity extends AMovableEntity {
       this.moveHelper(directions[direction]);
   }
 
+    /**
+     * This method checks if the entities body has a weapon and if so fires it in the desired direction
+     * @param direction The direction to fire the weapon
+     */
   @Override
   public void attackCommand(Integer direction) {
-      //Placeholder for later implementation.
+      int[][] directions = {{0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}, {-1,0}, {-1,1}};
+      if (this.getBody() instanceof HasWeapon) {
+          ((HasWeapon) this.getBody()).fireWeapon(directions[direction]);
+      }
   }
 
   @Override
