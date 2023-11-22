@@ -13,7 +13,7 @@ public class UnplayableEntityTest {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
 
-        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 2);
+        Ship testShip = new Ship(new Point(0,0), 0, 0, 0, 2);
         UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
 
         //Starting position is (0,0) which is the bottom left corner of the map
@@ -31,7 +31,7 @@ public class UnplayableEntityTest {
     public void testMoveUp() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 2);
+        Ship testShip = new Ship(new Point(0,0), 0, 0, 0, 2);
         UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
         entity.moveCommand(0);
         int entityY = (int) entity.getPos().getY();
@@ -44,7 +44,7 @@ public class UnplayableEntityTest {
     public void testMoveUpRightAngle() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 2);
+        Ship testShip = new Ship(new Point(0,0), 0, 0, 0, 2);
         UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
         entity.moveCommand(1);
         int entityY = (int) entity.getPos().getY();
@@ -57,7 +57,7 @@ public class UnplayableEntityTest {
     public void testMoveRight() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(0,0), 0, 0, 0, 2);
+        Ship testShip = new Ship(new Point(0,0), 0, 0, 0, 2);
         UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
         entity.moveCommand(2);
         int entityY = (int) entity.getPos().getY();
@@ -70,7 +70,7 @@ public class UnplayableEntityTest {
     public void testMoveDownRightAngle() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 2);
+        Ship testShip = new Ship(new Point(2,2), 0, 0, 0, 2);
         UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
         entity.moveCommand(3);
         int entityY = (int) entity.getPos().getY();
@@ -83,7 +83,7 @@ public class UnplayableEntityTest {
     public void testMoveDown() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 2);
+        Ship testShip = new Ship(new Point(2,2), 0, 0, 0, 2);
         UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
         entity.moveCommand(4);
         int entityY = (int) entity.getPos().getY();
@@ -96,7 +96,7 @@ public class UnplayableEntityTest {
     public void testMoveDownLeftAngle() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 2);
+        Ship testShip = new Ship(new Point(2,2), 0, 0, 0, 2);
         UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
         entity.moveCommand(5);
         int entityY = (int) entity.getPos().getY();
@@ -109,7 +109,7 @@ public class UnplayableEntityTest {
     public void testMoveLeft() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 2);
+        Ship testShip = new Ship(new Point(2,2), 0, 0, 0, 2);
         UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
         entity.moveCommand(6);
         int entityY = (int) entity.getPos().getY();
@@ -122,7 +122,7 @@ public class UnplayableEntityTest {
     public void testMoveUpLeftAngle() {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setMap(map);
-        Ship testShip = new Ship(null, new Point(2,2), 0, 0, 0, 2);
+        Ship testShip = new Ship(new Point(2,2), 0, 0, 0, 2);
         UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
         entity.moveCommand(7);
         int entityY = (int) entity.getPos().getY();

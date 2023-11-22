@@ -16,13 +16,12 @@ public abstract class ABody extends APositonable implements IDamageable {
 
     /**
      * Constructor for creating objects of type ABody, the physical part of an entity in the game.
-     * @param dimension - the dimension of the body
+     *
      * @param pos       - the position of the body in the tilemap
      * @param hitPoints - the hitpoints of the body
      */
-    protected ABody(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int hitPoints, String description) {
+    protected ABody(Point pos, int hitPoints, String description) {
         super(pos);
-        this.dimensions = dimensions;
         this.hitPoints  = hitPoints;
     }
 
