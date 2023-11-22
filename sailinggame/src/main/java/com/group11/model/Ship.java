@@ -1,7 +1,6 @@
 package com.group11.model;
 
 import java.awt.Point;
-import java.util.ArrayList;
 
 /**
  * Class representing a ship. This class extends AMovableBody.
@@ -15,16 +14,13 @@ public class Ship extends AMovableBody implements HasWeapon {
     private boolean anchorDown;
 
     /**
-     * Constructor for creating objects of type Ship. Allows for precise control of creation
-     * @param dimensions
-     * @param pos Position of the ship
-     * @param shipLevel   - the level of the ship
-     * @param armor       - the armor of the ship
-     * @param cannons     - the cannons of the ship
+     * Constructor for creating objects of type AShip.
+     * @param shipLevel  - the level of the ship
+     * @param armor      - the armor of the ship
+     * @param cannons    - the cannons of the ship
      */
-
-    public Ship(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int shipLevel, int armor, int cannons, int hitPoints){
-        super(dimensions, pos, hitPoints, "Custom Ship");
+    public Ship(Point pos, int shipLevel, int armor, int cannons, int hitPoints){
+        super(pos, hitPoints, "A basic ship");
         this.shipLevel   = shipLevel;
         this.armor       = armor;
         this.cannons     = cannons;
@@ -32,8 +28,8 @@ public class Ship extends AMovableBody implements HasWeapon {
         this.anchorDown = true;
     }
 
-    public Ship(ArrayList<ArrayList<Boolean>> dimensions, Point pos) {
-        super(dimensions, pos, 20, "Standard Ship, Custom: Dimensions, Position");
+    public Ship(Point pos) {
+        super(pos, 20, "Standard Ship, Custom: Dimensions, Position");
         this.shipLevel = 1;
         this.armor = 2;
         this.cannons = 5;
@@ -87,8 +83,7 @@ public class Ship extends AMovableBody implements HasWeapon {
 
     /**
      * Fires the cannon of the ship
-     *
-     * @param damage - the amount of damage the cannon does
+     * @param direction to fire the weapon
      */
     public void fireCannons(int direction){
         //Not implemented in the current state of the game, view this as a placeholder

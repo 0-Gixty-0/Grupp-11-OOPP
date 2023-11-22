@@ -1,4 +1,22 @@
-# SailingGame - Group-11-OOPP
+# SailingGame
+A 2d, openworld adventure game made in Java with Maven for the TDA367/DIT213 course at Chalemers University of Technology with focus on perfect MVC implementation, OOP principles and extendability.
+
+**License:** Released under (Placeholder) License
+
+**Installation:** Any alpha release source code is available for compilation under the releases tab, the final release of the project has a downloadable runnable Jar file included.
+
+**Dependencies:** Junit 4.13.2 is used for testing in the source code, the runnable Jar only requires you to have a JRE (>= v.1.8).
+
+**Documentation:** Indepth docs of all project features is available under the **Implemented features** tab of this README, JavaDoc for the project is available [here](placeholderlink).
+
+**Credit:** <br>
+Noa Cavassi ([@cavassi](https://github.com/cavassi)), <br>
+William Norland ([@willayy](https://github.com/willayy)), <br>
+Alexander Muhr ([@DuchessMuhr](https://github.com/DuchessMuhr)), <br>
+Adam Kvarnsund ([@adamkvarnsund](https://github.com/adamkvarnsund)), <br>
+Erik Andreasson ([@0-Gixty-0](https://github.com/0-Gixty-0)), <br>
+
+**Acknowledgements:** Thanks to Arthur for mentoring this project.
 
 ## ❗ A note about Issues
 In the beginning of this project we followed another form of workflow for creating issues which we now deem as confusing and inefficient. Issues created during this time will have titles starting with
@@ -225,7 +243,7 @@ This module will be updated during the course of the project. For the moment no 
 
 ---
 
-### TAS-11
+### TAS-11 Implementing basic player movement
 Date of completion: 14/11/2023
 Completed by: William Norland
 
@@ -245,7 +263,7 @@ The user will interact heavily with the PlayableEntity when controlling the play
 
 ---
 
-### US-33
+### US-33 Extracting decoding of Matrix<Tile> from Map class into a TileMatrixDecoder class
 Date of completion: 14/11/2023
 Completed by: William Norland
 
@@ -266,7 +284,7 @@ The user wont really interact with this in anyway more explicit than looking at 
 
 ---
 
-### US-36
+### US-36: Removing possibility for LocationEntity to have a AMovabelBody
 Date of completion: 15/11/2023
 Completed by: William Norland
 
@@ -321,7 +339,7 @@ This feature does not require a tutorial since it doesnt have functionality for 
 
 ---
 
-### US-37
+### US-37 Restricting player to only being able to move over passable terrain
 Date of completion: 16/11/2023  
 Completed by: William Norland
 
@@ -434,7 +452,7 @@ This US does not require a tutorial since it is for developers.
 
 ---
 
-### US-43: As a developer I want to remove ATextureIdentifiable from model
+### US-43: Removing ATextureIdentifiable from model
 Date of completion: 19/11/2023
 Completed by: William Norland
 
@@ -454,11 +472,11 @@ No tutorial is required for this user story, as it is intended for developers fa
 
 ---
 
-### US-44: As a developer i want to make AWorldGenerator and AMapGenerator into Interfaces
+### US-44: Making AWorldGenerator and AMapGenerator into Interfaces
 Date of completion: 19/11/2023
 Completed by: William Norland
 
-They only contain abstract methods and if we should follow convention in other parts of the codebase they should be interfaces.
+As a developer i want to make AWorldGenerator and AMapGenerator into Interfaces as they only contain abstract methods and if we should follow convention in other parts of the codebase they should be interfaces.
 
 #### What
 Making AWorldGenerator and AMapGenerator into IWorldGenerator and IMapGenerator, pretty much nothing more.
@@ -528,6 +546,29 @@ During this User Story I noticed some other issues that should be fixed. Such as
 hierarchy for implemented interfaces and unnecessary dual dependencies. For example both PlayableEntity and UnplayableEntity
 depend on HasWeapon and have code duplication. Since the MovableEntity classes are more or less just an interface to command
 the body I think changes should be made
+
+#### Tutorial
+This user story does not require a tutorial
+
+---
+
+### US-52: Remove Dimensions Parameter From ABody Hierarchy
+Date completed: 22/11/2023
+Completed by: Erik Andreasson
+
+As a developer I want to remove the dimensions parameter from the ABody hierarchy because it is confusing and unnecessary to the MVP
+
+This parameter has been an issue in the codebase for some time. It is confusing and not necessary to the code.
+
+#### What
+This user story was about removing an unneeded and confusing parameter from the ABody hierarchy in order to clean up the code
+and make tests easier to write
+
+#### How
+I used the inbuilt refactor tool in Intellij to change the signature throughout the codebase
+
+#### Why
+No specific design choices were made in implementing this user story
 
 #### Tutorial
 This user story does not require a tutorial
