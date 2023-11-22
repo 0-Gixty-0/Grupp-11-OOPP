@@ -9,8 +9,6 @@ import java.util.ArrayList;
  */
 
 public abstract class ABody extends APositonable implements IDamageable {
-
-    private ArrayList<ArrayList<Boolean>> dimensions;
     private int hitPoints;
     String description;
 
@@ -48,21 +46,5 @@ public abstract class ABody extends APositonable implements IDamageable {
      */
     public void setHitPoints(int newHitpoints) {
         this.hitPoints = newHitpoints;
-    }
-
-    /**
-     * 
-     * @return dimensions of an object.
-     */
-    public ArrayList<ArrayList<Boolean>> getDimensions() {
-        return dimensions;
-    }
-    
-    /**
-     * 
-     * @param dimensions desired body dimensions.
-     */
-    public void setDimensions(ArrayList<ArrayList<Boolean>> dimensions) {
-        this.dimensions = dimensions;
     }
 }
