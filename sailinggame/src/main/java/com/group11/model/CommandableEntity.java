@@ -56,7 +56,11 @@ public class CommandableEntity extends AEntity implements ICommandable {
     @Override
     public void moveCommand(Integer direction) {
         int[][] directions = {{0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}, {-1,0}, {-1,1}};
-        this.moveHelper(directions[direction]);
+        if (this.getBody() instanceof IMovable) {
+            this.moveHelper(directions[direction]);
+        } else {
+            System.out.println(String.format("Objects of type %s cannot move",this.getBody().getClass().getName()));
+        }
     }
 
     /**
@@ -68,11 +72,17 @@ public class CommandableEntity extends AEntity implements ICommandable {
         int[][] directions = {{0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}, {-1,0}, {-1,1}};
         if (this.getBody() instanceof HasWeapon) {
             ((HasWeapon) this.getBody()).fireWeapon(directions[direction]);
+        } else {
+            System.out.println(String.format("Objects of type %s cannot attack",this.getBody().getClass().getName()));
         }
     }
 
     @Override
     public void interactCommand() {
-        //Placeholder for later implementation.
+        if (this.getBody() instanceof ICanInteract) {
+            //Placeholder for later implementation.
+        } else {
+            System.out.println(String.format("Objects of type %s cannot interact",this.getBody().getClass().getName()));
+        }
     }
 }
