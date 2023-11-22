@@ -6,22 +6,21 @@ import java.awt.Point;
 /**
  * A movable entity is a subset of entities that can move around the gameworld
  */
-public abstract class CommandableEntity extends AEntity implements ICommandable {
+public class CommandableEntity extends AEntity implements ICommandable {
 
     /**
-     * Used to create a movable entity
+     * Used to create a commandable entity
      * @param body The body it should use
-     * @param name The entities name
+     * @param name The entity's name
      * @param friendly A single factor which assigns the life long allegience of the entity
      */
-    protected CommandableEntity(AMovableBody body, String name, Boolean friendly) {
+    public CommandableEntity(AMovableBody body, String name, Boolean friendly) {
         super(body, name, friendly);
     }
 
     /**
      * A Helper method for movement implementation using pseudo linear algebra. This should be the method
      * that does the actual moving of the body in subclasses.
-     * @param velocity The amount of tiles each move moves.
      * @param dirVector The direction the body should move in.
      */
     protected void moveHelper(int [] dirVector) {
@@ -42,4 +41,38 @@ public abstract class CommandableEntity extends AEntity implements ICommandable 
         this.setBody(body);
     }
 
+    /**
+     * Issue a move command to a entity in 8 difference directions using these integers as arguments:
+     * 0 moves straight up,
+     * 1 moves at a right angle up,
+     * 2 moves straight right,
+     * 3 moves at a right angle down,
+     * 4 moves at straight down,
+     * 5 moves at a left angle down,
+     * 6 moves straight left,
+     * 7 move at a left angle up,
+     * @param direction Moves the Entity in the chosen direction (see the index above).
+     */
+    @Override
+    public void moveCommand(Integer direction) {
+        int[][] directions = {{0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}, {-1,0}, {-1,1}};
+        this.moveHelper(directions[direction]);
+    }
+
+    /**
+     * This method checks if the entities body has a weapon and if so fires it in the desired direction
+     * @param direction The direction to fire the weapon
+     */
+    @Override
+    public void attackCommand(Integer direction) {
+        int[][] directions = {{0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}, {-1,0}, {-1,1}};
+        if (this.getBody() instanceof HasWeapon) {
+            ((HasWeapon) this.getBody()).fireWeapon(directions[direction]);
+        }
+    }
+
+    @Override
+    public void interactCommand() {
+        //Placeholder for later implementation.
+    }
 }
