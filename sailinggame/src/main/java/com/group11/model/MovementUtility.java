@@ -1,23 +1,41 @@
 package com.group11.model;
 
 import java.awt.Point;
+import java.util.ArrayList;
 
+/**
+ * Utility class for checking if a body is going to collide with another body.
+ *
+ */
 public final class MovementUtility {
 
-    private static Map map;
+    /**
+     * Matrix of ATiles to check for collision.
+     */
+    private static ArrayList<ArrayList<ATile>> tileMatrix;
 
     private MovementUtility() {
         throw new IllegalStateException("Utility class");
     }
 
-    public static void setMap(Map map) {
-        MovementUtility.map = map;
+    /**
+     * Set the tileMatrix to be used for checking if movement is possible.
+     * @param tileMatrix
+     */
+    public static void setMap(ArrayList<ArrayList<ATile>> tileMatrix) {
+        MovementUtility.tileMatrix = tileMatrix;
     }
 
+    /**
+     * Check if movement is possible in a given direction.
+     * @param currPos Current position of the body.
+     * @param dirVector Direction vector of the movement.
+     * @return (Boolean) true if movement is possible, false otherwise.
+     */
     public static Boolean movementIsPossible(Point currPos, int[] dirVector) {
 
-        if (MovementUtility.map == null) {
-            throw new IllegalStateException("Unable to move because a Map has not been set for MovementUtility");
+        if (MovementUtility.tileMatrix == null) {
+            throw new IllegalStateException("Unable to move because a tileMatrix has not been set for MovementUtility");
         }
 
         int newX = (int) currPos.getX() + dirVector[0];
@@ -25,7 +43,7 @@ public final class MovementUtility {
 
         try {
             //Trying to move over impassable terrain
-            if (MovementUtility.map.getTileMatrix().get(newY).get(newX).isPassable()) {
+            if (MovementUtility.tileMatrix.get(newX).get(newY).isPassable()) {
                 return true;
             } else {
                 return false;
