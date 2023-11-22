@@ -44,6 +44,30 @@ public class Ship extends AMovableBody implements HasWeapon {
     }
 
     /**
+     * Returns ship level
+     * @return ship level
+     */
+    public int getShipLevel() {
+        return this.shipLevel;
+    }
+
+    /**
+     * Returns armor rating
+     * @return armor rating
+     */
+    public int getArmor() {
+        return this.armor;
+    }
+
+    /**
+     * Returns cannon rating
+     * @return cannon rating
+     */
+    public int getCannons() {
+        return this.cannons;
+    }
+
+    /**
      * Raises the sail of the ship
      */
     public void raiseSail() {
