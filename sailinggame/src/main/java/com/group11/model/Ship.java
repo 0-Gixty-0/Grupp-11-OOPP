@@ -14,10 +14,12 @@ public class Ship extends AMovableBody implements HasWeapon {
     private boolean anchorDown;
 
     /**
-     * Constructor for creating objects of type AShip.
+     * Constructor for creating objects of type Ship.
+     * @param pos coordinate position of the ship
      * @param shipLevel  - the level of the ship
      * @param armor      - the armor of the ship
      * @param cannons    - the cannons of the ship
+     * @param hitPoints the number of hitpoints of the ship
      */
     public Ship(Point pos, int shipLevel, int armor, int cannons, int hitPoints){
         super(pos, hitPoints, "A basic ship");
@@ -28,26 +30,17 @@ public class Ship extends AMovableBody implements HasWeapon {
         this.anchorDown = true;
     }
 
+    /**
+     * Constructor for creating default objects of type Ship with custom position
+     * @param pos coordinate position of the ship
+     */
     public Ship(Point pos) {
-        super(pos, 20, "Standard Ship, Custom: Dimensions, Position");
+        super(pos, 20, "Standard Ship, Custom: Position");
         this.shipLevel = 1;
         this.armor = 2;
         this.cannons = 5;
         this.sailIsUp = true;
         this.anchorDown = false;
-    }
-
-    public Ship(Point pos) {
-        super(Ship.createStandardDimensions(), pos, 20, "Standard Ship Custom: Position");
-        createStandardDimensions();
-    }
-
-    private static ArrayList<ArrayList<Boolean>> createStandardDimensions() {
-        ArrayList<ArrayList<Boolean>> dimensions = new ArrayList<>();
-        ArrayList<Boolean> row = new ArrayList<>();
-        row.add(true);
-        dimensions.add(row);
-        return dimensions;
     }
 
     /**
@@ -79,14 +72,6 @@ public class Ship extends AMovableBody implements HasWeapon {
      */
     public boolean getSailStatus() {
         return this.sailIsUp;
-    }
-
-    /**
-     * Fires the cannon of the ship
-     * @param direction to fire the weapon
-     */
-    public void fireCannons(int direction){
-        //Not implemented in the current state of the game, view this as a placeholder
     }
 
     /**
