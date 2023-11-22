@@ -552,6 +552,31 @@ This user story does not require a tutorial
 
 ---
 
+### US-48: Implementing a utility class to check for collisions between bodies
+Date of completion: 22/11/2023
+Completed by: William Norland
+
+As a developer i want a Utility class to check for collisions. Because It makes it possible to simulate combat among other things which is something we need for our MVP.
+
+#### What
+A method to check if positions that an Entity (with a body) intends to move to are occupied and therefore will create a collision and a method to check if the body is currently colliding with another body. 
+
+#### How
+I created the Utility class in the same manner i created MovementUtility, its a final class with a private constructor and static only members.
+
+#### Why
+I decided to add both of the methods i talked about in "What" since i dont know right now which one is going to be preferred. Both arent strictly needed since you could check before moving an Entity or you could check after moving, the problem with the latter is that a matrix can only have one element per (x,y) position so then you would need to check that before moving the body on the MatrixABody> which might be hard to know. Both might end up being used aswell.
+
+The reason why we choose to use utilty classes is because we want less coupling between sub-modules/packages. It kind of makes more sense in MovementUtility, for example, if Map breaks Movement utility breaks but the Entity trying to move is fine
+
+#### Notes
+Noticed i missed tests and documentation in an old user story where i made MovementUtility so i added that when working on this US. 
+
+#### Tutorial
+The user will come in contact with this US during combat, when colliding with enemies or maybe when trying to interact with a friendly game entity.
+
+---
+
 ### US-52: Remove Dimensions Parameter From ABody Hierarchy
 Date completed: 22/11/2023
 Completed by: Erik Andreasson
