@@ -576,6 +576,9 @@ This user story does not require a tutorial
 ---
 
 ### US-42: Create Default Constructor For Ship
+Date of completion: 22/11/2023
+Completed by: Erik Andreasson
+
 As a developer I want a default constructor for the ship class because it makes creating new objects of that type easier.
 
 I think this is necessary to the codebase because it makes creating objects of that type very easy and simple. If it is not included we risk very long constructor calls and code duplication.
