@@ -15,19 +15,43 @@ public class Ship extends AMovableBody implements HasWeapon {
     private boolean anchorDown;
 
     /**
-     * Constructor for creating objects of type AShip.
+     * Constructor for creating objects of type Ship. Allows for precise control of creation
+     * @param dimensions
+     * @param pos Position of the ship
      * @param shipLevel   - the level of the ship
      * @param armor       - the armor of the ship
      * @param cannons     - the cannons of the ship
-     * @param sailStatus  - the sail status. Either up (true) or down (false)
      */
+
     public Ship(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int shipLevel, int armor, int cannons, int hitPoints){
-        super(dimensions, pos, hitPoints, "A basic ship");
+        super(dimensions, pos, hitPoints, "Custom Ship");
         this.shipLevel   = shipLevel;
         this.armor       = armor;
         this.cannons     = cannons;
         this.sailIsUp  = false;
         this.anchorDown = true;
+    }
+
+    public Ship(ArrayList<ArrayList<Boolean>> dimensions, Point pos) {
+        super(dimensions, pos, 20, "Standard Ship, Custom: Dimensions, Position");
+        this.shipLevel = 1;
+        this.armor = 2;
+        this.cannons = 5;
+        this.sailIsUp = true;
+        this.anchorDown = false;
+    }
+
+    public Ship(Point pos) {
+        super(Ship.createStandardDimensions(), pos, 20, "Standard Ship Custom: Position");
+        createStandardDimensions();
+    }
+
+    private static ArrayList<ArrayList<Boolean>> createStandardDimensions() {
+        ArrayList<ArrayList<Boolean>> dimensions = new ArrayList<>();
+        ArrayList<Boolean> row = new ArrayList<>();
+        row.add(true);
+        dimensions.add(row);
+        return dimensions;
     }
 
     /**
