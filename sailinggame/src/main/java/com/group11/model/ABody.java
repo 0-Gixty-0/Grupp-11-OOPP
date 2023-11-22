@@ -9,20 +9,17 @@ import java.util.ArrayList;
  */
 
 public abstract class ABody extends APositonable implements IDamageable {
-
-    private ArrayList<ArrayList<Boolean>> dimensions;
     private int hitPoints;
     String description;
 
     /**
      * Constructor for creating objects of type ABody, the physical part of an entity in the game.
-     * @param dimension - the dimension of the body
+     *
      * @param pos       - the position of the body in the tilemap
      * @param hitPoints - the hitpoints of the body
      */
-    protected ABody(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int hitPoints, String description) {
+    protected ABody(Point pos, int hitPoints, String description) {
         super(pos);
-        this.dimensions = dimensions;
         this.hitPoints  = hitPoints;
     }
 
@@ -49,21 +46,5 @@ public abstract class ABody extends APositonable implements IDamageable {
      */
     public void setHitPoints(int newHitpoints) {
         this.hitPoints = newHitpoints;
-    }
-
-    /**
-     * 
-     * @return dimensions of an object.
-     */
-    public ArrayList<ArrayList<Boolean>> getDimensions() {
-        return dimensions;
-    }
-    
-    /**
-     * 
-     * @param dimensions desired body dimensions.
-     */
-    public void setDimensions(ArrayList<ArrayList<Boolean>> dimensions) {
-        this.dimensions = dimensions;
     }
 }

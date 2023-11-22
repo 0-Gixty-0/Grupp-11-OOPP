@@ -2,11 +2,13 @@ import org.junit.Test;
 
 import com.group11.model.Ship;
 
+import java.awt.*;
+
 import static org.junit.Assert.*;
 
 public class ShipTest {
 
-    Ship testShip = new Ship(null, null, 0, 0, 0, 2);
+    Ship testShip = new Ship(null, 0, 0, 0, 2);
 
     @Test
     public void testAnchor() {
@@ -23,5 +25,15 @@ public class ShipTest {
         assertEquals(testShip.getSailStatus(), true);
         testShip.lowerSail();
         assertEquals(testShip.getSailStatus(),false);
+    }
+
+    @Test
+    public void testDefaultConstructor() {
+        Ship ship = new Ship(new Point(0,0));
+        assertEquals(1, ship.getShipLevel());
+        assertEquals(2, ship.getArmor());
+        assertEquals(5, ship.getCannons());
+        assertTrue(ship.getSailStatus());
+        assertFalse(ship.getAnchorStatus());
     }
 }

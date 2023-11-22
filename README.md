@@ -574,3 +574,51 @@ Noticed i missed tests and documentation in an old user story where i made Movem
 
 #### Tutorial
 The user will come in contact with this US during combat, when colliding with enemies or maybe when trying to interact with a friendly game entity.
+
+---
+
+### US-52: Remove Dimensions Parameter From ABody Hierarchy
+Date completed: 22/11/2023
+Completed by: Erik Andreasson
+
+As a developer I want to remove the dimensions parameter from the ABody hierarchy because it is confusing and unnecessary to the MVP
+
+This parameter has been an issue in the codebase for some time. It is confusing and not necessary to the code.
+
+#### What
+This user story was about removing an unneeded and confusing parameter from the ABody hierarchy in order to clean up the code
+and make tests easier to write
+
+#### How
+I used the inbuilt refactor tool in Intellij to change the signature throughout the codebase
+
+#### Why
+No specific design choices were made in implementing this user story
+
+#### Tutorial
+This user story does not require a tutorial
+
+---
+
+### US-42: Create Default Constructor For Ship
+Date of completion: 22/11/2023
+Completed by: Erik Andreasson
+
+As a developer I want a default constructor for the ship class because it makes creating new objects of that type easier.
+
+I think this is necessary to the codebase because it makes creating objects of that type very easy and simple. If it is not included we risk very long constructor calls and code duplication.
+
+#### What
+This user story is about creating a constructor that creates what we define as a standard / simple ship
+
+#### How
+I simply created a new constructor for the Ship class with a simpler signature which only takes in a Point position as parameter
+
+#### Why
+No specific design choices were made other than that this user story is important for more simply creating objects of this type which
+is useful when creating multiple of them at once and thus creates cleaner code with shorter calls to the constructor. Is mostly
+a quality of life improvement.
+
+#### Tutorial
+No specific tutorial is needed for this user story
+

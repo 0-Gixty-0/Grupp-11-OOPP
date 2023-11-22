@@ -1,7 +1,6 @@
 package com.group11.model;
 
 import java.awt.Point;
-import java.util.ArrayList;
 
 /**
  * Abstract class representing an abstract movable body. This class extends ABody and implements the IMovable interface
@@ -14,12 +13,11 @@ public abstract class AMovableBody extends ABody implements IMovable {
 
     /**
      * Constructor for a movable body, like a body but its meant to move around the game world.
-     * @param dimensions The dimensions of the body represented as a matrix of true (uses that square) or false (does not use that square)
-     * @param pos The starting position of the body as a Java Point
-     * @param hitPoints The hitpooints of the body
+     * @param pos       The starting position of the body as a Java Point
+     * @param hitPoints The hitpoints of the body
      */
-    protected AMovableBody(ArrayList<ArrayList<Boolean>> dimensions, Point pos, int hitPoints, String description){
-        super(dimensions, pos, hitPoints, description);
+    protected AMovableBody(Point pos, int hitPoints, String description){
+        super(pos, hitPoints, description);
         this.velocity = 0;
     }
 
