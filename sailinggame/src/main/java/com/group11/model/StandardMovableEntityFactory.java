@@ -14,7 +14,7 @@ public class StandardMovableEntityFactory implements IMovableEntityFactory {
      */
     public AEntity createPlayer() {
         ArrayList<ArrayList<Boolean>> dimensions = createDimensions(1);
-        return new PlayableEntity(new Ship(dimensions, new Point(0,0), 0, 0 ,0 ,0), "player");
+        return new PlayableEntity(new Ship(new Point(0,0), 0, 0 ,0 ,0), "player");
     }
 
     /**

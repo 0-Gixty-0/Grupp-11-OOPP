@@ -549,3 +549,26 @@ the body I think changes should be made
 
 #### Tutorial
 This user story does not require a tutorial
+
+---
+
+### US-52: Remove Dimensions Parameter From ABody Hierarchy
+Date completed: 22/11/2023
+Completed by: Erik Andreasson
+
+As a developer I want to remove the dimensions parameter from the ABody hierarchy because it is confusing and unnecessary to the MVP
+
+This parameter has been an issue in the codebase for some time. It is confusing and not necessary to the code.
+
+#### What
+This user story was about removing an unneeded and confusing parameter from the ABody hierarchy in order to clean up the code
+and make tests easier to write
+
+#### How
+I used the inbuilt refactor tool in Intellij to change the signature throughout the codebase
+
+#### Why
+No specific design choices were made in implementing this user story
+
+#### Tutorial
+This user story does not require a tutorial
