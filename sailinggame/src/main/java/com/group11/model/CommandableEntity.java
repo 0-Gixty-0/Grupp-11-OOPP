@@ -6,7 +6,7 @@ import java.awt.Point;
 /**
  * A movable entity is a subset of entities that can move around the gameworld
  */
-public abstract class AMovableEntity extends AEntity implements ICommandable {
+public abstract class CommandableEntity extends AEntity implements ICommandable {
 
     /**
      * Used to create a movable entity
@@ -14,7 +14,7 @@ public abstract class AMovableEntity extends AEntity implements ICommandable {
      * @param name The entities name
      * @param friendly A single factor which assigns the life long allegience of the entity
      */
-    protected AMovableEntity(AMovableBody body, String name, Boolean friendly) {
+    protected CommandableEntity(AMovableBody body, String name, Boolean friendly) {
         super(body, name, friendly);
     }
 

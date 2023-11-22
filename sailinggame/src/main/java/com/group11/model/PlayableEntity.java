@@ -3,7 +3,7 @@ package com.group11.model;
 /**
  * The PlayableEntity class represents an instance of the player in the game world. 
  */
-public class PlayableEntity extends AMovableEntity {
+public class PlayableEntity extends CommandableEntity {
 
  /**
   * Constructor for a playable entity (commonly just the player)

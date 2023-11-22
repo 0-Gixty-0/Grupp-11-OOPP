@@ -1,6 +1,6 @@
 package com.group11.model;
 
-public class UnplayableEntity extends AMovableEntity {
+public class UnplayableEntity extends CommandableEntity {
 
     /**
      * Used to create a movable entity
