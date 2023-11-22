@@ -22,7 +22,7 @@ public final class MovementUtility {
      * Set the tileMatrix to be used for checking if movement is possible.
      * @param tileMatrix
      */
-    public static void setMap(ArrayList<ArrayList<ATile>> tileMatrix) {
+    public static void setTileMatrix(ArrayList<ArrayList<ATile>> tileMatrix) {
         MovementUtility.tileMatrix = tileMatrix;
     }
 

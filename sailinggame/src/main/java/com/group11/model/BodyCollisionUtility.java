@@ -21,7 +21,7 @@ public final class BodyCollisionUtility {
      * Set the bodies to check for collision.
      * @param bodies Matrix of bodies.
      */
-    public static void setBodies(ArrayList<ArrayList<ABody>> bodies) {
+    public static void setBodyMatrix(ArrayList<ArrayList<ABody>> bodies) {
         BodyCollisionUtility.bodies = bodies;
     }
 

@@ -23,8 +23,8 @@ public class BodyCollisionUtilityTest {
         this.bodies = new ArrayList<>();
         this.pos = new Point(0, 0);
         Point pos2 = new Point(0,0);
-        this.testBody = new Ship(null, pos, 0, 0, 0, 0);
-        this.testBody2 = new Ship(null, pos2, 0, 0, 0, 0);
+        this.testBody = new Ship(pos, 0, 0, 0, 0);
+        this.testBody2 = new Ship(pos2, 0, 0, 0, 0);
         this.bodies.add(new ArrayList<ABody>() {{
                 add(testBody);
             }});
@@ -32,19 +32,19 @@ public class BodyCollisionUtilityTest {
 
     @Test
     public void testSetBodies() {
-        BodyCollisionUtility.setBodies(null);
+        BodyCollisionUtility.setBodyMatrix(null);
         assertThrows(IllegalStateException.class, ()->BodyCollisionUtility.isPositionOccupied(pos));
     }
 
     @Test
     public void testIsPositionOccupied() {
-        BodyCollisionUtility.setBodies(bodies);
+        BodyCollisionUtility.setBodyMatrix(bodies);
         assertEquals(testBody, BodyCollisionUtility.isPositionOccupied(pos));
     }
 
     @Test
     public void testIsBodyColliding() {
-        BodyCollisionUtility.setBodies(bodies);
+        BodyCollisionUtility.setBodyMatrix(bodies);
        assertEquals(testBody, BodyCollisionUtility.isBodyColliding(testBody2));;
     }
 
