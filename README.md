@@ -622,6 +622,25 @@ a quality of life improvement.
 #### Tutorial
 No specific tutorial is needed for this user story
 
+<<<<<<< HEAD
+
+### Tas-27: Implement basic controller module
+Date of completion: 23/11/2023
+Completed by: Alexander Muhr
+
+As a developer i want to implement a controller so that i can register keyboard inputs that can result in events in the game like moving etc.
+
+This is a necessary implementation for the mvp since it needs to exist to even play the game.
+
+#### What
+This user story is about creatig a controller that takes input from the keyboard while the game is running to be able to move etc.
+
+#### How
+Since we want to completely have a independent controller from model and view, I chose to implement a KeyListener as a form of observer that always listens to keyboard input while the application is running. The reasoning to why we are using a global listener and not a regular KeyListener is so that i doesnt have to be bound to a specific JFrame for example but exists independently. I chose to store the currently pressed keys in a hashset for easy lookups and to be able to pass it along from the model to the application.
+
+#### Why
+No specific tutorial other than that the update frequence can be changed by changing how long the thread sleeps.
+=======
 ---
 
 ### US-53: Refactor Entity Hierarchy
@@ -680,3 +699,4 @@ body or not. However, that may be viewed as somewhat of a stretch.
 
 #### Tutorial
 This user story does not require a tutorial since it is for the developer.
+>>>>>>> 2af6013a274ac3dde6f3a6cd9ead3fb95583cd57
