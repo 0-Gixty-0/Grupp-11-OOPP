@@ -2,14 +2,9 @@ package com.group11.view;
 
 import javax.swing.*;
 
-import com.group11.view.moveoutofthewayplease.GameEntities;
-import com.group11.view.moveoutofthewayplease.GameWorld;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Random;
 
 /**
  * AppWindow is the top-level class for the View component of the MVC design.
