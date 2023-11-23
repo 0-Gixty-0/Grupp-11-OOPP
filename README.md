@@ -622,7 +622,7 @@ a quality of life improvement.
 #### Tutorial
 No specific tutorial is needed for this user story
 
-<<<<<<< HEAD
+---
 
 ### Tas-27: Implement basic controller module
 Date of completion: 23/11/2023
@@ -640,7 +640,7 @@ Since we want to completely have a independent controller from model and view, I
 
 #### Why
 No specific tutorial other than that the update frequence can be changed by changing how long the thread sleeps.
-=======
+
 ---
 
 ### US-53: Refactor Entity Hierarchy
