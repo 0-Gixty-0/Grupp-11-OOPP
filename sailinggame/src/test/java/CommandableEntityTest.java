@@ -4,6 +4,7 @@ import org.junit.Test;
 import java.awt.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class CommandableEntityTest {
 
@@ -141,7 +142,31 @@ public class CommandableEntityTest {
     }
 
     @Test
-    public void testInteractCommand() {
-        //Placeholder for later implementation.
+    public void testMoveCommandCanMove() {
+        // Currently impossible to test since the side effects of the method are not implemented
+    }
+
+    @Test
+    public void testMoveCommandCannotMove() {
+        // Currently impossible to test since the side effects of the method are not implemented
+    }
+
+    @Test
+    public void testInteractCommandCanInteract() {
+        // Currently impossible to test since the side effects of the method are not implemented
+    }
+
+    @Test
+    public void testInteractCommandCannotInteract() {
+        // Currently impossible to test since the side effects of the method are not implemented
+    }
+
+    @Test
+    public void testCreateCommandableEntity() {
+        Ship ship = new Ship(new Point(0,0));
+        CommandableEntity entity = new CommandableEntity(ship, "testEntity", true);
+        assertEquals("testEntity", entity.getName());
+        assertEquals(new Point(0,0), entity.getPos());
+        assertTrue(entity.isFriendly());
     }
 }
