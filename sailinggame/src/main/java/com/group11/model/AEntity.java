@@ -3,7 +3,7 @@ package com.group11.model;
 import java.awt.Point;
 
 /**
- * A entity represents anything interactive in the world, it could be a town, creature, ship etc
+ * An entity represents anything interactive in the world, it could be a town, creature, ship etc
  */
 public abstract class AEntity {
     
@@ -12,7 +12,7 @@ public abstract class AEntity {
     private ABody body;
 
     /**
-     * Used to construct a entity
+     * Used to construct an entity
      * @param name The entities name
      * @param friendly A single factor which assigns the life long allegience of the entity
      */
