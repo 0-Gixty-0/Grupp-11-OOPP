@@ -5,29 +5,30 @@ import javax.swing.*;
 public class keyboardtester {
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> createAndShowGUI());
+        JFrame frame = new JFrame("Keyboard Controller Test");
+        KeyboardController keyboardController = new KeyboardController();
 
-    }
-
-    private static void createAndShowGUI() {
-        // Create the JFrame
-        JFrame frame = new JFrame("Simple JFrame Example");
-        frame.add(new KeyboardController());
-
-        // Set default close operation
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Set the size of the frame
         frame.setSize(400, 300);
-
-        // Set the layout manager (optional)
-
-        // Add a JLabel to the frame
-        JLabel label = new JLabel("Hello, JFrame!");
-        frame.add(label);
-
-        // Make the frame visible
+        frame.getContentPane().add(keyboardController);
         frame.setVisible(true);
+
+        // Give focus to the KeyboardController to receive key events
+        keyboardController.requestFocus();
+
+        // Continuously check if a specific key is pressed
+        while (true) {
+            if (!keyboardController.getInput().isEmpty()) {
+                System.out.println("Main: " + keyboardController.getInput());
+            }
+
+            // You can add more key checks here for different keys
+
+            try {
+                Thread.sleep(100); // Adjust the sleep duration as needed
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
-
