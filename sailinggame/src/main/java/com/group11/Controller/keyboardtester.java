@@ -2,6 +2,7 @@ package com.group11.Controller;
 
 import javax.swing.*;
 
+/*A pure testclass for testing input */
 public class keyboardtester {
 
     public static void main(String[] args) throws InterruptedException {
