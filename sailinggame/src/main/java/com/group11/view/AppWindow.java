@@ -19,10 +19,10 @@ public class AppWindow extends JFrame {
 
     private List<List<Integer>> terrainMatrix;
     private List<List<Integer>> entityMatrix;
+
     private BufferPanel bufferPanel;
     private StatsPanel statsPanel;
     private GameWorldPanel gameWorldPanel;
-
 
     /**
      * Constructor creates a new GameWorld object, a new GameEntities object, and initializes the window
@@ -49,7 +49,7 @@ public class AppWindow extends JFrame {
         Random rand = new Random();
         for (int i = 0; i < 30; i++) {
             List<Integer> row = new ArrayList<>();
-            for (int k = 0; k < 45; k++) {
+            for (int k = 0; k < 60; k++) {
                 int num = rand.nextInt(40);
                 if (num > 0) {
                     row.add(null);
@@ -71,7 +71,7 @@ public class AppWindow extends JFrame {
         Random rand = new Random();
         for (int i = 0; i < 30; i++) {
             List<Integer> row = new ArrayList<>();
-            for (int k = 0; k < 45; k++) {
+            for (int k = 0; k < 60; k++) {
                 row.add(rand.nextInt(2));
             }
             testTerrainMatrix.add(row);
@@ -84,18 +84,43 @@ public class AppWindow extends JFrame {
      */
     private void addComponents() {
 
-        this.bufferPanel = new BufferPanel(1000, 12);
-        this.statsPanel = new StatsPanel(1000, 12);
+        this.bufferPanel = new BufferPanel(1000, 6);
+
+        this.statsPanel = new StatsPanel(1000, 6);
 
         this.add(statsPanel); //Adding a buffering pane to make sure the game world ends up in the center of the window
         
-        this.gameWorldPanel = new GameWorldPanel(45, 30, gameWorld.getTileMatrix(), gameEntities.getTileMatrix());
+        this.gameWorldPanel = new GameWorldPanel(60, 30, gameWorld.getTileMatrix(), gameEntities.getTileMatrix());
 
         this.add(gameWorldPanel);
         
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
         
         this.add(bufferPanel); //Adding a buffering pane to make sure the game world ends up in the center of the window
+    }
+
+    public void updateHp() {
+        // @TODO set hp
+    }
+
+    public void updateLvl() {
+        // @TODO set lvl
+    }
+
+    public void updateScore() {
+        // @TODO set score
+    }
+
+    public void updateEntities(List<List<Integer>> entityMatrix) {
+        this.gameEntities.updateGameEntities(entityMatrix);
+    }
+
+    public void updateTerrain(List<List<Integer>> terrainMatrix) {
+        this.gameWorld.updateGameWorld(terrainMatrix);
+    }
+
+    private void update() {
+        this.gameWorldPanel.updateGameWorld();
     }
 
     

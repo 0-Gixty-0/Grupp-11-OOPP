@@ -9,8 +9,9 @@ import java.util.List;
  * entities in the world through entity tiles.
  */
 public class GameEntities {
+
     private List<List<Integer>> entityMatrix;
-    private List<List<AViewTile>> tileMatrix = new ArrayList<>();
+    private List<List<AViewTile>> tileMatrix;;
     private final int tileWidth = 16;
     private final int tileHeight = 16;
 
@@ -21,6 +22,11 @@ public class GameEntities {
 
     public List<List<AViewTile>> getTileMatrix() {
         return this.tileMatrix;
+    }
+
+    public void updateGameEntities(List<List<Integer>> entityMatrix) {
+        this.entityMatrix = entityMatrix;
+        this.createTileMatrix();
     }
 
     /**
@@ -42,6 +48,7 @@ public class GameEntities {
      * The size of the matrix is dependent on the number of rows and columns in the attribute terrainMatrix.
      */
     private void createTileMatrix() {
+        this.tileMatrix = new ArrayList<>();
         for (int rowIndex = 0; rowIndex < this.entityMatrix.size(); rowIndex++) {
             List<Integer> terrainRow = this.entityMatrix.get(rowIndex);
             ArrayList<AViewTile> tileRow = new ArrayList<>();

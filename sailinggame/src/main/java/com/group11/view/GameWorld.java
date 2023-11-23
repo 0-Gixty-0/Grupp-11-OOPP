@@ -9,12 +9,11 @@ import java.util.List;
  * terrain aspects of the game world through tiles.
  */
 public class GameWorld {
+
     private List<List<Integer>> terrainMatrix;
-    private List<List<AViewTile>> tileMatrix = new ArrayList<>();
+    private List<List<AViewTile>> tileMatrix;
     private final int tileWidth = 16;
     private final int tileHeight = 16;
-    private int windowWidth;
-    private int windowHeight;
 
     /**
      * GameWorld constructor sets attributes and creates tile components.
@@ -22,11 +21,9 @@ public class GameWorld {
      * @param width  The width of the window frame
      * @param height The height of the window frame
      */
-    GameWorld(List<List<Integer>> matrix, int width, int height) {
-        this.terrainMatrix = matrix;
-        this.windowHeight = height;
-        this.windowWidth = width;
-        this.createTileMatrix();
+    GameWorld(List<List<Integer>>  terrainMatrix, int width, int height) {
+        this.terrainMatrix = terrainMatrix;
+        this.updateTileMatrix();
     }
 
     /**
@@ -37,6 +34,10 @@ public class GameWorld {
         return tileMatrix;
     }
 
+    public void updateGameWorld(List<List<Integer>> terrainMatrix) {
+        this.terrainMatrix = terrainMatrix;
+        updateTileMatrix();
+    }
 
     /**
      * Helper function for initializing an object of type ViewTile
@@ -57,15 +58,16 @@ public class GameWorld {
      * The size of the matrix is dependent on the number of rows and columns in
      * the attribute terrainMatrix.
      */
-    private void createTileMatrix() {
-         for (int rowIndex = 0; rowIndex < this.terrainMatrix.size(); rowIndex++) {
-             List<Integer> terrainRow = this.terrainMatrix.get(rowIndex);
-             ArrayList<AViewTile> tileRow = new ArrayList<>();
-             for (int columnIndex = 0; columnIndex < terrainRow.size(); columnIndex++) {
-                 int id = terrainRow.get(columnIndex);
-                 tileRow.add(this.initializeTerrainTile(id, columnIndex, rowIndex));
-             }
-             this.tileMatrix.add(tileRow);
-         }
+    private void updateTileMatrix() {
+        this.tileMatrix = new ArrayList<>();
+        for (int rowIndex = 0; rowIndex < this.terrainMatrix.size(); rowIndex++) {
+            List<Integer> terrainRow = this.terrainMatrix.get(rowIndex);
+            ArrayList<AViewTile> tileRow = new ArrayList<>();
+            for (int columnIndex = 0; columnIndex < terrainRow.size(); columnIndex++) {
+                int id = terrainRow.get(columnIndex);
+                tileRow.add(this.initializeTerrainTile(id, columnIndex, rowIndex));
+            }
+            this.tileMatrix.add(tileRow);
+        }
      }
 }

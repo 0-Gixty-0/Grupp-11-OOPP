@@ -1,6 +1,7 @@
 package com.group11.view;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.List;
@@ -39,6 +40,19 @@ public class GameWorldPanel extends JPanel {
                 }
             }
         }
+    }
+
+    private void removeTilesFromPanel() {
+        Component[] components = this.getComponents();
+        for (Component tile : components ) {
+            this.remove(tile);
+        }
+    }
+
+    protected void updateGameWorld() {
+        this.removeTilesFromPanel();
+        this.addTilesToPanel();
+        this.repaint();
     }
 
 }
