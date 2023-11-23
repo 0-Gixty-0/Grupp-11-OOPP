@@ -17,18 +17,6 @@ public class keyboardtester {
         keyboardController.requestFocus();
 
         // Continuously check if a specific key is pressed
-        while (true) {
-            if (!keyboardController.getInput().isEmpty()) {
-                System.out.println("Main: " + keyboardController.getInput());
-            }
-
-            // You can add more key checks here for different keys
-
-            try {
-                Thread.sleep(100); // Adjust the sleep duration as needed
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+       
     }
 }
