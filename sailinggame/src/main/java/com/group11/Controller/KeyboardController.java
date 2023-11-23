@@ -13,6 +13,7 @@ public class KeyboardController extends JComponent implements KeyListener, Runna
     public KeyboardController() {
         addKeyListener(this);
         setFocusable(true);
+
         Thread run = new Thread(this);
         run.start();
     }
@@ -21,18 +22,22 @@ public class KeyboardController extends JComponent implements KeyListener, Runna
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         inputSet.add(keyCode);
-        System.out.println("Key Pressed: " + KeyEvent.getKeyText(keyCode));
+        char keyChar = e.getKeyChar();
+        System.out.println("Key Pressed: " + keyChar + " (KeyCode: " + keyCode + ")");
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         int keyCode = e.getKeyCode();
         inputSet.remove(keyCode);
-        System.out.println("Key Released: " + KeyEvent.getKeyText(keyCode));
+        char keyChar = e.getKeyChar();
+        System.out.println("Key Released: " + keyChar + " (KeyCode: " + keyCode + ")");
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
+        char keyChar = e.getKeyChar();
+        System.out.println("Key Typed: " + keyChar);
     }
 
     @Override
