@@ -2,8 +2,6 @@ package com.group11.controller;
 
 import javax.swing.*;
 
-import com.group11.controller.GlobalKeyListener;
-
 /*A pure testclass for testing input */
 public class keyboardtester {
 
