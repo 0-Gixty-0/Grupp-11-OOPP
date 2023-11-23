@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 /**
@@ -17,6 +18,7 @@ public class AppWindow {
     private final GameEntities gameEntities;
 
     private final JFrame mainFrame;
+    private final JPanel gameWorldPanel;
 
     private List<List<Integer>> terrainMatrix;
     private List<List<Integer>> entityMatrix;
@@ -31,6 +33,7 @@ public class AppWindow {
         this.entityMatrix = this.initializeEntityTest();
         gameWorld = new GameWorld(terrainMatrix, windowWidth, windowHeight);
         gameEntities = new GameEntities(entityMatrix);
+        gameWorldPanel = new JPanel();
         mainFrame = new JFrame("Sailing Game");
         this.initializeWindow();
     }
@@ -40,11 +43,11 @@ public class AppWindow {
      * @return Matrix of integers corresponding to entity texture id:s
      */
     private List<List<Integer>> initializeEntityTest() {
-        List<List<Integer>> testEntityList = new ArrayList<>();
+        List<List<Integer>> testEntityMatrix = new ArrayList<>();
         Random rand = new Random();
-        for (int i = 0; i < 47; i++) {
+        for (int i = 0; i < 50; i++) {
             List<Integer> row = new ArrayList<>();
-            for (int k = 0; k < 48; k++) {
+            for (int k = 0; k < 50; k++) {
                 int num = rand.nextInt(40);
                 if (num > 0) {
                     row.add(null);
@@ -52,9 +55,9 @@ public class AppWindow {
                     row.add(0);
                 }
             }
-            testEntityList.add(row);
+            testEntityMatrix.add(row);
         }
-        return testEntityList;
+        return testEntityMatrix;
     }
 
     /**
@@ -62,16 +65,16 @@ public class AppWindow {
      * @return Matrix of integers corresponding to terrain texture id:s
      */
     private List<List<Integer>> initializeTerrainTest() {
-        List<List<Integer>> testTerrainList = new ArrayList<>();
+        List<List<Integer>> testTerrainMatrix = new ArrayList<>();
         Random rand = new Random();
-        for (int i = 0; i < 47; i++) {
+        for (int i = 0; i < 50; i++) {
             List<Integer> row = new ArrayList<>();
-            for (int k = 0; k < 48; k++) {
+            for (int k = 0; k < 50; k++) {
                 row.add(rand.nextInt(2));
             }
-            testTerrainList.add(row);
+            testTerrainMatrix.add(row);
         }
-        return testTerrainList;
+        return testTerrainMatrix;
     }
 
     /**
@@ -80,8 +83,14 @@ public class AppWindow {
     private void initializeWindow() {
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(this.windowWidth, this.windowHeight);
-        this.addTilesToFrame();
-        mainFrame.add(new JLabel());
+        this.addTilesToPanel();
+        gameWorldPanel.setPreferredSize(new Dimension(75*16, 25*16));
+        gameWorldPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 1, 1));
+        gameWorldPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
+        gameWorldPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        mainFrame.setLayout(new FlowLayout(FlowLayout.CENTER));
+        mainFrame.add(gameWorldPanel);
     }
 
     /**
@@ -89,15 +98,15 @@ public class AppWindow {
      * If a position in the entity tile matrix is null then the terrain component will be added.
      * Otherwise, the entity tile component for that position will be added.
      */
-    private void addTilesToFrame() {
+    private void addTilesToPanel() {
         ArrayList<ArrayList<AViewTile>> tileMatrix = this.gameWorld.getTileMatrix();
         for (ArrayList<AViewTile> tileRow : tileMatrix) {
             for (AViewTile tile : tileRow) {
                 Point matrixPosition = tile.getMatrixPosition();
                 if (this.gameEntities.getTileMatrix().get(matrixPosition.x).get(matrixPosition.y) == null) {
-                    mainFrame.add(tile.getComponent());
+                    gameWorldPanel.add(tile.getComponent());
                 } else {
-                    mainFrame.add(this.gameEntities.getTileMatrix().get(matrixPosition.x).get(matrixPosition.y).getComponent());
+                    gameWorldPanel.add(this.gameEntities.getTileMatrix().get(matrixPosition.x).get(matrixPosition.y).getComponent());
                 }
             }
         }

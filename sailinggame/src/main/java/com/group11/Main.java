@@ -21,7 +21,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Main main = new Main(800,800);
+        Main main = new Main(1500,1500);
         main.run();
     }
 }
