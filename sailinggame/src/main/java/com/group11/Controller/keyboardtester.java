@@ -18,10 +18,6 @@ public class keyboardtester {
     
     }
         
-
-        // Give focus to the KeyboardController to receive key events
-
-        // Continuously check if a specific key is pressed
        
     }
 }
