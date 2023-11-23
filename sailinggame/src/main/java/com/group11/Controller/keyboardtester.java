@@ -4,17 +4,22 @@ import javax.swing.*;
 
 public class keyboardtester {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         JFrame frame = new JFrame("Keyboard Controller Test");
-        KeyboardController keyboardController = new KeyboardController();
+        GlobalKeyListener keyboardController = new GlobalKeyListener();
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 300);
-        frame.getContentPane().add(keyboardController);
         frame.setVisible(true);
 
+        while (true){
+        System.out.println(keyboardController.getInput());
+        Thread.sleep(100);
+    
+    }
+        
+
         // Give focus to the KeyboardController to receive key events
-        keyboardController.requestFocus();
 
         // Continuously check if a specific key is pressed
        
