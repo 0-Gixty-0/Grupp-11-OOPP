@@ -1,8 +1,11 @@
-package com.group11.view;
+package com.group11.view.moveoutofthewayplease;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.group11.view.AViewTile;
+import com.group11.view.EntityTile;
 
 /**
  * The GameEntities class represents the interface and functionality for representing the

@@ -7,51 +7,79 @@ import java.awt.FlowLayout;
 import java.util.List;
 import java.awt.Point;
 
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.OverlayLayout;
+
+import com.group11.model.ATile;
 
 public class GameWorldPanel extends JPanel {
 
-    List<List<AViewTile>> tileMatrix;
-    List<List<AViewTile>> entityMatrix;
-    
-    protected GameWorldPanel(int width, int height, List<List<AViewTile>> tileMatrix, List<List<AViewTile>> entityMatrix) {
-        super();
-        this.tileMatrix = tileMatrix;
-        this.entityMatrix = entityMatrix;
-        this.setBackground(new Color(77,109,243));
-        this.setPreferredSize(new Dimension(width*16, height*16));
-        this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-        this.addTilesToPanel();
-    }
+    private InnerPanel terrainPanel;
+    private InnerPanel entityPanel;
 
-    /**
-     * Adds each JLabel component, obtained from the AViewTile object, on the map to the main window frame.
-     * If a position in the entity tile matrix is null then the terrain component will be added.
-     * Otherwise, the entity tile component for that position will be added.
-     */
-    private void addTilesToPanel() {
-        for (List<AViewTile> tileRow : tileMatrix) {
-            for (AViewTile tile : tileRow) {
-                Point matrixPosition = tile.getMatrixPosition();
-                if (entityMatrix.get(matrixPosition.x).get(matrixPosition.y) == null) {
-                    this.add(tile.getComponent());
-                } else {
-                    this.add(entityMatrix.get(matrixPosition.x).get(matrixPosition.y).getComponent());
+    private class InnerPanel extends JPanel {
+
+        public InnerPanel() {
+            super();
+            this.setOpaque(false);
+            this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+        }
+
+        private void addTiles(List<List<AViewTile>> tileMatrix) {
+            for (List<AViewTile> tileRow : tileMatrix) {
+                for (AViewTile tile : tileRow) {
+
+                    if (tile == null) {
+                        JLabel opaqueLabel = new JLabel();
+                        opaqueLabel.setPreferredSize(new Dimension(16,16));
+                        opaqueLabel.setOpaque(false);
+                        this.add(opaqueLabel);
+                    }
+                    else {
+                        this.add(tile.getComponent());
+                    }
                 }
             }
         }
-    }
 
-    private void removeTilesFromPanel() {
-        Component[] components = this.getComponents();
-        for (Component tile : components ) {
-            this.remove(tile);
+        private void removeTilesFromPanel() {
+            Component[] components = this.getComponents();
+            if (components.length == 0) {
+                return;
+            }
+            for (Component tile : components ) {
+                this.remove(tile);
+            }
         }
+
     }
 
-    protected void updateGameWorld() {
-        this.removeTilesFromPanel();
-        this.addTilesToPanel();
+    protected GameWorldPanel(int width, int height) {
+        super();
+        this.setBackground(new Color(77,109,243));
+        this.setPreferredSize(new Dimension(width*16, height*16));
+        this.setLayout(new OverlayLayout(this));
+        this.terrainPanel = new InnerPanel();
+        this.entityPanel = new InnerPanel();
+        this.add(entityPanel);
+        this.add(terrainPanel);
+    }
+
+    protected void updateTerrainMatrix(List<List<AViewTile>> terrainMatrix) {
+        this.terrainPanel.removeTilesFromPanel();
+        this.terrainPanel.addTiles(terrainMatrix);
+        this.revalidate();
+        this.repaint(); 
+        
+    }
+
+    protected void updateEntityMatrix(List<List<AViewTile>> entityMatrix) {
+       
+        this.entityPanel.removeTilesFromPanel();
+        this.entityPanel.addTiles(entityMatrix);
+        this.revalidate();
         this.repaint();
     }
 

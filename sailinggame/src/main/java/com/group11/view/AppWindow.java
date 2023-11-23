@@ -2,6 +2,9 @@ package com.group11.view;
 
 import javax.swing.*;
 
+import com.group11.view.moveoutofthewayplease.GameEntities;
+import com.group11.view.moveoutofthewayplease.GameWorld;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +17,6 @@ import java.util.Random;
  */
 public class AppWindow extends JFrame {
     
-    private final GameWorld gameWorld;
-    private final GameEntities gameEntities;
-
-    private List<List<Integer>> terrainMatrix;
-    private List<List<Integer>> entityMatrix;
-
     private BufferPanel bufferPanel;
     private StatsPanel statsPanel;
     private GameWorldPanel gameWorldPanel;
@@ -33,50 +30,7 @@ public class AppWindow extends JFrame {
         this.setTitle("Sailing Game");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().setBackground(Color.GRAY);
-        this.terrainMatrix = this.initializeTerrainTest();
-        this.entityMatrix = this.initializeEntityTest();
-        gameWorld = new GameWorld(terrainMatrix, windowWidth, windowHeight);
-        gameEntities = new GameEntities(entityMatrix);
         this.addComponents();
-    }
-
-    /**
-     * Testing purposes. Will be removed later.
-     * @return Matrix of integers corresponding to entity texture id:s
-     */
-    private List<List<Integer>> initializeEntityTest() {
-        List<List<Integer>> testEntityMatrix = new ArrayList<>();
-        Random rand = new Random();
-        for (int i = 0; i < 30; i++) {
-            List<Integer> row = new ArrayList<>();
-            for (int k = 0; k < 60; k++) {
-                int num = rand.nextInt(40);
-                if (num > 0) {
-                    row.add(null);
-                } else {
-                    row.add(0);
-                }
-            }
-            testEntityMatrix.add(row);
-        }
-        return testEntityMatrix;
-    }
-
-    /**
-     * Testing purposes. Will be removed later.
-     * @return Matrix of integers corresponding to terrain texture id:s
-     */
-    private List<List<Integer>> initializeTerrainTest() {
-        List<List<Integer>> testTerrainMatrix = new ArrayList<>();
-        Random rand = new Random();
-        for (int i = 0; i < 30; i++) {
-            List<Integer> row = new ArrayList<>();
-            for (int k = 0; k < 60; k++) {
-                row.add(rand.nextInt(2));
-            }
-            testTerrainMatrix.add(row);
-        }
-        return testTerrainMatrix;
     }
 
     /**
@@ -90,7 +44,7 @@ public class AppWindow extends JFrame {
 
         this.add(statsPanel); //Adding a buffering pane to make sure the game world ends up in the center of the window
         
-        this.gameWorldPanel = new GameWorldPanel(60, 30, gameWorld.getTileMatrix(), gameEntities.getTileMatrix());
+        this.gameWorldPanel = new GameWorldPanel(60, 30);
 
         this.add(gameWorldPanel);
         
@@ -111,19 +65,17 @@ public class AppWindow extends JFrame {
         // @TODO set score
     }
 
-    public void updateEntities(List<List<Integer>> entityMatrix) {
-        this.gameEntities.updateGameEntities(entityMatrix);
+    public void updateEntities( List<List<Integer>> entityMatrix) {
+        EntityUtility.getInstance().updateTileMatrix(entityMatrix);
+        List<List<AViewTile>> tileMatrix = EntityUtility.getInstance().getTileMatrix();
+        this.gameWorldPanel.updateEntityMatrix(tileMatrix);
     }
 
-    public void updateTerrain(List<List<Integer>> terrainMatrix) {
-        this.gameWorld.updateGameWorld(terrainMatrix);
+    public void updateTerrain( List<List<Integer>> terrainMatrix) {
+        TerrainUtility.getInstance().updateTileMatrix(terrainMatrix);
+        List<List<AViewTile>> tileMatrix = TerrainUtility.getInstance().getTileMatrix();
+        this.gameWorldPanel.updateTerrainMatrix(tileMatrix);
     }
-
-    private void update() {
-        this.gameWorldPanel.updateGameWorld();
-    }
-
-    
 
     /**
      * Sets visibility of the main window to true

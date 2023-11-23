@@ -1,8 +1,11 @@
-package com.group11.view;
+package com.group11.view.moveoutofthewayplease;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.group11.view.AViewTile;
+import com.group11.view.TerrainTile;
 
 /**
  * The GameWorld class represents the functionality and interface for representing the
