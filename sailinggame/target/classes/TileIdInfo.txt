@@ -1,0 +1,3 @@
+SeaTile = 0
+LandTile = 1
+Ship = 2 //Any ship right now

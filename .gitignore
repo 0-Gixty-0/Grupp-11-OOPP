@@ -35,3 +35,6 @@ replay_pid*
 # Intellij
 .idea
 .DS_Store
+
+# VSCode
+.vscode
