@@ -4,9 +4,9 @@ import org.junit.Test;
 import java.awt.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-public class UnplayableEntityTest {
-    // Constructor has only a super call so the abstract class it inherits from should be tested for the constructor
+public class CommandableEntityTest {
 
     @Test
     public void testTryingToMoveOverImpassableTerrain() {
@@ -14,7 +14,7 @@ public class UnplayableEntityTest {
         MovementUtility.setTileMatrix(map.getTileMatrix());
 
         Ship testShip = new Ship(new Point(0,0), 0, 0, 0, 2);
-        UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
+        CommandableEntity entity = new CommandableEntity(testShip, "testy mcTest", true);
 
         //Starting position is (0,0) which is the bottom left corner of the map
         for (int i = 0; i < 50; i++) { //Try to move entity to the top of the map. Through the big middle island created by BasicMapNGenerator.
@@ -32,7 +32,7 @@ public class UnplayableEntityTest {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setTileMatrix(map.getTileMatrix());
         Ship testShip = new Ship(new Point(0,0), 0, 0, 0, 2);
-        UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
+        CommandableEntity entity = new CommandableEntity(testShip, "testy mcTest", true);
         entity.moveCommand(0);
         int entityY = (int) entity.getPos().getY();
         int entityX = (int) entity.getPos().getX();
@@ -45,7 +45,7 @@ public class UnplayableEntityTest {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setTileMatrix(map.getTileMatrix());
         Ship testShip = new Ship(new Point(0,0), 0, 0, 0, 2);
-        UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
+        CommandableEntity entity = new CommandableEntity(testShip, "testy mcTest", true);
         entity.moveCommand(1);
         int entityY = (int) entity.getPos().getY();
         int entityX = (int) entity.getPos().getX();
@@ -58,7 +58,7 @@ public class UnplayableEntityTest {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setTileMatrix(map.getTileMatrix());
         Ship testShip = new Ship(new Point(0,0), 0, 0, 0, 2);
-        UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
+        CommandableEntity entity = new CommandableEntity(testShip, "testy mcTest", true);
         entity.moveCommand(2);
         int entityY = (int) entity.getPos().getY();
         int entityX = (int) entity.getPos().getX();
@@ -71,7 +71,7 @@ public class UnplayableEntityTest {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setTileMatrix(map.getTileMatrix());
         Ship testShip = new Ship(new Point(2,2), 0, 0, 0, 2);
-        UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
+        CommandableEntity entity = new CommandableEntity(testShip, "testy mcTest", true);
         entity.moveCommand(3);
         int entityY = (int) entity.getPos().getY();
         int entityX = (int) entity.getPos().getX();
@@ -84,7 +84,7 @@ public class UnplayableEntityTest {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setTileMatrix(map.getTileMatrix());
         Ship testShip = new Ship(new Point(2,2), 0, 0, 0, 2);
-        UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
+        CommandableEntity entity = new CommandableEntity(testShip, "testy mcTest", true);
         entity.moveCommand(4);
         int entityY = (int) entity.getPos().getY();
         int entityX = (int) entity.getPos().getX();
@@ -97,7 +97,7 @@ public class UnplayableEntityTest {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setTileMatrix(map.getTileMatrix());
         Ship testShip = new Ship(new Point(2,2), 0, 0, 0, 2);
-        UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
+        CommandableEntity entity = new CommandableEntity(testShip, "testy mcTest", true);
         entity.moveCommand(5);
         int entityY = (int) entity.getPos().getY();
         int entityX = (int) entity.getPos().getX();
@@ -110,7 +110,7 @@ public class UnplayableEntityTest {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setTileMatrix(map.getTileMatrix());
         Ship testShip = new Ship(new Point(2,2), 0, 0, 0, 2);
-        UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
+        CommandableEntity entity = new CommandableEntity(testShip, "testy mcTest", true);
         entity.moveCommand(6);
         int entityY = (int) entity.getPos().getY();
         int entityX = (int) entity.getPos().getX();
@@ -123,7 +123,7 @@ public class UnplayableEntityTest {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setTileMatrix(map.getTileMatrix());
         Ship testShip = new Ship(new Point(2,2), 0, 0, 0, 2);
-        UnplayableEntity entity = new UnplayableEntity(testShip, "testy mcTest", true);
+        CommandableEntity entity = new CommandableEntity(testShip, "testy mcTest", true);
         entity.moveCommand(7);
         int entityY = (int) entity.getPos().getY();
         int entityX = (int) entity.getPos().getX();
@@ -142,7 +142,31 @@ public class UnplayableEntityTest {
     }
 
     @Test
-    public void testInteractCommand() {
-        //Placeholder for later implementation.
+    public void testMoveCommandCanMove() {
+        // Currently impossible to test since the side effects of the method are not implemented
+    }
+
+    @Test
+    public void testMoveCommandCannotMove() {
+        // Currently impossible to test since the side effects of the method are not implemented
+    }
+
+    @Test
+    public void testInteractCommandCanInteract() {
+        // Currently impossible to test since the side effects of the method are not implemented
+    }
+
+    @Test
+    public void testInteractCommandCannotInteract() {
+        // Currently impossible to test since the side effects of the method are not implemented
+    }
+
+    @Test
+    public void testCreateCommandableEntity() {
+        Ship ship = new Ship(new Point(0,0));
+        CommandableEntity entity = new CommandableEntity(ship, "testEntity", true);
+        assertEquals("testEntity", entity.getName());
+        assertEquals(new Point(0,0), entity.getPos());
+        assertTrue(entity.isFriendly());
     }
 }
