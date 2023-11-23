@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class GameWorld {
     private List<List<Integer>> terrainMatrix;
-    private ArrayList<ArrayList<AViewTile>> tileMatrix = new ArrayList<>();
+    private List<List<AViewTile>> tileMatrix = new ArrayList<>();
     private final int tileWidth = 16;
     private final int tileHeight = 16;
     private int windowWidth;
@@ -33,7 +33,7 @@ public class GameWorld {
      * Returns a matrix of ViewTile objects
      * @return A matrix of ViewTile objects
      */
-    public ArrayList<ArrayList<AViewTile>> getTileMatrix() {
+    public List<List<AViewTile>> getTileMatrix() {
         return tileMatrix;
     }
 
