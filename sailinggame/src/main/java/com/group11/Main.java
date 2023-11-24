@@ -8,9 +8,6 @@ import com.group11.view.AppWindow;
 
 public class Main {
     private static AppWindow appWindow;
-    private static int windowHeight;
-    private static int windowWidth;
-
 
     /**
      * Testing purposes. Will be removed later.
@@ -26,7 +23,7 @@ public class Main {
                 if (num > 0) {
                     row.add(null);
                 } else {
-                    row.add(0);
+                    row.add(2);
                 }
             }
             testEntityMatrix.add(row);
@@ -53,10 +50,8 @@ public class Main {
 
 
 
-    public Main(int windowWidth, int windowHeight) {
-        windowHeight = windowHeight;
-        windowWidth = windowWidth;
-        appWindow = new AppWindow(windowWidth, windowHeight);
+    public Main() {
+        appWindow = new AppWindow(1000, 800, 60, 30, 30, 30);
     }
 
     /**
@@ -74,7 +69,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws InterruptedException{
-        Main main = new Main(1500,1500);
+        Main main = new Main();
         main.run();
     }
 }
