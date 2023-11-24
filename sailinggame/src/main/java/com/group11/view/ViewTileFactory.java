@@ -10,6 +10,12 @@ import javax.swing.ImageIcon;
 
 public class ViewTileFactory {
     
+    /**
+     * The amount of terrain types in the terrain texture map,
+     * this is really necessary since we use the same texture map for entities and on for terrain
+     */
+    static final int amountOfTerrainTypes = 2;
+
     private ViewTileFactory() {
         throw new IllegalStateException("Utility class");
     }
@@ -48,7 +54,7 @@ public class ViewTileFactory {
 
         ImageIcon fullTexture;
 
-        if (id < 2) {fullTexture = new ImageIcon("sailinggame/src/main/resources/textureMapSailingGame.png");}
+        if (id < amountOfTerrainTypes) {fullTexture = new ImageIcon("sailinggame/src/main/resources/textureMapSailingGame.png");}
         else {fullTexture = new ImageIcon("sailinggame/src/main/resources/player_ship.png");}
         
         Image textureImage = fullTexture.getImage();
@@ -56,7 +62,7 @@ public class ViewTileFactory {
         Point textureMapMatrixPosition;
         
         if (id < 2) {textureMapMatrixPosition = getTerrainTextureMatrixCoordinate(id);}
-        else {textureMapMatrixPosition = getEntityTextureMatrixCoordinate(id-2);}
+        else {textureMapMatrixPosition = getEntityTextureMatrixCoordinate(id-amountOfTerrainTypes);}
 
         Point textureMapPixelPosition = new Point(textureMapMatrixPosition.y * scale, textureMapMatrixPosition.x * scale);
 

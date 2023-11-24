@@ -20,7 +20,7 @@ public class GameWorldPanel extends JPanel {
         public InnerPanel() {
             super();
             this.setOpaque(false);
-            this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+            this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
         }
 
         private void addTiles(List<List<ViewTile>> tileMatrix) {
@@ -55,7 +55,7 @@ public class GameWorldPanel extends JPanel {
     protected GameWorldPanel(int width, int height) {
         super();
         this.setBackground(new Color(77,109,243));
-        this.setPreferredSize(new Dimension(width*16, height*16));
+        this.setPreferredSize(new Dimension(width*ViewTileMatrixEncoder.getTileWidth(), height*ViewTileMatrixEncoder.getTileHeight()));
         this.setLayout(new OverlayLayout(this));
         this.terrainPanel = new InnerPanel();
         this.entityPanel = new InnerPanel();

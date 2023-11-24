@@ -27,6 +27,14 @@ public class ViewTileMatrixEncoder {
         tileHeight = height;
     }
 
+    protected static int getTileWidth() {
+        return tileWidth;
+    }
+
+    protected static int getTileHeight() {
+        return tileHeight;
+    }
+
     protected static List<List<ViewTile>> createTileMatrix(List<List<Integer>> terrainMatrix) {
 
         List<List<ViewTile>> tileMatrix = new ArrayList<>();
