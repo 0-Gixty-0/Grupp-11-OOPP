@@ -29,7 +29,7 @@ public class GameWorldPanel extends JPanel {
 
                     if (tile == null) {
                         JLabel opaqueLabel = new JLabel();
-                        opaqueLabel.setPreferredSize(new Dimension(16,16));
+                        opaqueLabel.setPreferredSize(new Dimension(ViewTileMatrixEncoder.getTileWidth(),ViewTileMatrixEncoder.getTileHeight()));
                         opaqueLabel.setOpaque(false);
                         this.add(opaqueLabel);
                     }
@@ -68,11 +68,9 @@ public class GameWorldPanel extends JPanel {
         this.terrainPanel.addTiles(terrainMatrix);
         this.revalidate();
         this.repaint(); 
-        
     }
 
     protected void updateEntityMatrix(List<List<ViewTile>> entityMatrix) {
-       
         this.entityPanel.removeTilesFromPanel();
         this.entityPanel.addTiles(entityMatrix);
         this.revalidate();

@@ -64,13 +64,13 @@ public class AppWindow extends JFrame {
         // @TODO set score
     }
 
-    public void updateEntities( List<List<Integer>> entityMatrix) {
-        List<List<ViewTile>> tileMatrix = ViewTileMatrixEncoder.createTileMatrix(entityMatrix);
+    public void updateEntities( List<List<Integer>> intMatrix) {
+        List<List<ViewTile>> tileMatrix = ViewTileMatrixEncoder.createEntityTileMatrix(intMatrix);
         this.gameWorldPanel.updateEntityMatrix(tileMatrix);
     }
 
-    public void updateTerrain( List<List<Integer>> terrainMatrix) {
-        List<List<ViewTile>> tileMatrix = ViewTileMatrixEncoder.createTileMatrix(terrainMatrix);
+    public void updateTerrain( List<List<Integer>> intMatrix) {
+        List<List<ViewTile>> tileMatrix = ViewTileMatrixEncoder.createTerrainTileMatrix(intMatrix);
         this.gameWorldPanel.updateTerrainMatrix(tileMatrix);
     }
 

@@ -14,9 +14,8 @@ public final class TileMatrixDecoder {
      */
     private static ArrayList<Class<? extends ATile>> tileMap = new ArrayList<>();
     static {
-        tileMap.add(LandTile.class); // 1
-        tileMap.add(SeaTile.class); // 0
-        
+        tileMap.add(LandTile.class); // 0
+        tileMap.add(SeaTile.class); // 1
     }
 
     /**

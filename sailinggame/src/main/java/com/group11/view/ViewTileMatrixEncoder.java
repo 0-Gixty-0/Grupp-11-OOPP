@@ -2,7 +2,6 @@ package com.group11.view;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import java.awt.Dimension;
 import java.awt.Point;
 
@@ -10,21 +9,16 @@ public class ViewTileMatrixEncoder {
     
     private static int tileWidth;
     private static int tileHeight;
+    private static AViewTileFactory entityTileFactory = new EntityTileFactory();
+    private static AViewTileFactory terrainTileFactory = new TerrainTileFactory();
 
     private ViewTileMatrixEncoder() {
         throw new IllegalStateException("Utility class");
     }
 
-    private static ViewTile initializeTile(int id, int columnIndex, int rowIndex) {
-        Dimension dimension = new Dimension(tileWidth, tileHeight);
-        Point matrixPosition = new Point(rowIndex, columnIndex);
-        Point pixelPosition = new Point(columnIndex * tileWidth, rowIndex * tileHeight);
-        return ViewTileFactory.createTile(id, dimension, matrixPosition, pixelPosition);
-    }
-
-    protected static void setTileDimensions(int width, int height) {
-        tileWidth = width;
-        tileHeight = height;
+    protected static void setTileDimensions(int tileWidth, int tileHeight) {
+        ViewTileMatrixEncoder.tileWidth = tileWidth;
+        ViewTileMatrixEncoder.tileHeight = tileHeight;
     }
 
     protected static int getTileWidth() {
@@ -35,20 +29,23 @@ public class ViewTileMatrixEncoder {
         return tileHeight;
     }
 
-    protected static List<List<ViewTile>> createTileMatrix(List<List<Integer>> terrainMatrix) {
+    protected static List<List<ViewTile>> createEntityTileMatrix(List<List<Integer>> intMatrix) {
 
         List<List<ViewTile>> tileMatrix = new ArrayList<>();
 
-        for (int rowIndex = 0; rowIndex < terrainMatrix.size(); rowIndex++) {
+        for (int rowIndex = 0; rowIndex < intMatrix.size(); rowIndex++) {
 
-            List<Integer> terrainRow = terrainMatrix.get(rowIndex);
+            List<Integer> intRow = intMatrix.get(rowIndex);
 
             List<ViewTile> tileRow = new ArrayList<>();
 
-            for (int columnIndex = 0; columnIndex < terrainRow.size(); columnIndex++) {
+            for (int columnIndex = 0; columnIndex < intRow.size(); columnIndex++) {
                 try {
-                    int id = terrainRow.get(columnIndex);
-                    tileRow.add(initializeTile(id, columnIndex, rowIndex));
+                    int id = intRow.get(columnIndex);
+                    tileRow.add(entityTileFactory.createTile(id, 
+                                                            new Dimension(tileWidth,tileHeight),
+                                                            new Point(rowIndex * tileHeight, columnIndex * tileWidth),
+                                                            new Point(columnIndex * tileWidth, rowIndex * tileHeight)));
                 } catch (NullPointerException e) {
                     tileRow.add(null);
                 }
@@ -58,7 +55,35 @@ public class ViewTileMatrixEncoder {
         }
         
         return tileMatrix;
-    }   
+    }
+
+    protected static List<List<ViewTile>> createTerrainTileMatrix(List<List<Integer>> intMatrix) {
+
+        List<List<ViewTile>> tileMatrix = new ArrayList<>();
+
+        for (int rowIndex = 0; rowIndex < intMatrix.size(); rowIndex++) {
+
+            List<Integer> intRow = intMatrix.get(rowIndex);
+
+            List<ViewTile> tileRow = new ArrayList<>();
+
+            for (int columnIndex = 0; columnIndex < intRow.size(); columnIndex++) {
+                try {
+                int id = intRow.get(columnIndex);
+                tileRow.add(terrainTileFactory.createTile(id, 
+                                                            new Dimension(tileWidth,tileHeight),
+                                                            new Point(rowIndex * tileHeight, columnIndex * tileWidth),
+                                                            new Point(columnIndex * tileWidth, rowIndex * tileHeight)));
+                } catch (NullPointerException e) {
+                    tileRow.add(null);
+                }
+            }
+            
+            tileMatrix.add(tileRow);
+        }
+        
+        return tileMatrix;
+    }
 
 
 }
