@@ -3,7 +3,7 @@ package com.group11.controller;
 import java.util.Set;
 
 
-public class keyboardInterpretor{
+public class keyboardInterpretor extends AControllerInterpretor{
 
 
     public keyboardInterpretor(Set<Integer> inputSet){
@@ -50,6 +50,7 @@ public class keyboardInterpretor{
             /*Returns -1 if none of the inputs corresponds to a direction (-1) is not a valid direction */
             return -1;
         }
+
 
     }
 
