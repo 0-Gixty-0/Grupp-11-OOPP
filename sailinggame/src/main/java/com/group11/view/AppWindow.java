@@ -2,7 +2,6 @@ package com.group11.view;
 
 import javax.swing.*;
 
-
 import java.awt.*;
 import java.util.List;
 
@@ -15,12 +14,17 @@ public class AppWindow extends JFrame {
     private BufferPanel bufferPanel;
     private StatsPanel statsPanel;
     private GameWorldPanel gameWorldPanel;
+    private int mapHeight;
+    private int mapWidth;
 
     /**
      * Constructor creates a new GameWorld object, a new GameEntities object, and initializes the window
      */
-    public AppWindow(int windowWidth, int windowHeight) {
+    public AppWindow(int windowWidth, int windowHeight, int mapWidth, int mapHeight, int tileWidth, int tileHeight) {
         super();
+        this.mapHeight = mapHeight;
+        this.mapWidth = mapWidth;
+        ViewTileMatrixEncoder.setTileDimensions(tileWidth, tileHeight);
         this.setSize(windowWidth, windowHeight);
         this.setTitle("Sailing Game");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,7 +43,7 @@ public class AppWindow extends JFrame {
 
         this.add(statsPanel); //Adding a buffering pane to make sure the game world ends up in the center of the window
         
-        this.gameWorldPanel = new GameWorldPanel(60, 30);
+        this.gameWorldPanel = new GameWorldPanel(mapWidth, mapHeight);
 
         this.add(gameWorldPanel);
         
@@ -61,14 +65,12 @@ public class AppWindow extends JFrame {
     }
 
     public void updateEntities( List<List<Integer>> entityMatrix) {
-        EntityUtility.getInstance().updateTileMatrix(entityMatrix);
-        List<List<AViewTile>> tileMatrix = EntityUtility.getInstance().getTileMatrix();
+        List<List<ViewTile>> tileMatrix = ViewTileMatrixEncoder.createTileMatrix(entityMatrix);
         this.gameWorldPanel.updateEntityMatrix(tileMatrix);
     }
 
     public void updateTerrain( List<List<Integer>> terrainMatrix) {
-        TerrainUtility.getInstance().updateTileMatrix(terrainMatrix);
-        List<List<AViewTile>> tileMatrix = TerrainUtility.getInstance().getTileMatrix();
+        List<List<ViewTile>> tileMatrix = ViewTileMatrixEncoder.createTileMatrix(terrainMatrix);
         this.gameWorldPanel.updateTerrainMatrix(tileMatrix);
     }
 
