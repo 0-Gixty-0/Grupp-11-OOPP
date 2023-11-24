@@ -738,3 +738,21 @@ No specific design choices where made in this user story however, we did this so
 
 #### Tutorial
 This code does not require a tutorial since it is only for the developer
+
+---
+
+### US-60 Implement abstract class for ControllerInterpretor
+Date of completion: 24/11/2023
+Completed by: Alexander Muhr
+
+#### What
+As a developer i want to have an abstract class for controllerinterpretors that controllers will extend to make sure that all controllers that eventually may be added will have the same methods and returns for modularity.
+
+#### How
+An abstract class with a abstract method that describes converting input to directions as ints
+
+#### Why
+I did this so that other controllers than a keyboard can be more easily implemented
+
+#### Tutorial
+No tutorial needed for this user-story
