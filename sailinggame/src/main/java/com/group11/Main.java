@@ -4,54 +4,57 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.group11.controller.GlobalKeyListener;
+import com.group11.model.*;
 import com.group11.view.AppWindow;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 public class Main {
-    private static AppWindow appWindow;
+    private AppWindow appWindow;
+    private static final GlobalKeyListener keyboardController = new GlobalKeyListener();
+    private static int windowHeight;
+    private static int windowWidth;
+    private World world;
+    private CommandableEntity player;
 
-    /**
-     * Testing purposes. Will be removed later.
-     * @return Matrix of integers corresponding to entity texture id:s
-     */
-    private List<List<Integer>> initializeEntityTest() {
-        List<List<Integer>> testEntityMatrix = new ArrayList<>();
-        Random rand = new Random();
-        for (int i = 0; i < 30; i++) {
-            List<Integer> row = new ArrayList<>();
-            for (int k = 0; k < 60; k++) {
-                int num = rand.nextInt(40);
-                if (num > 0) {
-                    row.add(null);
-                } else {
-                    row.add(2);
-                }
-            }
-            testEntityMatrix.add(row);
-        }
-        return testEntityMatrix;
+    public Main(int windowWidth, int windowHeight) {
+        windowHeight = windowHeight;
+        windowWidth = windowWidth;
+        this.appWindow = new AppWindow(windowWidth, windowHeight);
+        this.world = this.createBasicWorld();
+        this.player = this.createBasicPlayer();
+        MovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
     }
 
-    /**
-     * Testing purposes. Will be removed later.
-     * @return Matrix of integers corresponding to terrain texture id:s
-     */
-    private List<List<Integer>> initializeTerrainTest() {
-        List<List<Integer>> testTerrainMatrix = new ArrayList<>();
-        Random rand = new Random();
-        for (int i = 0; i < 30; i++) {
-            List<Integer> row = new ArrayList<>();
-            for (int k = 0; k < 60; k++) {
-                row.add(rand.nextInt(2));
-            }
-            testTerrainMatrix.add(row);
-        }
-        return testTerrainMatrix;
+    private World createBasicWorld() {
+        IMapGenerator mapGenerator = new BasicMapGenerator();
+        IWorldGenerator worldGenerator = new BasicWorldGenerator(mapGenerator);
+        return worldGenerator.generateWorld(47);
     }
 
+    private CommandableEntity createBasicPlayer() {
+        AMovableBody ship = new Ship(new Point(3,3));
+        return new CommandableEntity(ship, "Player", true);
+    }
 
+    private void decodeController() {
+        Set<Integer> request = Main.keyboardController.getInput();
+        ArrayList<ArrayList<Integer>> validInputs = new ArrayList<>();
+        ArrayList<Integer> input = new ArrayList<>();
+        input.add(87);
+        validInputs.add(input);
 
-    public Main() {
-        appWindow = new AppWindow(1000, 800, 60, 30, 16, 16);
+        for (ArrayList<Integer> valInput : validInputs) {
+            if (request.containsAll(valInput)) {
+                this.player.moveCommand(0);
+                System.out.println("Moved up");
+                System.out.println(this.player.getPos());
+            }
+        }
     }
 
     /**
@@ -59,17 +62,14 @@ public class Main {
      */
     public void run() throws InterruptedException {
         appWindow.showGame();
-        
-        appWindow.updateTerrain(initializeTerrainTest());
         while (true) {
-            appWindow.updateEntities(initializeEntityTest());
-            Thread.sleep(500);
+            this.decodeController();
+            Thread.sleep(100);
         }
-        
     }
 
-    public static void main(String[] args) throws InterruptedException{
-        Main main = new Main();
+    public static void main(String[] args) throws InterruptedException {
+        Main main = new Main(800,800);
         main.run();
     }
 }
