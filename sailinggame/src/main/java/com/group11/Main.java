@@ -9,6 +9,7 @@ import com.group11.model.*;
 import com.group11.view.AppWindow;
 
 import java.awt.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -20,20 +21,39 @@ public class Main {
     private static int windowWidth;
     private World world;
     private CommandableEntity player;
+    private ArrayList<ArrayList<Integer>> playerMatrix;
 
     public Main(int windowWidth, int windowHeight) {
+
         windowHeight = windowHeight;
         windowWidth = windowWidth;
-        this.appWindow = new AppWindow(windowWidth, windowHeight);
+        this.appWindow = new AppWindow(windowHeight, windowHeight, 50, 50, 16, 16);
         this.world = this.createBasicWorld();
         this.player = this.createBasicPlayer();
         MovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
+        this.appWindow.updateTerrain(TileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix()));
     }
 
     private World createBasicWorld() {
         IMapGenerator mapGenerator = new BasicMapGenerator();
         IWorldGenerator worldGenerator = new BasicWorldGenerator(mapGenerator);
-        return worldGenerator.generateWorld(47);
+        return worldGenerator.generateWorld(50);
+    }
+
+    private List<List<Integer>> generatePlayerMatrix(int newPosX, int newPosY) {
+        List<List<Integer>> playerMatrix = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
+            ArrayList<Integer> row = new ArrayList<>();
+            for (int j = 0; j < 50; j++) {
+                if (i == newPosX && j == newPosY) {
+                    row.add(2);
+                } else {
+                    row.add(null);
+                }
+            }
+            playerMatrix.add(row);
+        }
+        return playerMatrix;
     }
 
     private CommandableEntity createBasicPlayer() {
@@ -43,18 +63,40 @@ public class Main {
 
     private void decodeController() {
         Set<Integer> request = Main.keyboardController.getInput();
-        ArrayList<ArrayList<Integer>> validInputs = new ArrayList<>();
-        ArrayList<Integer> input = new ArrayList<>();
-        input.add(87);
-        validInputs.add(input);
 
-        for (ArrayList<Integer> valInput : validInputs) {
-            if (request.containsAll(valInput)) {
-                this.player.moveCommand(0);
-                System.out.println("Moved up");
-                System.out.println(this.player.getPos());
-            }
+        if (request.contains(87)) {
+
+
+            this.player.moveCommand(0);
+            int newPosX = (int) this.player.getPos().getX();
+            int newPosY = (int) this.player.getPos().getY();
+            appWindow.updateEntities(generatePlayerMatrix( newPosX, newPosY));
         }
+        if (request.contains(68)) {
+            
+            
+            this.player.moveCommand(2);
+            int newPosX = (int) this.player.getPos().getX();
+            int newPosY = (int) this.player.getPos().getY();
+            appWindow.updateEntities(generatePlayerMatrix( newPosX, newPosY));
+        }
+        if (request.contains(65)) {
+            
+            
+            this.player.moveCommand(6);
+            int newPosX = (int) this.player.getPos().getX();
+            int newPosY = (int) this.player.getPos().getY();
+            appWindow.updateEntities(generatePlayerMatrix( newPosX, newPosY));
+        }
+        if (request.contains(83)) {
+            
+            
+            this.player.moveCommand(4);
+            int newPosX = (int) this.player.getPos().getX();
+            int newPosY = (int) this.player.getPos().getY();
+            appWindow.updateEntities(generatePlayerMatrix( newPosX, newPosY));
+        }
+        
     }
 
     /**

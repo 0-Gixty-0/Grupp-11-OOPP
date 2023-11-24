@@ -1,6 +1,7 @@
 package com.group11.model;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A very basic and crude MapGenerator implementation.
@@ -17,11 +18,11 @@ public class BasicMapGenerator implements IMapGenerator {
 
         Integer quarterSide = side/4;
 
-        ArrayList<ArrayList<ATile>> tileMatrix = new ArrayList<>();
+        List<List<ATile>> tileMatrix = new ArrayList<List<ATile>>();
 
         for (int i = 0; i < side; i++) {
             
-            ArrayList<ATile> tileRow = new ArrayList<ATile>(); //Create rows
+            List<ATile> tileRow = new ArrayList<ATile>(); //Create rows
 
             for (int k = 0; k < side; k++) { 
                 
