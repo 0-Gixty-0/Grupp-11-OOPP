@@ -514,7 +514,7 @@ No tutorial is required
 ---
 
 ### US-51: Implement Interface HasWeapon
-Date of completion: 21/11/2023
+Date of completion: 21/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to implement an interface for objects having weapons so that other classes can depend on abstractions and not implementations
@@ -578,7 +578,7 @@ The user will come in contact with this US during combat, when colliding with en
 ---
 
 ### US-52: Remove Dimensions Parameter From ABody Hierarchy
-Date completed: 22/11/2023
+Date completed: 22/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to remove the dimensions parameter from the ABody hierarchy because it is confusing and unnecessary to the MVP
@@ -601,7 +601,7 @@ This user story does not require a tutorial
 ---
 
 ### US-42: Create Default Constructor For Ship
-Date of completion: 22/11/2023
+Date of completion: 22/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want a default constructor for the ship class because it makes creating new objects of that type easier.
@@ -621,4 +621,103 @@ a quality of life improvement.
 
 #### Tutorial
 No specific tutorial is needed for this user story
+
+---
+
+### Tas-27: Implement basic controller module
+Date of completion: 23/11/2023
+Completed by: Alexander Muhr
+
+As a developer i want to implement a controller so that i can register keyboard inputs that can result in events in the game like moving etc.
+
+This is a necessary implementation for the mvp since it needs to exist to even play the game.
+
+#### What
+This user story is about creatig a controller that takes input from the keyboard while the game is running to be able to move etc.
+
+#### How
+Since we want to completely have a independent controller from model and view, I chose to implement a KeyListener as a form of observer that always listens to keyboard input while the application is running. The reasoning to why we are using a global listener and not a regular KeyListener is so that i doesnt have to be bound to a specific JFrame for example but exists independently. I chose to store the currently pressed keys in a hashset for easy lookups and to be able to pass it along from the model to the application.
+
+#### Why
+No specific tutorial other than that the update frequence can be changed by changing how long the thread sleeps.
+
+---
+
+### US-53: Refactor Entity Hierarchy
+Date completed: 23/22/2023  
+Completed by: Erik Andreasson  
+
+As a developer I want to redesign and refactor the Entity class hierarchy in order to reduce code duplication, dependencies on concrete implementations, and make the code more extendable  
+
+The reasoning behind this user story is best described in the issue #81. However, in summary the user story is about cleaning up the code and solving multiple issues we have identified in the current structure of the Entity hierarchy. Partly in order to create a better builder class.
+
+#### What
+Copied from issue #81:    
+Issue 1  
+There is some code duplication in the classes PlayableEntity and UnplayableEntity. Their implementation of the interface ICommandable is the exact same and I see no reason that this will change in the future since their only purpose is to pass a parameter based on some logic to the body of the entity to actually perform the command. Since it is the body that performs the command and therefore has it's own implementation their shouldn't be any difference in the implementation of actually passing this command to the body. I feel like this is reflected in the fact that I removed the IAICommandable interface when implementing UnplayableEntity since it had no difference to the normal Commandable. Both playable and unplayable entities are commandable!
+
+Issue 2  
+PlayableEntity and UnplayableEntity are dependent on HasWeapon which is unnecessary. If they both need the dependency then it should be their superclass that has that dependency instead.
+
+End quote //
+
+Essentially this user story wsa about refactoring the structure of the entity hierarchy to solve these issues.
+
+#### How
+To solve these issues I began by making the abstract class AMovableEntity non-abstract and renaming it to CommandableEntity.
+I then moved the duplicated methods in PlayableEntity and UnplayableEntity into this class as implementations of the
+interface ICommandable. I then removed the classes PlayableEntity, UnplayableEntity, LocationEntity. I also removed their test
+classes and created a new test class CommandableEntityTest which contains the largely duplicated test methods in the aforementioned
+classes along with a few new ones. I then fleshed out the override methods in CommandableEntity by depending on the interfaces
+IMovable, ICanInteract (newly created), and HasWeapon in order to check if the body connected to the entity is an instance of these
+interfaces in order to decide if the entity can pass the desired command down to the body.
+
+#### Why
+I found this structure to be the most fitting solution to the listed problems because it solves multiple issues at once and allows
+the code to be more extendable. It also better fits our methodology in the relationship between the Body classes and the Entity classes.
+By allowing the entity to check if it's body can perform the task we allow bodies to be implemented in multiple different ways based
+on their interfaces. I wanted to avoid a class explosion by having to add abstract classes for each case: can attack, move, interact.
+Can attack and interact but not move. Can move and interact but not attack. And so forth. Each time we want to make a concrete body
+we would have to extend these abstract classes and each time we want to add a new type of command we would have to add more abstract
+classes and rewrite existing ones over and over again. Essentially you would have n! abstract classes where n is the number of commands an entity can accept.
+This is not idea. Instead, when we create a concrete implementation we simply allow it to implement the command methods we want through
+the interfaces and then the CommandableEntity class handles all incoming command requests accordingly. 
+
+The central idea to the relationship between CommandableEntity and it's body is described in the following example:
+"Think of the ACommandableEntity as a brain that takes in commands. The brain processes the command and reasons if it's body can perform the task it's been issued. Then passes that task to it's body. For example the "brain" of a guard tower receives the move command. It decides that it can't move and rejects the command (Because of being type Immovable). However it receives the attack command and decides that it can attack (because guard tower implements HasWeapon) and passes it to the body. On the other hand the brain of a merchant ship without cannons would make the reverse decisions."  
+
+Another positive to this solution is that it makes writing a builder class to construct concepts such as a player and enemy
+much easier since they can be constructed according to any desired specification of a body and still use the same entity code.
+This is easier than creating concrete player and enemy classes which ultimately would have to do the same operations. Also, client
+code would have to depend on concrete implementations of player and enemy which violates the dependency inversion principle.
+
+The negative to this solution is that it partly sacrifices the single responsibility principle and the interface segregation principle
+by allowing bodies that do not need a move command access to the move command. However, it does not have to implement it since
+the interface is only forced by the interfaces. Regarding single responsibility once could reason that the class 
+CommandableEntity has only one responsibility and that is to handle incoming command requests and decide if it can be passed to the
+body or not. However, that may be viewed as somewhat of a stretch.
+
+#### Tutorial
+This user story does not require a tutorial since it is for the developer.
+
+---
+
+### US-59: Fix Directional Vectors In CommandableEntity Methods
+Date of completion: 23/11/2023
+Completed by: Erik Andreasson
+
+#### What
+This user story is a small bug fix where the directional vectors in the methods moveCommand and attackCommand had the wrong
+values. There was a problem where when we wanted to move the body down it instead moved up since (0,0) is top left of map
+and not bottom left of map.
+
+#### How
+I simply switched some values around and rewrote the tests to reflect the change
+
+#### Why
+No specific design choices were made in this user story
+
+#### Tutorial
+This user story does not require a tutorial
+
 
