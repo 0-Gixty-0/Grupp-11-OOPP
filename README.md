@@ -699,4 +699,25 @@ body or not. However, that may be viewed as somewhat of a stretch.
 
 #### Tutorial
 This user story does not require a tutorial since it is for the developer.
->>>>>>> 2af6013a274ac3dde6f3a6cd9ead3fb95583cd57
+
+---
+
+### US-59: Fix Directional Vectors In CommandableEntity Methods
+Date of completion: 23/11/2023
+Completed by: Erik Andreasson
+
+#### What
+This user story is a small bug fix where the directional vectors in the methods moveCommand and attackCommand had the wrong
+values. There was a problem where when we wanted to move the body down it instead moved up since (0,0) is top left of map
+and not bottom left of map.
+
+#### How
+I simply switched some values around and rewrote the tests to reflect the change
+
+#### Why
+No specific design choices were made in this user story
+
+#### Tutorial
+This user story does not require a tutorial
+
+
