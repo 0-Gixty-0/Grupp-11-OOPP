@@ -51,7 +51,7 @@ public class Main {
 
 
     public Main() {
-        appWindow = new AppWindow(1000, 800, 60, 30, 30, 30);
+        appWindow = new AppWindow(1000, 800, 60, 30, 16, 16);
     }
 
     /**
