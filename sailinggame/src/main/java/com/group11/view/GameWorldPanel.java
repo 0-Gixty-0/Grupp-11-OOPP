@@ -5,14 +5,10 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.List;
-import java.awt.Point;
-
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
 
-import com.group11.model.ATile;
 
 public class GameWorldPanel extends JPanel {
 
@@ -27,9 +23,9 @@ public class GameWorldPanel extends JPanel {
             this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         }
 
-        private void addTiles(List<List<AViewTile>> tileMatrix) {
-            for (List<AViewTile> tileRow : tileMatrix) {
-                for (AViewTile tile : tileRow) {
+        private void addTiles(List<List<ViewTile>> tileMatrix) {
+            for (List<ViewTile> tileRow : tileMatrix) {
+                for (ViewTile tile : tileRow) {
 
                     if (tile == null) {
                         JLabel opaqueLabel = new JLabel();
@@ -38,7 +34,7 @@ public class GameWorldPanel extends JPanel {
                         this.add(opaqueLabel);
                     }
                     else {
-                        this.add(tile.getComponent());
+                        this.add(tile);
                     }
                 }
             }
@@ -67,7 +63,7 @@ public class GameWorldPanel extends JPanel {
         this.add(terrainPanel);
     }
 
-    protected void updateTerrainMatrix(List<List<AViewTile>> terrainMatrix) {
+    protected void updateTerrainMatrix(List<List<ViewTile>> terrainMatrix) {
         this.terrainPanel.removeTilesFromPanel();
         this.terrainPanel.addTiles(terrainMatrix);
         this.revalidate();
@@ -75,7 +71,7 @@ public class GameWorldPanel extends JPanel {
         
     }
 
-    protected void updateEntityMatrix(List<List<AViewTile>> entityMatrix) {
+    protected void updateEntityMatrix(List<List<ViewTile>> entityMatrix) {
        
         this.entityPanel.removeTilesFromPanel();
         this.entityPanel.addTiles(entityMatrix);
