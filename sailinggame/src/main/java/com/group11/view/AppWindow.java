@@ -77,19 +77,17 @@ public class AppWindow extends JFrame {
 
     /**
      * Updates the entities on the map.
-     * @param intMatrix The matrix of integers representing the entities.
+     * @param intMatrix The matrix of ViewTiles representing the entities.
      */
-    public void updateEntities( List<List<Integer>> intMatrix) {
-        List<List<ViewTile>> tileMatrix = ViewTileMatrixEncoder.createEntityTileMatrix(intMatrix);
+    public void updateEntities(List<List<ViewTile>> tileMatrix) {
         this.gameWorldPanel.updateEntityPanel(tileMatrix);
     }
 
     /**
      * Updates the terrain on the map.
-     * @param intMatrix The matrix of integers representing the terrain.
+     * @param intMatrix The matrix of ViewTiles representing the terrain.
      */
-    public void updateTerrain( List<List<Integer>> intMatrix) {
-        List<List<ViewTile>> tileMatrix = ViewTileMatrixEncoder.createTerrainTileMatrix(intMatrix);
+    public void updateTerrain( List<List<ViewTile>> tileMatrix) {
         this.gameWorldPanel.updateTerrainPanel(tileMatrix);
     }
 

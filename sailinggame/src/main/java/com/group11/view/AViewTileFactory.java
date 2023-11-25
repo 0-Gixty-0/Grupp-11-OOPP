@@ -7,6 +7,7 @@ import java.awt.Point;
 import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 
 /**
@@ -14,8 +15,8 @@ import javax.swing.ImageIcon;
  */
 public abstract class AViewTileFactory {
 
-    private static int tileWidth;
-    private static int tileHeight;
+    private static int tileWidth = 16;
+    private static int tileHeight = 16;
     private static final int SCALE = 16; //The scale of the image, ex: 16 bit, 32 bit, 64 bit....
 
     /**
@@ -86,7 +87,9 @@ public abstract class AViewTileFactory {
         this.validateTextureId(id);
         Dimension dimension = new Dimension(tileWidth, tileHeight);
         ImageIcon imageIcon = createImageIcon(id, dimension.width, dimension.height);
-        return new ViewTile(imageIcon, dimension);
+        ViewTile viewTile = new ViewTile(imageIcon, dimension);
+        viewTile.setName(id.toString());
+        return viewTile;
     }
 
     /**
@@ -94,17 +97,17 @@ public abstract class AViewTileFactory {
      * @param id The terrain type id
      * @return Point object containing the matrix coordinate of the terrain type id
      */
-    abstract Point getTextureMatrixCoordinate(int id);
+    protected abstract Point getTextureMatrixCoordinate(int id);
 
     /**
      * The method validates that the terrain type id is in a valid range.
      * @param id The terrain type id
      */
-    abstract void validateTextureId(int id);
+    protected abstract void validateTextureId(int id);
 
     /**
      * The method returns the texture map file as an ImageIcon.
      * @return ImageIcon containing the texture map file
      */
-    abstract ImageIcon getImageIcon();
+    protected abstract ImageIcon getImageIcon();
 }

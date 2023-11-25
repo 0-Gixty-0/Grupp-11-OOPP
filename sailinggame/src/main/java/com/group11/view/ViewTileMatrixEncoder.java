@@ -21,7 +21,7 @@ public class ViewTileMatrixEncoder {
      * @param intMatrix The matrix of integers.
      * @return The matrix of ViewTiles.
      */
-    protected static List<List<ViewTile>> createEntityTileMatrix(List<List<Integer>> intMatrix) {
+    public static List<List<ViewTile>> createEntityTileMatrix(List<List<Integer>> intMatrix) {
         return createTileMatrix(intMatrix, 1); 
     }
 
@@ -30,7 +30,7 @@ public class ViewTileMatrixEncoder {
      * @param intMatrix The matrix of integers.
      * @return The matrix of ViewTiles.
      */
-    protected static List<List<ViewTile>> createTerrainTileMatrix(List<List<Integer>> intMatrix) {
+    public static List<List<ViewTile>> createTerrainTileMatrix(List<List<Integer>> intMatrix) {
         return createTileMatrix(intMatrix, 0);
     }
 
