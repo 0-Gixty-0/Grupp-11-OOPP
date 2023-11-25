@@ -699,4 +699,89 @@ body or not. However, that may be viewed as somewhat of a stretch.
 
 #### Tutorial
 This user story does not require a tutorial since it is for the developer.
->>>>>>> 2af6013a274ac3dde6f3a6cd9ead3fb95583cd57
+
+---
+
+### US-59: Fix Directional Vectors In CommandableEntity Methods
+Date of completion: 23/11/2023
+Completed by: Erik Andreasson
+
+#### What
+This user story is a small bug fix where the directional vectors in the methods moveCommand and attackCommand had the wrong
+values. There was a problem where when we wanted to move the body down it instead moved up since (0,0) is top left of map
+and not bottom left of map.
+
+#### How
+I simply switched some values around and rewrote the tests to reflect the change
+
+#### Why
+No specific design choices were made in this user story
+
+#### Tutorial
+This user story does not require a tutorial
+
+---
+
+### US-57: Extending keyboard-controller
+Date of completion: 24/11/2023
+Completed by: Alexander Muhr
+
+#### What
+As a developer i want to have a interpretor class for converting the keyboard input to directions
+
+#### How
+The code checks if a set contains all the ascii-code inputs for a given direction (like w is direction 0) and then returns that direction.
+It checks directions one by one starting with multiple key inputs to not miss them
+
+#### Why
+No specific design choices where made in this user story however, we did this so that the application does not get cluttered with code that interprets keyboard inputs.
+
+#### Tutorial
+This code does not require a tutorial since it is only for the developer
+
+---
+
+### US-60 Implement abstract class for ControllerInterpretor
+Date of completion: 24/11/2023
+Completed by: Alexander Muhr
+
+#### What
+As a developer i want to have an abstract class for controllerinterpretors that controllers will extend to make sure that all controllers that eventually may be added will have the same methods and returns for modularity.
+
+#### How
+An abstract class with a abstract method that describes converting input to directions as ints
+
+#### Why
+I did this so that other controllers than a keyboard can be more easily implemented
+
+#### Tutorial
+No tutorial needed for this user-story
+
+---
+
+### US-54 Refactoring and extendning the View
+Date of completion: 24/11/2023
+Completed by: William Norland
+
+#### What
+As a user i want a map that is centered in the game window and a static camera because i like the retro "Pokemon" feel it gives the game. I also want to render the entities in the game on top of rather than in the map since this is better for performance and it makes designing entities much easier. I added player stats to the game window so they can be displayed. I made ViewTiles into one class. I made components in view that acted as encapsulation for JComponents into actual JComponents.
+
+#### How
+
+I made Entities render on top of terrain by using JFrames and swing OverLayout objects. <br><br>
+
+I addes player stats as a JFrame with JLabels. <br><br>
+
+I made view components that encapsulated JComponents into JComponentes through inheritance. <br><br>
+
+I used the abstract factory pattern for my TileFactories <br><br>
+
+#### Why
+When i started this task i had a vision of having one single encoding logic (turning int matrixes into viewTile matrixes) for both entities and terrain. This turned to be a major dead end so i scratched that and went with the original way intended by the former View code owner (sorry for doubting you) and made separate logic (but with shared logic extracted) for getting the textures from the texture map. I still managed to fit them both in one utility class which is good since it makes the api easier to use for the client. <br><br>
+
+I remade tiles into one single class, the view does not depend on an abstraction like IDrawable for what it can draw since we decided it was a necessary boundary for the game to only be 2d tiles therefore making IDrawable unnecessary. You can still throw the whole view away and make it something else if you want since we have zero Model view dependencies. I removed Terrain and EntityTiles aswell since they have the exact same logic, the only diference is the actual texture. <br><br>
+
+I made ViewTileFactories to make instantiation of ViewTiles more readable and easier to use. <br><br>
+
+I made View components that encapsulated JComponents into JComponentes because its more readable to have them that way instead of having an object called ViewTile but make that object have an attribute which is the corresponding JComponent. <br><br>
+

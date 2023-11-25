@@ -1,6 +1,7 @@
 package com.group11.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A class for converting Matrix<Tile> in Map objects to Matrix<Int> which is a non model dependent medium.
@@ -13,8 +14,8 @@ public final class TileMatrixDecoder {
      */
     private static ArrayList<Class<? extends ATile>> tileMap = new ArrayList<>();
     static {
-        tileMap.add(SeaTile.class); // 0
-        tileMap.add(LandTile.class); // 1
+        tileMap.add(LandTile.class); // 0
+        tileMap.add(SeaTile.class); // 1
     }
 
     /**
@@ -41,9 +42,9 @@ public final class TileMatrixDecoder {
      * @param matrix A Matrix<Tile> (ArrayList of ArrayLists) you want to convert.
      * @return (Matrix<Integer>) representation of map in textureId's.
      */
-    public static ArrayList<ArrayList<Integer>> decodeIntoIntMatrix(ArrayList<ArrayList<ATile>> matrix) {
+    public static List<List<Integer>> decodeIntoIntMatrix(List<List<ATile>> matrix) {
         
-        ArrayList<ArrayList<Integer>> intMatrix = new ArrayList<ArrayList<Integer>>();
+        List<List<Integer>> intMatrix = new ArrayList<List<Integer>>();
 
         for (int row = 0; row < matrix.size(); row++) {
 

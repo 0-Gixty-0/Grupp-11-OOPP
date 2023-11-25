@@ -124,7 +124,7 @@ class Main {
     /**
      * Starts the game
      */
-    public void run() throws InterruptedException {
+    public void run() {
         appWindow.showGame();
         while (true) {
             this.decodeController();
@@ -132,7 +132,7 @@ class Main {
         }
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Main main = new Main(800,800);
         main.run();
     }
