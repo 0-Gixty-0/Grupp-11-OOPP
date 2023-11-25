@@ -11,7 +11,6 @@ import java.util.List;
  */
 public class AppWindow extends JFrame {
     
-    private BufferPanel bufferPanel;
     private StatsPanel statsPanel;
     private GameWorldPanel gameWorldPanel;
     private int mapHeight;
@@ -24,20 +23,20 @@ public class AppWindow extends JFrame {
         super();
         this.mapHeight = mapHeight;
         this.mapWidth = mapWidth;
-        ViewTileMatrixEncoder.setTileDimensions(tileWidth, tileHeight);
+        AViewTileFactory.setTileDimensions(tileWidth, tileHeight);
         this.setSize(windowWidth, windowHeight);
         this.setTitle("Sailing Game");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.getContentPane().setBackground(Color.GRAY);
         this.addComponents();
     }
 
     /**
-     * Initializes the mainFrame window.
+     * Adds the components to the window
      */
     private void addComponents() {
 
-        this.bufferPanel = new BufferPanel(1000, 6);
+        BufferPanel bufferPanel = new BufferPanel(1000, 6);
 
         this.statsPanel = new StatsPanel(1000, 6);
 
@@ -52,26 +51,46 @@ public class AppWindow extends JFrame {
         this.add(bufferPanel); //Adding a buffering pane to make sure the game world ends up in the center of the window
     }
 
-    public void updateHp() {
-        // @TODO set hp
+    /**
+     * Updates the hp label in the stats panel.
+     * @param newHp The new hp value.
+     */
+    public void updateHp(int newHp) {
+        statsPanel.setHpLabel(newHp);
     }
 
-    public void updateLvl() {
-        // @TODO set lvl
+    /**
+     * Updates the lvl label in the stats panel.
+     * @param newLvl The new lvl value.
+     */
+    public void updateLvl(int newLvl) {
+        statsPanel.setLvlLabel(newLvl);
     }
 
-    public void updateScore() {
-        // @TODO set score
+    /**
+     * Updates the score label in the stats panel.
+     * @param newScore The new score value.
+     */
+    public void updateScore(int newScore) {
+        statsPanel.setScoreLabel(newScore);
     }
 
+    /**
+     * Updates the entities on the map.
+     * @param intMatrix The matrix of integers representing the entities.
+     */
     public void updateEntities( List<List<Integer>> intMatrix) {
         List<List<ViewTile>> tileMatrix = ViewTileMatrixEncoder.createEntityTileMatrix(intMatrix);
-        this.gameWorldPanel.updateEntityMatrix(tileMatrix);
+        this.gameWorldPanel.updateEntityPanel(tileMatrix);
     }
 
+    /**
+     * Updates the terrain on the map.
+     * @param intMatrix The matrix of integers representing the terrain.
+     */
     public void updateTerrain( List<List<Integer>> intMatrix) {
         List<List<ViewTile>> tileMatrix = ViewTileMatrixEncoder.createTerrainTileMatrix(intMatrix);
-        this.gameWorldPanel.updateTerrainMatrix(tileMatrix);
+        this.gameWorldPanel.updateTerrainPanel(tileMatrix);
     }
 
     /**

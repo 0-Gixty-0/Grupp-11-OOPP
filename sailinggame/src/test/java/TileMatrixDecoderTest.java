@@ -18,8 +18,8 @@ public class TileMatrixDecoderTest {
         List<List<ATile>> tileMatrix = map.getTileMatrix();
         List<List<Integer>> gMap = TileMatrixDecoder.decodeIntoIntMatrix(tileMatrix);
         
-        assertEquals(0, (int) gMap.get(0).get(0));
-        assertEquals(1, (int) gMap.get(25).get(25));
+        assertEquals(1, (int) gMap.get(0).get(0));
+        assertEquals(0, (int) gMap.get(25).get(25));
     }
     
 }

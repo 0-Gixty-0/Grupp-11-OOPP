@@ -21,7 +21,7 @@ public class EntityTileFactory extends AViewTileFactory {
 
     @Override
     void validateTextureId(int id) {
-        if (id < 0 || id > ENTITYTEXTURES) {
+        if (id < -1 || id > ENTITYTEXTURES) { 
             throw new IllegalArgumentException("Invalid terrain ID for entity tile");
         }
     }
