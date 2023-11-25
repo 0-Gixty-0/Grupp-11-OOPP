@@ -1,5 +1,7 @@
 # SailingGame
-A 2d, openworld adventure game made in Java with Maven for the TDA367/DIT213 course at Chalemers University of Technology with focus on perfect MVC implementation, OOP principles and extendability.
+**Project Descripiton:** A 2d, openworld adventure game made in Java with Maven for the TDA367/DIT213 course at Chalemers University of Technology with focus on perfect MVC implementation, OOP principles and extendability.
+
+**Project Boundaries:** The boundaries set for this project is that its a game logically and visually based on 2d tiles, tiles are either entities (living things) or terrain (non living).
 
 **License:** Released under (Placeholder) License
 
@@ -18,7 +20,7 @@ Erik Andreasson ([@0-Gixty-0](https://github.com/0-Gixty-0)), <br>
 
 **Acknowledgements:** Thanks to Arthur for mentoring this project.
 
-## ❗ A note about Issues
+## ❗ A note about Issues ❗
 In the beginning of this project we followed another form of workflow for creating issues which we now deem as confusing and inefficient. Issues created during this time will have titles starting with
 TAS while new issues will have titles starting with US. Take a note of this while reading about issues in the project.
 
