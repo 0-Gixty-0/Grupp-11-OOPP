@@ -720,4 +720,39 @@ No specific design choices were made in this user story
 #### Tutorial
 This user story does not require a tutorial
 
+---
 
+### US-57: Extending keyboard-controller
+Date of completion: 24/11/2023
+Completed by: Alexander Muhr
+
+#### What
+As a developer i want to have a interpretor class for converting the keyboard input to directions
+
+#### How
+The code checks if a set contains all the ascii-code inputs for a given direction (like w is direction 0) and then returns that direction.
+It checks directions one by one starting with multiple key inputs to not miss them
+
+#### Why
+No specific design choices where made in this user story however, we did this so that the application does not get cluttered with code that interprets keyboard inputs.
+
+#### Tutorial
+This code does not require a tutorial since it is only for the developer
+
+---
+
+### US-60 Implement abstract class for ControllerInterpretor
+Date of completion: 24/11/2023
+Completed by: Alexander Muhr
+
+#### What
+As a developer i want to have an abstract class for controllerinterpretors that controllers will extend to make sure that all controllers that eventually may be added will have the same methods and returns for modularity.
+
+#### How
+An abstract class with a abstract method that describes converting input to directions as ints
+
+#### Why
+I did this so that other controllers than a keyboard can be more easily implemented
+
+#### Tutorial
+No tutorial needed for this user-story
