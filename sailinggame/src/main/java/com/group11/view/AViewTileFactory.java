@@ -8,6 +8,10 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
 
+
+/**
+ * The class is an abstract factory for creating ViewTile objects.
+ */
 public abstract class AViewTileFactory {
 
     /**
@@ -42,15 +46,36 @@ public abstract class AViewTileFactory {
         return new ImageIcon(bufferedImage);
     }
 
+    /**
+     * The method creates a ViewTile object based on the terrain type id, dimension, matrix position, and pixel position.
+     * @param id The terrain type id
+     * @param dimension The dimension of the tile
+     * @param matrixPosition The matrix position of the tile
+     * @param pixelPosition The pixel position of the tile
+     * @return ViewTile object
+     */
     ViewTile createTile(int id, Dimension dimension, Point matrixPosition, Point pixelPosition) {
         this.validateTextureId(id);
         ImageIcon imageIcon = createImageIcon(id, dimension.width, dimension.height, 16);
         return new ViewTile(imageIcon, dimension, matrixPosition, pixelPosition);
     }
 
+    /**
+     * The method returns the coordinates of the terrain type id in the texture map file.
+     * @param id The terrain type id
+     * @return Point object containing the matrix coordinate of the terrain type id
+     */
     abstract Point getTextureMatrixCoordinate(int id);
 
+    /**
+     * The method validates that the terrain type id is in a valid range.
+     * @param id The terrain type id
+     */
     abstract void validateTextureId(int id);
 
+    /**
+     * The method returns the texture map file as an ImageIcon.
+     * @return ImageIcon containing the texture map file
+     */
     abstract ImageIcon getImageIcon();
 }

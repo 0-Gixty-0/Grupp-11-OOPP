@@ -6,7 +6,10 @@ import javax.swing.ImageIcon;
 
 public class TerrainTileFactory extends AViewTileFactory {
     
-    static final int amountOfTerrainTypes = 2;
+    /**
+     * The amount of entity textures in the texture map. Calculated like TERRAINTEXTURES = (amount of textures in texture map) - 1
+     */
+    private static final int TERRAINTEXTURES = 1;
 
     @Override
     ViewTile createTile(int id, Dimension dimension, Point matrixPosition, Point pixelPosition) {
@@ -22,7 +25,7 @@ public class TerrainTileFactory extends AViewTileFactory {
 
     @Override
     void validateTextureId(int id) {
-        if (id < 0 || id > amountOfTerrainTypes) {
+        if (id < 0 || id > TERRAINTEXTURES) {
             throw new IllegalArgumentException("Invalid terrain ID for terrain tile");
         }
     }
