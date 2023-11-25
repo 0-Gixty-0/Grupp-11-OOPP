@@ -756,3 +756,32 @@ I did this so that other controllers than a keyboard can be more easily implemen
 
 #### Tutorial
 No tutorial needed for this user-story
+
+---
+
+### US-54 Refactoring and extendning the View
+Date of completion: 24/11/2023
+Completed by: William Norland
+
+#### What
+As a user i want a map that is centered in the game window and a static camera because i like the retro "Pokemon" feel it gives the game. I also want to render the entities in the game on top of rather than in the map since this is better for performance and it makes designing entities much easier. I added player stats to the game window so they can be displayed. I made ViewTiles into one class. I made components in view that acted as encapsulation for JComponents into actual JComponents.
+
+#### How
+
+I made Entities render on top of terrain by using JFrames and swing OverLayout objects. <br><br>
+
+I addes player stats as a JFrame with JLabels. <br><br>
+
+I made view components that encapsulated JComponents into JComponentes through inheritance. <br><br>
+
+I used the abstract factory pattern for my TileFactories <br><br>
+
+#### Why
+When i started this task i had a vision of having one single encoding logic (turning int matrixes into viewTile matrixes) for both entities and terrain. This turned to be a major dead end so i scratched that and went with the original way intended by the former View code owner (sorry for doubting you) and made separate logic (but with shared logic extracted) for getting the textures from the texture map. I still managed to fit them both in one utility class which is good since it makes the api easier to use for the client. <br><br>
+
+I remade tiles into one single class, the view does not depend on an abstraction like IDrawable for what it can draw since we decided it was a necessary boundary for the game to only be 2d tiles therefore making IDrawable unnecessary. You can still throw the whole view away and make it something else if you want since we have zero Model view dependencies. I removed Terrain and EntityTiles aswell since they have the exact same logic, the only diference is the actual texture. <br><br>
+
+I made ViewTileFactories to make instantiation of ViewTiles more readable and easier to use. <br><br>
+
+I made View components that encapsulated JComponents into JComponentes because its more readable to have them that way instead of having an object called ViewTile but make that object have an attribute which is the corresponding JComponent. <br><br>
+

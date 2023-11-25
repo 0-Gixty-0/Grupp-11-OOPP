@@ -1,7 +1,7 @@
 package com.group11.model;
 
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Map is a representation of a two dimensional physical map in the form of an object containing Matrixes.
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Map {
     
     private int area;
-    private ArrayList<ArrayList<ATile>> tileMatrix;
+    private List<List<ATile>> tileMatrix;
 
     /**
      * Creates a Map object out of a TileMatrix and a GraphicsMatrix, Constructor is package procted because
@@ -17,7 +17,7 @@ public class Map {
      * @param graphicMatrix a matrix of ints each representing a certain tile texture.
      * @param side the size of a side in a map, a map is always a square.
      */
-    protected Map(ArrayList<ArrayList<ATile>> tileMatrix, int side) {
+    protected Map(List<List<ATile>> tileMatrix, int side) {
         this.tileMatrix = tileMatrix;
         this.area = side*side;
     }
@@ -34,7 +34,7 @@ public class Map {
      *  A getter for the tileMatrix attribute of the Map object.
      *  @return (ArrayList<ArrayList<Tile>>) matrix of Tiles representing the map in the game logic.
      */
-    public ArrayList<ArrayList<ATile>> getTileMatrix() {
+    public List<List<ATile>> getTileMatrix() {
         return tileMatrix;
     }
 

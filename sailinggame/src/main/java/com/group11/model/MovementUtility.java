@@ -1,7 +1,7 @@
 package com.group11.model;
 
 import java.awt.Point;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Utility class for checking if a body is going to collide with another body.
@@ -12,7 +12,7 @@ public final class MovementUtility {
     /**
      * Matrix of ATiles to check for collision.
      */
-    private static ArrayList<ArrayList<ATile>> tileMatrix;
+    private static List<List<ATile>> tileMatrix;
 
     private MovementUtility() {
         throw new IllegalStateException("Utility class");
@@ -22,7 +22,7 @@ public final class MovementUtility {
      * Set the tileMatrix to be used for checking if movement is possible.
      * @param tileMatrix
      */
-    public static void setTileMatrix(ArrayList<ArrayList<ATile>> tileMatrix) {
+    public static void setTileMatrix(List<List<ATile>> tileMatrix) {
         MovementUtility.tileMatrix = tileMatrix;
     }
 
