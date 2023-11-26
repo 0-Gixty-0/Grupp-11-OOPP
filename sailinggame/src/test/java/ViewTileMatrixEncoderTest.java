@@ -3,11 +3,9 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JLabel;
-
 import org.junit.Test;
 
-import com.group11.view.ViewTile;
+import com.group11.view.AViewDrawable;
 import com.group11.view.ViewTileMatrixEncoder;
 
 public class ViewTileMatrixEncoderTest {
@@ -32,9 +30,9 @@ public class ViewTileMatrixEncoderTest {
     @Test
     public void testCreateEntityMatrix() {
         List<List<Integer>> playerIntMatrix = createIntMatrix(0, -1);
-        List<List<ViewTile>> playerTileMatrix = ViewTileMatrixEncoder.createEntityTileMatrix(playerIntMatrix);
-        JLabel playerTile = (JLabel) playerTileMatrix.get(0).get(0);
-        JLabel emptyTile = (JLabel) playerTileMatrix.get(1).get(1);
+        List<List<AViewDrawable>> playerTileMatrix = ViewTileMatrixEncoder.createEntityTileMatrix(playerIntMatrix);
+        AViewDrawable playerTile = playerTileMatrix.get(0).get(0);
+        AViewDrawable emptyTile = playerTileMatrix.get(1).get(1);
         assertEquals("0", playerTile.getName());
         assertEquals("-1", emptyTile.getName());
         
@@ -43,9 +41,9 @@ public class ViewTileMatrixEncoderTest {
     @Test
     public void testCreateTerrainMatrix() {
         List<List<Integer>> playerIntMatrix = createIntMatrix(0, 1);
-        List<List<ViewTile>> playerTileMatrix = ViewTileMatrixEncoder.createEntityTileMatrix(playerIntMatrix);
-        ViewTile landTile = playerTileMatrix.get(0).get(0);
-        ViewTile seaTile = playerTileMatrix.get(1).get(1);
+        List<List<AViewDrawable>> playerTileMatrix = ViewTileMatrixEncoder.createEntityTileMatrix(playerIntMatrix);
+        AViewDrawable landTile = playerTileMatrix.get(0).get(0);
+        AViewDrawable seaTile = playerTileMatrix.get(1).get(1);
         assertEquals("0", landTile.getName());
         assertEquals("1", seaTile.getName());
 

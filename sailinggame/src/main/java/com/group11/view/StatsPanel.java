@@ -5,6 +5,9 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 
+/**
+ * The class is a JPanel that is used as a buffer panel containing the stats of the player.
+ */
 public class StatsPanel extends BufferPanel {
     
     private JLabel scoreLabel;

@@ -9,8 +9,8 @@ import java.util.List;
  */
 public class ViewTileMatrixEncoder {
     
-    private static AViewTileFactory entityTileFactory = new EntityTileFactory();
-    private static AViewTileFactory terrainTileFactory = new TerrainTileFactory();
+    private static AViewDrawableFactory entityTileFactory = new EntityTileFactory();
+    private static AViewDrawableFactory terrainTileFactory = new TerrainTileFactory();
 
     private ViewTileMatrixEncoder() {
         throw new IllegalStateException("Utility class");
@@ -21,7 +21,7 @@ public class ViewTileMatrixEncoder {
      * @param intMatrix The matrix of integers.
      * @return The matrix of ViewTiles.
      */
-    public static List<List<ViewTile>> createEntityTileMatrix(List<List<Integer>> intMatrix) {
+    public static List<List<AViewDrawable>> createEntityTileMatrix(List<List<Integer>> intMatrix) {
         return createTileMatrix(intMatrix, 1); 
     }
 
@@ -30,32 +30,32 @@ public class ViewTileMatrixEncoder {
      * @param intMatrix The matrix of integers.
      * @return The matrix of ViewTiles.
      */
-    public static List<List<ViewTile>> createTerrainTileMatrix(List<List<Integer>> intMatrix) {
+    public static List<List<AViewDrawable>> createTerrainTileMatrix(List<List<Integer>> intMatrix) {
         return createTileMatrix(intMatrix, 0);
     }
 
     /**
-     * Add a entity ViewTile to a row of ViewTiles.
+     * Add an entity AViewDrawable to a row of AViewDrawables.
      * @param rowIndex The index of the row.
      * @param intRow The row of integers.
      * @param tileRow The row of ViewTiles.
      * @param columnIndex The index of the column.
      */
-    private static void addEntityTile(List<Integer> intRow, List<ViewTile> tileRow, int columnIndex) {
+    private static void addEntityTile(List<Integer> intRow, List<AViewDrawable> tileRow, int columnIndex) {
         int id = intRow.get(columnIndex);
-        tileRow.add(entityTileFactory.createTile(id));
+        tileRow.add(entityTileFactory.createDrawable(id));
     }
 
     /**
-     * Add a terrain ViewTile to a row of ViewTiles.
+     * Add a terrain AViewDrawable to a row of ViewDrawables.
      * @param rowIndex The index of the row.
      * @param intRow The row of integers.
      * @param tileRow The row of ViewTiles.
      * @param columnIndex The index of the column.
      */
-    private static void addTerrainTile(List<Integer> intRow, List<ViewTile> tileRow, int columnIndex) {
+    private static void addTerrainTile(List<Integer> intRow, List<AViewDrawable> tileRow, int columnIndex) {
         int id = intRow.get(columnIndex);
-        tileRow.add(terrainTileFactory.createTile(id));
+        tileRow.add(terrainTileFactory.createDrawable(id));
     }
 
     /**
@@ -64,15 +64,15 @@ public class ViewTileMatrixEncoder {
      * @param terrainOrEntity 0 for terrain, 1 for entity.
      * @return The matrix of ViewTiles.
      */
-    private static List<List<ViewTile>> createTileMatrix(List<List<Integer>> intMatrix, int terrainOrEntity) {
+    private static List<List<AViewDrawable>> createTileMatrix(List<List<Integer>> intMatrix, int terrainOrEntity) {
 
-        List<List<ViewTile>> tileMatrix = new ArrayList<>();
+        List<List<AViewDrawable>> tileMatrix = new ArrayList<>();
 
         for (int rowIndex = 0; rowIndex < intMatrix.size(); rowIndex++) {
 
             List<Integer> intRow = intMatrix.get(rowIndex);
 
-            List<ViewTile> tileRow = new ArrayList<>();
+            List<AViewDrawable> tileRow = new ArrayList<>();
 
             for (int columnIndex = 0; columnIndex < intRow.size(); columnIndex++) {
                 
