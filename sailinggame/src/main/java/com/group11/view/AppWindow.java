@@ -13,41 +13,23 @@ public class AppWindow extends JFrame {
     
     private StatsPanel statsPanel;
     private GameWorldPanel gameWorldPanel;
-    private int mapHeight;
-    private int mapWidth;
-
+    
     /**
      * Constructor creates a new GameWorld object, a new GameEntities object, and initializes the window
      */
     public AppWindow(int windowWidth, int windowHeight, int mapWidth, int mapHeight, int tileWidth, int tileHeight) {
         super();
-        this.mapHeight = mapHeight;
-        this.mapWidth = mapWidth;
         AViewTileFactory.setTileDimensions(tileWidth, tileHeight);
         this.setSize(windowWidth, windowHeight);
         this.setTitle("Sailing Game");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.getContentPane().setBackground(Color.GRAY);
-        this.addComponents();
-    }
-
-    /**
-     * Adds the components to the window
-     */
-    private void addComponents() {
-
         BufferPanel bufferPanel = new BufferPanel(1000, 6);
-
         this.statsPanel = new StatsPanel(1000, 6);
-
         this.add(statsPanel); //Adding a buffering pane to make sure the game world ends up in the center of the window
-        
-        this.gameWorldPanel = new GameWorldPanel(mapWidth, mapHeight);
-
+        this.gameWorldPanel = new GameWorldPanel(mapWidth * tileWidth, mapHeight * tileHeight);
         this.add(gameWorldPanel);
-        
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
-        
         this.add(bufferPanel); //Adding a buffering pane to make sure the game world ends up in the center of the window
     }
 

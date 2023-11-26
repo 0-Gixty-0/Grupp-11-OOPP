@@ -1,6 +1,5 @@
 package com.group11.view;
 
-import java.awt.Dimension;
 import java.awt.Point;
 
 import javax.swing.ImageIcon;
@@ -28,8 +27,9 @@ public class EntityTileFactory extends AViewTileFactory {
     }
 
     @Override
-    protected ImageIcon getImageIcon() {
+    protected ImageIcon getTextureMapImageIcon() {
         return (new ImageIcon("sailinggame\\src\\main\\resources\\player_ship.png"));
     }
+
     
 }

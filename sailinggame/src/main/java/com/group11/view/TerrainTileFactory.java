@@ -24,7 +24,7 @@ public class TerrainTileFactory extends AViewTileFactory {
     }
 
     @Override
-    protected ImageIcon getImageIcon() {
+    protected ImageIcon getTextureMapImageIcon() {
         return (new ImageIcon("sailinggame/src/main/resources/textureMapSailingGame.png"));
     }
 

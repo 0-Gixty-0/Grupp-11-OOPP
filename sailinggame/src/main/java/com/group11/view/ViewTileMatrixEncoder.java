@@ -9,8 +9,8 @@ import java.util.List;
  */
 public class ViewTileMatrixEncoder {
     
-    private static AViewTileFactory entityTileFactory = new EntityTileFactory();
-    private static AViewTileFactory terrainTileFactory = new TerrainTileFactory();
+    private static AViewDrawableFactory entityTileFactory = new EntityTileFactory();
+    private static AViewDrawableFactory terrainTileFactory = new TerrainTileFactory();
 
     private ViewTileMatrixEncoder() {
         throw new IllegalStateException("Utility class");
@@ -43,7 +43,7 @@ public class ViewTileMatrixEncoder {
      */
     private static void addEntityTile(List<Integer> intRow, List<AViewDrawable> tileRow, int columnIndex) {
         int id = intRow.get(columnIndex);
-        tileRow.add(entityTileFactory.createTile(id));
+        tileRow.add(entityTileFactory.createDrawable(id));
     }
 
     /**
@@ -55,7 +55,7 @@ public class ViewTileMatrixEncoder {
      */
     private static void addTerrainTile(List<Integer> intRow, List<AViewDrawable> tileRow, int columnIndex) {
         int id = intRow.get(columnIndex);
-        tileRow.add(terrainTileFactory.createTile(id));
+        tileRow.add(terrainTileFactory.createDrawable(id));
     }
 
     /**

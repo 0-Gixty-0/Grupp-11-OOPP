@@ -63,7 +63,7 @@ public class GameWorldPanel extends JPanel {
     protected GameWorldPanel(int width, int height) {
         super();
         this.setBackground(new Color(77,109,243));
-        this.setPreferredSize(new Dimension(width*AViewTileFactory.getTileWidth(), height*AViewTileFactory.getTileHeight()));
+        this.setPreferredSize(new Dimension(width, height));
         this.setLayout(new OverlayLayout(this));
         this.terrainPanel = new InnerPanel();
         this.entityPanel = new InnerPanel();
