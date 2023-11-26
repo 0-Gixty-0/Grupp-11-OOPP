@@ -1,3 +1,5 @@
+package modelTest;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
@@ -47,5 +49,4 @@ public class BodyCollisionUtilityTest {
         BodyCollisionUtility.setBodyMatrix(bodies);
        assertEquals(testBody, BodyCollisionUtility.isBodyColliding(testBody2));;
     }
-
 }

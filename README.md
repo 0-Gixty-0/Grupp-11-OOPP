@@ -669,7 +669,7 @@ Essentially this user story wsa about refactoring the structure of the entity hi
 To solve these issues I began by making the abstract class AMovableEntity non-abstract and renaming it to CommandableEntity.
 I then moved the duplicated methods in PlayableEntity and UnplayableEntity into this class as implementations of the
 interface ICommandable. I then removed the classes PlayableEntity, UnplayableEntity, LocationEntity. I also removed their test
-classes and created a new test class CommandableEntityTest which contains the largely duplicated test methods in the aforementioned
+classes and created a new test class modelTest.CommandableEntityTest which contains the largely duplicated test methods in the aforementioned
 classes along with a few new ones. I then fleshed out the override methods in CommandableEntity by depending on the interfaces
 IMovable, ICanInteract (newly created), and HasWeapon in order to check if the body connected to the entity is an instance of these
 interfaces in order to decide if the entity can pass the desired command down to the body.

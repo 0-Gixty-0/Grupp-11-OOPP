@@ -1,3 +1,5 @@
+package modelTest;
+
 import org.junit.Test;
 
 import com.group11.model.ATile;
@@ -21,5 +23,4 @@ public class MapTest {
         ATile tile = map.getTileMatrix().get(50).get(50);
         assertSame(LandTile.class, tile.getClass());
     }
-
 }

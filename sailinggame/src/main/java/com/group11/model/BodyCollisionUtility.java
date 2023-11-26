@@ -60,6 +60,5 @@ public final class BodyCollisionUtility {
         int y = (int) bodyPos.getY();
 
         return bodies.get(x).get(y);
-
     }
 }
