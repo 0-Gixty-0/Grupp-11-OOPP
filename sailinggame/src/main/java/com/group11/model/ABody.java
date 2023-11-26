@@ -1,7 +1,6 @@
 package com.group11.model;
 
-import java.awt.*;
-import java.util.ArrayList;
+import java.awt.Point;
 
 /**
  * Abstract class representing an abstract body. Implements the IDamageable interface
