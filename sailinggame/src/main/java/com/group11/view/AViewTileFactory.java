@@ -77,7 +77,7 @@ public abstract class AViewTileFactory {
 
     /**
      * The method creates a ViewTile object based on the terrain type id, dimension, matrix position, and pixel position.
-     * @param id The terrain type id
+     * @param id The texture id of the tile.
      * @param dimension The dimension of the tile
      * @param matrixPosition The matrix position of the tile
      * @return ViewTile object
