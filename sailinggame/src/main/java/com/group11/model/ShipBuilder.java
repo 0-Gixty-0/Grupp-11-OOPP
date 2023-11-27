@@ -9,7 +9,7 @@ public class ShipBuilder implements EntityBuilder {
     private String name = null;
     private Boolean friendly = null;
     private int shipLevel = 0;
-    private int armor = 0;
+    private double armor = 0;
     private int weapon = 0;
     private boolean sailIsUp = true;
     private boolean anchorDown = false;
@@ -63,6 +63,7 @@ public class ShipBuilder implements EntityBuilder {
     @Override
     public void setAttributesForLevel(int lvl) {
         this.setHp(lvl * ShipBuilder.hpScalingFactor * 15);
+        this.setArmor(lvl * ShipBuilder.armorScalingFactor * 4);
     }
 
     private void setFriendly(Boolean friendly) {
@@ -73,7 +74,7 @@ public class ShipBuilder implements EntityBuilder {
         this.shipLevel = shipLevel;
     }
 
-    private void setArmor(int armor) {
+    private void setArmor(double armor) {
         this.armor = armor;
     }
 
