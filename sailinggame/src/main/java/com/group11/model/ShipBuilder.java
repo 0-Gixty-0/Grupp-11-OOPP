@@ -17,12 +17,8 @@ public class ShipBuilder implements EntityBuilder {
     private double hp = 0;
 
     @Override
-    public void setBody(ABody body) {
-        if (body.equals(null)) {
-            this.body = new Ship(this.position);
-        } else {
-            this.body = new Ship(this.position, this.shipLevel, this.armor, this.weapon, this.hp);
-        }
+    public void setBody() {
+        this.body = new Ship(this.position, this.shipLevel, this.armor, this.weapon, this.hp);
     }
 
     @Override
@@ -64,10 +60,8 @@ public class ShipBuilder implements EntityBuilder {
     public void setAttributesForLevel(int lvl) {
         this.setHp(lvl * ShipBuilder.hpScalingFactor * 15);
         this.setArmor(lvl * ShipBuilder.armorScalingFactor * 4);
-    }
-
-    private void setFriendly(Boolean friendly) {
-        this.friendly = friendly;
+        this.setShipLevel(lvl);
+        this.setWeapon(lvl);
     }
 
     private void setShipLevel(int shipLevel) {
@@ -80,14 +74,6 @@ public class ShipBuilder implements EntityBuilder {
 
     private void setWeapon(int weapon) {
         this.weapon = weapon;
-    }
-
-    private void setSailIsUp(boolean sailIsUp) {
-        this.sailIsUp = sailIsUp;
-    }
-
-    private void setAnchorDown(boolean anchorDown) {
-        this.anchorDown = anchorDown;
     }
 
     private void setHp(double hp) {
