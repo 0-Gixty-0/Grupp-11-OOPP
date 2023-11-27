@@ -788,7 +788,7 @@ I made ViewTileFactories to make instantiation of ViewTiles more readable and ea
 I made View components that encapsulated JComponents into JComponentes because its more readable to have them that way instead of having an object called ViewTile but make that object have an attribute which is the corresponding JComponent. <br><br>
 
 ### US-63 Adding Abstractions to the View
-Date of completion: 24/11/2023
+Date of completion: 24/11/2023  
 Completed by: William Norland
 
 #### What
