@@ -21,7 +21,7 @@ public class Ship extends AMovableBody implements HasWeapon {
      * @param cannons    - the cannons of the ship
      * @param hitPoints the number of hitpoints of the ship
      */
-    public Ship(Point pos, int shipLevel, int armor, int cannons, int hitPoints){
+    public Ship(Point pos, int shipLevel, int armor, int cannons, double hitPoints){
         super(pos, hitPoints, "A basic ship");
         this.shipLevel   = shipLevel;
         this.armor       = armor;

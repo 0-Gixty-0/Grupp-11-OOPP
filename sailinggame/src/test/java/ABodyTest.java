@@ -14,7 +14,7 @@ public class ABodyTest {
     @Test
     public void testTakeDamage() {
         testShip.setHitPoints(100);
-        int testHitPoints = testShip.getHitPoints();
+        double testHitPoints = testShip.getHitPoints();
         assertEquals(testHitPoints, 100);
         testShip.takeDamage(75);
         testHitPoints = testShip.getHitPoints();
