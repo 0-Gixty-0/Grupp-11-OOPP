@@ -2,7 +2,11 @@ package com.group11.model;
 
 import java.awt.*;
 
-public class ShipBuilder implements EntityBuilder {
+/**
+ * Builder class representing creation methods and attributes for creating entities with the
+ * body being an object of type Ship
+ */
+public class ShipBuilder implements IEntityBuilder {
     private static double hpScalingFactor = 1.5;
     private static double armorScalingFactor = 1.5;
     private AMovableBody body = null;
@@ -56,6 +60,10 @@ public class ShipBuilder implements EntityBuilder {
         this.position = position;
     }
 
+    /**
+     * Sets the attributes of the builder based on level and scaling factor where applicable
+     * @param lvl The desired level or "difficulty" of the entity
+     */
     @Override
     public void setAttributesForLevel(int lvl) {
         this.setHp(lvl * ShipBuilder.hpScalingFactor * 15);
