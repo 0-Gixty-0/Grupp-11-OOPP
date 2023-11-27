@@ -7,7 +7,7 @@
 
 **Installation:** Any alpha release source code is available for compilation under the releases tab, the final release of the project has a downloadable runnable Jar file included.
 
-**Dependencies:** Junit 4.13.2 is used for testing in the source code, the runnable Jar only requires you to have a JRE (>= v.1.8).
+**Dependencies:** Junit 4.13.2 is used for testing in the source code, the runnable Jar only requires you to have a JRE (tested on version 8 but might work on other versions).
 
 **Documentation:** Indepth docs of all project features is available under the **Implemented features** tab of this README, JavaDoc for the project is available [here](placeholderlink).
 
