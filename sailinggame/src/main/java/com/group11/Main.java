@@ -8,6 +8,7 @@ import java.util.Set;
 
 import com.group11.controller.GlobalKeyListener;
 import com.group11.model.AMovableBody;
+import com.group11.model.AdvancedMapGenerator;
 import com.group11.model.BasicMapGenerator;
 import com.group11.model.BasicWorldGenerator;
 import com.group11.model.CommandableEntity;
@@ -41,7 +42,7 @@ class Main {
     }
 
     private World createBasicWorld() {
-        IMapGenerator mapGenerator = new BasicMapGenerator();
+        IMapGenerator mapGenerator = new AdvancedMapGenerator();
         IWorldGenerator worldGenerator = new BasicWorldGenerator(mapGenerator);
         return worldGenerator.generateWorld(50);
     }
