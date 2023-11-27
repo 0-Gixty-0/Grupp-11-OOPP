@@ -27,7 +27,7 @@ TAS while new issues will have titles starting with US. Take a note of this whil
 ## Ingame tutorial
 (Placeholder)
 
-## Implemented features
+## ⚙️ Implemented features ⚙️
 Following is a list of implemented features in the form of tasks, these tasks are represented by solved GitHub issues with the same name. To get a deeper look into how each task was implemented, check the issues.
 
 ### TAS-25: Implement Basic View Module
