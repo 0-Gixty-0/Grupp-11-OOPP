@@ -834,3 +834,25 @@ of an enemy in the game.
 
 #### Tutorial
 The player starts at level 1.
+
+---
+
+### US-68: Implement Method For Creating New Enemy Wave
+Date of completion: 28/11/2023
+Completed by: Erik Andreasson
+
+As a user I want there to be new enemies on each wave to make the game endlessly playable
+
+#### What
+This user story was about creating an algorithm for generating waves of enemies for use in the application and model code.
+
+#### How
+I played around with the idea quite a bit and tweaked settings until I found a result I was happy with. Added that enemy levels
+increase over time and number of enemies increases over time maxing out at 20. No particular design pattern was used in creating the method.
+
+#### Why
+This is a necessary feature to the mvp of the game. 
+
+#### Tutorial
+Enemies will spawn each wave with enemies starting at level 1. Each wave the number of enemies increases and so does their level.
+There will be a maximum of 20 enemies generated at once. Every third wave the lower limit of enemy level increases by one.
