@@ -787,3 +787,22 @@ I made ViewTileFactories to make instantiation of ViewTiles more readable and ea
 
 I made View components that encapsulated JComponents into JComponentes because its more readable to have them that way instead of having an object called ViewTile but make that object have an attribute which is the corresponding JComponent. <br><br>
 
+---
+
+### US-44 As a developer I want to know what to test and have efficient tests for it
+Date of completion: 28/11/2023
+Completed by: Noa Cavassi
+
+#### What
+As a developer I want to know which classes to test, which methods to test, and how to test them. I also want to have efficient tests for the classes and methods, and follow the workflow made as a guideline.
+
+While working on this US, I noticed that a lot of the JavaDoc was either incorrect of missing, so I added that as a subtask for this US.
+
+#### How
+
+I went through the whole test map to check if any test were missing or if any tests were unnecessary. I also went through a majority of the codebase to check if any JavaDoc was missing or incorrect.
+
+#### Why
+
+During the course of the project, a lot of code structure has been changed, which meant a lot of code also got changed. New classes added, old classes removed, and so on. This meant that a lot of the tests were either unnecessary or missing. I also noticed that a lot of the JavaDoc was missing or incorrect, which made it harder to understand the code.
+
