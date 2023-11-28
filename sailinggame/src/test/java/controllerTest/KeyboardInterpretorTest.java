@@ -1,3 +1,5 @@
+package controllerTest;
+
 import com.group11.controller.keyboardInterpretor;
 
 import static org.junit.Assert.assertEquals;

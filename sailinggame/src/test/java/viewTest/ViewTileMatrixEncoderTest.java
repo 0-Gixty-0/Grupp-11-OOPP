@@ -1,3 +1,5 @@
+package viewTest;
+
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
@@ -11,7 +13,6 @@ import com.group11.view.ViewTile;
 import com.group11.view.ViewTileMatrixEncoder;
 
 public class ViewTileMatrixEncoderTest {
-
 
     private List<List<Integer>> createIntMatrix(int tile1, int tile2) {
         List<List<Integer>> playerIntMatrix = new ArrayList<>(); // Spawning the player at (0,0)
@@ -48,7 +49,5 @@ public class ViewTileMatrixEncoderTest {
         ViewTile seaTile = playerTileMatrix.get(1).get(1);
         assertEquals("0", landTile.getName());
         assertEquals("1", seaTile.getName());
-
     }
-
 }
