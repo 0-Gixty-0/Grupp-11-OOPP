@@ -8,7 +8,7 @@ import java.awt.Point;
  */
 
 public abstract class ABody extends APositonable implements IDamageable {
-    private int hitPoints;
+    private double hitPoints;
     String description;
 
     /**
@@ -17,7 +17,7 @@ public abstract class ABody extends APositonable implements IDamageable {
      * @param pos       - the position of the body in the tilemap
      * @param hitPoints - the hitpoints of the body
      */
-    protected ABody(Point pos, int hitPoints, String description) {
+    protected ABody(Point pos, double hitPoints, String description) {
         super(pos);
         this.hitPoints  = hitPoints;
     }
@@ -35,7 +35,7 @@ public abstract class ABody extends APositonable implements IDamageable {
      * Returns the current hitpoints of the body
      * @return the current hitpoints of the body
      */
-    public int getHitPoints() {
+    public double getHitPoints() {
         return this.hitPoints;
     }
 

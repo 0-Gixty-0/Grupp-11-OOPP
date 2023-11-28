@@ -805,3 +805,32 @@ If we ever want to draw something other than tiles in our 2d view this will help
 
 #### Tutorial
 Irrelevant for this US
+
+---
+
+### US-67: Implement Entity Builder For Player And Enemy
+Date of completion: 28/11/2023
+Completed by: Erik Andreasson
+
+As a developer I want to be able to create the model representation of a player and an enemy more easily so that the code is easier to understand and use
+
+#### What
+This user story is about implementing the builder design pattern for creating a model representation of a player and an enemy.
+Therefore, creating an abstraction layer and an API into the entity hierarchy for external clients.
+
+#### How
+To implement this pattern I created an interface for general entity builders including three setters for each parameter of
+the entity constructor, method for resetting the builder, and methods for creating the entity and body. I then created
+a concrete builder class ShipBuilder which will create entities with a body of type Ship. This implements the entity builder
+interface and adds attributes and methods for setting the other parameters of the ship constructor. Finally, I created an
+entity director class which represents the interface for clients. It has methods for setting the active builder and creating
+the model representation of a player and an enemy by calling methods in the builder.
+
+#### Why
+I think that this design pattern is fitting because it solves the issue of long constructor calls to CommandableEntity and Ship. 
+It also cleans up the code considerably by allowing clients to call only one method to receive the desired product from the
+entity hierarchy instead of having to manually create a body and an entity each time the client wants to receive the representation
+of an enemy in the game.
+
+#### Tutorial
+The player starts at level 1.

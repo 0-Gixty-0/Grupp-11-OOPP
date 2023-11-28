@@ -8,7 +8,7 @@ import java.awt.Point;
 public class Ship extends AMovableBody implements HasWeapon {
 
     private int shipLevel;
-    private int armor;
+    private double armor;
     private int cannons;
     private boolean sailIsUp;
     private boolean anchorDown;
@@ -21,13 +21,13 @@ public class Ship extends AMovableBody implements HasWeapon {
      * @param cannons    - the cannons of the ship
      * @param hitPoints the number of hitpoints of the ship
      */
-    public Ship(Point pos, int shipLevel, int armor, int cannons, int hitPoints){
+    public Ship(Point pos, int shipLevel, double armor, int cannons, double hitPoints){
         super(pos, hitPoints, "A basic ship");
         this.shipLevel   = shipLevel;
         this.armor       = armor;
         this.cannons     = cannons;
-        this.sailIsUp  = false;
-        this.anchorDown = true;
+        this.sailIsUp  = true;
+        this.anchorDown = false;
     }
 
     /**
@@ -55,7 +55,7 @@ public class Ship extends AMovableBody implements HasWeapon {
      * Returns armor rating
      * @return armor rating
      */
-    public int getArmor() {
+    public double getArmor() {
         return this.armor;
     }
 
