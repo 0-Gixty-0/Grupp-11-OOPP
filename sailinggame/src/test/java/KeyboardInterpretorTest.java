@@ -61,4 +61,22 @@ public class KeyboardInterpretorTest {
 
         assertEquals(keyboardInterpretor.inputToDir(inputSet), 6);
     }
+    @Test
+    public void KeyAandWandDreturnsDir0(){
+        inputSet.add((int) 'a');
+        inputSet.add((int) 'w');
+        inputSet.add((int) 'd');
+
+        assertEquals(keyboardInterpretor.inputToDir(inputSet), 0);
+    }
+    @Test
+    public void KeyAandWandDandSreturnsDirneg1(){
+        inputSet.add((int) 'a');
+        inputSet.add((int) 'w');
+        inputSet.add((int) 'd');
+        inputSet.add((int) 's');
+
+        assertEquals(keyboardInterpretor.inputToDir(inputSet), -1);
+    }
+
 }
