@@ -32,7 +32,7 @@ public class ShipBuilder implements IEntityBuilder {
 
     @Override
     public void setFriendlyStatus(Boolean status) {
-        this.friendly = true;
+        this.friendly = status;
     }
 
     @Override

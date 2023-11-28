@@ -44,7 +44,7 @@ public class EntityDirector {
     public AEntity createEnemy(Point position, int lvl) {
         builder.reset();
         builder.setName(String.format("Enemy: lvl %d",lvl));
-        builder.setFriendlyStatus(true);
+        builder.setFriendlyStatus(false);
         builder.setPosition(position);
         builder.setAttributesForLevel(lvl);
         builder.setBody();

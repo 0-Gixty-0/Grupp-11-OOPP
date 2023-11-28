@@ -50,7 +50,7 @@ public abstract class AEntity {
      * 
      * @return (ABody) The body of the entity
      */
-    protected ABody getBody() {
+    public ABody getBody() {
         return body;
     }
 

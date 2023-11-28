@@ -26,8 +26,8 @@ public class Ship extends AMovableBody implements HasWeapon {
         this.shipLevel   = shipLevel;
         this.armor       = armor;
         this.cannons     = cannons;
-        this.sailIsUp  = false;
-        this.anchorDown = true;
+        this.sailIsUp  = true;
+        this.anchorDown = false;
     }
 
     /**
