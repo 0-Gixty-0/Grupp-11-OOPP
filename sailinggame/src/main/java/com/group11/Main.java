@@ -7,16 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.group11.controller.GlobalKeyListener;
-import com.group11.model.AMovableBody;
-import com.group11.model.BasicMapGenerator;
-import com.group11.model.BasicWorldGenerator;
-import com.group11.model.CommandableEntity;
-import com.group11.model.IMapGenerator;
-import com.group11.model.IWorldGenerator;
-import com.group11.model.MovementUtility;
-import com.group11.model.Ship;
-import com.group11.model.TileMatrixDecoder;
-import com.group11.model.World;
+import com.group11.model.*;
 import com.group11.view.AppWindow;
 import com.group11.view.ViewTileMatrixEncoder;
 
@@ -119,6 +110,18 @@ class Main {
             appWindow.updateEntities(ViewTileMatrixEncoder.createEntityTileMatrix(generatePlayerMatrix( newPosX, newPosY)));
         }
         
+    }
+
+    private ArrayList<CommandableEntity> createEnemyWave(int waveNumber) {
+        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        EntityDirector director = new EntityDirector(new ShipBuilder());
+        for (int i = 1; i <= waveNumber; i++) {
+            int numEnemies = 2 * i + (i > 1 ? 2 : 0);
+            for (int j = 0; j < numEnemies; j++) {
+                enemyList.add((CommandableEntity) director.createEnemy(new Point(i,j), (waveNumber - (waveNumber - i))));
+            }
+        }
+        return enemyList;
     }
 
     /**
