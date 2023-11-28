@@ -112,13 +112,30 @@ class Main {
         
     }
 
-    private ArrayList<CommandableEntity> createEnemyWave(int waveNumber) {
+    /**
+     * This algorithm creates a list of enemy entities based on the desired wave
+     * @param waveNumber The wave number for which to generate
+     * @return A list of enemies
+     */
+    public ArrayList<CommandableEntity> createEnemyWave(int waveNumber) {
         ArrayList<CommandableEntity> enemyList = new ArrayList<>();
         EntityDirector director = new EntityDirector(new ShipBuilder());
-        for (int i = 1; i <= waveNumber; i++) {
-            int numEnemies = 2 * i + (i > 1 ? 2 : 0);
+        // The lower limit for the enemy level increases by one every three waves
+        int enemyLevel = (int) (1 + Math.floor(waveNumber/3));
+        int maximumEnemies = 20;
+
+        // Decreasing order so that more low level enemies are created than high level ones
+        for (int i = waveNumber; i >= 0; i--) {
+            // The factor in which to increase the number of enemies per wave
+            int numEnemies = (int) Math.floor(1.2 * i);
+            // Checks so that the number of enemies does not exceed the maximum amount allowed
+            numEnemies = Math.min(numEnemies, maximumEnemies - enemyList.size());
             for (int j = 0; j < numEnemies; j++) {
-                enemyList.add((CommandableEntity) director.createEnemy(new Point(i,j), (waveNumber - (waveNumber - i))));
+                enemyList.add((CommandableEntity) director.createEnemy(new Point(i,j), enemyLevel));
+            }
+            enemyLevel++;
+            if (enemyList.size() >= maximumEnemies) {
+                break;
             }
         }
         return enemyList;
