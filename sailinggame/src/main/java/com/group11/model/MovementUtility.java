@@ -52,6 +52,5 @@ public final class MovementUtility {
         } catch (IndexOutOfBoundsException e) {
             return false; 
         }
-
     }
 }

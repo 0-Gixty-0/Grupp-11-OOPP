@@ -1,4 +1,5 @@
 package com.group11.model;
+
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ public class BasicMapGenerator implements IMapGenerator {
 
     @Override
     /*
-     Dont use this method if you are making a new World, 
+     Don't use this method if you are making a new World,
      use this if you want to generate a new map for an old world.
      Leaving this method public and not protected for that reason.
      */
@@ -26,7 +27,7 @@ public class BasicMapGenerator implements IMapGenerator {
 
             for (int k = 0; k < side; k++) { 
                 
-                //Creates a square of land in the middle of the matrix withe a quarterSide distance to the edge
+                //Creates a square of land in the middle of the matrix with a quarterSide distance to the edge
                 if ((k >= quarterSide) && (k <= side-quarterSide) && (i >= quarterSide) && (i <= side-quarterSide)) { //Add landtiles
                     tileRow.add(new LandTile(new Point(i,k))); //Should add landtile
                 }
@@ -34,13 +35,9 @@ public class BasicMapGenerator implements IMapGenerator {
                 else {
                     tileRow.add(new SeaTile(new Point(i, k))); //Should add seatile
                 }
-
             }
-
             tileMatrix.add(tileRow);
         }
-
         return new Map(tileMatrix, side);
     }
-    
 }
