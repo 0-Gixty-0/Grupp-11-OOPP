@@ -806,3 +806,28 @@ I went through the whole test map to check if any test were missing or if any te
 
 During the course of the project, a lot of code structure has been changed, which meant a lot of code also got changed. New classes added, old classes removed, and so on. This meant that a lot of the tests were either unnecessary or missing. I also noticed that a lot of the JavaDoc was missing or incorrect, which made it harder to understand the code.
 
+---
+
+### US-70: Implement Entity Matrix Generator Utility Class
+Date of completion: 29/11/2023
+Completed by: Erik Andreasson
+
+As a developer I want entities in the model to be represented in a matrix so that collision detection between entities is easier to implement.
+
+#### What
+This user story is about creating an entity matrix similar to that of the terrain matrix. 
+This is then used by the collision detection and the encoder for the view.
+
+#### How
+To implement this user story I created a utility class UEntityMatrixGenerator. It has two methods, one for creating
+a matrix of given width and height where all values are set to null, and one method for populating a given matrix.
+The populate method takes in a list of entities and places them into the matrix according to the position of their body.
+
+#### Why
+I split the code into two methods since entities can be added and replaced at different times in the game loop.
+I felt this was more practical than forcing clients to collect all of the entities to be placed into the matrix and
+then creating and populating in the method. This way clients can choose when entities are added and when a new entity matrix is needed
+it can create an empty one and discard the old one.
+
+#### Tutorial
+This user story does not require a tutorial.
