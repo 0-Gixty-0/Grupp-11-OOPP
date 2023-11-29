@@ -16,17 +16,17 @@ public class ABodyTest {
     @Test
     public void testTakeDamage() {
         testShip.takeDamage(10);
-        assertEquals(testShip.getHitPoints(), 90);
+        assertEquals(testShip.getHitPoints(), 90, 0);
     }
 
     @Test
     public void GetHitPoints() {
-        assertEquals(testShip.getHitPoints(), 100);
+        assertEquals(testShip.getHitPoints(), 100, 0);
     }
 
     @Test
     public void testSetDamage() {
         testShip.setHitPoints(20);
-        assertEquals(testShip.getHitPoints(), 20);
+        assertEquals(testShip.getHitPoints(), 20, 0);
     }
 }

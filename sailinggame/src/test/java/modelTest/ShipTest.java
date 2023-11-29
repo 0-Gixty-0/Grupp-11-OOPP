@@ -21,7 +21,7 @@ public class ShipTest {
 
     @Test
     public void testGetArmor() {
-        assertEquals(testShip.getArmor(), 0);
+        assertEquals(testShip.getArmor(), 0, 0);
     }
 
     @Test
