@@ -4,6 +4,8 @@ import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
 
+import com.group11.view.uiComponents.ViewTile;
+
 
 /**
  * The class is an abstract factory for creating ViewTile objects.
@@ -18,7 +20,7 @@ public abstract class AViewTileFactory extends AViewDrawableFactory {
      * @param tileWidth The width of the tiles.
      * @param tileHeight The height of the tiles.
      */
-    protected static void setTileDimensions(int tileWidth, int tileHeight) {
+    public static void setTileDimensions(int tileWidth, int tileHeight) {
         AViewTileFactory.tileWidth = tileWidth;
         AViewTileFactory.tileHeight = tileHeight;
     }

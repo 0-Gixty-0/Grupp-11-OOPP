@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.group11.view.AViewDrawable;
 import com.group11.view.ViewTileMatrixEncoder;
+import com.group11.view.uiComponents.AViewDrawable;
 
 public class ViewTileMatrixEncoderTest {
 

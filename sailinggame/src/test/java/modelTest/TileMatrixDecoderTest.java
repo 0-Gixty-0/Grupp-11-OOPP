@@ -6,10 +6,10 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.group11.model.ATile;
-import com.group11.model.BasicMapGenerator;
-import com.group11.model.Map;
-import com.group11.model.TileMatrixDecoder;
+import com.group11.model.gameWorld.ATile;
+import com.group11.model.gameWorld.BasicMapGenerator;
+import com.group11.model.gameWorld.Map;
+import com.group11.model.highLevelComponents.TileMatrixDecoder;
 
 public class TileMatrixDecoderTest {
 

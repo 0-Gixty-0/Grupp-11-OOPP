@@ -1,6 +1,11 @@
 package modelTest;
 
 import com.group11.model.*;
+import com.group11.model.buildersAndFactories.EntityDirector;
+import com.group11.model.buildersAndFactories.ShipBuilder;
+import com.group11.model.gameEntities.AEntity;
+import com.group11.model.gameEntities.Ship;
+
 import org.junit.Test;
 
 import java.awt.*;

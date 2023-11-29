@@ -8,8 +8,20 @@ import java.util.Set;
 
 import com.group11.controller.GlobalKeyListener;
 import com.group11.model.*;
-import com.group11.view.AppWindow;
+import com.group11.model.buildersAndFactories.EntityDirector;
+import com.group11.model.buildersAndFactories.ShipBuilder;
+import com.group11.model.gameEntities.AMovableBody;
+import com.group11.model.gameEntities.CommandableEntity;
+import com.group11.model.gameEntities.Ship;
+import com.group11.model.gameWorld.BasicMapGenerator;
+import com.group11.model.gameWorld.BasicWorldGenerator;
+import com.group11.model.gameWorld.IMapGenerator;
+import com.group11.model.gameWorld.IWorldGenerator;
+import com.group11.model.gameWorld.World;
+import com.group11.model.highLevelComponents.MovementUtility;
+import com.group11.model.highLevelComponents.TileMatrixDecoder;
 import com.group11.view.ViewTileMatrixEncoder;
+import com.group11.view.uiComponents.AppWindow;
 
 class Main {
     private AppWindow appWindow;

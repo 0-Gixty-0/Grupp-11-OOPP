@@ -3,6 +3,8 @@ package modelTest;
 import org.junit.Test;
 
 import com.group11.model.*;
+import com.group11.model.gameWorld.BasicMapGenerator;
+import com.group11.model.gameWorld.Map;
 
 import static org.junit.Assert.*;
 

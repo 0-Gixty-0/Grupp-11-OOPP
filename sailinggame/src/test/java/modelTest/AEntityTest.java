@@ -1,6 +1,9 @@
 package modelTest;
 
 import com.group11.model.*;
+import com.group11.model.gameEntities.CommandableEntity;
+import com.group11.model.gameEntities.Ship;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;

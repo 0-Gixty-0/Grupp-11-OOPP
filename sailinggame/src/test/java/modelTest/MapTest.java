@@ -2,10 +2,10 @@ package modelTest;
 
 import org.junit.Test;
 
-import com.group11.model.ATile;
-import com.group11.model.BasicMapGenerator;
-import com.group11.model.LandTile;
-import com.group11.model.Map;
+import com.group11.model.gameWorld.ATile;
+import com.group11.model.gameWorld.BasicMapGenerator;
+import com.group11.model.gameWorld.LandTile;
+import com.group11.model.gameWorld.Map;
 
 import static org.junit.Assert.*;
 

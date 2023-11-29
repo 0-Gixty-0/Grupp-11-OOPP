@@ -1,7 +1,9 @@
 package modelTest;
 
 import org.junit.Test;
-import com.group11.model.Ship;
+
+import com.group11.model.gameEntities.Ship;
+
 import static org.junit.Assert.*;
 import java.awt.*;
 
