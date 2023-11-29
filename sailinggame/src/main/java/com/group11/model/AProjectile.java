@@ -17,12 +17,24 @@ public abstract class AProjectile extends AMovableBody{
         this.direction = direction;
     }
 
-    public abstract void travel();
-
     public boolean isOutOfRange(AProjectile projectile) {
+
         if(projectile.distanceTraveled > projectile.maxRange) {
             return true;
         }
         return false;
     }
+
+    public void travel() {
+
+        if(isOutOfRange(this)){
+            // Delete instance
+        }
+        this.distanceTraveled++;
+
+        concreteTravel();
+    }
+
+    public abstract void concreteTravel();
+
 }

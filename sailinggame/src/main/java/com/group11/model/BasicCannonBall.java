@@ -5,14 +5,8 @@ public class BasicCannonBall extends AProjectile {
         super(0, 30, 10, new int[]{0, 0});
     }
 
-    public void travel() {
-
-        if(isOutOfRange(this)){
-            // Delete instance
-        }
-
-
-        this.distanceTraveled++;
+    @Override
+    public void concreteTravel() {
 
         this.move(this.getTruePos().x + this.direction[0], this.getTruePos().y + this.direction[1]);
     }
