@@ -7,17 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.group11.controller.GlobalKeyListener;
-import com.group11.model.AMovableBody;
-import com.group11.model.AdvancedMapGenerator;
-import com.group11.model.BasicMapGenerator;
-import com.group11.model.BasicWorldGenerator;
-import com.group11.model.CommandableEntity;
-import com.group11.model.IMapGenerator;
-import com.group11.model.IWorldGenerator;
-import com.group11.model.MovementUtility;
-import com.group11.model.Ship;
-import com.group11.model.TileMatrixDecoder;
-import com.group11.model.World;
+import com.group11.model.*;
 import com.group11.view.AppWindow;
 import com.group11.view.ViewTileMatrixEncoder;
 
@@ -120,6 +110,38 @@ class Main {
             appWindow.updateEntities(ViewTileMatrixEncoder.createEntityTileMatrix(generatePlayerMatrix( newPosX, newPosY)));
         }
         
+    }
+
+    /**
+     * This algorithm creates a list of enemy entities based on the desired wave
+     * @param waveNumber The wave number for which to generate
+     * @return A list of enemies
+     */
+    // TODO
+    // We should play around with this algorithm and tweak it for improvements. Or rewrite it if necessary.
+    // It is difficult to test in current state of development since nothing can use the information
+    public ArrayList<CommandableEntity> createEnemyWave(int waveNumber) {
+        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        EntityDirector director = new EntityDirector(new ShipBuilder());
+        // The lower limit for the enemy level increases by one every three waves
+        int enemyLevel = (int) (1 + Math.floor(waveNumber/3));
+        int maximumEnemies = 20;
+
+        // Decreasing order so that more low level enemies are created than high level ones
+        for (int i = waveNumber; i >= 0; i--) {
+            // The factor in which to increase the number of enemies per wave
+            int numEnemies = (int) Math.floor(1.2 * i);
+            // Checks so that the number of enemies does not exceed the maximum amount allowed
+            numEnemies = Math.min(numEnemies, maximumEnemies - enemyList.size());
+            for (int j = 0; j < numEnemies; j++) {
+                enemyList.add((CommandableEntity) director.createEnemy(new Point(i,j), enemyLevel));
+            }
+            enemyLevel++;
+            if (enemyList.size() >= maximumEnemies) {
+                break;
+            }
+        }
+        return enemyList;
     }
 
     /**

@@ -31,7 +31,7 @@ public class ShipTest {
     public void testDefaultConstructor() {
         Ship ship = new Ship(new Point(0,0));
         assertEquals(1, ship.getShipLevel());
-        assertEquals(2, ship.getArmor());
+        assertEquals(2.0, ship.getArmor(), 0);
         assertEquals(5, ship.getCannons());
         assertTrue(ship.getSailStatus());
         assertFalse(ship.getAnchorStatus());

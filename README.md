@@ -7,7 +7,7 @@
 
 **Installation:** Any alpha release source code is available for compilation under the releases tab, the final release of the project has a downloadable runnable Jar file included.
 
-**Dependencies:** Junit 4.13.2 is used for testing in the source code, the runnable Jar only requires you to have a JRE (>= v.1.8).
+**Dependencies:** Junit 4.13.2 is used for testing in the source code, the runnable Jar only requires you to have a JRE (tested on version 8 but might work on other versions).
 
 **Documentation:** Indepth docs of all project features is available under the **Implemented features** tab of this README, JavaDoc for the project is available [here](placeholderlink).
 
@@ -24,7 +24,10 @@ Erik Andreasson ([@0-Gixty-0](https://github.com/0-Gixty-0)), <br>
 In the beginning of this project we followed another form of workflow for creating issues which we now deem as confusing and inefficient. Issues created during this time will have titles starting with
 TAS while new issues will have titles starting with US. Take a note of this while reading about issues in the project.
 
-## Implemented features
+## Ingame tutorial
+(Placeholder)
+
+## ⚙️ Implemented features ⚙️
 Following is a list of implemented features in the form of tasks, these tasks are represented by solved GitHub issues with the same name. To get a deeper look into how each task was implemented, check the issues.
 
 ### TAS-25: Implement Basic View Module
@@ -788,7 +791,7 @@ I made ViewTileFactories to make instantiation of ViewTiles more readable and ea
 I made View components that encapsulated JComponents into JComponentes because its more readable to have them that way instead of having an object called ViewTile but make that object have an attribute which is the corresponding JComponent. <br><br>
 
 ### US-63 Adding Abstractions to the View
-Date of completion: 24/11/2023
+Date of completion: 24/11/2023  
 Completed by: William Norland
 
 #### What
@@ -802,3 +805,54 @@ If we ever want to draw something other than tiles in our 2d view this will help
 
 #### Tutorial
 Irrelevant for this US
+
+---
+
+### US-67: Implement Entity Builder For Player And Enemy
+Date of completion: 28/11/2023
+Completed by: Erik Andreasson
+
+As a developer I want to be able to create the model representation of a player and an enemy more easily so that the code is easier to understand and use
+
+#### What
+This user story is about implementing the builder design pattern for creating a model representation of a player and an enemy.
+Therefore, creating an abstraction layer and an API into the entity hierarchy for external clients.
+
+#### How
+To implement this pattern I created an interface for general entity builders including three setters for each parameter of
+the entity constructor, method for resetting the builder, and methods for creating the entity and body. I then created
+a concrete builder class ShipBuilder which will create entities with a body of type Ship. This implements the entity builder
+interface and adds attributes and methods for setting the other parameters of the ship constructor. Finally, I created an
+entity director class which represents the interface for clients. It has methods for setting the active builder and creating
+the model representation of a player and an enemy by calling methods in the builder.
+
+#### Why
+I think that this design pattern is fitting because it solves the issue of long constructor calls to CommandableEntity and Ship. 
+It also cleans up the code considerably by allowing clients to call only one method to receive the desired product from the
+entity hierarchy instead of having to manually create a body and an entity each time the client wants to receive the representation
+of an enemy in the game.
+
+#### Tutorial
+The player starts at level 1.
+
+---
+
+### US-68: Implement Method For Creating New Enemy Wave
+Date of completion: 28/11/2023
+Completed by: Erik Andreasson
+
+As a user I want there to be new enemies on each wave to make the game endlessly playable
+
+#### What
+This user story was about creating an algorithm for generating waves of enemies for use in the application and model code.
+
+#### How
+I played around with the idea quite a bit and tweaked settings until I found a result I was happy with. Added that enemy levels
+increase over time and number of enemies increases over time maxing out at 20. No particular design pattern was used in creating the method.
+
+#### Why
+This is a necessary feature to the mvp of the game. 
+
+#### Tutorial
+Enemies will spawn each wave with enemies starting at level 1. Each wave the number of enemies increases and so does their level.
+There will be a maximum of 20 enemies generated at once. Every third wave the lower limit of enemy level increases by one.

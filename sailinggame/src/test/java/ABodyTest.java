@@ -14,11 +14,11 @@ public class ABodyTest {
     @Test
     public void testTakeDamage() {
         testShip.setHitPoints(100);
-        int testHitPoints = testShip.getHitPoints();
-        assertEquals(testHitPoints, 100);
+        double testHitPoints = testShip.getHitPoints();
+        assertEquals(testHitPoints, 100.0, 0);
         testShip.takeDamage(75);
         testHitPoints = testShip.getHitPoints();
-        assertEquals(testHitPoints, 25);
+        assertEquals(testHitPoints, 25.0, 0);
     }
 
     @Test
