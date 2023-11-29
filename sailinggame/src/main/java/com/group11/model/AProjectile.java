@@ -18,4 +18,11 @@ public abstract class AProjectile extends AMovableBody{
     }
 
     public abstract void travel();
+
+    public boolean isOutOfRange(AProjectile projectile) {
+        if(projectile.distanceTraveled > projectile.maxRange) {
+            return true;
+        }
+        return false;
+    }
 }

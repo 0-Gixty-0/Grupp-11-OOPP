@@ -7,9 +7,10 @@ public class BasicCannonBall extends AProjectile {
 
     public void travel() {
 
-        if(this.distanceTraveled == this.maxRange){
-            // Delete
+        if(isOutOfRange(this)){
+            // Delete instance
         }
+
 
         this.distanceTraveled++;
 
