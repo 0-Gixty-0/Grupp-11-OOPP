@@ -32,7 +32,7 @@ class Main {
     }
 
     private World createBasicWorld() {
-        IMapGenerator mapGenerator = new AdvancedMapGenerator();
+        IMapGenerator mapGenerator = new BasicMapGenerator();
         IWorldGenerator worldGenerator = new BasicWorldGenerator(mapGenerator);
         return worldGenerator.generateWorld(50);
     }
