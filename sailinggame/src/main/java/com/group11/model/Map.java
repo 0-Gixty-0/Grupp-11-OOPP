@@ -1,10 +1,9 @@
 package com.group11.model;
 
-
 import java.util.List;
 
 /**
- * Map is a representation of a two dimensional physical map in the form of an object containing Matrixes.
+ * Map is a representation of a two-dimensional physical map in the form of an object containing Matrix's.
  */
 public class Map {
     
@@ -12,9 +11,9 @@ public class Map {
     private List<List<ATile>> tileMatrix;
 
     /**
-     * Creates a Map object out of a TileMatrix and a GraphicsMatrix, Constructor is package procted because
+     * Creates a Map object out of a TileMatrix and a GraphicsMatrix, Constructor is package projected because
      * Maps should be created by map generator.
-     * @param graphicMatrix a matrix of ints each representing a certain tile texture.
+     *
      * @param side the size of a side in a map, a map is always a square.
      */
     protected Map(List<List<ATile>> tileMatrix, int side) {
@@ -37,5 +36,4 @@ public class Map {
     public List<List<ATile>> getTileMatrix() {
         return tileMatrix;
     }
-
 }
