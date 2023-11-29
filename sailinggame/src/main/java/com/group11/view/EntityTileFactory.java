@@ -28,12 +28,12 @@ public class EntityTileFactory extends AViewTileFactory {
 
 
     protected ImageIcon getImageIcon() {
-        return (new ImageIcon("sailinggame\\src\\main\\resources\\player_ship.png"));
+        return (new ImageIcon("sailinggame/src/main/resources/player_ship.png"));
     }
 
     @Override
     protected ImageIcon getTextureMapImageIcon() {
-        return null;
-    };
+        return (new ImageIcon("sailinggame/src/main/resources/player_ship.png"));
+    }
 
 }
