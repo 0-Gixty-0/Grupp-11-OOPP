@@ -2,7 +2,7 @@ package com.group11.model;
 
 import java.awt.Point;
 /**
-* This class is used as an concrete implementation for the tile object as a land tile, extending the abstract class ATile.
+* This class is used as a concrete implementation for the tile object as a land tile, extending the abstract class ATile.
 */
 public class LandTile extends ATile {
 
@@ -13,5 +13,4 @@ public class LandTile extends ATile {
     protected LandTile(Point pos) {
         super(1, pos, false);
     }
-
 }

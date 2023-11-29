@@ -2,7 +2,6 @@ package com.group11.model;
 
 import java.awt.Point;
 
-
 /**
  * A movable entity is a subset of entities that can move around the gameworld
  */
@@ -12,7 +11,7 @@ public class CommandableEntity extends AEntity implements ICommandable {
      * Used to create a commandable entity
      * @param body The body it should use
      * @param name The entity's name
-     * @param friendly A single factor which assigns the life long allegience of the entity
+     * @param friendly A single factor which assigns the lifelong allegiance of the entity
      */
     public CommandableEntity(AMovableBody body, String name, Boolean friendly) {
         super(body, name, friendly);
@@ -42,7 +41,7 @@ public class CommandableEntity extends AEntity implements ICommandable {
     }
 
     /**
-     * Issue a move command to a entity in 8 difference directions using these integers as arguments:
+     * Issue a move command to an entity in 8 difference directions using these integers as arguments:
      * 0 moves straight up,
      * 1 moves at a right angle up,
      * 2 moves straight right,
