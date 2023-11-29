@@ -26,8 +26,14 @@ public class EntityTileFactory extends AViewTileFactory {
         }
     }
 
-    @Override
+
     protected ImageIcon getImageIcon() {
         return (new ImageIcon("sailinggame\\src\\main\\resources\\player_ship.png"));
     }
+
+    @Override
+    protected ImageIcon getTextureMapImageIcon() {
+        return null;
+    };
+
 }
