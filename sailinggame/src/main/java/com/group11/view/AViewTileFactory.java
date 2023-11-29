@@ -4,7 +4,7 @@ import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
 
-import com.group11.view.uiComponents.ViewTile;
+import com.group11.view.ui_components.ViewTile;
 
 
 /**

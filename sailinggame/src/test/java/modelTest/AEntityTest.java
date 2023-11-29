@@ -1,8 +1,8 @@
 package modelTest;
 
 import com.group11.model.*;
-import com.group11.model.gameEntities.CommandableEntity;
-import com.group11.model.gameEntities.Ship;
+import com.group11.model.game_entites.CommandableEntity;
+import com.group11.model.game_entites.Ship;
 
 import org.junit.Test;
 

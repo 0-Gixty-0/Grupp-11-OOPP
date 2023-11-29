@@ -8,20 +8,20 @@ import java.util.Set;
 
 import com.group11.controller.GlobalKeyListener;
 import com.group11.model.*;
-import com.group11.model.buildersAndFactories.EntityDirector;
-import com.group11.model.buildersAndFactories.ShipBuilder;
-import com.group11.model.gameEntities.AMovableBody;
-import com.group11.model.gameEntities.CommandableEntity;
-import com.group11.model.gameEntities.Ship;
-import com.group11.model.gameWorld.BasicMapGenerator;
-import com.group11.model.gameWorld.BasicWorldGenerator;
-import com.group11.model.gameWorld.IMapGenerator;
-import com.group11.model.gameWorld.IWorldGenerator;
-import com.group11.model.gameWorld.World;
-import com.group11.model.highLevelComponents.MovementUtility;
-import com.group11.model.highLevelComponents.TileMatrixDecoder;
+import com.group11.model.builders_and_factories.EntityDirector;
+import com.group11.model.builders_and_factories.ShipBuilder;
+import com.group11.model.game_entites.AMovableBody;
+import com.group11.model.game_entites.CommandableEntity;
+import com.group11.model.game_entites.Ship;
+import com.group11.model.game_world.BasicMapGenerator;
+import com.group11.model.game_world.BasicWorldGenerator;
+import com.group11.model.game_world.IMapGenerator;
+import com.group11.model.game_world.IWorldGenerator;
+import com.group11.model.game_world.World;
+import com.group11.model.high_level_components.MovementUtility;
+import com.group11.model.high_level_components.TileMatrixDecoder;
 import com.group11.view.ViewTileMatrixEncoder;
-import com.group11.view.uiComponents.AppWindow;
+import com.group11.view.ui_components.AppWindow;
 
 class Main {
     private AppWindow appWindow;

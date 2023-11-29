@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
 
-import com.group11.view.uiComponents.AViewDrawable;
+import com.group11.view.ui_components.AViewDrawable;
 
 /**
  * The highest level of abstraction for creating ViewDrawable objects.

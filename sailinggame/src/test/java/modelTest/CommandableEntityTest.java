@@ -1,11 +1,11 @@
 package modelTest;
 
 import com.group11.model.*;
-import com.group11.model.gameEntities.CommandableEntity;
-import com.group11.model.gameEntities.Ship;
-import com.group11.model.gameWorld.BasicMapGenerator;
-import com.group11.model.gameWorld.Map;
-import com.group11.model.highLevelComponents.MovementUtility;
+import com.group11.model.game_entites.CommandableEntity;
+import com.group11.model.game_entites.Ship;
+import com.group11.model.game_world.BasicMapGenerator;
+import com.group11.model.game_world.Map;
+import com.group11.model.high_level_components.MovementUtility;
 
 import org.junit.Test;
 

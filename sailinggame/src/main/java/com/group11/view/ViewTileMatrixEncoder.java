@@ -3,7 +3,7 @@ package com.group11.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.group11.view.uiComponents.AViewDrawable;
+import com.group11.view.ui_components.AViewDrawable;
 
 /**
  * A static utility class that creates a matrix of ViewTiles from a matrix of integers. 

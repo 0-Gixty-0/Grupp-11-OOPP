@@ -1,9 +1,9 @@
 package modelTest;
 
-import com.group11.model.buildersAndFactories.EntityDirector;
-import com.group11.model.buildersAndFactories.ShipBuilder;
-import com.group11.model.gameEntities.AEntity;
-import com.group11.model.highLevelComponents.UEntityMatrixGenerator;
+import com.group11.model.builders_and_factories.EntityDirector;
+import com.group11.model.builders_and_factories.ShipBuilder;
+import com.group11.model.game_entites.AEntity;
+import com.group11.model.high_level_components.UEntityMatrixGenerator;
 
 import org.junit.Test;
 
