@@ -6,7 +6,7 @@ import com.group11.model.*;
 
 import static org.junit.Assert.*;
 
-public class BasicMapGeneratorTest {
+public class AdvancedMapGeneratorTest {
 
     /**
      * Test the generateMap method of the BasicMapGenerator class.
@@ -15,7 +15,7 @@ public class BasicMapGeneratorTest {
     @Test
     public void testGenerateMap() {
         // Create an instance of BasicMapGenerator
-        BasicMapGenerator testMapGenerator = new BasicMapGenerator();
+        AdvancedMapGenerator testMapGenerator = new AdvancedMapGenerator();
 
         // Generate a map with a side length of 10
         Map generatedMap = testMapGenerator.generateMap(10);
