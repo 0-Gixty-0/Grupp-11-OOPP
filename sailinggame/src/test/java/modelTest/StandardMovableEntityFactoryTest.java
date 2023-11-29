@@ -2,7 +2,6 @@ package modelTest;
 
 import com.group11.model.AEntity;
 import com.group11.model.IMovableEntityFactory;
-import com.group11.model.StandardMovableEntityFactory;
 import org.junit.Test;
 
 import java.awt.*;
