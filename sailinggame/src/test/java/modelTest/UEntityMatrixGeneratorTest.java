@@ -1,4 +1,4 @@
-package modelTest;
+package modeltest;
 
 import static junit.framework.TestCase.assertEquals;
 
