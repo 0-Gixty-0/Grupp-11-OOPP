@@ -14,8 +14,7 @@ public abstract class APositonable {
 
     /**
      * Constructor for the abstract class APositionable
-     * @param textureId - Integer for the texture ID for tiles and entities
-     * @param pos - The position of a tile or entity as a Java Point 
+     * @param pos - The position of a tile or entity as a Java Point
      */
     protected APositonable(Point pos){
         this.pos = pos;

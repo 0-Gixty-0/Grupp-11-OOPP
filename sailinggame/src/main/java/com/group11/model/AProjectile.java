@@ -17,22 +17,34 @@ public abstract class AProjectile extends AMovableBody{
         this.direction = direction;
     }
 
-    public boolean isOutOfRange(AProjectile projectile) {
+    public boolean isOutOfRange() {
 
-        if(projectile.distanceTraveled > projectile.maxRange) {
+        if(this.distanceTraveled > this.maxRange) {
             return true;
         }
         return false;
     }
 
+    public int getDistanceTraveled() {
+        return this.distanceTraveled;
+    }
+
     public void travel() {
 
-        if(isOutOfRange(this)){
+        if(isOutOfRange()){
             // Delete instance
         }
         this.distanceTraveled++;
 
         concreteTravel();
+    }
+
+    public int[] getDirection() {
+        return this.direction;
+    }
+
+    public void setDirection(int[] direction) {
+        this.direction = direction;
     }
 
     public abstract void concreteTravel();
