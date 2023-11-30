@@ -1,10 +1,10 @@
-package modelTest;
+package modeltest;
 
 import com.group11.model.*;
+import com.group11.model.gameentites.AProjectile;;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-
 
 public class AProjectileTest {
 

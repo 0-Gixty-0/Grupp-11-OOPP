@@ -1,4 +1,4 @@
-package com.group11.model;
+package com.group11.model.gameentites;
 
 import java.awt.*;
 

@@ -1,5 +1,7 @@
 package com.group11.model;
 
+import com.group11.model.gameentites.AProjectile;
+
 public class BasicCannon implements IWeapon{
     AProjectile projectile;
 
