@@ -1,8 +1,13 @@
-package modelTest;
+package modeltest;
+
+import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
-import com.group11.model.*;
-import static org.junit.Assert.*;
+
+import com.group11.model.gameworld.BasicMapGenerator;
+import com.group11.model.gameworld.BasicWorldGenerator;
+import com.group11.model.gameworld.IMapGenerator;
+import com.group11.model.gameworld.World;
 
 public class BasicWorldGeneratorTest {
 

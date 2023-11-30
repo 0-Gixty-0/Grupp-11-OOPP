@@ -1,4 +1,4 @@
-        package modelTest;
+        package modeltest;
 
 import static org.junit.Assert.assertFalse;
 
@@ -6,9 +6,9 @@ import java.awt.Point;
 
 import org.junit.Test;
 
-import com.group11.model.BasicMapGenerator;
-import com.group11.model.Map;
-import com.group11.model.MovementUtility;
+import com.group11.model.gameworld.BasicMapGenerator;
+import com.group11.model.gameworld.Map;
+import com.group11.model.utility.MovementUtility;
 
 public class MovementUtilityTest {
 

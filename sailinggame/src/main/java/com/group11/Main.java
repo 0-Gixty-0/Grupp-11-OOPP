@@ -1,15 +1,25 @@
 package com.group11;
 
 import java.awt.Point;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import com.group11.controller.GlobalKeyListener;
-import com.group11.model.*;
-import com.group11.view.AppWindow;
+import com.group11.model.builders.EntityDirector;
+import com.group11.model.builders.ShipBuilder;
+import com.group11.model.gameentites.AMovableBody;
+import com.group11.model.gameentites.CommandableEntity;
+import com.group11.model.gameentites.Ship;
+import com.group11.model.gameworld.BasicMapGenerator;
+import com.group11.model.gameworld.BasicWorldGenerator;
+import com.group11.model.gameworld.IMapGenerator;
+import com.group11.model.gameworld.IWorldGenerator;
+import com.group11.model.gameworld.World;
+import com.group11.model.utility.MovementUtility;
+import com.group11.model.utility.TileMatrixDecoder;
 import com.group11.view.ViewTileMatrixEncoder;
+import com.group11.view.uicomponents.AppWindow;
 
 class Main {
     private AppWindow appWindow;

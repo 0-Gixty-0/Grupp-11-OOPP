@@ -1,4 +1,4 @@
-package modelTest;
+package modeltest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.group11.model.ABody;
-import com.group11.model.BodyCollisionUtility;
-import com.group11.model.Ship;
+import com.group11.model.gameentites.ABody;
+import com.group11.model.gameentites.Ship;
+import com.group11.model.utility.BodyCollisionUtility;
 
 public class BodyCollisionUtilityTest {
 

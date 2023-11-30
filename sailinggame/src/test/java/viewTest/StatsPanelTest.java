@@ -1,4 +1,4 @@
-package viewTest;
+package viewtest;
 
 public class StatsPanelTest {
     //No public methods

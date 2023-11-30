@@ -1,8 +1,8 @@
-package modelTest;
+package modeltest;
 
 import org.junit.Test;
 
-import com.group11.model.Ship;
+import com.group11.model.gameentites.Ship;
 
 import static org.junit.Assert.*;
 

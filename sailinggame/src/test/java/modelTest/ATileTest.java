@@ -1,8 +1,8 @@
-package modelTest;
+package modeltest;
 
 import org.junit.Test;
 
-import com.group11.model.ATile;
+import com.group11.model.gameworld.ATile;
 
 import java.awt.Point;
 
