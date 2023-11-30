@@ -1,4 +1,4 @@
-package controllertest;
+package controllerTest;
 
 import com.group11.controller.KeyboardInterpretor;
 
