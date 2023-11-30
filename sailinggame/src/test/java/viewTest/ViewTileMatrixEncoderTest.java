@@ -1,4 +1,4 @@
-package viewTest;
+package viewtest;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.group11.view.AViewDrawable;
 import com.group11.view.ViewTileMatrixEncoder;
+import com.group11.view.uicomponents.AViewDrawable;
 
 public class ViewTileMatrixEncoderTest {
 

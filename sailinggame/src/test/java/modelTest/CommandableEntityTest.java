@@ -1,12 +1,17 @@
-package modelTest;
-
-import com.group11.model.*;
-import org.junit.Test;
-
-import java.awt.*;
+package modeltest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import java.awt.Point;
+
+import org.junit.Test;
+
+import com.group11.model.gameentites.CommandableEntity;
+import com.group11.model.gameentites.Ship;
+import com.group11.model.gameworld.BasicMapGenerator;
+import com.group11.model.gameworld.Map;
+import com.group11.model.utility.MovementUtility;
 
 public class CommandableEntityTest {
 

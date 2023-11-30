@@ -1,12 +1,12 @@
-package modelTest;
+package modeltest;
 
 import org.junit.Test;
 
-import com.group11.model.IMapGenerator;
-import com.group11.model.BasicMapGenerator;
-import com.group11.model.BasicWorldGenerator;
-import com.group11.model.Map;
-import com.group11.model.World;
+import com.group11.model.gameworld.BasicMapGenerator;
+import com.group11.model.gameworld.BasicWorldGenerator;
+import com.group11.model.gameworld.IMapGenerator;
+import com.group11.model.gameworld.Map;
+import com.group11.model.gameworld.World;
 
 import static org.junit.Assert.*;
 

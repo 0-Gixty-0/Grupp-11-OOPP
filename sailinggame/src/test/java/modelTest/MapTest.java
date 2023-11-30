@@ -1,11 +1,11 @@
-package modelTest;
+package modeltest;
 
 import org.junit.Test;
 
-import com.group11.model.ATile;
-import com.group11.model.BasicMapGenerator;
-import com.group11.model.LandTile;
-import com.group11.model.Map;
+import com.group11.model.gameworld.ATile;
+import com.group11.model.gameworld.BasicMapGenerator;
+import com.group11.model.gameworld.LandTile;
+import com.group11.model.gameworld.Map;
 
 import static org.junit.Assert.*;
 

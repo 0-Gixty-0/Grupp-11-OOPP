@@ -1,16 +1,16 @@
-package modelTest;
-
-import com.group11.model.AEntity;
-import com.group11.model.EntityDirector;
-import com.group11.model.ShipBuilder;
-import com.group11.model.UEntityMatrixGenerator;
-import org.junit.Test;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Random;
+package modeltest;
 
 import static junit.framework.TestCase.assertEquals;
+
+import java.awt.Point;
+import java.util.ArrayList;
+
+import org.junit.Test;
+
+import com.group11.model.builders.EntityDirector;
+import com.group11.model.builders.ShipBuilder;
+import com.group11.model.gameentites.AEntity;
+import com.group11.model.utility.UEntityMatrixGenerator;
 
 public class UEntityMatrixGeneratorTest {
     @Test

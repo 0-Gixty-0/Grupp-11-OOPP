@@ -1,4 +1,4 @@
-package modelTest;
+package modeltest;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,10 +6,10 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.group11.model.ATile;
-import com.group11.model.BasicMapGenerator;
-import com.group11.model.Map;
-import com.group11.model.TileMatrixDecoder;
+import com.group11.model.gameworld.ATile;
+import com.group11.model.gameworld.BasicMapGenerator;
+import com.group11.model.gameworld.Map;
+import com.group11.model.utility.TileMatrixDecoder;
 
 public class TileMatrixDecoderTest {
 
