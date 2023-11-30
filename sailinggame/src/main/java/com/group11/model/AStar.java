@@ -20,9 +20,9 @@ public class AStar {
         }
     }
 
-    public static int aStar(int[][] grid, int startX, int startY, int goalX, int goalY) {
-        int n = grid.length;
-        int m = grid[0].length;
+    public static int aStar(List<List<Integer>> grid, int startX, int startY, int goalX, int goalY) {
+        int n = grid.size();
+        int m = grid.get(0).size();
 
         int[] dx = {-1, 0, 1, 0, -1, 1, 1, -1}; // Possible movements in x direction
         int[] dy = {0, -1, 0, 1, -1, -1, 1, 1}; // Possible movements in y direction
@@ -52,7 +52,7 @@ public class AStar {
                 int nx = current.x + dx[i];
                 int ny = current.y + dy[i];
 
-                if (nx >= 0 && nx < n && ny >= 0 && ny < m && grid[nx][ny] != 0) {
+                if (nx >= 0 && nx < n && ny >= 0 && ny < m && grid.get(nx).get(ny) != 0) {
                     int newCost = current.cost + 1; // Assuming each step has a cost of 1
                     int heuristic = chebyshevDistance(nx, ny, goalX, goalY);
                     pq.add(new Node(nx, ny, newCost, heuristic));

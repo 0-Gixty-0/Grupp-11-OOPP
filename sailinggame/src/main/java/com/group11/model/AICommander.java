@@ -18,6 +18,9 @@ public class AICommander {
     public void setEntityMatrix(ArrayList<ArrayList<AEntity>> entityMatrix) {
         this.entityMatrix = entityMatrix;
     }
+    public void setTerrainMatrixEncoded(List<List<ATile>> terrainMatrix) {
+        this.terrainMatrixEncoded = TileMatrixDecoder.decodeIntoIntMatrix(terrainMatrix);
+    }
 
     public void moveEnemies(ArrayList<CommandableEntity> enemies) {
         for (CommandableEntity enemy : enemies) {
@@ -28,8 +31,7 @@ public class AICommander {
             if (namePosMap.containsKey("Player")) {
                 Point playerPoint = namePosMap.get("Player");
                 Point enemyPoint = enemy.getPos();
-                int
-                int directionToPlayer = AStar.aStar()
+                int directionToPlayer = AStar.aStar(this.terrainMatrixEncoded, enemyPoint.x, enemyPoint.y, playerPoint.x, playerPoint.y)
             }
         }
     }
