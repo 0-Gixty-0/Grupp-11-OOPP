@@ -1,3 +1,5 @@
+package modelTest;
+
 import org.junit.Test;
 
 import com.group11.model.IMapGenerator;

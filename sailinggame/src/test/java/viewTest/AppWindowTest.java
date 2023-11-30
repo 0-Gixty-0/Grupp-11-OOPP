@@ -1,5 +1,6 @@
-import org.junit.Test;
+package viewTest;
 
+import org.junit.Test;
 
 public class AppWindowTest {
     
@@ -32,6 +33,4 @@ public class AppWindowTest {
     public void testshowGame() {
         //Cant be tested because change is purely visual for the client.
     }
-
-
 }
