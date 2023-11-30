@@ -10,7 +10,7 @@ public class LandTile extends ATile {
     * Constructor for the class LandTile
     * @param pos - The position of a tile as a Java Point 
     */
-    protected LandTile(Point pos) {
+    public LandTile(Point pos) {
         super(1, pos, false);
     }
 }

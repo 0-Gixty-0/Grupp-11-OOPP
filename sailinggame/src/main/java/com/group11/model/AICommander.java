@@ -27,8 +27,8 @@ public class AICommander {
     public void moveEnemies(ArrayList<CommandableEntity> enemies) {
         Random random = new Random();
         for (CommandableEntity enemy : enemies) {
-            int entityRowIndex = enemy.getBody().getPos().y;
-            int entityColumnIndex = enemy.getBody().getPos().x;
+            int entityRowIndex = enemy.getBody().getPos().x;
+            int entityColumnIndex = enemy.getBody().getPos().y;
             HashMap<String, Point> namePosMap = this.getSurroundingEntityNameAndPos(entityRowIndex, entityColumnIndex);
             if (namePosMap.containsKey("Player")) {
                 Point playerPoint = namePosMap.get("Player");
