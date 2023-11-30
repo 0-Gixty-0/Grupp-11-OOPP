@@ -62,9 +62,11 @@ public class AICommander {
         for (int i = row - this.radius; i <= row + this.radius; i++) {
             for (int j = col - this.radius; j <= col + this.radius; j++) {
                 if (i >= 0 && i < n && j >= 0 && j < n && !(i == row && j == col)) {
-                    String name = this.entityMatrix.get(i).get(j).getName();
-                    Point position = this.entityMatrix.get(i).get(j).getBody().getPos();
-                    surroundingElements.put(name, position);
+                    if (this.entityMatrix.get(i).get(j) != null) {
+                        String name = this.entityMatrix.get(i).get(j).getName();
+                        Point position = this.entityMatrix.get(i).get(j).getBody().getPos();
+                        surroundingElements.put(name, position);
+                    }
                 }
             }
         }
