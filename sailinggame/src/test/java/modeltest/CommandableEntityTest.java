@@ -34,30 +34,27 @@ public class CommandableEntityTest {
         assertEquals(11, entityX);
     }
 
-    @Test
-    public void testMoveUp() {
+    private void move(int direction, Ship body) {
         Map map = (new BasicMapGenerator()).generateMap(50);
         MovementUtility.setTileMatrix(map.getTileMatrix());
-        Ship testShip = new Ship(new Point(0,1), 0, 0, 0, 2);
-        CommandableEntity entity = new CommandableEntity(testShip, "testy mcTest", true);
+        CommandableEntity entity = new CommandableEntity(body, "testy mcTest", true);
         entity.moveCommand(0);
-        int entityY = (int) entity.getPos().getY();
-        int entityX = (int) entity.getPos().getX();
-        assertEquals(0, entityY);
-        assertEquals(0, entityX);
+    }
+
+    @Test
+    public void testMoveUp() {
+        Ship testShip = new Ship(new Point(0,1), 0, 0, 0, 2);
+        this.move(0, testShip);
+        assertEquals(0, (int) testShip.getPos().getY());
+        assertEquals(0, (int) testShip.getPos().getX());
     }
 
     @Test
     public void testMoveUpRightAngle() {
-        Map map = (new BasicMapGenerator()).generateMap(50);
-        MovementUtility.setTileMatrix(map.getTileMatrix());
         Ship testShip = new Ship(new Point(1,1), 0, 0, 0, 2);
-        CommandableEntity entity = new CommandableEntity(testShip, "testy mcTest", true);
-        entity.moveCommand(1);
-        int entityY = (int) entity.getPos().getY();
-        int entityX = (int) entity.getPos().getX();
-        assertEquals(0, entityY);
-        assertEquals(2, entityX);
+        this.move(1,testShip);
+        assertEquals(0, (int) testShip.getPos().getY());
+        assertEquals(2, (int) testShip.getPos().getX());
     }
 
     @Test
