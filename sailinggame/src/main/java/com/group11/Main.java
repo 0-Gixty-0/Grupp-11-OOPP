@@ -1,27 +1,25 @@
 package com.group11;
 
 import java.awt.Point;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import com.group11.controller.GlobalKeyListener;
-import com.group11.model.*;
-import com.group11.model.builders_and_factories.EntityDirector;
-import com.group11.model.builders_and_factories.ShipBuilder;
-import com.group11.model.game_entites.AMovableBody;
-import com.group11.model.game_entites.CommandableEntity;
-import com.group11.model.game_entites.Ship;
-import com.group11.model.game_world.BasicMapGenerator;
-import com.group11.model.game_world.BasicWorldGenerator;
-import com.group11.model.game_world.IMapGenerator;
-import com.group11.model.game_world.IWorldGenerator;
-import com.group11.model.game_world.World;
-import com.group11.model.high_level_components.MovementUtility;
-import com.group11.model.high_level_components.TileMatrixDecoder;
+import com.group11.model.builders.EntityDirector;
+import com.group11.model.builders.ShipBuilder;
+import com.group11.model.gameentites.AMovableBody;
+import com.group11.model.gameentites.CommandableEntity;
+import com.group11.model.gameentites.Ship;
+import com.group11.model.gameworld.BasicMapGenerator;
+import com.group11.model.gameworld.BasicWorldGenerator;
+import com.group11.model.gameworld.IMapGenerator;
+import com.group11.model.gameworld.IWorldGenerator;
+import com.group11.model.gameworld.World;
+import com.group11.model.utility.MovementUtility;
+import com.group11.model.utility.TileMatrixDecoder;
 import com.group11.view.ViewTileMatrixEncoder;
-import com.group11.view.ui_components.AppWindow;
+import com.group11.view.uicomponents.AppWindow;
 
 class Main {
     private AppWindow appWindow;

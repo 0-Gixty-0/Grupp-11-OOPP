@@ -1,14 +1,12 @@
 package modelTest;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
-import com.group11.model.game_entites.Ship;
-
-import java.awt.*;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-import static org.junit.Assert.*;
+import com.group11.model.gameentites.Ship;
 
 public class ShipTest {
 

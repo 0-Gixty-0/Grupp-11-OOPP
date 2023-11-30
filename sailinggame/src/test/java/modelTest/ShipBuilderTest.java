@@ -1,16 +1,17 @@
 package modelTest;
 
-import com.group11.model.*;
-import com.group11.model.builders_and_factories.EntityDirector;
-import com.group11.model.builders_and_factories.ShipBuilder;
-import com.group11.model.game_entites.AEntity;
-import com.group11.model.game_entites.Ship;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
+
+import java.awt.Point;
 
 import org.junit.Test;
 
-import java.awt.*;
-
-import static junit.framework.TestCase.*;
+import com.group11.model.builders.EntityDirector;
+import com.group11.model.builders.ShipBuilder;
+import com.group11.model.gameentites.AEntity;
+import com.group11.model.gameentites.Ship;
 
 public class ShipBuilderTest {
     @Test

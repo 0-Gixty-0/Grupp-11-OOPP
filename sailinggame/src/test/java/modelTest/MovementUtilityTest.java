@@ -6,9 +6,9 @@ import java.awt.Point;
 
 import org.junit.Test;
 
-import com.group11.model.game_world.BasicMapGenerator;
-import com.group11.model.game_world.Map;
-import com.group11.model.high_level_components.MovementUtility;
+import com.group11.model.gameworld.BasicMapGenerator;
+import com.group11.model.gameworld.Map;
+import com.group11.model.utility.MovementUtility;
 
 public class MovementUtilityTest {
 

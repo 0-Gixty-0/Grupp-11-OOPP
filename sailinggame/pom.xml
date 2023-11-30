@@ -14,6 +14,7 @@
     </properties>
 
     <dependencies>
+
         <!-- JUnit -->
         <dependency>
             <groupId>junit</groupId>
@@ -21,12 +22,14 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
+
         <!-- Joise -->
         <dependency>
             <groupId>com.sudoplay.joise</groupId>
             <artifactId>joise</artifactId>
             <version>1.0.2</version>
         </dependency>
+        
     </dependencies>
 
 </project>

@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.group11.model.game_entites.ABody;
-import com.group11.model.game_entites.Ship;
-import com.group11.model.high_level_components.BodyCollisionUtility;
+import com.group11.model.gameentites.ABody;
+import com.group11.model.gameentites.Ship;
+import com.group11.model.utility.BodyCollisionUtility;
 
 public class BodyCollisionUtilityTest {
 

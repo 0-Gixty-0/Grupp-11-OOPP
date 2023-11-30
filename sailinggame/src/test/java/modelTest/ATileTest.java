@@ -2,7 +2,7 @@ package modelTest;
 
 import org.junit.Test;
 
-import com.group11.model.game_world.ATile;
+import com.group11.model.gameworld.ATile;
 
 import java.awt.Point;
 

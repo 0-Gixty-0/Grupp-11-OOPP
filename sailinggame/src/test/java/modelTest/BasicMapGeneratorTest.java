@@ -1,12 +1,11 @@
 package modelTest;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
-import com.group11.model.*;
-import com.group11.model.game_world.BasicMapGenerator;
-import com.group11.model.game_world.Map;
-
-import static org.junit.Assert.*;
+import com.group11.model.gameworld.BasicMapGenerator;
+import com.group11.model.gameworld.Map;
 
 public class BasicMapGeneratorTest {
 

@@ -1,14 +1,13 @@
 package modelTest;
 
-import com.group11.model.*;
-import com.group11.model.game_entites.CommandableEntity;
-import com.group11.model.game_entites.Ship;
+import static org.junit.Assert.assertEquals;
+
+import java.awt.Point;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-import java.awt.*;
+import com.group11.model.gameentites.CommandableEntity;
+import com.group11.model.gameentites.Ship;
 
 public class AEntityTest {
 

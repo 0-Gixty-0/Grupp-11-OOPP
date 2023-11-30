@@ -2,7 +2,7 @@ package modelTest;
 
 import org.junit.Test;
 
-import com.group11.model.game_entites.Ship;
+import com.group11.model.gameentites.Ship;
 
 import static org.junit.Assert.*;
 import java.awt.*;
