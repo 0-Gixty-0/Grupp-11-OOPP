@@ -3,10 +3,10 @@ package com.group11.controller;
 import java.util.Set;
 
 
-public class keyboardInterpretor extends AControllerInterpretor{
+public class KeyboardInterpretor extends AControllerInterpretor{
 
 
-    public keyboardInterpretor(Set<Integer> inputSet){
+    public KeyboardInterpretor(Set<Integer> inputSet){
         
     }        
     /*
@@ -51,12 +51,41 @@ public class keyboardInterpretor extends AControllerInterpretor{
             return -1;
         }
     
-        public static int arrowsToDir(Set<Integer> inputSet){
-
-
+        public static int shootDir(Set<Integer> inputSet){
+            /*Direction up-left */
+            if (inputSet.contains(38) && inputSet.contains(39) && !inputSet.contains(37) && !inputSet.contains(40)) {
+                return 1;
+            }
+             /*Direction down-left */
+             if (inputSet.contains(40) && inputSet.contains(39) && !inputSet.contains(38) && !inputSet.contains(37)) {
+                return 3;
+            }
+            /*Direction down-right */
+            if (inputSet.contains(37) && inputSet.contains(40) && !inputSet.contains(39) && !inputSet.contains(38)) {
+                return 5;
+            }
+            /*Direction up-left */
+            if (inputSet.contains(37) && inputSet.contains(37) && !inputSet.contains(39) && !inputSet.contains(40)) {
+                return 7;
+            }
+            /* Direction up*/
+            if (inputSet.contains(37) && !inputSet.contains(40)) {
+                return 0;
+            }
+            /*Direction right */
+            if (inputSet.contains(39) && !inputSet.contains(37)) {
+                return 2;
+            }
+            /*Direction down */
+            if (inputSet.contains(40) && !inputSet.contains(38)) {
+                return 4;
+            }
+            /*Direction left */
+            if (inputSet.contains(37) && !inputSet.contains(39)) {
+                return 6;
+            }
             return -1;
         }
-
     }
 
     

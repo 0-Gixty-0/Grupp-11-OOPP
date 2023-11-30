@@ -7,5 +7,9 @@ public abstract class AControllerInterpretor{
     public int inputToDir(){
         return dir;
     }
+    
+    public int shootDir(){
+        return dir;
+    }
 
 }
