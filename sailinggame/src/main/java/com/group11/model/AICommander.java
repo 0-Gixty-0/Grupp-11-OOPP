@@ -5,8 +5,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 public class AICommander {
+    private final int radius = 10;
     private ArrayList<ArrayList<AEntity>> entityMatrix;
     private List<List<Integer>> terrainMatrixEncoded;
 
@@ -23,15 +25,18 @@ public class AICommander {
     }
 
     public void moveEnemies(ArrayList<CommandableEntity> enemies) {
+        Random random = new Random();
         for (CommandableEntity enemy : enemies) {
             int entityRowIndex = enemy.getBody().getPos().y;
             int entityColumnIndex = enemy.getBody().getPos().x;
-            int radius = 5;
-            HashMap<String, Point> namePosMap = this.getSurroundingEntityNameAndPos(entityRowIndex, entityColumnIndex, radius);
+            HashMap<String, Point> namePosMap = this.getSurroundingEntityNameAndPos(entityRowIndex, entityColumnIndex);
             if (namePosMap.containsKey("Player")) {
                 Point playerPoint = namePosMap.get("Player");
                 Point enemyPoint = enemy.getPos();
-                int directionToPlayer = AStar.aStar(this.terrainMatrixEncoded, enemyPoint.x, enemyPoint.y, playerPoint.x, playerPoint.y)
+                int directionToPlayer = AStar.aStar(this.terrainMatrixEncoded, enemyPoint.x, enemyPoint.y, playerPoint.x, playerPoint.y);
+                enemy.moveCommand(directionToPlayer);
+            } else {
+                enemy.moveCommand(random.nextInt(8));
             }
         }
     }
@@ -40,7 +45,7 @@ public class AICommander {
         int entityRowIndex = entity.getBody().getPos().y;
         int entityColumnIndex = entity.getBody().getPos().x;
         int radius = 5;
-        HashMap<String, Point> surroundingEntities = this.getSurroundingEntityNameAndPos(entityRowIndex, entityColumnIndex, radius);
+        HashMap<String, Point> surroundingEntities = this.getSurroundingEntityNameAndPos(entityRowIndex, entityColumnIndex);
         if (surroundingEntities.containsKey("Player")) {
             return true;
         } else {
@@ -48,14 +53,14 @@ public class AICommander {
         }
     }
 
-    private HashMap<String, Point> getSurroundingEntityNameAndPos(int row, int col, int radius) {
+    private HashMap<String, Point> getSurroundingEntityNameAndPos(int row, int col) {
         HashMap<String, Point> surroundingElements = new HashMap<>();
 
         int n = this.entityMatrix.size();
 
         // Check bounds and add surrounding elements within the given radius
-        for (int i = row - radius; i <= row + radius; i++) {
-            for (int j = col - radius; j <= col + radius; j++) {
+        for (int i = row - this.radius; i <= row + this.radius; i++) {
+            for (int j = col - this.radius; j <= col + this.radius; j++) {
                 if (i >= 0 && i < n && j >= 0 && j < n && !(i == row && j == col)) {
                     String name = this.entityMatrix.get(i).get(j).getName();
                     Point position = this.entityMatrix.get(i).get(j).getBody().getPos();
