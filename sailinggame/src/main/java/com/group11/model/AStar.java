@@ -24,8 +24,8 @@ public class AStar {
         int n = grid.size();
         int m = grid.get(0).size();
 
-        int[] dx = {-1, 0, 1, 0, -1, 1, 1, -1}; // Possible movements in x direction
-        int[] dy = {0, -1, 0, 1, -1, -1, 1, 1}; // Possible movements in y direction
+        int[] dx = {0, 1, 1, 1, 0, -1, -1, -1}; // Possible movements in x direction
+        int[] dy = {-1, -1, 0, 1, 1, 1, 0, -1}; // Possible movements in y direction
 
         PriorityQueue<Node> pq = new PriorityQueue<>();
         pq.add(new Node(startX, startY, 0, chebyshevDistance(startX, startY, goalX, goalY)));
@@ -70,17 +70,11 @@ public class AStar {
 
     public static int getDirection(int dx, int dy) {
         if (dx == 0) {
-            return dy > 0 ? 0 : 2; // 0 represents up, 2 represents down
-        } else if (dy == 0) {
-            return dx > 0 ? 1 : 3; // 1 represents right, 3 represents left
-        } else if (dx > 0 && dy > 0) {
-            return 5; // 5 represents bottom-right
-        } else if (dx > 0 && dy < 0) {
-            return 6; // 6 represents top-right
-        } else if (dx < 0 && dy > 0) {
-            return 4; // 4 represents bottom-left
+            return dy > 0 ? 0 : 4; // 0 represents up, 4 represents down
+        } else if (dx > 0) {
+            return dy > 0 ? 1 : (dy == 0 ? 2 : 3); // 1 represents top right, 2 represents right, 3 represents bottom right
         } else {
-            return 7; // 7 represents top-left
+            return dy > 0 ? 7 : (dy == 0 ? 6 : 5); // 7 represents top left, 6 represents left, 5 represents bottom left
         }
     }
 
