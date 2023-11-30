@@ -70,11 +70,11 @@ public class AStar {
 
     public static int getDirection(int dx, int dy) {
         if (dx == 0) {
-            return dy > 0 ? 0 : 4; // 0 represents up, 4 represents down
+            return dy > 0 ? 2 : 6; // 2 represents right, 6 represents left
         } else if (dx > 0) {
-            return dy > 0 ? 1 : (dy == 0 ? 2 : 3); // 1 represents top right, 2 represents right, 3 represents bottom right
+            return dy > 0 ? 3 : (dy == 0 ? 4 : 5); // 4 represents down, 5 represents bottom left, 3 represents bottom right
         } else {
-            return dy > 0 ? 7 : (dy == 0 ? 6 : 5); // 7 represents top left, 6 represents left, 5 represents bottom left
+            return dy > 0 ? 1 : (dy == 0 ? 0 : 7); // 1 represents top right, 0 represents up, 7 represents top left
         }
     }
 
