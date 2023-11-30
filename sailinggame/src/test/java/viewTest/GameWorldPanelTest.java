@@ -1,5 +1,0 @@
-package viewTest;
-
-public class GameWorldPanelTest {
-    //No public methods
-}
