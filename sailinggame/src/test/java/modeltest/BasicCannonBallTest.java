@@ -1,8 +1,7 @@
-package modelTest;
+package modeltest;
 
+import com.group11.model.gameentites.BasicCannonBall;
 import org.junit.Test;
-
-import com.group11.model.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,7 +15,7 @@ public class BasicCannonBallTest {
 
         testBall.setDirection(new int[] {0, 1});
 
-        testBall.concreteTravel();
+        testBall.continueTravelPath();
 
         assertEquals(testBall.getPos().x, 0);
         assertEquals(testBall.getPos().y, 1);

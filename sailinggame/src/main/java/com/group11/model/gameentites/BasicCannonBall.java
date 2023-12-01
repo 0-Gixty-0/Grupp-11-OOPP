@@ -1,6 +1,4 @@
-package com.group11.model;
-
-import com.group11.model.gameentites.AProjectile;
+package com.group11.model.gameentites;
 
 public class BasicCannonBall extends AProjectile {
     public BasicCannonBall() {
@@ -8,8 +6,7 @@ public class BasicCannonBall extends AProjectile {
     }
 
     @Override
-    public void concreteTravel() {
-
+    public void moveInTravelPath() {
         this.move(this.getTruePos().x + this.direction[0], this.getTruePos().y + this.direction[1]);
     }
 }
