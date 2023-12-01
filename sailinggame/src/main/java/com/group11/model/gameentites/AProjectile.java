@@ -31,12 +31,9 @@ public abstract class AProjectile extends AMovableBody{
 
     public void travel() {
 
-        if(isOutOfRange()){
-            // Delete instance
-        }
         this.distanceTraveled++;
 
-        concreteTravel();
+        continueTravelPath();
     }
 
     public int[] getDirection() {
@@ -47,6 +44,13 @@ public abstract class AProjectile extends AMovableBody{
         this.direction = direction;
     }
 
-    public abstract void concreteTravel();
+    protected abstract void moveInTravelPath();
 
+    public void continueTravelPath() {
+        try {
+            moveInTravelPath(); //Checking for out of bounds is done in moveInTravelPath
+        } catch (Exception e) {
+            return;
+        }
+    }
 }
