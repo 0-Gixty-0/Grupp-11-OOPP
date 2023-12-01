@@ -1,7 +1,7 @@
 package com.group11.model.gameentites;
 import java.lang.reflect.InvocationTargetException;
 
-public class BasicCannon<T> extends IWeapon {
+public class BasicCannon<T> extends AWeapon {
     private final T projectileType;
 
     public BasicCannon(T projectileType){
@@ -25,6 +25,5 @@ public class BasicCannon<T> extends IWeapon {
                 throw new RuntimeException("Could not instantiate projectile because of: " + e.getMessage());
             }
         }
-
     }
 }
