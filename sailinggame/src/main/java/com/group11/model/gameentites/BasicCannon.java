@@ -10,10 +10,15 @@ public class BasicCannon<T> extends AWeapon {
         } else {
             throw new IllegalArgumentException("projectileType must be of type AProjectile");
         }
+        this.maxTimesFired = 5;
     }
 
     public T getProjectileType() {
         return this.projectileType;
+    }
+
+    public int getFiredProjectilesSize() {
+        return this.firedProjectiles.size();
     }
 
     @Override

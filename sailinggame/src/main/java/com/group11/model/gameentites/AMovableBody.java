@@ -47,10 +47,15 @@ public abstract class AMovableBody extends ABody implements IMovable {
      * @param x - the new x position for the body
      * @param y - the new y position for the body
      */
-    public void move(int x, int y) {
+    private void move(int x, int y) {
         this.getTruePos().setLocation(x, y);
     }
 
+    /**
+     * A Helper method for movement implementation using pseudo linear algebra. This should be the method
+     * that does the actual moving of the body in subclasses.
+     * @param dirVector The direction the body should move in.
+     */
     public void moveIfPossible(int [] dirVector) {
         Point currPos = this.getPos();
         if (MovementUtility.movementIsPossible(currPos, dirVector)) {
@@ -60,5 +65,4 @@ public abstract class AMovableBody extends ABody implements IMovable {
             this.move(currX + dirVector[0],currY + dirVector[1]);
         }
     }
-
 }

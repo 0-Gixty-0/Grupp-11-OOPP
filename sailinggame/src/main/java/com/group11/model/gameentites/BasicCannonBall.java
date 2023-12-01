@@ -7,6 +7,6 @@ public class BasicCannonBall extends AProjectile {
 
     @Override
     public void moveInTravelPath() {
-        this.move(this.getTruePos().x + this.direction[0], this.getTruePos().y + this.direction[1]);
+        this.moveIfPossible(this.direction);
     }
 }

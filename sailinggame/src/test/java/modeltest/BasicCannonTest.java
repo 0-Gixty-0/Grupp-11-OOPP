@@ -18,7 +18,18 @@ public class BasicCannonTest {
     }
 
     @Test
-    public void testSetWeapon() {
-        // No functionality to test yet.
+    public void testGetFiredProjectilesSize() {
+
+        testCannon.fireWeapon();
+
+        assertEquals(testCannon.getFiredProjectilesSize(), 1);
+    }
+
+    @Test
+    public void testFireWeapon() {
+
+        testCannon.fireWeapon();
+
+        assertEquals(testCannon.getFiredProjectilesSize(), 1);
     }
 }
