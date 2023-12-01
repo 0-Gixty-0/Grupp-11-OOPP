@@ -2,8 +2,14 @@ package com.group11.model;
 
 import java.util.*;
 
+/**
+ * AStar search algorithm modified for use with directional values in CommandableEntity
+ */
 public class AStar {
 
+    /**
+     * Node class representing an entity tile along with AStar attributes for cost and guess heuristic
+     */
     public static class Node implements Comparable<Node> {
         int x, y, cost, heuristic;
 
@@ -20,6 +26,15 @@ public class AStar {
         }
     }
 
+    /**
+     * AStar method from start position to goal position
+     * @param grid Encoded terrain matrix with only values of 1 as passable
+     * @param startX Start row index
+     * @param startY Start column index
+     * @param goalX Goal row index
+     * @param goalY Goal column index
+     * @return Directional value for use in CommandableEntity
+     */
     public static int aStar(List<List<Integer>> grid, int startX, int startY, int goalX, int goalY) {
         int n = grid.size();
         int m = grid.get(0).size();
@@ -64,10 +79,24 @@ public class AStar {
         return -1;
     }
 
+    /**
+     * Simple chebyshev distance calculator. Distance value with all 8 grid movements allowed
+     * @param x1 First node row index
+     * @param y1 First node column index
+     * @param x2 Second node row index
+     * @param y2 Second node column index
+     * @return Distance value between first and second node
+     */
     public static int chebyshevDistance(int x1, int y1, int x2, int y2) {
         return Math.max(Math.abs(x1 - x2), Math.abs(y1 - y2));
     }
 
+    /**
+     * This method gets the directional value based on directional change values in AStar
+     * @param dx Difference in column index
+     * @param dy Difference in row index
+     * @return Directional value 0-7
+     */
     public static int getDirection(int dx, int dy) {
         if (dx == 0) {
             return dy > 0 ? 2 : 6; // 2 represents right, 6 represents left
@@ -77,28 +106,5 @@ public class AStar {
             return dy > 0 ? 1 : (dy == 0 ? 0 : 7); // 1 represents top right, 0 represents up, 7 represents top left
         }
     }
-
-//    public static void main(String[] args) {
-//        int[][] grid = {
-//                {0, 0, 0, 0, 0},
-//                {0, 1, 1, 0, 0},
-//                {0, 0, 0, 0, 0},
-//                {0, 1, 1, 1, 0},
-//                {0, 0, 0, 0, 0}
-//        };
-//
-//        int startX = 0;
-//        int startY = 0;
-//        int goalX = 4;
-//        int goalY = 4;
-//
-//        int direction = aStar(grid, startX, startY, goalX, goalY);
-//
-//        if (direction != -1) {
-//            System.out.println("Direction to the goal: " + direction);
-//        } else {
-//            System.out.println("Goal is not reachable.");
-//        }
-//    }
 }
 
