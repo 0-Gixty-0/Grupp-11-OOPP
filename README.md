@@ -853,3 +853,23 @@ Eliminating code duplication makes code easier to maintain.
 
 #### User interaction
 This US is purely about tests which have no user interaction.
+
+### US-77: Fixing SOLID violations in controller.
+Date of completion: 01/12/2023
+Completed by: William Norland
+
+As a developer I want the controller module to not violate the SOLID principles.
+
+#### What
+This US fixed that you couldnt depend on an abstract AControllerInterpretor because the methods for getting input where only in its concrete implementation KeyboardInterpretor. This violated the DIP. 
+This US fixed that you had to use two classes instead of the solutions one from the controller package which is unnecessary coupling.
+
+#### How
+By making abstract AControllerInterpretor own the method signature as an abstract method you can now depend on absractions when using the package. By making AControllerInterpretor own an GlobalKeyListner object you can lower coupling and have higher cohesion.
+
+#### Why
+Making code easier to extend and maintain through SOLID principles is good for the project.
+
+#### User Interaction
+This affects the ability to add new ways for the player to interact with the application.
+
