@@ -2,7 +2,7 @@ package com.group11.model.gameentites;
 
 import java.awt.Point;
 
-import com.group11.model.utility.MovementUtility;
+import com.group11.model.utility.UMovementUtility;
 
 /**
  * A movable entity is a subset of entities that can move around the gameworld
@@ -26,7 +26,7 @@ public class CommandableEntity extends AEntity implements ICommandable {
      */
     protected void moveHelper(int [] dirVector) {
         Point currPos = this.getBody().getPos();
-        if (MovementUtility.movementIsPossible(currPos, dirVector)) {
+        if (UMovementUtility.movementIsPossible(currPos, dirVector)) {
             int currX = (int) currPos.getX();
             int currY = (int) currPos.getY();
             AMovableBody body = (AMovableBody) this.getBody();

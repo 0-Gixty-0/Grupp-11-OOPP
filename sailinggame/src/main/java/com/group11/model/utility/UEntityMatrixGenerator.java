@@ -11,7 +11,9 @@ public final class UEntityMatrixGenerator {
     /**
      * Utility class does not need to be instantiated
      */
-    private UEntityMatrixGenerator() {System.out.println("Utility class cannot be instantiated");}
+    private UEntityMatrixGenerator() {
+        throw new IllegalStateException("Utility class");
+    }
 
     /**
      * Creates an entity matrix with all values set to null

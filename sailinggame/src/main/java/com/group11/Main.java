@@ -12,8 +12,8 @@ import com.group11.model.gameentites.AMovableBody;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameentites.Ship;
 import com.group11.model.gameworld.*;
-import com.group11.model.utility.MovementUtility;
-import com.group11.model.utility.TileMatrixDecoder;
+import com.group11.model.utility.UMovementUtility;
+import com.group11.model.utility.UTileMatrixDecoder;
 import com.group11.view.ViewTileMatrixEncoder;
 import com.group11.view.uicomponents.AppWindow;
 
@@ -33,8 +33,8 @@ class Main {
         this.appWindow = new AppWindow(windowHeight, windowHeight, 50, 50, 16, 16);
         this.world = this.createBasicWorld();
         this.player = this.createBasicPlayer();
-        MovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
-        this.appWindow.updateTerrain(ViewTileMatrixEncoder.createTerrainTileMatrix(TileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
+        UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
+        this.appWindow.updateTerrain(ViewTileMatrixEncoder.createTerrainTileMatrix(UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
     }
 
     private World createBasicWorld() {

@@ -11,14 +11,14 @@ import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameentites.Ship;
 import com.group11.model.gameworld.BasicMapGenerator;
 import com.group11.model.gameworld.Map;
-import com.group11.model.utility.MovementUtility;
+import com.group11.model.utility.UMovementUtility;
 
 public class CommandableEntityTest {
 
     @Test
     public void testTryingToMoveOverImpassableTerrain() {
         Map map = (new BasicMapGenerator()).generateMap(50);
-        MovementUtility.setTileMatrix(map.getTileMatrix());
+        UMovementUtility.setTileMatrix(map.getTileMatrix());
 
         Ship testShip = new Ship(new Point(0,0), 0, 0, 0, 2);
         CommandableEntity entity = new CommandableEntity(testShip, "testy mcTest", true);
@@ -36,7 +36,7 @@ public class CommandableEntityTest {
 
     private void move(int direction, Ship body) {
         Map map = (new BasicMapGenerator()).generateMap(50);
-        MovementUtility.setTileMatrix(map.getTileMatrix());
+        UMovementUtility.setTileMatrix(map.getTileMatrix());
         CommandableEntity entity = new CommandableEntity(body, "testy mcTest", true);
         entity.moveCommand(direction);
     }

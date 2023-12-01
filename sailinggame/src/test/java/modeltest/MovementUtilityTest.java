@@ -8,15 +8,15 @@ import org.junit.Test;
 
 import com.group11.model.gameworld.BasicMapGenerator;
 import com.group11.model.gameworld.Map;
-import com.group11.model.utility.MovementUtility;
+import com.group11.model.utility.UMovementUtility;
 
 public class MovementUtilityTest {
 
     @Test
     public void movementIsPossible() {
         Map map = (new BasicMapGenerator()).generateMap(50);
-        MovementUtility.setTileMatrix(map.getTileMatrix());
-        assertFalse(MovementUtility.movementIsPossible(new Point(25,11), new int[]{0,1}));
+        UMovementUtility.setTileMatrix(map.getTileMatrix());
+        assertFalse(UMovementUtility.movementIsPossible(new Point(25,11), new int[]{0,1}));
     }
 
 }
