@@ -1,7 +1,7 @@
 # SailingGame
 **Project Descripiton:** A 2d, openworld adventure game made in Java with Maven for the TDA367/DIT213 course at Chalemers University of Technology with focus on perfect MVC implementation, OOP principles and extendability.
 
-**Project Boundaries:** The boundaries set for this project is that its a game logically and visually based on 2d tiles, tiles are either entities (living things) or terrain (non living).
+**Project Boundaries:** The boundaries set for this project is that its a game logically and visually based on 2d tiles, tiles are either entities (living things) or terrain (non living). Its supposed to be played with a keyboard. Other than that its a very open scope which is what we intended.
 
 **License:** Released under MIT License, see LICENSE for more information.
 
@@ -853,3 +853,47 @@ Eliminating code duplication makes code easier to maintain.
 
 #### User interaction
 This US is purely about tests which have no user interaction.
+
+---
+
+### US-66 Weapons and projectiles
+Date of completion: 1/12/2023
+Completed by: Noa Cavassi
+
+As a developer I want bodies with a weapon object to be able to shoot, and the bullets to have a hit box and a projectile.
+
+#### What
+This user story is about creating a weapon object, that has it's specific projectile type.
+
+#### How
+I made a module for projectiles, consisting of AProjectile, BasicCannon, BasicCannonBall, IWeapon, and the unimplemented class ZigZagBall.
+
+AProjectile is a subclass of AMovableBody since a projectile should be able to move. There's a dependency between BasicCannon and AProjectile since a BasicCannon, which is a weapon, should also depend on which projectile type it's using.
+
+#### Why
+To make it possible for bodies to damage other bodies by a weapon.
+
+#### User interaction
+The user will come in contact with this feature when fireing the weapon, or when another body fires its weapon.
+
+---
+
+### US-77: Fixing SOLID violations in controller.
+Date of completion: 01/12/2023
+Completed by: William Norland
+
+As a developer I want the controller module to not violate the SOLID principles.
+
+#### What
+This US fixed that you couldnt depend on an abstract AControllerInterpretor because the methods for getting input where only in its concrete implementation KeyboardInterpretor. This violated the DIP. 
+This US fixed that you had to use two classes instead of the solutions one from the controller package which is unnecessary coupling.
+
+#### How
+By making abstract AControllerInterpretor own the method signature as an abstract method you can now depend on absractions when using the package. By making AControllerInterpretor own an GlobalKeyListner object you can lower coupling and have higher cohesion.
+
+#### Why
+Making code easier to extend and maintain through SOLID principles is good for the project.
+
+#### User Interaction
+This affects the ability to add new ways for the player to interact with the application.
+

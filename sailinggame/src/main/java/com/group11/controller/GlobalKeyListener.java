@@ -15,20 +15,17 @@ public class GlobalKeyListener implements KeyEventDispatcher, Runnable {
     /*
      * Hashset that contains currently pressed keys
      */
-
     private Set<Integer> inputSet = new HashSet<>();
 
     public GlobalKeyListener() {
         /**
          *  Install the global key listener
          * */
-       
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(this);
 
         /**
          *  Start a separate thread to handle the key events
          * */
-       
         Thread run = new Thread(this);
         run.start();
     }
@@ -52,10 +49,11 @@ public class GlobalKeyListener implements KeyEventDispatcher, Runnable {
 
     @Override
     public void run() {
-        while (true) {
+        while (!Thread.currentThread().isInterrupted()) {
             try {
                 Thread.sleep(50); /* Adjust the sleep duration as needed to not stress the processor as much*/
             } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
                 e.printStackTrace();
             }
         }

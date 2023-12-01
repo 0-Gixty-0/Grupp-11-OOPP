@@ -69,21 +69,21 @@ class Main {
         int command = -1;
 
         if (request.contains(65) && request.contains(83)) {
-            command = 1;
+            command = 5;
         } else if (request.contains(65) && request.contains(87)) {
             command = 7;
         } else if (request.contains(68) && request.contains(83)) {
             command = 3;
         } else if (request.contains(68) && request.contains(87)) {
-            command = 5;
+            command = 1;
         } else if (request.contains(87)) {
-            command = 6;
-        } else if (request.contains(68)) {
-            command = 4;
-        } else if (request.contains(65)) {
             command = 0;
-        } else if (request.contains(83)) {
+        } else if (request.contains(68)) {
             command = 2;
+        } else if (request.contains(65)) {
+            command = 6;
+        } else if (request.contains(83)) {
+            command = 4;
         }
 
         if (command != -1) {
