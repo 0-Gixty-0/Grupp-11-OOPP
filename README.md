@@ -854,6 +854,30 @@ Eliminating code duplication makes code easier to maintain.
 #### User interaction
 This US is purely about tests which have no user interaction.
 
+---
+
+### US-66 Weapons and projectiles
+Date of completion: 1/12/2023
+Completed by: Noa Cavassi
+
+As a developer I want bodies with a weapon object to be able to shoot, and the bullets to have a hit box and a projectile.
+
+#### What
+This user story is about creating a weapon object, that has it's specific projectile type.
+
+#### How
+I made a module for projectiles, consisting of AProjectile, BasicCannon, BasicCannonBall, IWeapon, and the unimplemented class ZigZagBall.
+
+AProjectile is a subclass of AMovableBody since a projectile should be able to move. There's a dependency between BasicCannon and AProjectile since a BasicCannon, which is a weapon, should also depend on which projectile type it's using.
+
+#### Why
+To make it possible for bodies to damage other bodies by a weapon.
+
+#### User interaction
+The user will come in contact with this feature when fireing the weapon, or when another body fires its weapon.
+
+---
+
 ### US-77: Fixing SOLID violations in controller.
 Date of completion: 01/12/2023
 Completed by: William Norland
