@@ -1,15 +1,21 @@
 package com.group11;
 
 import java.awt.Point;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import com.group11.controller.GlobalKeyListener;
-import com.group11.model.*;
-import com.group11.view.AppWindow;
+import com.group11.model.builders.EntityDirector;
+import com.group11.model.builders.ShipBuilder;
+import com.group11.model.gameentites.AMovableBody;
+import com.group11.model.gameentites.CommandableEntity;
+import com.group11.model.gameentites.Ship;
+import com.group11.model.gameworld.*;
+import com.group11.model.utility.MovementUtility;
+import com.group11.model.utility.TileMatrixDecoder;
 import com.group11.view.ViewTileMatrixEncoder;
+import com.group11.view.uicomponents.AppWindow;
 
 class Main {
     private AppWindow appWindow;
@@ -32,7 +38,7 @@ class Main {
     }
 
     private World createBasicWorld() {
-        IMapGenerator mapGenerator = new BasicMapGenerator();
+        IMapGenerator mapGenerator = new AdvancedMapGenerator();
         IWorldGenerator worldGenerator = new BasicWorldGenerator(mapGenerator);
         return worldGenerator.generateWorld(50);
     }
@@ -60,57 +66,34 @@ class Main {
 
     private void decodeController() {
         Set<Integer> request = Main.keyboardController.getInput();
+        int command = -1;
 
-        if (request.contains(65) && request.contains(83)) {    
-            this.player.moveCommand(1);
+        if (request.contains(65) && request.contains(83)) {
+            command = 1;
+        } else if (request.contains(65) && request.contains(87)) {
+            command = 7;
+        } else if (request.contains(68) && request.contains(83)) {
+            command = 3;
+        } else if (request.contains(68) && request.contains(87)) {
+            command = 5;
+        } else if (request.contains(87)) {
+            command = 6;
+        } else if (request.contains(68)) {
+            command = 4;
+        } else if (request.contains(65)) {
+            command = 0;
+        } else if (request.contains(83)) {
+            command = 2;
+        }
+
+        if (command != -1) {
+            this.player.moveCommand(command);
             int newPosX = (int) this.player.getPos().getX();
             int newPosY = (int) this.player.getPos().getY();
-            appWindow.updateEntities(ViewTileMatrixEncoder.createEntityTileMatrix(generatePlayerMatrix( newPosX, newPosY)));
+            appWindow.updateEntities(ViewTileMatrixEncoder.createEntityTileMatrix(generatePlayerMatrix(newPosX, newPosY)));
         }
-        if (request.contains(65) && request.contains(87)) {
-            this.player.moveCommand(7);
-            int newPosX = (int) this.player.getPos().getX();
-            int newPosY = (int) this.player.getPos().getY();
-            appWindow.updateEntities(ViewTileMatrixEncoder.createEntityTileMatrix(generatePlayerMatrix( newPosX, newPosY)));
-        }
-        if (request.contains(68) && request.contains(83)) {
-            this.player.moveCommand(3);
-            int newPosX = (int) this.player.getPos().getX();
-            int newPosY = (int) this.player.getPos().getY();
-            appWindow.updateEntities(ViewTileMatrixEncoder.createEntityTileMatrix(generatePlayerMatrix( newPosX, newPosY)));
-        }
-        if (request.contains(65) && request.contains(87)) {
-            this.player.moveCommand(5);
-            int newPosX = (int) this.player.getPos().getX();
-            int newPosY = (int) this.player.getPos().getY();
-            appWindow.updateEntities(ViewTileMatrixEncoder.createEntityTileMatrix(generatePlayerMatrix( newPosX, newPosY)));
-        }
-        if (request.contains(87)) {
-            this.player.moveCommand(6);
-            int newPosX = (int) this.player.getPos().getX();
-            int newPosY = (int) this.player.getPos().getY();
-            appWindow.updateEntities(ViewTileMatrixEncoder.createEntityTileMatrix(generatePlayerMatrix( newPosX, newPosY)));
-        }
-        if (request.contains(68)) {
-            this.player.moveCommand(4);
-            int newPosX = (int) this.player.getPos().getX();
-            int newPosY = (int) this.player.getPos().getY();
-            appWindow.updateEntities(ViewTileMatrixEncoder.createEntityTileMatrix(generatePlayerMatrix( newPosX, newPosY)));
-        }
-        if (request.contains(65)) {
-            this.player.moveCommand(0);
-            int newPosX = (int) this.player.getPos().getX();
-            int newPosY = (int) this.player.getPos().getY();
-            appWindow.updateEntities(ViewTileMatrixEncoder.createEntityTileMatrix(generatePlayerMatrix( newPosX, newPosY)));
-        }
-        if (request.contains(83)) {
-            this.player.moveCommand(2);
-            int newPosX = (int) this.player.getPos().getX();
-            int newPosY = (int) this.player.getPos().getY();
-            appWindow.updateEntities(ViewTileMatrixEncoder.createEntityTileMatrix(generatePlayerMatrix( newPosX, newPosY)));
-        }
-        
     }
+
 
     /**
      * This algorithm creates a list of enemy entities based on the desired wave
