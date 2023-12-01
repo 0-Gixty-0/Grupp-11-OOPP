@@ -21,18 +21,6 @@ import java.util.List;
 import static junit.framework.TestCase.assertEquals;
 
 public class AICommanderTest {
-//    private class TestSeaTile extends ATile {
-//        protected TestSeaTile(Point pos) {
-//            super(0, pos, true);
-//        }
-//    }
-//
-//    private class TestLandTile extends ATile {
-//        protected TestLandTile(Point pos) {
-//            super(1, pos, false);
-//        }
-//    }
-
     private List<List<Integer>> grid = new ArrayList<>();
     private List<List<ATile>> terrainMatrix = new ArrayList<>();
     private ArrayList<ArrayList<AEntity>> entityMatrix = UEntityMatrixGenerator.createEntityMatrix(5,5);
@@ -104,36 +92,92 @@ public class AICommanderTest {
 
     @Test
     public void testEnemyMovesTopRight() {
-
+        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        CommandableEntity enemy = (CommandableEntity) this.director.createEnemy(new Point(3,2), 1);
+        enemyList.add(enemy);
+        this.entities.add(enemy);
+        this.entities.add(this.director.createPlayer(new Point(1,4)));
+        this.entityMatrix = UEntityMatrixGenerator.populateEntityMatrix(this.entities, this.entityMatrix);
+        AICommander commander = new AICommander(this.entityMatrix, this.terrainMatrix);
+        commander.moveEnemies(enemyList);
+        assertEquals(new Point(2,3), enemy.getPos());
     }
 
     @Test
     public void testEnemyMovesRight() {
-
+        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        CommandableEntity enemy = (CommandableEntity) this.director.createEnemy(new Point(2,0), 1);
+        enemyList.add(enemy);
+        this.entities.add(enemy);
+        this.entities.add(this.director.createPlayer(new Point(2,4)));
+        this.entityMatrix = UEntityMatrixGenerator.populateEntityMatrix(this.entities, this.entityMatrix);
+        AICommander commander = new AICommander(this.entityMatrix, this.terrainMatrix);
+        commander.moveEnemies(enemyList);
+        assertEquals(new Point(2,1), enemy.getPos());
     }
 
     @Test
     public void testEnemyMovesBottomRight() {
-
+        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        CommandableEntity enemy = (CommandableEntity) this.director.createEnemy(new Point(0,1), 1);
+        enemyList.add(enemy);
+        this.entities.add(enemy);
+        this.entities.add(this.director.createPlayer(new Point(3,4)));
+        this.entityMatrix = UEntityMatrixGenerator.populateEntityMatrix(this.entities, this.entityMatrix);
+        AICommander commander = new AICommander(this.entityMatrix, this.terrainMatrix);
+        commander.moveEnemies(enemyList);
+        assertEquals(new Point(1,2), enemy.getPos());
     }
 
     @Test
     public void testEnemyMovesDown() {
-
+        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        CommandableEntity enemy = (CommandableEntity) this.director.createEnemy(new Point(0,4), 1);
+        enemyList.add(enemy);
+        this.entities.add(enemy);
+        this.entities.add(this.director.createPlayer(new Point(4,4)));
+        this.entityMatrix = UEntityMatrixGenerator.populateEntityMatrix(this.entities, this.entityMatrix);
+        AICommander commander = new AICommander(this.entityMatrix, this.terrainMatrix);
+        commander.moveEnemies(enemyList);
+        assertEquals(new Point(1,4), enemy.getPos());
     }
 
     @Test
     public void testEnemyMovesBottomLeft() {
-
+        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        CommandableEntity enemy = (CommandableEntity) this.director.createEnemy(new Point(0,3), 1);
+        enemyList.add(enemy);
+        this.entities.add(enemy);
+        this.entities.add(this.director.createPlayer(new Point(2,1)));
+        this.entityMatrix = UEntityMatrixGenerator.populateEntityMatrix(this.entities, this.entityMatrix);
+        AICommander commander = new AICommander(this.entityMatrix, this.terrainMatrix);
+        commander.moveEnemies(enemyList);
+        assertEquals(new Point(1,2), enemy.getPos());
     }
 
     @Test
     public void testEnemyMovesLeft() {
-
+        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        CommandableEntity enemy = (CommandableEntity) this.director.createEnemy(new Point(2,4), 1);
+        enemyList.add(enemy);
+        this.entities.add(enemy);
+        this.entities.add(this.director.createPlayer(new Point(2,0)));
+        this.entityMatrix = UEntityMatrixGenerator.populateEntityMatrix(this.entities, this.entityMatrix);
+        AICommander commander = new AICommander(this.entityMatrix, this.terrainMatrix);
+        commander.moveEnemies(enemyList);
+        assertEquals(new Point(2,3), enemy.getPos());
     }
 
     @Test
     public void testEnemyMovesTopLeft() {
-
+        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        CommandableEntity enemy = (CommandableEntity) this.director.createEnemy(new Point(3,4), 1);
+        enemyList.add(enemy);
+        this.entities.add(enemy);
+        this.entities.add(this.director.createPlayer(new Point(0,1)));
+        this.entityMatrix = UEntityMatrixGenerator.populateEntityMatrix(this.entities, this.entityMatrix);
+        AICommander commander = new AICommander(this.entityMatrix, this.terrainMatrix);
+        commander.moveEnemies(enemyList);
+        assertEquals(new Point(2,3), enemy.getPos());
     }
 }
