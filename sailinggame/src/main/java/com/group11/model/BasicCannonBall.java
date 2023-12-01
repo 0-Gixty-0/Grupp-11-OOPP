@@ -1,7 +1,9 @@
 package com.group11.model;
 
+import com.group11.model.gameentites.AProjectile;
+
 public class BasicCannonBall extends AProjectile {
-    BasicCannonBall() {
+    public BasicCannonBall() {
         super(0, 30, 10, new int[]{0, 0});
     }
 
