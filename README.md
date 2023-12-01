@@ -806,6 +806,8 @@ I went through the whole test map to check if any test were missing or if any te
 
 During the course of the project, a lot of code structure has been changed, which meant a lot of code also got changed. New classes added, old classes removed, and so on. This meant that a lot of the tests were either unnecessary or missing. I also noticed that a lot of the JavaDoc was missing or incorrect, which made it harder to understand the code.
 
+#### User interaction
+This US is purely about tests which have no user interaction.
 ---
 
 ### US-70: Implement Entity Matrix Generator Utility Class
@@ -829,5 +831,25 @@ I felt this was more practical than forcing clients to collect all of the entiti
 then creating and populating in the method. This way clients can choose when entities are added and when a new entity matrix is needed
 it can create an empty one and discard the old one.
 
-#### Tutorial
-This user story does not require a tutorial.
+#### User interaction
+The user will interact with this feature through playing as an Entity on the entity matrix.
+
+---
+
+### US-76: Refactoring duplicated code in CommandableEntityTest
+Date of completion: 01/12/2023
+Completed by: William Norland
+
+As a developer I want to factor out the duplicate code in the movement tests in CommandableEntityTest. Because It makes the code easier to maintain.
+
+#### What
+The tests in the test class CommandableEntityTest reused the same snippet of code in all its tests, this US fixed this.
+
+#### Wow
+Refactoring common code into a private helper method in the testclass.
+
+#### Why
+Eliminating code duplication makes code easier to maintain.
+
+#### User interaction
+This US is purely about tests which have no user interaction.
