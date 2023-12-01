@@ -3,7 +3,7 @@
 
 **Project Boundaries:** The boundaries set for this project is that its a game logically and visually based on 2d tiles, tiles are either entities (living things) or terrain (non living).
 
-**License:** Released under (Placeholder) License
+**License:** Released under MIT License, see LICENSE for more information.
 
 **Installation:** Any alpha release source code is available for compilation under the releases tab, the final release of the project has a downloadable runnable Jar file included.
 
