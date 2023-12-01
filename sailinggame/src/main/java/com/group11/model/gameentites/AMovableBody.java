@@ -1,5 +1,7 @@
 package com.group11.model.gameentites;
 
+import com.group11.model.utility.MovementUtility;
+
 import java.awt.Point;
 
 /**
@@ -48,4 +50,15 @@ public abstract class AMovableBody extends ABody implements IMovable {
     public void move(int x, int y) {
         this.getTruePos().setLocation(x, y);
     }
+
+    public void moveIfPossible(int [] dirVector) {
+        Point currPos = this.getPos();
+        if (MovementUtility.movementIsPossible(currPos, dirVector)) {
+            int currX = (int) currPos.getX();
+            int currY = (int) currPos.getY();
+            AMovableBody body = this;
+            this.move(currX + dirVector[0],currY + dirVector[1]);
+        }
+    }
+
 }

@@ -11,6 +11,7 @@ public class AProjectileTest {
 
     @Test
     public void testIsOutOfRange() {
+
         assertFalse(testCannonBall.isOutOfRange());
     }
 
