@@ -56,7 +56,7 @@ public class CommandableEntity extends AEntity implements ICommandable {
      */
     @Override
     public void moveCommand(Integer direction) {
-        int[][] directions = {{0,-1}, {1,-1}, {1,0}, {1,1}, {0,1}, {-1,1}, {-1,0}, {-1,-1}};
+        int[][] directions = {{-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}};
         if (this.getBody() instanceof IMovable) {
             this.moveHelper(directions[direction]);
         } else {
@@ -70,7 +70,7 @@ public class CommandableEntity extends AEntity implements ICommandable {
      */
     @Override
     public void attackCommand(Integer direction) {
-        int[][] directions = {{0,-1}, {1,-1}, {1,0}, {1,1}, {0,1}, {-1,1}, {-1,0}, {-1,-1}};
+        int[][] directions = {{-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}};
         if (this.getBody() instanceof HasWeapon) {
             ((HasWeapon) this.getBody()).fireWeapon(directions[direction]);
         } else {
