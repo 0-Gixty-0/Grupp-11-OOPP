@@ -1,6 +1,5 @@
 package modeltest;
 
-import com.group11.model.*;
 import com.group11.model.builders.EntityDirector;
 import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AEntity;
@@ -8,6 +7,7 @@ import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameworld.ATile;
 import com.group11.model.gameworld.LandTile;
 import com.group11.model.gameworld.SeaTile;
+import com.group11.model.utility.AICommander;
 import com.group11.model.utility.MovementUtility;
 import com.group11.model.utility.UEntityMatrixGenerator;
 import org.junit.Before;

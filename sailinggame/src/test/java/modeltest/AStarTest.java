@@ -1,6 +1,6 @@
 package modeltest;
 
-import com.group11.model.AStar;
+import com.group11.model.utility.AStar;
 import org.junit.Before;
 import org.junit.Test;
 

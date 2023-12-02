@@ -1,10 +1,9 @@
-package com.group11.model;
+package com.group11.model.utility;
 
 
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameworld.ATile;
-import com.group11.model.utility.TileMatrixDecoder;
 
 import java.awt.*;
 import java.util.ArrayList;
