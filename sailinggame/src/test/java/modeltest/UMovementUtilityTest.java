@@ -10,7 +10,7 @@ import com.group11.model.gameworld.BasicMapGenerator;
 import com.group11.model.gameworld.Map;
 import com.group11.model.utility.UMovementUtility;
 
-public class MovementUtilityTest {
+public class UMovementUtilityTest {
 
     @Test
     public void movementIsPossible() {
