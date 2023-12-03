@@ -16,7 +16,7 @@ public final class UTileMatrixDecoder {
     /**
      * Mapping of Tile classes to textureId's.
      */
-    private static ArrayList<Class<? extends ATile>> tileMap = new ArrayList<>();
+    private static List<Class<? extends ATile>> tileMap = new ArrayList<>();
     static {
         tileMap.add(LandTile.class); // 0
         tileMap.add(SeaTile.class); // 1
