@@ -11,10 +11,13 @@ import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AMovableBody;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameentites.Ship;
-import com.group11.model.gameworld.*;
-import com.group11.model.utility.MovementUtility;
-import com.group11.model.utility.TileMatrixDecoder;
-import com.group11.view.ViewTileMatrixEncoder;
+import com.group11.model.gameworld.AdvancedMapGenerator;
+import com.group11.model.gameworld.BasicWorldGenerator;
+import com.group11.model.gameworld.IMapGenerator;
+import com.group11.model.gameworld.IWorldGenerator;
+import com.group11.model.gameworld.World;
+import com.group11.model.utility.UMovementUtility;
+import com.group11.model.utility.UTileMatrixDecoder;
 import com.group11.view.uicomponents.AppWindow;
 
 class Main {
@@ -33,8 +36,8 @@ class Main {
         this.appWindow = new AppWindow(windowHeight, windowHeight, 50, 50, 16, 16);
         this.world = this.createBasicWorld();
         this.player = this.createBasicPlayer();
-        MovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
-        this.appWindow.updateTerrain(ViewTileMatrixEncoder.createTerrainTileMatrix(TileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
+        UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
+        this.appWindow.updateTerrain((UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
     }
 
     private World createBasicWorld() {
@@ -69,28 +72,28 @@ class Main {
         int command = -1;
 
         if (request.contains(65) && request.contains(83)) {
-            command = 1;
+            command = 5;
         } else if (request.contains(65) && request.contains(87)) {
             command = 7;
         } else if (request.contains(68) && request.contains(83)) {
             command = 3;
         } else if (request.contains(68) && request.contains(87)) {
-            command = 5;
+            command = 1;
         } else if (request.contains(87)) {
-            command = 6;
-        } else if (request.contains(68)) {
-            command = 4;
-        } else if (request.contains(65)) {
             command = 0;
-        } else if (request.contains(83)) {
+        } else if (request.contains(68)) {
             command = 2;
+        } else if (request.contains(65)) {
+            command = 6;
+        } else if (request.contains(83)) {
+            command = 4;
         }
 
         if (command != -1) {
             this.player.moveCommand(command);
             int newPosX = (int) this.player.getPos().getX();
             int newPosY = (int) this.player.getPos().getY();
-            appWindow.updateEntities(ViewTileMatrixEncoder.createEntityTileMatrix(generatePlayerMatrix(newPosX, newPosY)));
+            appWindow.updateEntities((generatePlayerMatrix(newPosX, newPosY)));
         }
     }
 

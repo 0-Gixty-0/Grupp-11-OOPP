@@ -1,141 +1,140 @@
 package controllertest;
 
-import com.group11.controller.KeyboardInterpretor;
-
 import static org.junit.Assert.assertEquals;
 
-import java.util.HashSet;
-import java.util.Set;
 import org.junit.Test;
 
+import com.group11.controller.KeyboardInterpretor;
+
 public class KeyboardInterpretorTest {
-    private Set<Integer> inputSet = new HashSet<>();
     
+    private KeyboardInterpretor keyboardInterpretor = new KeyboardInterpretor();
+
     @Test
     public void KeyWandAreturnsDir7(){
-        inputSet.add(87);
-        inputSet.add(65);
+        keyboardInterpretor.getInputSet().add(87);
+        keyboardInterpretor.getInputSet().add(65);
 
-        assertEquals(KeyboardInterpretor.WASDToDir(inputSet), 7);
+        assertEquals(7, keyboardInterpretor.getMovementInput());
     }
     @Test
     public void KeyWandDreturnsDir1(){
-        inputSet.add(87);
-        inputSet.add(68);
+        keyboardInterpretor.getInputSet().add(87);
+        keyboardInterpretor.getInputSet().add(68);
 
-        assertEquals(KeyboardInterpretor.WASDToDir(inputSet), 1);
+        assertEquals(1, keyboardInterpretor.getMovementInput());
     }
     @Test
     public void KeySandDreturnsDir3(){
-        inputSet.add(83);
-        inputSet.add(68);
+        keyboardInterpretor.getInputSet().add(83);
+        keyboardInterpretor.getInputSet().add(68);
 
-        assertEquals(KeyboardInterpretor.WASDToDir(inputSet), 3);
+        assertEquals(3, keyboardInterpretor.getMovementInput());
     }
     @Test
     public void KeySandAreturnsDir5(){
-        inputSet.add(83);
-        inputSet.add(65);
+        keyboardInterpretor.getInputSet().add(83);
+        keyboardInterpretor.getInputSet().add(65);
 
-        assertEquals(KeyboardInterpretor.WASDToDir(inputSet), 5);
+        assertEquals(5, keyboardInterpretor.getMovementInput());
     }
     @Test
     public void KeyWreturnsDir0(){
-        inputSet.add(87);
+        keyboardInterpretor.getInputSet().add(87);
 
-        assertEquals(KeyboardInterpretor.WASDToDir(inputSet), 0);
+        assertEquals(0, keyboardInterpretor.getMovementInput());
     }
     @Test
     public void KeyDreturnsDir2(){
-        inputSet.add(68);
+        keyboardInterpretor.getInputSet().add(68);
 
-        assertEquals(KeyboardInterpretor.WASDToDir(inputSet), 2);
+        assertEquals(2, keyboardInterpretor.getMovementInput());
     }
     @Test
     public void KeySreturnsDir4(){
-        inputSet.add(83);
+        keyboardInterpretor.getInputSet().add(83);
 
-        assertEquals(KeyboardInterpretor.WASDToDir(inputSet), 4);
+        assertEquals(4, keyboardInterpretor.getMovementInput());
     }
     @Test
     public void KeyAreturnsDir6(){
-        inputSet.add(65);
+        keyboardInterpretor.getInputSet().add(65);
 
-        assertEquals(KeyboardInterpretor.WASDToDir(inputSet), 6);
+        assertEquals(6, keyboardInterpretor.getMovementInput());
     }
     @Test
     public void WandAandSandDReturnsDirNegative1(){
-        inputSet.add(38);
-        inputSet.add(37);
-        inputSet.add(40);
-        inputSet.add(39);  
+        keyboardInterpretor.getInputSet().add(87);
+        keyboardInterpretor.getInputSet().add(65);
+        keyboardInterpretor.getInputSet().add(83);
+        keyboardInterpretor.getInputSet().add(68);
 
-        assertEquals(KeyboardInterpretor.arrowsToDir(inputSet), -1);
+        assertEquals(keyboardInterpretor.getMovementInput(), -1);
     }
 
 
     @Test
     public void UpAndLeftReturnsDir7(){
-        inputSet.add(38);
-        inputSet.add(37);
-
-        assertEquals(KeyboardInterpretor.arrowsToDir(inputSet), 7);
+        keyboardInterpretor.getInputSet().add(38);
+        keyboardInterpretor.getInputSet().add(37);
+    
+        assertEquals(7, keyboardInterpretor.getFireInput());
     }
     @Test
     public void UpAndRightReturnsDir1(){
-        inputSet.add(38);
-        inputSet.add(39);
+        keyboardInterpretor.getInputSet().add(38);
+        keyboardInterpretor.getInputSet().add(39);
 
-        assertEquals(KeyboardInterpretor.arrowsToDir(inputSet), 1);
+        assertEquals(1, keyboardInterpretor.getFireInput());
     }
     @Test
     public void DownAndLeftReturnsDir3(){
-        inputSet.add(40);
-        inputSet.add(39);
+        keyboardInterpretor.getInputSet().add(40);
+        keyboardInterpretor.getInputSet().add(37);
 
-        assertEquals(KeyboardInterpretor.arrowsToDir(inputSet), 3);
+        assertEquals(5, keyboardInterpretor.getFireInput());
     }
     @Test
     public void DownAndRightReturnsDir5(){
-        inputSet.add(40);
-        inputSet.add(37);
+        keyboardInterpretor.getInputSet().add(40);
+        keyboardInterpretor.getInputSet().add(39);
 
-        assertEquals(KeyboardInterpretor.arrowsToDir(inputSet), 5);
+        assertEquals(3, keyboardInterpretor.getFireInput());
     }
     @Test
     public void UpReturnsDir0(){
-        inputSet.add(38);
+        keyboardInterpretor.getInputSet().add(38);
 
-        assertEquals(KeyboardInterpretor.arrowsToDir(inputSet), 0);
+        assertEquals(0, keyboardInterpretor.getFireInput());
     }
     @Test
     public void RightReturnsDir2(){
-        inputSet.add(39);
+        keyboardInterpretor.getInputSet().add(39);
 
-        assertEquals(KeyboardInterpretor.arrowsToDir(inputSet), 2);
+        assertEquals(2, keyboardInterpretor.getFireInput());
     }
     @Test
     public void DownReturnsDir4(){
-        inputSet.add(40);
+        keyboardInterpretor.getInputSet().add(40);
 
-        assertEquals(KeyboardInterpretor.arrowsToDir(inputSet), 4);
+        assertEquals(4, keyboardInterpretor.getFireInput());
     }
     @Test
     public void UpAndRightAndLeftReturnsDir0(){
-        inputSet.add(37);
-        inputSet.add(38);
-        inputSet.add(39);
+        keyboardInterpretor.getInputSet().add(38);
+        keyboardInterpretor.getInputSet().add(37);
+        keyboardInterpretor.getInputSet().add(39);
 
-        assertEquals(KeyboardInterpretor.arrowsToDir(inputSet), 0);
+        assertEquals(0, keyboardInterpretor.getFireInput());
     }
     @Test
     public void UpAndRightAndLeftAndDownReturnsDirNegative1(){
-        inputSet.add(38);
-        inputSet.add(37);
-        inputSet.add(40);
-        inputSet.add(39);  
+        keyboardInterpretor.getInputSet().add(38);
+        keyboardInterpretor.getInputSet().add(37);
+        keyboardInterpretor.getInputSet().add(39);
+        keyboardInterpretor.getInputSet().add(40);
 
-        assertEquals(KeyboardInterpretor.arrowsToDir(inputSet), -1);
+        assertEquals(keyboardInterpretor.getFireInput(), -1);
     }
 
 }

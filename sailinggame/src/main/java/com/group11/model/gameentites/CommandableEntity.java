@@ -1,9 +1,5 @@
 package com.group11.model.gameentites;
 
-import java.awt.Point;
-
-import com.group11.model.utility.MovementUtility;
-
 /**
  * A movable entity is a subset of entities that can move around the gameworld
  */
@@ -17,21 +13,6 @@ public class CommandableEntity extends AEntity implements ICommandable {
      */
     public CommandableEntity(AMovableBody body, String name, Boolean friendly) {
         super(body, name, friendly);
-    }
-
-    /**
-     * A Helper method for movement implementation using pseudo linear algebra. This should be the method
-     * that does the actual moving of the body in subclasses.
-     * @param dirVector The direction the body should move in.
-     */
-    protected void moveHelper(int [] dirVector) {
-        Point currPos = this.getBody().getPos();
-        if (MovementUtility.movementIsPossible(currPos, dirVector)) {
-            int currX = (int) currPos.getX();
-            int currY = (int) currPos.getY();
-            AMovableBody body = (AMovableBody) this.getBody();
-            body.move(currX + dirVector[0],currY + dirVector[1]);
-        }
     }
 
     /**
@@ -56,9 +37,9 @@ public class CommandableEntity extends AEntity implements ICommandable {
      */
     @Override
     public void moveCommand(Integer direction) {
-        int[][] directions = {{0,-1}, {1,-1}, {1,0}, {1,1}, {0,1}, {-1,1}, {-1,0}, {-1,-1}};
+        int[][] directions = {{-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}};
         if (this.getBody() instanceof IMovable) {
-            this.moveHelper(directions[direction]);
+            ((IMovable) this.getBody()).moveIfPossible(directions[direction]);
         } else {
             System.out.println(String.format("Objects of type %s cannot move",this.getBody().getClass().getName()));
         }
@@ -70,7 +51,7 @@ public class CommandableEntity extends AEntity implements ICommandable {
      */
     @Override
     public void attackCommand(Integer direction) {
-        int[][] directions = {{0,-1}, {1,-1}, {1,0}, {1,1}, {0,1}, {-1,1}, {-1,0}, {-1,-1}};
+        int[][] directions = {{-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}};
         if (this.getBody() instanceof HasWeapon) {
             ((HasWeapon) this.getBody()).fireWeapon(directions[direction]);
         } else {

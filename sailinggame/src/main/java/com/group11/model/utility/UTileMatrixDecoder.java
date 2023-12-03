@@ -11,7 +11,7 @@ import com.group11.model.gameworld.SeaTile;
  * A class for converting Matrix<Tile> in Map objects to Matrix<Int> which is a non model dependent medium.
  * The view converts the Matrix<Int> into its own domain specific language to display the graphics on the screen.
  */
-public final class TileMatrixDecoder {
+public final class UTileMatrixDecoder {
     
     /**
      * Mapping of Tile classes to textureId's.
@@ -25,7 +25,7 @@ public final class TileMatrixDecoder {
     /**
      * Dont use this class by instantiation use it by its static methods.
      */
-    private TileMatrixDecoder() {
+    private UTileMatrixDecoder() {
         throw new IllegalStateException("Utility class");
     }
 
@@ -58,7 +58,7 @@ public final class TileMatrixDecoder {
 
                 ATile tile = matrix.get(row).get(col);
 
-                Integer textureId = TileMatrixDecoder.getTextureId(tile);
+                Integer textureId = UTileMatrixDecoder.getTextureId(tile);
 
                 intMatrix.get(row).add(col, textureId);
             

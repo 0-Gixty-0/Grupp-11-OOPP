@@ -5,18 +5,22 @@
 
 **License:** Released under MIT License, see LICENSE for more information.
 
-**Installation:** Any alpha release source code is available for compilation under the releases tab, the final release of the project has a downloadable runnable Jar file included.
+**Installation:** Any alpha release source code is available for compilation under the releases tab, the final beta release of the project has a downloadable runnable Jar file included. If you want to compile the project from source we recommend you to use Maven which is available for download [here](https://maven.apache.org/download.cgi?.=). Once you have installed maven you can unzip the source code, navigate to the sailinggame folder with terminal and run <br>
+```console
+mvn package
+```
+The Jar file with the suffix "jar-with-dependencies" is the one you want to use.
 
 **Dependencies:** Junit 4.13.2 is used for testing in the source code, the runnable Jar only requires you to have a JRE (>= v.1.8).
 
 **Documentation:** Indepth docs of all project features is available under the **Implemented features** tab of this README, JavaDoc for the project is available [here](placeholderlink).
 
 **Credit:** <br>
-Noa Cavassi ([@cavassi](https://github.com/cavassi)), <br>
-William Norland ([@willayy](https://github.com/willayy)), <br>
-Alexander Muhr ([@DuchessMuhr](https://github.com/DuchessMuhr)), <br>
-Adam Kvarnsund ([@adamkvarnsund](https://github.com/adamkvarnsund)), <br>
-Erik Andreasson ([@0-Gixty-0](https://github.com/0-Gixty-0)), <br>
+Noa Cavassi [@cavassi](https://github.com/cavassi), <br>
+William Norland [@willayy](https://github.com/willayy), <br>
+Alexander Muhr [@DuchessMuhr](https://github.com/DuchessMuhr), <br>
+Adam Kvarnsund [@adamkvarnsund](https://github.com/adamkvarnsund), <br>
+Erik Andreasson [@0-Gixty-0](https://github.com/0-Gixty-0), <br>
 
 **Acknowledgements:** Thanks to Arthur for mentoring this project.
 
@@ -863,7 +867,7 @@ Completed by: Noa Cavassi
 As a developer I want bodies with a weapon object to be able to shoot, and the bullets to have a hit box and a projectile.
 
 #### What
-This user story is about creating a weapon object, that has it's specific projectile type.
+This user story is about creating a weapon object, that has its specific projectile type.
 
 #### How
 I made a module for projectiles, consisting of AProjectile, BasicCannon, BasicCannonBall, IWeapon, and the unimplemented class ZigZagBall.
@@ -874,6 +878,92 @@ AProjectile is a subclass of AMovableBody since a projectile should be able to m
 To make it possible for bodies to damage other bodies by a weapon.
 
 #### User interaction
-The user will come in contact with this feature when fireing the weapon, or when another body fires its weapon.
+The user will come in contact with this feature when firing the weapon, or when another body fires its weapon.
 
 ---
+
+### US-77: Fixing SOLID violations in controller.
+Date of completion: 01/12/2023
+Completed by: William Norland
+
+As a developer I want the controller module to not violate the SOLID principles.
+
+#### What
+This US fixed that you couldnt depend on an abstract AControllerInterpretor because the methods for getting input where only in its concrete implementation KeyboardInterpretor. This violated the DIP. 
+This US fixed that you had to use two classes instead of the solutions one from the controller package which is unnecessary coupling.
+
+#### How
+By making abstract AControllerInterpretor own the method signature as an abstract method you can now depend on absractions when using the package. By making AControllerInterpretor own an GlobalKeyListner object you can lower coupling and have higher cohesion.
+
+#### Why
+Making code easier to extend and maintain through SOLID principles is good for the project.
+
+#### User Interaction
+This affects the ability to add new ways for the player to interact with the application.
+
+--- 
+
+### US-71: Implement AI Movement For Enemies
+Date of completion: 2/12/2023
+Completed by: Erik Andreasson
+
+As a player I want the enemies in the game to move around so that the enemies are more challenging
+
+#### What
+This user story is about implementing an AI controller for movement of enemies in the game
+
+#### How
+I created the class AICommander which has a stored entity matrix and a stored encoded terrain matrix. The class contains 2 substantial methods.
+The method moveEnemies takes a list of enemies and moves them around the map. The movement is decided based on if the enemy in question is near the
+player within a set radius. To check if the player is near I created the method getSurroundingEntityNameAndPos which returns a HashMap with
+entries as all entities around the given enemy in a box with the side length decided by the radius value. Each entry has keys as entity names (string)
+and values as entity positions (Point). If the player is found in this hash map then the position of the player and the enemy is given to a modified
+AStar method which returns the directional value of the first step in the shortest route from the enemy to the player. This value is then passed
+to the enemy through the commandable entity move method. The AStar works by searching through the encoded terrain matrix where land tiles are
+unpassable. If the player is not in radius then the enemy chooses a random direction to move in.
+
+#### Why
+I created the AICommander class as the controller for enemies in the world. Therefore, it is meant to be extended with functionality for letting
+enemies fire at the player in the correct way. I also wrote the AStar method to work with already existing code, that being the encoded terrain matrix,
+since there was no reason to make the AStar pathfinding be based on any new type of system than the model already has. Similarly, for returning the 
+directional values already specified elsewhere in the model. Side note, even if the enemy can't move in the random direction the moveHelper method
+in CommandableEntity will account for this and simply not move the enemy. 
+
+#### User Interaction
+This code makes the game more engaging for the player since enemies appear to move intelligently when in proximity to the player
+
+---
+
+###  US-78: Solution for projectile movement and IDamagable
+Date of completion: 3/12/2023
+Completed by: Noa Cavassi
+
+As a developer I want bodies with a weapon object to be able to shoot, and the bullets to have a hit box and a projectile.
+
+#### What
+This user story is a continuation on US-66, which was about creating a weapon object, that has its specific projectile type. But since there were
+some major issues with the implementation, this user story is a solution to those issues.
+
+#### How
+US-66 had projectiles that did not check if the new position for a projectile was possible or not. This because it was
+using the method move from ABody, which did not check if the new position was possible or not. This was fixed by
+implementing the method moveIfPossible. This method checks if the new position is possible, and if it is, it uses the 
+move method.
+
+There was also another issue. The class ABody implemented the interface IDamagable, which meant that every subclass of it
+should be able to take damage. But since the first idea of how projectiles works was that they can't take damage, this 
+was problematic. My solution was that every projectile has 1 hitpoint, and will therefore die when taking damage.
+
+#### Why
+To make it possible for bodies to damage other bodies by a weapon with a working solution.
+
+#### User interaction
+The user will come in contact with this feature when firing the weapon, or when another body fires its weapon.
+
+---
+
+### Change-Note
+Date of completion: 3/12/2023
+Completed by: William Norland
+
+When i configured the POM file in the maven project to be ready for deployment i had to reconfigure how we accessed image resources in the View, this change led me to discover that all images we used in the application where created dynamically every time they where used. This explains subpar performance in some cases. Deeming this issue urgent i decided to fix it on the fly.

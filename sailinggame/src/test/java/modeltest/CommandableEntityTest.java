@@ -11,14 +11,14 @@ import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameentites.Ship;
 import com.group11.model.gameworld.BasicMapGenerator;
 import com.group11.model.gameworld.Map;
-import com.group11.model.utility.MovementUtility;
+import com.group11.model.utility.UMovementUtility;
 
 public class CommandableEntityTest {
 
     @Test
     public void testTryingToMoveOverImpassableTerrain() {
         Map map = (new BasicMapGenerator()).generateMap(50);
-        MovementUtility.setTileMatrix(map.getTileMatrix());
+        UMovementUtility.setTileMatrix(map.getTileMatrix());
 
         Ship testShip = new Ship(new Point(0,0), 0, 0, 0, 2);
         CommandableEntity entity = new CommandableEntity(testShip, "testy mcTest", true);
@@ -36,14 +36,14 @@ public class CommandableEntityTest {
 
     private void move(int direction, Ship body) {
         Map map = (new BasicMapGenerator()).generateMap(50);
-        MovementUtility.setTileMatrix(map.getTileMatrix());
+        UMovementUtility.setTileMatrix(map.getTileMatrix());
         CommandableEntity entity = new CommandableEntity(body, "testy mcTest", true);
         entity.moveCommand(direction);
     }
 
     @Test
     public void testMoveUp() {
-        Ship testShip = new Ship(new Point(0,1), 0, 0, 0, 2);
+        Ship testShip = new Ship(new Point(1,0), 0, 0, 0, 2);
         this.move(0, testShip);
         assertEquals(0, (int) testShip.getPos().getY());
         assertEquals(0, (int) testShip.getPos().getX());
@@ -53,8 +53,8 @@ public class CommandableEntityTest {
     public void testMoveUpRightAngle() {
         Ship testShip = new Ship(new Point(1,1), 0, 0, 0, 2);
         this.move(1,testShip);
-        assertEquals(0, (int) testShip.getPos().getY());
-        assertEquals(2, (int) testShip.getPos().getX());
+        assertEquals(2, (int) testShip.getPos().getY());
+        assertEquals(0, (int) testShip.getPos().getX());
     }
 
     @Test
@@ -62,8 +62,8 @@ public class CommandableEntityTest {
         
         Ship testShip = new Ship(new Point(0,0), 0, 0, 0, 2);
         this.move(2,testShip);
-        assertEquals(0, (int) testShip.getPos().getY());
-        assertEquals(1, (int) testShip.getPos().getX());
+        assertEquals(1, (int) testShip.getPos().getY());
+        assertEquals(0, (int) testShip.getPos().getX());
     }
 
     @Test
@@ -78,24 +78,24 @@ public class CommandableEntityTest {
     public void testMoveDown() {
         Ship testShip = new Ship(new Point(0,0), 0, 0, 0, 2);
         this.move(4,testShip);
-        assertEquals(1, (int) testShip.getPos().getY());
-        assertEquals(0, (int) testShip.getPos().getX());
+        assertEquals(0, (int) testShip.getPos().getY());
+        assertEquals(1, (int) testShip.getPos().getX());
     }
 
     @Test
     public void testMoveDownLeftAngle() {
         Ship testShip = new Ship(new Point(1,1), 0, 0, 0, 2);
         this.move(5,testShip);
-        assertEquals(2, (int) testShip.getPos().getY());
-        assertEquals(0, (int) testShip.getPos().getX());
+        assertEquals(0, (int) testShip.getPos().getY());
+        assertEquals(2, (int) testShip.getPos().getX());
     }
 
     @Test
     public void testMoveLeft() {
         Ship testShip = new Ship(new Point(1,1), 0, 0, 0, 2);
         this.move(6,testShip);
-        assertEquals(1, (int) testShip.getPos().getY());
-        assertEquals(0, (int) testShip.getPos().getX());
+        assertEquals(0, (int) testShip.getPos().getY());
+        assertEquals(1, (int) testShip.getPos().getX());
     }
 
     @Test

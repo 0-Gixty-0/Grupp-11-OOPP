@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import com.group11.model.gameentites.ABody;
 import com.group11.model.gameentites.Ship;
-import com.group11.model.utility.BodyCollisionUtility;
+import com.group11.model.utility.UBodyCollisionUtility;
 
 public class BodyCollisionUtilityTest {
 
@@ -34,19 +34,19 @@ public class BodyCollisionUtilityTest {
 
     @Test
     public void testSetBodies() {
-        BodyCollisionUtility.setBodyMatrix(null);
-        assertThrows(IllegalStateException.class, ()->BodyCollisionUtility.isPositionOccupied(pos));
+        UBodyCollisionUtility.setBodyMatrix(null);
+        assertThrows(IllegalStateException.class, ()->UBodyCollisionUtility.isPositionOccupied(pos));
     }
 
     @Test
     public void testIsPositionOccupied() {
-        BodyCollisionUtility.setBodyMatrix(bodies);
-        assertEquals(testBody, BodyCollisionUtility.isPositionOccupied(pos));
+        UBodyCollisionUtility.setBodyMatrix(bodies);
+        assertEquals(testBody, UBodyCollisionUtility.isPositionOccupied(pos));
     }
 
     @Test
     public void testIsBodyColliding() {
-        BodyCollisionUtility.setBodyMatrix(bodies);
-       assertEquals(testBody, BodyCollisionUtility.isBodyColliding(testBody2));;
+        UBodyCollisionUtility.setBodyMatrix(bodies);
+       assertEquals(testBody, UBodyCollisionUtility.isBodyColliding(testBody2));;
     }
 }
