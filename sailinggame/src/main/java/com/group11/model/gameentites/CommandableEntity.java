@@ -52,8 +52,8 @@ public class CommandableEntity extends AEntity implements ICommandable {
     @Override
     public void attackCommand(Integer direction) {
         int[][] directions = {{-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}};
-        if (this.getBody() instanceof HasWeapon) {
-            ((HasWeapon) this.getBody()).fireWeapon(directions[direction]);
+        if (this.getBody() instanceof IHasWeapon) {
+            ((IHasWeapon) this.getBody()).fireWeapon(directions[direction]);
         } else {
             System.out.println(String.format("Objects of type %s cannot attack",this.getBody().getClass().getName()));
         }
