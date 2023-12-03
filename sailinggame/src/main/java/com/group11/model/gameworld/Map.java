@@ -6,19 +6,15 @@ import java.util.List;
  * Map is a representation of a two-dimensional physical map in the form of an object containing Matrix's.
  */
 public class Map {
-    
-    private int area;
-    private List<List<ATile>> tileMatrix;
 
-    /**
-     * Creates a Map object out of a TileMatrix and a GraphicsMatrix, Constructor is package projected because
-     * Maps should be created by map generator.
-     *
-     * @param side the size of a side in a map, a map is always a square.
-     */
-    protected Map(List<List<ATile>> tileMatrix, int side) {
+    private List<List<ATile>> tileMatrix;
+    private int mapWidth;
+    private int mapHeight;
+
+    public Map(List<List<ATile>> tileMatrix, int mapWidth, int mapHeight) {
         this.tileMatrix = tileMatrix;
-        this.area = side*side;
+        this.mapWidth = mapWidth;
+        this.mapHeight = mapHeight;
     }
 
     /**
@@ -26,7 +22,7 @@ public class Map {
      * @return (Integer) area of the map
      */
     public int getArea() {
-        return area;
+        return mapWidth * mapHeight;
     }
 
     /**

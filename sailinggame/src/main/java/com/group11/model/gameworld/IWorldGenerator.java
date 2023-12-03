@@ -1,15 +1,16 @@
 package com.group11.model.gameworld;
 
 /**
- * IWorldGenerator is Interface for all types of WorldGenerators, it represents the method contracts for WorldGenerators.
+ * IWorldGenerator is an interface for all types of WorldGenerators. It represents the method contracts for WorldGenerators.
  */
 public interface IWorldGenerator {
     
     /**
      * Method for generating a World object.
-     * @param side the size of the side of the square world.
-     * @return (World) 
+     * @param mapWidth the width of the world.
+     * @param mapHeight the height of the world.
+     * @return a World object 
      */
-    public World generateWorld(Integer side);
+    public World generateWorld(int mapWidth, int mapHeight);
 
 }

@@ -15,16 +15,16 @@ public class WorldTest {
     @Test
     public void testGetMap() {
         IMapGenerator basicMapGenerator = new BasicMapGenerator();
-        World world = (new BasicWorldGenerator(basicMapGenerator)).generateWorld(100);
+        World world = (new BasicWorldGenerator(basicMapGenerator)).generateWorld(100,100);
         assertSame(Map.class, world.getMap().getClass());
     }
 
     @Test
     public void testSetMap() {
         IMapGenerator basicMapGenerator = new BasicMapGenerator();
-        World world = (new BasicWorldGenerator(basicMapGenerator)).generateWorld(100);
+        World world = (new BasicWorldGenerator(basicMapGenerator)).generateWorld(100,100);
         Map oldMap = world.getMap();
-        Map newMap = basicMapGenerator.generateMap(100);
+        Map newMap = basicMapGenerator.generateMap(100,100);
         world.setMap(newMap);
         assertNotEquals(oldMap, world.getMap());
     }

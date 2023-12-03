@@ -18,7 +18,7 @@ public class BasicCannonBallTest {
     @Test
     public void testMoveInTravelPath() {
 
-        Map map = (new BasicMapGenerator()).generateMap(10);
+        Map map = (new BasicMapGenerator()).generateMap(10,10);
         UMovementUtility.setTileMatrix(map.getTileMatrix());
 
 

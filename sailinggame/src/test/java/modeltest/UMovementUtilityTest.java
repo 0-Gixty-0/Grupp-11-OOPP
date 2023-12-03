@@ -14,7 +14,7 @@ public class UMovementUtilityTest {
 
     @Test
     public void movementIsPossible() {
-        Map map = (new BasicMapGenerator()).generateMap(50);
+        Map map = (new BasicMapGenerator()).generateMap(50,50);
         UMovementUtility.setTileMatrix(map.getTileMatrix());
         assertFalse(UMovementUtility.movementIsPossible(new Point(25,11), new int[]{0,1}));
     }

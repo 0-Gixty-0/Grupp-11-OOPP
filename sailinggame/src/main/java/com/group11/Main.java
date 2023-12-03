@@ -43,7 +43,7 @@ class Main {
     private World createBasicWorld() {
         IMapGenerator mapGenerator = new AdvancedMapGenerator();
         IWorldGenerator worldGenerator = new BasicWorldGenerator(mapGenerator);
-        return worldGenerator.generateWorld(50);
+        return worldGenerator.generateWorld(50,50);
     }
 
     private CommandableEntity createBasicPlayer() {
