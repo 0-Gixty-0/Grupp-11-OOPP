@@ -1,22 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.group11</groupId>
     <artifactId>sailinggame</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <exclusions>
-        <exclusion>
-            <groupId>com.group11.controller.keyboardtester</groupId>
-            <artifactId>unwanted-class</artifactId>
-        </exclusion>
-    </exclusions>
-
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
+    <version>v.2.5.0-Alpha</version>
+    <packaging>jar</packaging>
 
     <dependencies>
 
@@ -37,20 +29,33 @@
 
     </dependencies>
 
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-            <configuration>
-                <archive>
-                    <manifest>
-                        <addClasspath>true</addClasspath>
-                        <classpathPrefix>libs/</classpathPrefix>
-                        <mainClass>
-                            com.group11.Main
-                        </mainClass>
-                    </manifest>
-                </archive>
-            </configuration>
-    </plugin>
+    <build>
+        <plugins>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.group11.Main</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+            
+        </plugins>
+  </build>
 
 </project>

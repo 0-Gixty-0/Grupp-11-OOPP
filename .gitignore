@@ -39,3 +39,6 @@ replay_pid*
 
 # VSCode
 .vscode
+
+# Maven output directory
+target/
