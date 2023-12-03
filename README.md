@@ -897,3 +897,33 @@ Making code easier to extend and maintain through SOLID principles is good for t
 #### User Interaction
 This affects the ability to add new ways for the player to interact with the application.
 
+--- 
+
+### US-71: Implement AI Movement For Enemies
+Date of completion: 2/12/2023
+Completed by: Erik Andreasson
+
+As a player I want the enemies in the game to move around so that the enemies are more challenging
+
+#### What
+This user story is about implementing an AI controller for movement of enemies in the game
+
+#### How
+I created the class AICommander which has a stored entity matrix and a stored encoded terrain matrix. The class contains 2 substantial methods.
+The method moveEnemies takes a list of enemies and moves them around the map. The movement is decided based on if the enemy in question is near the
+player within a set radius. To check if the player is near I created the method getSurroundingEntityNameAndPos which returns a HashMap with
+entries as all entities around the given enemy in a box with the side length decided by the radius value. Each entry has keys as entity names (string)
+and values as entity positions (Point). If the player is found in this hash map then the position of the player and the enemy is given to a modified
+AStar method which returns the directional value of the first step in the shortest route from the enemy to the player. This value is then passed
+to the enemy through the commandable entity move method. The AStar works by searching through the encoded terrain matrix where land tiles are
+unpassable. If the player is not in radius then the enemy chooses a random direction to move in.
+
+#### Why
+I created the AICommander class as the controller for enemies in the world. Therefore, it is meant to be extended with functionality for letting
+enemies fire at the player in the correct way. I also wrote the AStar method to work with already existing code, that being the encoded terrain matrix,
+since there was no reason to make the AStar pathfinding be based on any new type of system than the model already has. Similarly, for returning the 
+directional values already specified elsewhere in the model. Side note, even if the enemy can't move in the random direction the moveHelper method
+in CommandableEntity will account for this and simply not move the enemy. 
+
+#### User Interaction
+This code makes the game more engaging for the player since enemies appear to move intelligently when in proximity to the player
