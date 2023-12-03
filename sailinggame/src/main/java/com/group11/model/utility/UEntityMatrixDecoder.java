@@ -36,6 +36,7 @@ public final class UEntityMatrixDecoder {
      * @return the integer ID of the entity
      * @throws IllegalArgumentException if the entity's name is not found in entityNames
      */
+    
     private static int getEntityId(AEntity entity) {
         String entityName = entity.getName();
         int entityId = entityNames.indexOf(entityName);
