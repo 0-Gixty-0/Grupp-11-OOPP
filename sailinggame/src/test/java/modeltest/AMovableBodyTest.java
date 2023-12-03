@@ -18,13 +18,13 @@ public class AMovableBodyTest {
     @Test
     public void testGetVelocity() {
         int velocity = testShip.getVelocity();
-        assertEquals(velocity, 0);
+        assertEquals(0, velocity);
     }
 
     @Test
     public void testSetVelocity() {
         testShip.setVelocity(10);
-        assertEquals(testShip.getVelocity(),10);
+        assertEquals(10,testShip.getVelocity());
     }
 
     @Test

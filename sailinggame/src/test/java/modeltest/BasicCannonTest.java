@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class BasicCannonTest {
 
-    BasicCannon testCannon = new BasicCannon(new BasicCannonBall());
+    BasicCannon<BasicCannonBall> testCannon = new BasicCannon<>(new BasicCannonBall());
 
     @Test
     public void testGetProjectileType() {
@@ -22,7 +22,7 @@ public class BasicCannonTest {
 
         testCannon.fireWeapon();
 
-        assertEquals(testCannon.getFiredProjectilesSize(), 1);
+        assertEquals(1, testCannon.getFiredProjectilesSize());
     }
 
     @Test
@@ -30,6 +30,6 @@ public class BasicCannonTest {
 
         testCannon.fireWeapon();
 
-        assertEquals(testCannon.getFiredProjectilesSize(), 1);
+        assertEquals(1, testCannon.getFiredProjectilesSize());
     }
 }

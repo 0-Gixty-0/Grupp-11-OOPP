@@ -62,7 +62,6 @@ public abstract class AMovableBody extends ABody implements IMovable {
         if (UMovementUtility.movementIsPossible(currPos, dirVector)) {
             int currX = (int) currPos.getX();
             int currY = (int) currPos.getY();
-            AMovableBody body = this;
             this.move(currX + dirVector[0],currY + dirVector[1]);
         }
     }
