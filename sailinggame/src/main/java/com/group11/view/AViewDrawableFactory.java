@@ -15,6 +15,11 @@ import com.group11.view.uicomponents.AViewDrawable;
 public abstract class AViewDrawableFactory {
 
     private static final int SCALE = 16; //The scale of the image, ex: 16 bit, 32 bit, 64 bit....
+    private ImageIcon textureMapImage;
+
+    protected AViewDrawableFactory() {
+        this.textureMapImage = initTextureMapImageIcon();
+    }
 
     /**
      * The method returns the coordinates of the terrain type id in the texture map file.
@@ -33,7 +38,7 @@ public abstract class AViewDrawableFactory {
      * The method returns the texture map file as an ImageIcon.
      * @return ImageIcon containing the texture map file
      */
-    protected abstract ImageIcon getTextureMapImageIcon();
+    protected abstract ImageIcon initTextureMapImageIcon();
 
     /**
      * The method creates the ImageIcon for a terrain type based on the texture map file.
@@ -46,7 +51,7 @@ public abstract class AViewDrawableFactory {
      */
     protected ImageIcon createImageIcon(int id, int width, int height) {
 
-        ImageIcon fullTexture = this.getTextureMapImageIcon();
+        ImageIcon fullTexture = this.textureMapImage;
         
         Image textureImage = fullTexture.getImage();
         
@@ -66,6 +71,10 @@ public abstract class AViewDrawableFactory {
         return new ImageIcon(bufferedImage);
     }
 
-    protected abstract AViewDrawable createDrawable(Integer id);
+    protected AViewDrawable createDrawable(Integer id) {
+        validateTextureId(id);
+        return createdDrawable(id);
+    }
 
+    protected abstract AViewDrawable createdDrawable(Integer id);
 }
