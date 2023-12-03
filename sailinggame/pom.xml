@@ -49,6 +49,10 @@
                             <mainClass>com.group11.Main</mainClass>
                         </manifest>
                     </archive>
+                    <exludes>
+                        <exclude>**/controller/keyboardtester.java</exclude>
+                        <exclude>**/model/BasicMapGenerator.java</exclude>
+                    </exludes>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
