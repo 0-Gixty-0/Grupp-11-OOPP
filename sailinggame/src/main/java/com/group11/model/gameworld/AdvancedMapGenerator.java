@@ -12,17 +12,43 @@ import java.util.Random;
  */
 public class AdvancedMapGenerator implements IMapGenerator {
 
+    // Constants for the fractal noise generation
+    private static final int NUM_OCTAVES = 1;
+    private static final double FREQUENCY = 0.5;
+    private static final double NOISE_THRESHOLD = 0.6;
+    private static final int OFFSET_RANGE = 1000;
+    private static final int OFFSET_SHIFT = 500;
+    private static final double SCALE_FACTOR = 10.0;
+    private static final double SIDE_SCALE = 50.0;
+
     /**
-     * Generates a map with a given side length. The map is generated using a fractal noise function,
-     * which creates a more natural-looking terrain compared to a simple random distribution.
-     * 
-     * @param side The side length of the map.
-     * @return A Map object representing the generated map. The map consists of a matrix of ATile objects,
-     *         where each ATile can be a LandTile or a SeaTile, depending on the value of the noise function
-     *         at that point.
+     * Generates a map of a given size using fractal noise.
+     * @param side The size of the map to generate.
+     * @return The generated map.
      */
     @Override
     public Map generateMap(int side) {
+        // Set up the fractal noise generator
+        ModuleFractal fractal = setupFractalNoiseGenerator();
+
+        // Create the tile matrix that will hold the generated map
+        List<List<ATile>> tileMatrix = new ArrayList<>();
+
+        // Generate a random offset for the noise function, to ensure a different map each time
+        double[] offsets = generateRandomOffsets();
+
+        // Generate the map tiles
+        generateMapTiles(side, fractal, tileMatrix, offsets);
+
+        // Return a new Map object with the generated tile matrix
+        return new Map(tileMatrix, side);
+    }
+
+    /**
+     * Sets up the fractal noise generator.
+     * @return The configured fractal noise generator.
+     */
+    private ModuleFractal setupFractalNoiseGenerator() {
         // Set up the basis function for the fractal noise generator
         ModuleBasisFunction basisFunction = new ModuleBasisFunction();
         basisFunction.setType(ModuleBasisFunction.BasisType.SIMPLEX);
@@ -32,35 +58,56 @@ public class AdvancedMapGenerator implements IMapGenerator {
         ModuleFractal fractal = new ModuleFractal();
         fractal.setType(ModuleFractal.FractalType.MULTI);
         fractal.setAllSourceBasisTypes(ModuleBasisFunction.BasisType.SIMPLEX);
-        fractal.setNumOctaves(1);
-        fractal.setFrequency(0.5);
+        fractal.setNumOctaves(NUM_OCTAVES);
+        fractal.setFrequency(FREQUENCY);
 
-        // Create the tile matrix that will hold the generated map
-        List<List<ATile>> tileMatrix = new ArrayList<>();
+        return fractal;
+    }
 
-        // Generate a random offset for the noise function, to ensure a different map each time
+    /**
+     * Generates a random offset for the noise function. This ensures that each generated map is unique.
+     * @return An array containing the x and y offsets.
+     */
+    private double[] generateRandomOffsets() {
         Random rand = new Random();
-        double offsetX = rand.nextDouble() * 1000 - 500; // Random offset between -500 and 500
-        double offsetY = rand.nextDouble() * 1000 - 500;
+        double offsetX = rand.nextDouble() * OFFSET_RANGE - OFFSET_SHIFT;
+        double offsetY = rand.nextDouble() * OFFSET_RANGE - OFFSET_SHIFT;
 
-        // Generate the map
+        return new double[] { offsetX, offsetY };
+    }
+
+    /**
+     * Generates the map tiles based on the noise values. Each tile is either a SeaTile or a LandTile,
+     * depending on whether the noise value at its coordinates is below or above a certain threshold.
+     * @param side The size of the map to generate.
+     * @param fractal The fractal noise generator.
+     * @param tileMatrix The tile matrix to fill with generated tiles.
+     * @param offsets The offsets to apply to the noise function.
+     */
+    private void generateMapTiles(int side, ModuleFractal fractal, List<List<ATile>> tileMatrix, double[] offsets) {
         for (int x = 0; x < side; x++) {
-            List<ATile> tileRow = new ArrayList<ATile>();
+            List<ATile> tileRow = new ArrayList<>();
             for (int y = 0; y < side; y++) {
-                // Get the noise value for the current coordinates
-                double noiseValue = fractal.get((x / 10.0 + offsetX)*(side/50), (y / 10.0 + offsetY)*(side/50));
-                // Depending on the noise value, add a SeaTile or a LandTile to the current row
-                if (noiseValue < 0.6) {
-                    tileRow.add(new SeaTile(new Point(x, y)));
-                } else {
-                    tileRow.add(new LandTile(new Point(x, y)));
-                }
+                double noiseValue = fractal.get((x / SCALE_FACTOR + offsets[0])*(side/SIDE_SCALE), (y / SCALE_FACTOR + offsets[1])*(side/SIDE_SCALE));
+                tileRow.add(createTileBasedOnNoiseValue(noiseValue, x, y));
             }
-            // Add the current row to the tile matrix
             tileMatrix.add(tileRow);
         }
+    }
 
-        // Return a new Map object with the generated tile matrix
-        return new Map(tileMatrix, side);
+    /**
+     * Creates a tile based on a noise value. If the noise value is below a certain threshold, a SeaTile is created.
+     * Otherwise, a LandTile is created.
+     * @param noiseValue The noise value.
+     * @param x The x coordinate of the tile.
+     * @param y The y coordinate of the tile.
+     * @return The created tile.
+     */
+    private ATile createTileBasedOnNoiseValue(double noiseValue, int x, int y) {
+        if (noiseValue < NOISE_THRESHOLD) {
+            return new SeaTile(new Point(x, y));
+        } else {
+            return new LandTile(new Point(x, y));
+        }
     }
 }

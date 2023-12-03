@@ -9,6 +9,10 @@
     <artifactId>sailinggame</artifactId>
     <version>v.2.5.0-Alpha</version>
     <packaging>jar</packaging>
+    <properties>
+        <maven.compiler.source>20</maven.compiler.source>
+        <maven.compiler.target>20</maven.compiler.target>
+    </properties>
 
     <dependencies>
 
