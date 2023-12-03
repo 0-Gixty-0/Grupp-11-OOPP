@@ -1,7 +1,7 @@
 package com.group11.model.gameworld;
 
 /**
- * BasicWorldGenerator is a class that implements the IWorldGenerator interface. Generating a basic world from a mapgenerator.
+ * BasicWorldGenerator is a class that implements the IWorldGenerator interface. It generates a basic world using a map generator.
  */
 public class BasicWorldGenerator implements IWorldGenerator {
 
@@ -9,7 +9,7 @@ public class BasicWorldGenerator implements IWorldGenerator {
 
     /**
      * Constructor for a BasicWorldGenerator
-     * @param mapGenerator the mapgenerator to use for generating the world
+     * @param mapGenerator the map generator to use for generating the world
      */
     public BasicWorldGenerator(IMapGenerator mapGenerator) {
         this.mapGenerator = mapGenerator;
@@ -17,13 +17,14 @@ public class BasicWorldGenerator implements IWorldGenerator {
 
     /**
      * Method for generating a World object.
-     * @param side the size of the side of the square world.
-     * @return (World) 
+     * @param mapWidth the width of the world.
+     * @param mapHeight the height of the world.
+     * @return a World object 
      */
     @Override
-    public World generateWorld(Integer side) {
+    public World generateWorld(int mapWidth, int mapHeight) {
 
-        Map map = this.mapGenerator.generateMap(side);
+        Map map = this.mapGenerator.generateMap(mapWidth, mapHeight);
 
         return new World(map);
 

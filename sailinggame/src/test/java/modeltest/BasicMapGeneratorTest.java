@@ -19,7 +19,7 @@ public class BasicMapGeneratorTest {
         BasicMapGenerator testMapGenerator = new BasicMapGenerator();
 
         // Generate a map with a side length of 10
-        Map generatedMap = testMapGenerator.generateMap(10);
+        Map generatedMap = testMapGenerator.generateMap(10,10);
 
         // Check that the map has the correct area
         assertEquals(100, generatedMap.getArea());

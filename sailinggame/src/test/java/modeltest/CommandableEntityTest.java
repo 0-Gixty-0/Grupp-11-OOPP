@@ -17,7 +17,7 @@ public class CommandableEntityTest {
 
     @Test
     public void testTryingToMoveOverImpassableTerrain() {
-        Map map = (new BasicMapGenerator()).generateMap(50);
+        Map map = (new BasicMapGenerator()).generateMap(50,50);
         UMovementUtility.setTileMatrix(map.getTileMatrix());
 
         Ship testShip = new Ship(new Point(0,0), 0, 0, 0, 2);
@@ -35,7 +35,7 @@ public class CommandableEntityTest {
     }
 
     private void move(int direction, Ship body) {
-        Map map = (new BasicMapGenerator()).generateMap(50);
+        Map map = (new BasicMapGenerator()).generateMap(50,50);
         UMovementUtility.setTileMatrix(map.getTileMatrix());
         CommandableEntity entity = new CommandableEntity(body, "testy mcTest", true);
         entity.moveIfAble(direction);
