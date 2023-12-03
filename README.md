@@ -863,7 +863,7 @@ Completed by: Noa Cavassi
 As a developer I want bodies with a weapon object to be able to shoot, and the bullets to have a hit box and a projectile.
 
 #### What
-This user story is about creating a weapon object, that has it's specific projectile type.
+This user story is about creating a weapon object, that has its specific projectile type.
 
 #### How
 I made a module for projectiles, consisting of AProjectile, BasicCannon, BasicCannonBall, IWeapon, and the unimplemented class ZigZagBall.
@@ -874,7 +874,7 @@ AProjectile is a subclass of AMovableBody since a projectile should be able to m
 To make it possible for bodies to damage other bodies by a weapon.
 
 #### User interaction
-The user will come in contact with this feature when fireing the weapon, or when another body fires its weapon.
+The user will come in contact with this feature when firing the weapon, or when another body fires its weapon.
 
 ---
 
@@ -927,3 +927,31 @@ in CommandableEntity will account for this and simply not move the enemy.
 
 #### User Interaction
 This code makes the game more engaging for the player since enemies appear to move intelligently when in proximity to the player
+
+---
+
+###  US-78: Solution for projectile movement and IDamagable
+Date of completion: 3/12/2023
+Completed by: Noa Cavassi
+
+As a developer I want bodies with a weapon object to be able to shoot, and the bullets to have a hit box and a projectile.
+
+#### What
+This user story is a continuation on US-66, which was about creating a weapon object, that has its specific projectile type. But since there were
+some major issues with the implementation, this user story is a solution to those issues.
+
+#### How
+US-66 had projectiles that did not check if the new position for a projectile was possible or not. This because it was
+using the method move from ABody, which did not check if the new position was possible or not. This was fixed by
+implementing the method moveIfPossible. This method checks if the new position is possible, and if it is, it uses the 
+move method.
+
+There was also another issue. The class ABody implemented the interface IDamagable, which meant that every subclass of it
+should be able to take damage. But since the first idea of how projectiles works was that they can't take damage, this 
+was problematic. My solution was that every projectile has 1 hitpoint, and will therefore die when taking damage.
+
+#### Why
+To make it possible for bodies to damage other bodies by a weapon with a working solution.
+
+#### User interaction
+The user will come in contact with this feature when firing the weapon, or when another body fires its weapon.
