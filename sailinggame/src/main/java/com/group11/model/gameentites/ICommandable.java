@@ -2,10 +2,10 @@ package com.group11.model.gameentites;
 
 public interface ICommandable {
     
-    public void moveCommand(Integer direction);
+    public void moveIfAble(Integer direction);
 
-    public void attackCommand(Integer direction);
+    public void attackIfAble(Integer direction);
 
-    public void interactCommand();
+    public void interactIfAble();
 
 }

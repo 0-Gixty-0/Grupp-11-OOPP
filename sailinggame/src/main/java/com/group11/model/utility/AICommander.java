@@ -57,9 +57,9 @@ public class AICommander {
                 Point playerPoint = namePosMap.get("Player");
                 Point enemyPoint = enemy.getPos();
                 int directionToPlayer = AStar.aStar(this.terrainMatrixEncoded, enemyPoint.x, enemyPoint.y, playerPoint.x, playerPoint.y);
-                enemy.moveCommand(directionToPlayer);
+                enemy.moveIfAble(directionToPlayer);
             } else {
-                enemy.moveCommand(random.nextInt(8));
+                enemy.moveIfAble(random.nextInt(8));
             }
         }
     }
