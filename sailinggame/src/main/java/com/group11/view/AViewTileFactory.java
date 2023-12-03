@@ -18,7 +18,6 @@ public abstract class AViewTileFactory extends AImageUser {
     private static int tileWidth = 16; //Default values.
     private static int tileHeight = 16; 
     private int maxTextureId; //The maximum terrain type id.
-
     private List<ImageIcon> initializedIcons; //The list of ImageIcons for each terrain type.
     private ImageIcon emptyIcon; //The empty ImageIcon.
 
