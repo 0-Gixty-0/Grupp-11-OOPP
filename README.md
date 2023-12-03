@@ -3,9 +3,9 @@
 
 **Project Boundaries:** The boundaries set for this project is that its a game logically and visually based on 2d tiles, tiles are either entities (living things) or terrain (non living). Its supposed to be played with a keyboard. Other than that its a very open scope which is what we intended.
 
-**License:** Released under MIT License, see LICENSE for more information.
+**License:** Released under MIT License, see [LICENSE](https://github.com/0-Gixty-0/Grupp-11-OOPP/blob/main/LICENSE) for more information.
 
-**Installation:** Any alpha release source code is available for compilation under the releases tab, the final beta release of the project has a downloadable runnable Jar file included. If you want to compile the project from source we recommend you to use Maven which is available for download [here](https://maven.apache.org/download.cgi?.=). Once you have installed maven you can unzip the source code, navigate to the sailinggame folder with terminal and run <br>
+**Installation:** Any alpha release source code is available for compilation under the releases tab, the final beta release of the project has a downloadable runnable Jar file included. If you want to compile the project from source we recommend you to use Maven which is available for download [here](https://maven.apache.org/download.cgi?.=). Once you have installed Maven you can unzip the source code, navigate to the sailinggame folder with terminal and run <br>
 ```console
 mvn package
 ```
@@ -967,3 +967,27 @@ Date of completion: 3/12/2023
 Completed by: William Norland
 
 When i configured the POM file in the maven project to be ready for deployment i had to reconfigure how we accessed image resources in the View, this change led me to discover that all images we used in the application where created dynamically every time they where used. This explains subpar performance in some cases. Deeming this issue urgent i decided to fix it on the fly.
+
+---
+
+### US-80: Renaming CommanbableEntity methods
+Date of completion: 3/12/2023
+Completed by: Erik Andreasson
+
+As a developer I want to rename the moveCommand() and other similiar methods in the CommandableEntity class.
+
+#### What
+This user story is about renaming the command method in CommandableEntity.
+
+#### How
+I used Intellij's builtin refactoring tool to rename three methods:  
+moveCommand -> moveIfAble  
+attackCommand -> attackIfAble  
+interactCommand -> interactIfAble  
+
+#### Why
+This change was necessary in order to better reflect the contract the three methods give their clients. With this change the three
+methods and their functionality no longer break the interface segregation principle through an improved contract.
+
+#### User Interaction
+This change has to do with the functionality of entities such as the player that the code will use to enact player commands

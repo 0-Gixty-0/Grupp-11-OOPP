@@ -36,7 +36,7 @@ public class CommandableEntity extends AEntity implements ICommandable {
      * @param direction Moves the Entity in the chosen direction (see the index above).
      */
     @Override
-    public void moveCommand(Integer direction) {
+    public void moveIfAble(Integer direction) {
         int[][] directions = {{-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}};
         if (this.getBody() instanceof IMovable) {
             ((IMovable) this.getBody()).moveIfPossible(directions[direction]);
@@ -50,17 +50,17 @@ public class CommandableEntity extends AEntity implements ICommandable {
      * @param direction The direction to fire the weapon
      */
     @Override
-    public void attackCommand(Integer direction) {
+    public void attackIfAble(Integer direction) {
         int[][] directions = {{-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}};
-        if (this.getBody() instanceof HasWeapon) {
-            ((HasWeapon) this.getBody()).fireWeapon(directions[direction]);
+        if (this.getBody() instanceof IHasWeapon) {
+            ((IHasWeapon) this.getBody()).fireWeapon(directions[direction]);
         } else {
             System.out.println(String.format("Objects of type %s cannot attack",this.getBody().getClass().getName()));
         }
     }
 
     @Override
-    public void interactCommand() {
+    public void interactIfAble() {
         if (this.getBody() instanceof ICanInteract) {
             //Placeholder for later implementation.
         } else {

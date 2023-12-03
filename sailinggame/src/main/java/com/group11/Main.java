@@ -90,7 +90,7 @@ class Main {
         }
 
         if (command != -1) {
-            this.player.moveCommand(command);
+            this.player.moveIfAble(command);
             int newPosX = (int) this.player.getPos().getX();
             int newPosY = (int) this.player.getPos().getY();
             appWindow.updateEntities((generatePlayerMatrix(newPosX, newPosY)));

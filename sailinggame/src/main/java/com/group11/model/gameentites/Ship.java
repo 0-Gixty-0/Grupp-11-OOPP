@@ -5,7 +5,7 @@ import java.awt.Point;
 /**
  * Class representing a ship. This class extends AMovableBody.
  */
-public class Ship extends AMovableBody implements HasWeapon {
+public class Ship extends AMovableBody implements IHasWeapon {
 
     private int shipLevel;
     private double armor;
