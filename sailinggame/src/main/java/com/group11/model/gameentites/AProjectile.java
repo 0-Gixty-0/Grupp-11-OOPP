@@ -28,13 +28,13 @@ public abstract class AProjectile extends AMovableBody{
      * @param hitPoints the hitpoints of the projectile, which is always 1
      */
 
-    public AProjectile(int distanceTraveled, int maxRange, int damage, int [] direction, int hitPoints){
+    protected AProjectile(int maxRange, int damage, int [] direction){
         super(new Point(0,0), 1, "A projectile");
-        this.distanceTraveled = distanceTraveled;
+        this.distanceTraveled = 0;
         this.maxRange = maxRange;
         this.damage = damage;
         this.direction = direction;
-        this.hitPoints = hitPoints;
+        this.hitPoints = 1;
     }
 
     /**
@@ -43,11 +43,7 @@ public abstract class AProjectile extends AMovableBody{
      * @return true if the projectile has traveled beyond its maximum range, false otherwise
      */
     public boolean isOutOfRange() {
-
-        if(this.distanceTraveled > this.maxRange) {
-            return true;
-        }
-        return false;
+        return(this.distanceTraveled > this.maxRange); 
     }
 
     /**
@@ -98,10 +94,6 @@ public abstract class AProjectile extends AMovableBody{
      * If an exception occurs during the movement, the method simply returns.
      */
     public void continueTravelPath() {
-        try {
-            moveInTravelPath(); //Checking for out of bounds is done in moveInTravelPath
-        } catch (Exception e) {
-            return;
-        }
+        moveInTravelPath(); //Checking for out of bounds is done in moveInTravelPath
     }
 }

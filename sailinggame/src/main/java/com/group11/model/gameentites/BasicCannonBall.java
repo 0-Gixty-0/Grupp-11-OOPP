@@ -13,8 +13,8 @@ public class BasicCannonBall extends AProjectile {
      *
      * The distance traveled is initialized to 0, the maximum range is 30, the damage is 10, the direction is {0, 0}, and the hitpoints is 1.
      */
-    public BasicCannonBall() {
-        super(0, 30, 10, new int[]{0, 0}, 1);
+    public BasicCannonBall(int [] direction) {
+        super(30, 10, direction);
     }
 
     /**
@@ -24,6 +24,7 @@ public class BasicCannonBall extends AProjectile {
      */
     @Override
     public void moveInTravelPath() {
+        
         this.moveIfPossible(this.direction);
     }
 }

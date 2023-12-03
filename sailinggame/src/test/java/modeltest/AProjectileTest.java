@@ -1,13 +1,20 @@
 package modeltest;
 
+import com.group11.model.utility.UMovementUtility;
 import com.group11.model.gameentites.AProjectile;
 import com.group11.model.gameentites.BasicCannonBall;
+import com.group11.model.gameworld.BasicMapGenerator;
+import com.group11.model.gameworld.Map;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class AProjectileTest {
+    int [] direction = {1,1};
+    AProjectile testCannonBall = new BasicCannonBall(direction);
+    Map map = (new BasicMapGenerator()).generateMap(50);
+    
 
-    AProjectile testCannonBall = new BasicCannonBall();
 
     @Test
     public void testIsOutOfRange() {
@@ -17,6 +24,7 @@ public class AProjectileTest {
 
     @Test
     public void testTravel() {
+        UMovementUtility.setTileMatrix(map.getTileMatrix());
         testCannonBall.travel();
         assertEquals(testCannonBall.getDistanceTraveled(), 1);
     }
