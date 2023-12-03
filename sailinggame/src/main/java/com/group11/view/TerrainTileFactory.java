@@ -1,15 +1,16 @@
 package com.group11.view;
 
 import java.awt.Point;
+import java.awt.Toolkit;
+
 
 import javax.swing.ImageIcon;
 
 public class TerrainTileFactory extends AViewTileFactory {
-    
-    /**
-     * The amount of entity textures in the texture map. Calculated like TERRAINTEXTURES = (amount of textures in texture map) - 1
-     */
-    private static final int TERRAINTEXTURES = 1;
+
+    protected TerrainTileFactory() {
+        super(1);
+    }
 
     @Override
     protected Point getTextureMatrixCoordinate(int id) {
@@ -17,15 +18,8 @@ public class TerrainTileFactory extends AViewTileFactory {
     }
 
     @Override
-    protected void validateTextureId(int id) {
-        if (id < -1 || id > TERRAINTEXTURES) {
-            throw new IllegalArgumentException("Invalid terrain ID for terrain tile");
-        }
-    }
-
-    @Override
-    protected ImageIcon getTextureMapImageIcon() {
-        return (new ImageIcon("sailinggame/src/main/resources/textureMapSailingGame.png"));
+    protected ImageIcon initTextureMapImageIcon() {
+        return (new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/textureMapSailingGame.png"))));
     }
 
 }

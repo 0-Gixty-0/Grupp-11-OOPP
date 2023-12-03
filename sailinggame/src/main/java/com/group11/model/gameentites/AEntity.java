@@ -15,6 +15,7 @@ public abstract class AEntity {
      * Used to construct an entity
      * @param name The entities name
      * @param friendly A single factor which assigns the life long allegience of the entity
+     * @param body The body of the entity
      */
     protected AEntity(ABody body, String name, Boolean friendly) {
         this.body = body;

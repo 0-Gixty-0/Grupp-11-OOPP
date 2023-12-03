@@ -11,9 +11,9 @@ public class AImmovableBody extends ABody {
      * Constructor for creating immovable bodies
      * @param pos       The position of the body on the map
      * @param hitPoints The hitpoints of the body
-     * @param textureId The id representing the texture of the body
+     * @param description The description of the body
      */
-    protected AImmovableBody(Point pos, int hitPoints, int textureId, String description) {
+    protected AImmovableBody(Point pos, int hitPoints, String description) {
         super(pos, hitPoints, description);
     }
 }

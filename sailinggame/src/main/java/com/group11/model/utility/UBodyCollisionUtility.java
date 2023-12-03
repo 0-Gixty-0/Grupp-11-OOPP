@@ -8,14 +8,14 @@ import com.group11.model.gameentites.ABody;
 /**
  * Utility class for checking if a body is going to collide with another body.
  */
-public final class BodyCollisionUtility {
+public final class UBodyCollisionUtility {
     
     /**
      * List of bodies to check for collision.
      */
     private static ArrayList<ArrayList<ABody>> bodies;
 
-    private BodyCollisionUtility() {
+    private UBodyCollisionUtility() {
         throw new IllegalStateException("Utility class");
     }
 
@@ -24,7 +24,7 @@ public final class BodyCollisionUtility {
      * @param bodies Matrix of bodies.
      */
     public static void setBodyMatrix(ArrayList<ArrayList<ABody>> bodies) {
-        BodyCollisionUtility.bodies = bodies;
+        UBodyCollisionUtility.bodies = bodies;
     }
 
     private static void checkBodies() {

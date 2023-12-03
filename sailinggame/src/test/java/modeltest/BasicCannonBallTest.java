@@ -3,7 +3,7 @@ package modeltest;
 import com.group11.model.gameentites.BasicCannonBall;
 import com.group11.model.gameworld.BasicMapGenerator;
 import com.group11.model.gameworld.Map;
-import com.group11.model.utility.MovementUtility;
+import com.group11.model.utility.UMovementUtility;
 import org.junit.Test;
 
 import java.awt.*;
@@ -19,7 +19,7 @@ public class BasicCannonBallTest {
     public void testMoveInTravelPath() {
 
         Map map = (new BasicMapGenerator()).generateMap(10);
-        MovementUtility.setTileMatrix(map.getTileMatrix());
+        UMovementUtility.setTileMatrix(map.getTileMatrix());
 
 
         int[] testDir = {0,1};

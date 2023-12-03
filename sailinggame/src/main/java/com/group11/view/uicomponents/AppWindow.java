@@ -3,13 +3,14 @@ package com.group11.view.uicomponents;
 import javax.swing.*;
 
 import com.group11.view.AViewTileFactory;
+import com.group11.view.ViewTileMatrixEncoder;
 
 import java.awt.*;
 import java.util.List;
 
 /**
  * AppWindow is the top-level class for the View component of the MVC design.
- * It is responsible for drawing the map terrain and entities on the map
+ * It is responsible for containing all other components of the UI.
  */
 public class AppWindow extends JFrame {
     
@@ -28,11 +29,11 @@ public class AppWindow extends JFrame {
         this.getContentPane().setBackground(Color.GRAY);
         BufferPanel bufferPanel = new BufferPanel(1000, 6);
         this.statsPanel = new StatsPanel(1000, 6);
-        this.add(statsPanel); //Adding a buffering pane to make sure the game world ends up in the center of the window
+        this.add(statsPanel); //Adding a buffer pane to make sure the game world ends up in the center of the window
         this.gameWorldPanel = new GameWorldPanel(mapWidth * tileWidth, mapHeight * tileHeight);
         this.add(gameWorldPanel);
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
-        this.add(bufferPanel); //Adding a buffering pane to make sure the game world ends up in the center of the window
+        this.add(bufferPanel); //Adding a buffer pane to make sure the game world ends up in the center of the window
     }
 
     /**
@@ -61,17 +62,19 @@ public class AppWindow extends JFrame {
 
     /**
      * Updates the entities on the map.
-     * @param intMatrix The matrix of ViewTiles representing the entities.
+     * @param intMatrix The matrix of integers representing the entities.
      */
-    public void updateEntities(List<List<AViewDrawable>> tileMatrix) {
+    public void updateEntities(List<List<Integer>> intMatrix) {
+        List<List<ViewTile>> tileMatrix = ViewTileMatrixEncoder.createEntityTileMatrix(intMatrix);
         this.gameWorldPanel.updateEntityPanel(tileMatrix);
     }
 
     /**
      * Updates the terrain on the map.
-     * @param intMatrix The matrix of ViewTiles representing the terrain.
+     * @param intMatrix The matrix of integers representing the terrain.
      */
-    public void updateTerrain( List<List<AViewDrawable>> tileMatrix) {
+    public void updateTerrain(List<List<Integer>> intMatrix) {
+        List<List<ViewTile>> tileMatrix = ViewTileMatrixEncoder.createTerrainTileMatrix(intMatrix);
         this.gameWorldPanel.updateTerrainPanel(tileMatrix);
     }
 

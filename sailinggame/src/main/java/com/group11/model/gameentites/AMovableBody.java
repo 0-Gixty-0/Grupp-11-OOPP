@@ -1,6 +1,6 @@
 package com.group11.model.gameentites;
 
-import com.group11.model.utility.MovementUtility;
+import com.group11.model.utility.UMovementUtility;
 
 import java.awt.Point;
 
@@ -17,6 +17,7 @@ public abstract class AMovableBody extends ABody implements IMovable {
      * Constructor for a movable body, like a body but its meant to move around the game world.
      * @param pos       The starting position of the body as a Java Point
      * @param hitPoints The hitpoints of the body
+     * @param description The description of the body   
      */
     protected AMovableBody(Point pos, double hitPoints, String description){
         super(pos, hitPoints, description);
@@ -58,10 +59,9 @@ public abstract class AMovableBody extends ABody implements IMovable {
      */
     public void moveIfPossible(int [] dirVector) {
         Point currPos = this.getPos();
-        if (MovementUtility.movementIsPossible(currPos, dirVector)) {
+        if (UMovementUtility.movementIsPossible(currPos, dirVector)) {
             int currX = (int) currPos.getX();
             int currY = (int) currPos.getY();
-            AMovableBody body = this;
             this.move(currX + dirVector[0],currY + dirVector[1]);
         }
     }

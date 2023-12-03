@@ -9,14 +9,14 @@ import com.group11.model.gameworld.ATile;
  * Utility class for checking if a body is going to collide with another body.
  *
  */
-public final class MovementUtility {
+public final class UMovementUtility {
 
     /**
      * Matrix of ATiles to check for collision.
      */
     private static List<List<ATile>> tileMatrix;
 
-    private MovementUtility() {
+    private UMovementUtility() {
         throw new IllegalStateException("Utility class");
     }
 
@@ -25,7 +25,7 @@ public final class MovementUtility {
      * @param tileMatrix
      */
     public static void setTileMatrix(List<List<ATile>> tileMatrix) {
-        MovementUtility.tileMatrix = tileMatrix;
+        UMovementUtility.tileMatrix = tileMatrix;
     }
 
     /**
@@ -36,7 +36,7 @@ public final class MovementUtility {
      */
     public static Boolean movementIsPossible(Point currPos, int[] dirVector) {
 
-        if (MovementUtility.tileMatrix == null) {
+        if (UMovementUtility.tileMatrix == null) {
             throw new IllegalStateException("Unable to move because a tileMatrix has not been set for MovementUtility");
         }
 
@@ -45,7 +45,7 @@ public final class MovementUtility {
 
         try {
             //Trying to move over impassable terrain
-            if (MovementUtility.tileMatrix.get(newX).get(newY).isPassable()) {
+            if (UMovementUtility.tileMatrix.get(newX).get(newY).isPassable()) {
                 return true;
             } else {
                 return false;

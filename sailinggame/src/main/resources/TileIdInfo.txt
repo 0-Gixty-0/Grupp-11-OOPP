@@ -7,4 +7,4 @@ TERRAIN TILES
     
 ENTITY TILES
     PlayerShip = 0,1,2,3,4,5,6,7
-    EnemyTiles = 8,9
+    EnemyShip = 8,9

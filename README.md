@@ -955,3 +955,11 @@ To make it possible for bodies to damage other bodies by a weapon with a working
 
 #### User interaction
 The user will come in contact with this feature when firing the weapon, or when another body fires its weapon.
+
+---
+
+### Change-Note
+Date of completion: 3/12/2023
+Completed by: William Norland
+
+When i configured the POM file in the maven project to be ready for deployment i had to reconfigure how we accessed image resources in the View, this change led me to discover that all images we used in the application where created dynamically every time they where used. This explains subpar performance in some cases. Deeming this issue urgent i decided to fix it on the fly.

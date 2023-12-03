@@ -3,14 +3,23 @@ package com.group11.view.uicomponents;
 import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  * Class reresenting a tile that can be displayed on the screen by the view. 
  */
-public class ViewTile extends AViewDrawable {
+public class ViewTile extends JLabel {
 
+    /**
+     * Constructor for the ViewTile class.
+     * @param imageIcon The image icon to be displayed on the tile
+     * @param dimension The dimension of the tile
+     * @param matrixPosition The matrix position of the tile
+     */
     public ViewTile(ImageIcon imageIcon, Dimension dimension) {
-        super(imageIcon, dimension);
+        super();
+        this.setSize(dimension);
+        this.setIcon(imageIcon);
     }
     
 }
