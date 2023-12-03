@@ -5,18 +5,22 @@
 
 **License:** Released under MIT License, see LICENSE for more information.
 
-**Installation:** Any alpha release source code is available for compilation under the releases tab, the final release of the project has a downloadable runnable Jar file included.
+**Installation:** Any alpha release source code is available for compilation under the releases tab, the final beta release of the project has a downloadable runnable Jar file included. If you want to compile the project from source we recommend you to use Maven which is available for download [here](https://maven.apache.org/download.cgi?.=). Once you have installed maven you can unzip the source code, navigate to the sailinggame folder with terminal and run <br>
+```console
+mvn package
+```
+The Jar file with the suffix "jar-with-dependencies" is the one you want to use.
 
 **Dependencies:** Junit 4.13.2 is used for testing in the source code, the runnable Jar only requires you to have a JRE (>= v.1.8).
 
 **Documentation:** Indepth docs of all project features is available under the **Implemented features** tab of this README, JavaDoc for the project is available [here](placeholderlink).
 
 **Credit:** <br>
-Noa Cavassi ([@cavassi](https://github.com/cavassi)), <br>
-William Norland ([@willayy](https://github.com/willayy)), <br>
-Alexander Muhr ([@DuchessMuhr](https://github.com/DuchessMuhr)), <br>
-Adam Kvarnsund ([@adamkvarnsund](https://github.com/adamkvarnsund)), <br>
-Erik Andreasson ([@0-Gixty-0](https://github.com/0-Gixty-0)), <br>
+Noa Cavassi [@cavassi](https://github.com/cavassi), <br>
+William Norland [@willayy](https://github.com/willayy), <br>
+Alexander Muhr [@DuchessMuhr](https://github.com/DuchessMuhr), <br>
+Adam Kvarnsund [@adamkvarnsund](https://github.com/adamkvarnsund), <br>
+Erik Andreasson [@0-Gixty-0](https://github.com/0-Gixty-0), <br>
 
 **Acknowledgements:** Thanks to Arthur for mentoring this project.
 
