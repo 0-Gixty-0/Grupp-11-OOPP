@@ -9,16 +9,18 @@ import javax.swing.ImageIcon;
 import com.group11.view.uicomponents.ViewTile;
 
 
+
 /**
  * The class is an abstract factory for creating ViewTile objects.
  */
-public abstract class AViewTileFactory extends AViewDrawableFactory {
+public abstract class AViewTileFactory extends AImageUser {
 
-    private static int tileWidth = 16;
-    private static int tileHeight = 16;
-    private int maxTextureId;
-    private List<ImageIcon> initializedIcons;
-    private ImageIcon emptyIcon;
+    private static int tileWidth = 16; //Default values.
+    private static int tileHeight = 16; 
+    private int maxTextureId; //The maximum terrain type id.
+
+    private List<ImageIcon> initializedIcons; //The list of ImageIcons for each terrain type.
+    private ImageIcon emptyIcon; //The empty ImageIcon.
 
     protected AViewTileFactory(int maxTextureId) {
         super();
@@ -28,7 +30,7 @@ public abstract class AViewTileFactory extends AViewDrawableFactory {
     }
 
     /**
-     * Set the tile dimensions to be used for creating the ViewTiles.
+     * Set the tile dimensions to be used for creating the ViewTiles. Default at instantiation is 16x16.
      * @param tileWidth The width of the tiles.
      * @param tileHeight The height of the tiles.
      */
@@ -38,27 +40,12 @@ public abstract class AViewTileFactory extends AViewDrawableFactory {
     }
 
     /**
-     * Get the width of the tiles.
-     * @return The width of the tiles.
-     */
-    protected static int getTileWidth() {
-        return tileWidth;
-    }
-
-    /**
-     * Get the height of the tiles.
-     * @return The height of the tiles.
-     */
-    protected static int getTileHeight() {
-        return tileHeight;
-    }
-
-    /**
      * The method creates a ViewTile object based on the terrain type id, dimension, matrix position, and pixel position.
      * @param id The texture id of the tile.
-     * @return ViewTile object
+     * @return ViewTile object.
      */
-    protected ViewTile createdDrawable(Integer id) {
+    protected ViewTile createTile(Integer id) {
+        validateTextureId(id);
         Dimension dimension = new Dimension(tileWidth, tileHeight);
         ImageIcon imageIcon;
         if (id == -1) {
@@ -72,23 +59,26 @@ public abstract class AViewTileFactory extends AViewDrawableFactory {
     }
 
     /**
-     * The method creates a ViewTile object based on the terrain type id, dimension, matrix position, and pixel position.
-     * @param id The texture id of the tile.
-     * @param dimension The dimension of the tile.
-     * @return ViewTile object
+     * The method creates a list of ImageIcons for each texture used in the factory.
+     * @return ArrayList of ImageIcons.
      */
-    protected ArrayList<ImageIcon> initIcons() {
+    private ArrayList<ImageIcon> initIcons() {
         ArrayList<ImageIcon> icons = new ArrayList<>();
         for (int i = 0; i < maxTextureId+1; i++) {
-            icons.add(this.createImageIcon(i, getTileWidth(), getTileHeight()));
+            icons.add(this.createImageIcon(i, tileWidth, tileHeight));
         }
         return icons;
     }
 
-    @Override
-    protected void validateTextureId(int id) {
+    /**
+     * The method validates that the terrain type id is in a valid range.
+     * @param id The terrain type id.
+     */
+    private void validateTextureId(int id) {
         if (id < -1 || id > maxTextureId) { 
             throw new IllegalArgumentException("Invalid terrain ID for entity tile");
         }
     }
+
+    
 }

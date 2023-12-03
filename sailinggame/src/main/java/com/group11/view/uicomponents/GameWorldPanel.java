@@ -34,9 +34,9 @@ public class GameWorldPanel extends JPanel {
          * Add the tiles to the panel.
          * @param tileMatrix The matrix of tiles to be added.
          */
-        private void addTiles(List<List<AViewDrawable>> tileMatrix) {
-            for (List<AViewDrawable> tileRow : tileMatrix) {
-                for (AViewDrawable tile : tileRow) {
+        private void addTiles(List<List<ViewTile>> tileMatrix) {
+            for (List<ViewTile> tileRow : tileMatrix) {
+                for (ViewTile tile : tileRow) {
                     this.add(tile);
                 }
             }
@@ -75,7 +75,7 @@ public class GameWorldPanel extends JPanel {
      * Update the terrain panel with the new terrain matrix.
      * @param terrainMatrix The new terrain matrix.
      */
-    protected void updateTerrainPanel(List<List<AViewDrawable>> terrainMatrix) {
+    protected void updateTerrainPanel(List<List<ViewTile>> terrainMatrix) {
         this.terrainPanel.removeTilesFromPanel();
         this.terrainPanel.addTiles(terrainMatrix);
         this.revalidate();
@@ -86,7 +86,7 @@ public class GameWorldPanel extends JPanel {
      * Update the entity panel with the new entity matrix.
      * @param entityMatrix The new entity matrix.
      */
-    protected void updateEntityPanel(List<List<AViewDrawable>> entityMatrix) {
+    protected void updateEntityPanel(List<List<ViewTile>> entityMatrix) {
         this.entityPanel.removeTilesFromPanel();
         this.entityPanel.addTiles(entityMatrix);
         this.revalidate();

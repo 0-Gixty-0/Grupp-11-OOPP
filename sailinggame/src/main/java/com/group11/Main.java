@@ -11,10 +11,13 @@ import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AMovableBody;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameentites.Ship;
-import com.group11.model.gameworld.*;
+import com.group11.model.gameworld.AdvancedMapGenerator;
+import com.group11.model.gameworld.BasicWorldGenerator;
+import com.group11.model.gameworld.IMapGenerator;
+import com.group11.model.gameworld.IWorldGenerator;
+import com.group11.model.gameworld.World;
 import com.group11.model.utility.UMovementUtility;
 import com.group11.model.utility.UTileMatrixDecoder;
-import com.group11.view.ViewTileMatrixEncoder;
 import com.group11.view.uicomponents.AppWindow;
 
 class Main {
@@ -34,7 +37,7 @@ class Main {
         this.world = this.createBasicWorld();
         this.player = this.createBasicPlayer();
         UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
-        this.appWindow.updateTerrain(ViewTileMatrixEncoder.createTerrainTileMatrix(UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
+        this.appWindow.updateTerrain((UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
     }
 
     private World createBasicWorld() {
@@ -90,7 +93,7 @@ class Main {
             this.player.moveCommand(command);
             int newPosX = (int) this.player.getPos().getX();
             int newPosY = (int) this.player.getPos().getY();
-            appWindow.updateEntities(ViewTileMatrixEncoder.createEntityTileMatrix(generatePlayerMatrix(newPosX, newPosY)));
+            appWindow.updateEntities((generatePlayerMatrix(newPosX, newPosY)));
         }
     }
 

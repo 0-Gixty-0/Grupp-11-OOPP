@@ -7,47 +7,26 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
 
-import com.group11.view.uicomponents.AViewDrawable;
-
 /**
- * The highest level of abstraction for creating ViewDrawable objects.
+ * Class containing methods for using images in the view.
  */
-public abstract class AViewDrawableFactory {
+public abstract class AImageUser {
 
     private static final int SCALE = 16; //The scale of the image, ex: 16 bit, 32 bit, 64 bit....
     private ImageIcon textureMapImage;
 
-    protected AViewDrawableFactory() {
+    protected AImageUser() {
         this.textureMapImage = initTextureMapImageIcon();
     }
-
-    /**
-     * The method returns the coordinates of the terrain type id in the texture map file.
-     * @param id The terrain type id
-     * @return Point object containing the matrix coordinate of the terrain type id
-     */
-    protected abstract Point getTextureMatrixCoordinate(int id);
-
-    /**
-     * The method validates that the terrain type id is in a valid range.
-     * @param id The terrain type id
-     */
-    protected abstract void validateTextureId(int id);
-
-    /**
-     * The method returns the texture map file as an ImageIcon.
-     * @return ImageIcon containing the texture map file
-     */
-    protected abstract ImageIcon initTextureMapImageIcon();
 
     /**
      * The method creates the ImageIcon for a terrain type based on the texture map file.
      * The image icon is a scaled and sliced portion of the texture map based on the terrain type id
      * and desired width and height.
-     * @param id The terrain type id
-     * @param width The desired width of the image
-     * @param height The desired height of the image
-     * @return ImageIcon containing the tile image associated with the terrain type id
+     * @param id The terrain type id corresponding to a place in the texture map file.
+     * @param width The desired width of the image.
+     * @param height The desired height of the image.
+     * @return ImageIcon containing the tile image associated with the terrain type id.
      */
     protected ImageIcon createImageIcon(int id, int width, int height) {
 
@@ -71,10 +50,16 @@ public abstract class AViewDrawableFactory {
         return new ImageIcon(bufferedImage);
     }
 
-    protected AViewDrawable createDrawable(Integer id) {
-        validateTextureId(id);
-        return createdDrawable(id);
-    }
+    /**
+     * The method returns the coordinates of the terrain type id in the texture map file.
+     * @param id The terrain type id.
+     * @return Point object containing the matrix coordinate of the terrain type id.
+     */
+    protected abstract Point getTextureMatrixCoordinate(int id);
 
-    protected abstract AViewDrawable createdDrawable(Integer id);
+    /**
+     * The method returns the texture map file as an ImageIcon.
+     * @return ImageIcon containing the texture map file.
+     */
+    protected abstract ImageIcon initTextureMapImageIcon();
 }
