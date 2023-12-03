@@ -21,7 +21,7 @@ public class AICommander {
 
     public AICommander(ArrayList<ArrayList<AEntity>> entityMatrix, List<List<ATile>> terrainMatrix) {
         this.entityMatrix = entityMatrix;
-        this.terrainMatrixEncoded = TileMatrixDecoder.decodeIntoIntMatrix(terrainMatrix);
+        this.terrainMatrixEncoded = UTileMatrixDecoder.decodeIntoIntMatrix(terrainMatrix);
     }
 
     /**
@@ -37,7 +37,7 @@ public class AICommander {
      * @param terrainMatrix The object terrain matrix to set as encoded
      */
     public void setTerrainMatrixEncoded(List<List<ATile>> terrainMatrix) {
-        this.terrainMatrixEncoded = TileMatrixDecoder.decodeIntoIntMatrix(terrainMatrix);
+        this.terrainMatrixEncoded = UTileMatrixDecoder.decodeIntoIntMatrix(terrainMatrix);
     }
 
     /**
