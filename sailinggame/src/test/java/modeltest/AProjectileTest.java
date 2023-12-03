@@ -26,12 +26,12 @@ public class AProjectileTest {
     public void testTravel() {
         UMovementUtility.setTileMatrix(map.getTileMatrix());
         testCannonBall.travel();
-        assertEquals(testCannonBall.getDistanceTraveled(), 1);
+        assertEquals(1, testCannonBall.getDistanceTraveled());
     }
 
     @Test
     public void testGetDistanceTraveled() {
-        assertEquals(testCannonBall.getDistanceTraveled(), 0);
+        assertEquals(0, testCannonBall.getDistanceTraveled());
     }
 
     @Test
