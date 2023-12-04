@@ -1026,4 +1026,24 @@ The chances that the unused code will ever be used again is very unlikely. With 
 Any personal feelings that a coder may have about code they may have worked hard on are understandable. But part of being professional requires that those thoughts have to be put to one side for the better good. Time stands for no-one and there is no place for preserving historical code in a working codebase.
 
 #### User Interaction
-This US makes lives easier for future developers but the interaction with a non-developer user is very limited
+This US makes lives easier for future developers but the interaction with a non-developer user is very limited.
+
+---
+
+### US-86: Transition from using implementation ArrayList to Interface List
+Date of completion: 4/12/2023
+Completed by: William Norland
+
+As a developer i want to use the Interface List rather than the implementation ArrayList in type annotations.
+
+#### What
+This user story US-86 involves transitioning from using the implementation ArrayList to the interface List in the codebase.
+
+#### How
+The code is modified to replace all instances of ArrayList with List. This is done by updating the variable declarations, method signatures, and method invocations to use the List interface instead of the ArrayList implementation.
+
+#### Why
+Transitioning from using the implementation ArrayList to the interface List provides several benefits. It improves code flexibility and maintainability by allowing different implementations of the List interface to be used interchangeably. It also promotes coding to the interface rather than the implementation, which is a best practice in object-oriented programming.
+
+#### User Interaction
+This US is mainly to make the codebase more solid and readable, user interaction is very limited.

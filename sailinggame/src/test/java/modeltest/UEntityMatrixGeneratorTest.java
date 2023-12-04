@@ -17,7 +17,7 @@ public class UEntityMatrixGeneratorTest {
     @Test
     public void testCreationOfEmptyMatrix() {
         List<List<AEntity>> entityMatrix = UEntityMatrixGenerator.createEntityMatrix(5,5);
-        ArrayList<AEntity> testRow = new ArrayList<>();
+        List<AEntity> testRow = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             testRow.add(null);
         }
