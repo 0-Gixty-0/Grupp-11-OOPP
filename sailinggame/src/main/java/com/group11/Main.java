@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import com.group11.EntitySpawner;
 import com.group11.controller.GlobalKeyListener;
 import com.group11.model.builders.EntityDirector;
 import com.group11.model.builders.ShipBuilder;
+import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.AMovableBody;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameentites.Ship;
@@ -95,6 +97,11 @@ class Main {
             int newPosY = (int) this.player.getPos().getY();
             appWindow.updateEntities((generatePlayerMatrix(newPosX, newPosY)));
         }
+    }
+
+    private void spawnEntity() {
+        List<AEntity> entities = new ArrayList<>();
+
     }
 
 
