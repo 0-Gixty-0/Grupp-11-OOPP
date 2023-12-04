@@ -16,10 +16,10 @@ import java.util.Random;
  */
 public class AICommander {
     private final int radius = 10;
-    private ArrayList<ArrayList<AEntity>> entityMatrix;
+    private List<List<AEntity>> entityMatrix;
     private List<List<Integer>> terrainMatrixEncoded;
 
-    public AICommander(ArrayList<ArrayList<AEntity>> entityMatrix, List<List<ATile>> terrainMatrix) {
+    public AICommander(List<List<AEntity>> entityMatrix, List<List<ATile>> terrainMatrix) {
         this.entityMatrix = entityMatrix;
         this.terrainMatrixEncoded = UTileMatrixDecoder.decodeIntoIntMatrix(terrainMatrix);
     }
@@ -28,7 +28,7 @@ public class AICommander {
      * Sets the current entity matrix
      * @param entityMatrix The desired entity matrix
      */
-    public void setEntityMatrix(ArrayList<ArrayList<AEntity>> entityMatrix) {
+    public void setEntityMatrix(List<List<AEntity>> entityMatrix) {
         this.entityMatrix = entityMatrix;
     }
 
@@ -47,7 +47,7 @@ public class AICommander {
      * If the player is not in proximity than a random directional value is selected
      * @param enemies The list of enemies to move
      */
-    public void moveEnemies(ArrayList<CommandableEntity> enemies) {
+    public void moveEnemies(List<CommandableEntity> enemies) {
         Random random = new Random();
         for (CommandableEntity enemy : enemies) {
             int entityRowIndex = enemy.getBody().getPos().x;
@@ -70,7 +70,7 @@ public class AICommander {
      * @param entityMatrix The entity matrix to search in
      * @return True: Player is near, False: Player is not near
      */
-    private boolean isNearPlayer(CommandableEntity entity, ArrayList<ArrayList<AEntity>> entityMatrix) {
+    private boolean isNearPlayer(CommandableEntity entity, List<List<AEntity>> entityMatrix) {
         int entityRowIndex = entity.getBody().getPos().y;
         int entityColumnIndex = entity.getBody().getPos().x;
         int radius = 5;
