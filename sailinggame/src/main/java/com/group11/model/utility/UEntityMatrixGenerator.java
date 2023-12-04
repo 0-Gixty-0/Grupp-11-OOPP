@@ -1,5 +1,6 @@
 package com.group11.model.utility;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,5 +50,17 @@ public final class UEntityMatrixGenerator {
             entityMatrix.set(rowPosition, row);
         }
         return entityMatrix;
+    }
+
+    public static void removeEntity(Point position, List<List<AEntity>> entityMatrix) {
+        List<AEntity> row = entityMatrix.get(position.x);
+        row.set(position.y, null);
+        entityMatrix.set(position.x, row);
+    }
+
+    public static void addEntity(Point position, AEntity entity, List<List<AEntity>> entityMatrix) {
+        List<AEntity> row = entityMatrix.get(position.x);
+        row.set(position.y, entity);
+        entityMatrix.set(position.x, row);
     }
 }

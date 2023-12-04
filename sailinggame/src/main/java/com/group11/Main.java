@@ -17,6 +17,7 @@ import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.IMapGenerator;
 import com.group11.model.gameworld.IWorldGenerator;
 import com.group11.model.gameworld.World;
+import com.group11.model.utility.UEntityMatrixDecoder;
 import com.group11.model.utility.UEntityMatrixGenerator;
 import com.group11.model.utility.UMovementUtility;
 import com.group11.model.utility.UTileMatrixDecoder;
@@ -34,7 +35,7 @@ class Main {
     private ArrayList<ArrayList<Integer>> playerMatrix;
     private List<List<AEntity>> entityMatrix;
     private List<AEntity> enemyList;
-    private List<AEntity> entityList;
+    private List<AEntity> entityList = new ArrayList<>();
     private EntityDirector director;
 
     public Main(int windowWidth, int windowHeight) {
@@ -47,6 +48,7 @@ class Main {
         this.initializeEntities();
         UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
         this.appWindow.updateTerrain((UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
+        this.appWindow.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
     }
 
     private void initializeEntities() {
@@ -107,10 +109,11 @@ class Main {
         }
 
         if (command != -1) {
+            Point playerPosition = this.player.getPos();
             this.player.moveIfAble(command);
-            int newPosX = (int) this.player.getPos().getX();
-            int newPosY = (int) this.player.getPos().getY();
-            appWindow.updateEntities((generatePlayerMatrix(newPosX, newPosY)));
+            UEntityMatrixGenerator.removeEntity(playerPosition, this.entityMatrix);
+            UEntityMatrixGenerator.addEntity(this.player.getPos(), this.player, this.entityMatrix);
+            appWindow.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
         }
     }
 
