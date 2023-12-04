@@ -995,3 +995,35 @@ methods and their functionality no longer break the interface segregation princi
 
 #### User Interaction
 This change has to do with the functionality of entities such as the player that the code will use to enact player commands
+
+---
+
+### US-85: Remove unused fields in Ship and AMoveablyBody
+Date of completion: 4/12/2023
+Completed by: William Norland
+
+As a developer i want to remvoe unused fields in classes to improve readability
+
+#### What
+This user story is about removing unused fields in classes Ship and AMoveablyBody
+
+#### How
+Removing fields from classes, removing associated unused methods, removing tests for these methods.
+
+#### Why
+Removing unused fields makes the code more readable because 
+
+For anyone new working on a project, they not only have to understand the working code, they have to understand unused material also. This is wasted time and creates confusion.
+
+There is a danger that at some time, someone will make a change which inadvertently involve the 'dormant' code and can introduce bugs.
+
+The maintenance of any code is an administrative burden. By preserving old redundant code that burden is increased. For example, merging changes in the main branch becomes harder because there is more code to work through and more possibility to make a mistake.
+
+What happens over time is that more and more old unused code is added to the codebase. This increases the confusion, potential misunderstanding and administrative overhead.
+
+The chances that the unused code will ever be used again is very unlikely. With time that possibility of re-use diminishes. If code is to be removed and is considered important enough then the code can be branched off and documented.
+
+Any personal feelings that a coder may have about code they may have worked hard on are understandable. But part of being professional requires that those thoughts have to be put to one side for the better good. Time stands for no-one and there is no place for preserving historical code in a working codebase.
+
+#### User Interaction
+This US makes lives easier for future developers but the interaction with a non-developer user is very limited
