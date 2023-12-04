@@ -30,7 +30,7 @@ public class AMovableBodyTest {
     @Test
     public void testMoveIfPossible() {
 
-        Map map = (new BasicMapGenerator()).generateMap(10);
+        Map map = (new BasicMapGenerator()).generateMap(10,10);
         UMovementUtility.setTileMatrix(map.getTileMatrix());
 
         int[] testDir = {0,1};

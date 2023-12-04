@@ -11,7 +11,11 @@ mvn package
 ```
 The Jar file with the suffix "jar-with-dependencies" is the one you want to use.
 
-**Dependencies:** Junit 4.13.2 is used for testing in the source code, the runnable Jar only requires you to have a JRE (>= v.1.8).
+**Dependencies:**<br>
+Junit 4.13.2 is used for testing,<br>
+Joise 1.0.2 is used to generate random maps,<br>
+Java 17 is specified as project JDK in the pom.xml file,<br>
+the runnable Jar requires you to have Java 17 or higher.
 
 **Documentation:** Indepth docs of all project features is available under the **Implemented features** tab of this README, JavaDoc for the project is available [here](placeholderlink).
 

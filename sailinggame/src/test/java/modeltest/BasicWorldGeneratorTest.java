@@ -12,7 +12,7 @@ import com.group11.model.gameworld.World;
 public class BasicWorldGeneratorTest {
 
     IMapGenerator mapGenerator = new BasicMapGenerator();
-    World testWorld = new BasicWorldGenerator(mapGenerator).generateWorld(10);
+    World testWorld = new BasicWorldGenerator(mapGenerator).generateWorld(10,10);
 
     @Test
     public void testGenerateWorld() {

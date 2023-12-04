@@ -15,20 +15,21 @@ public class BasicMapGenerator implements IMapGenerator {
      use this if you want to generate a new map for an old world.
      Leaving this method public and not protected for that reason.
      */
-    public Map generateMap(int side) {
+    public Map generateMap(int mapWidth, int mapHeight) {
 
-        Integer quarterSide = side/4;
+        Integer quarterWidth = mapWidth/4;
+        Integer quarterHeight = mapHeight/4;
 
         List<List<ATile>> tileMatrix = new ArrayList<List<ATile>>();
 
-        for (int i = 0; i < side; i++) {
+        for (int i = 0; i < mapHeight; i++) {
             
             List<ATile> tileRow = new ArrayList<ATile>(); //Create rows
 
-            for (int k = 0; k < side; k++) { 
+            for (int k = 0; k < mapWidth; k++) { 
                 
                 //Creates a square of land in the middle of the matrix with a quarterSide distance to the edge
-                if ((k >= quarterSide) && (k <= side-quarterSide) && (i >= quarterSide) && (i <= side-quarterSide)) { //Add landtiles
+                if ((k >= quarterWidth) && (k <= mapWidth-quarterWidth) && (i >= quarterHeight) && (i <= mapHeight-quarterHeight)) { //Add landtiles
                     tileRow.add(new LandTile(new Point(i,k))); //Should add landtile
                 }
 
@@ -38,6 +39,6 @@ public class BasicMapGenerator implements IMapGenerator {
             }
             tileMatrix.add(tileRow);
         }
-        return new Map(tileMatrix, side);
+        return new Map(tileMatrix, mapWidth, mapHeight);
     }
 }
