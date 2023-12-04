@@ -1,6 +1,7 @@
 package com.group11.model.utility;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.group11.model.gameentites.AEntity;
 
@@ -21,10 +22,10 @@ public final class UEntityMatrixGenerator {
      * @param height Number of rows in matrix
      * @return Entity matrix, all values null
      */
-    public static ArrayList<ArrayList<AEntity>> createEntityMatrix(int width, int height) {
-        ArrayList<ArrayList<AEntity>> entityMatrix = new ArrayList<>();
+    public static List<List<AEntity>> createEntityMatrix(int width, int height) {
+        List<List<AEntity>> entityMatrix = new ArrayList<>();
         for (int rowIndex = 0; rowIndex < height; rowIndex++) {
-            ArrayList<AEntity> row = new ArrayList<>();
+            List<AEntity> row = new ArrayList<>();
             for (int columnIndex = 0; columnIndex < width; columnIndex++) {
                 row.add(null);
             }
@@ -39,11 +40,11 @@ public final class UEntityMatrixGenerator {
      * @param entityMatrix Entity matrix to add entities to
      * @return Entity matrix with input entities placed in correct position
      */
-    public static ArrayList<ArrayList<AEntity>> populateEntityMatrix(ArrayList<AEntity> entities, ArrayList<ArrayList<AEntity>> entityMatrix) {
+    public static List<List<AEntity>> populateEntityMatrix(List<AEntity> entities, List<List<AEntity>> entityMatrix) {
         for (AEntity entity : entities) {
             int rowPosition = entity.getBody().getPos().y;
             int columnPosition = entity.getBody().getPos().x;
-            ArrayList<AEntity> row = entityMatrix.get(rowPosition);
+            List<AEntity> row = entityMatrix.get(rowPosition);
             row.set(columnPosition, entity);
             entityMatrix.set(rowPosition, row);
         }

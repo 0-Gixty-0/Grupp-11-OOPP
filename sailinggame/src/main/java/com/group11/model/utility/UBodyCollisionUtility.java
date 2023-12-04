@@ -1,7 +1,7 @@
 package com.group11.model.utility;
 
 import java.awt.Point;
-import java.util.ArrayList;
+import java.util.List;
 
 import com.group11.model.gameentites.ABody;
 
@@ -13,7 +13,7 @@ public final class UBodyCollisionUtility {
     /**
      * List of bodies to check for collision.
      */
-    private static ArrayList<ArrayList<ABody>> bodies;
+    private static List<List<ABody>> bodies;
 
     private UBodyCollisionUtility() {
         throw new IllegalStateException("Utility class");
@@ -23,7 +23,7 @@ public final class UBodyCollisionUtility {
      * Set the bodies to check for collision.
      * @param bodies Matrix of bodies.
      */
-    public static void setBodyMatrix(ArrayList<ArrayList<ABody>> bodies) {
+    public static void setBodyMatrix(List<List<ABody>> bodies) {
         UBodyCollisionUtility.bodies = bodies;
     }
 
