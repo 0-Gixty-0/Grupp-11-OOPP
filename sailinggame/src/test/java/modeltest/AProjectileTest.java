@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 public class AProjectileTest {
     int [] direction = {1,1};
     AProjectile testCannonBall = new BasicCannonBall(direction);
-    Map map = (new BasicMapGenerator()).generateMap(50);
+    Map map = (new BasicMapGenerator()).generateMap(50,50);
     
 
 

@@ -34,7 +34,7 @@ public class BasicCannonTest {
     @Test
     public void testGetProjectileType() {
         Object projectile = testCannon.debugGetProjectileType();
-        assertTrue(projectile instanceof BasicCannonBall);
+        assertTrue(projectile == BasicCannonBall.class);
     }
 
     @Test
