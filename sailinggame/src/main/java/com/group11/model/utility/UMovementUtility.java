@@ -6,8 +6,7 @@ import java.util.List;
 import com.group11.model.gameworld.ATile;
 
 /**
- * Utility class for checking if a body is going to collide with another body.
- *
+ * Utility class for checking if movement is possible.
  */
 public final class UMovementUtility {
 
