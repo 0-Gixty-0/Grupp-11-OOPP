@@ -23,7 +23,7 @@ import static junit.framework.TestCase.assertEquals;
 public class AICommanderTest {
     private List<List<Integer>> grid = new ArrayList<>();
     private List<List<ATile>> terrainMatrix = new ArrayList<>();
-    private ArrayList<ArrayList<AEntity>> entityMatrix = UEntityMatrixGenerator.createEntityMatrix(5,5);
+    private List<List<AEntity>> entityMatrix = UEntityMatrixGenerator.createEntityMatrix(5,5);
     private EntityDirector director = new EntityDirector(new ShipBuilder());
     private ArrayList<AEntity> entities = new ArrayList<>();
     @Before

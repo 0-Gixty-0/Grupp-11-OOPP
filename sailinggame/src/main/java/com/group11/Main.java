@@ -8,6 +8,7 @@ import java.util.Set;
 import com.group11.controller.GlobalKeyListener;
 import com.group11.model.builders.EntityDirector;
 import com.group11.model.builders.ShipBuilder;
+import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.AMovableBody;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameentites.Ship;
@@ -16,6 +17,7 @@ import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.IMapGenerator;
 import com.group11.model.gameworld.IWorldGenerator;
 import com.group11.model.gameworld.World;
+import com.group11.model.utility.UEntityMatrixGenerator;
 import com.group11.model.utility.UMovementUtility;
 import com.group11.model.utility.UTileMatrixDecoder;
 import com.group11.view.uicomponents.AppWindow;
@@ -28,6 +30,7 @@ class Main {
     private World world;
     private CommandableEntity player;
     private ArrayList<ArrayList<Integer>> playerMatrix;
+    private List<List<AEntity>> entityMatrix;
     private List<CommandableEntity> enemyList;
     private EntityDirector director;
 
@@ -38,6 +41,7 @@ class Main {
         this.appWindow = new AppWindow(windowHeight, windowHeight, 50, 50, 16, 16);
         this.director = new EntityDirector(new ShipBuilder());
         this.world = this.createBasicWorld();
+        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(50, 50);
         this.player = this.createBasicPlayer();
         UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
         this.appWindow.updateTerrain((UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));

@@ -16,10 +16,10 @@ import java.util.Random;
  */
 public class AICommander {
     private final int radius = 10;
-    private ArrayList<ArrayList<AEntity>> entityMatrix;
+    private List<List<AEntity>> entityMatrix;
     private List<List<Integer>> terrainMatrixEncoded;
 
-    public AICommander(ArrayList<ArrayList<AEntity>> entityMatrix, List<List<ATile>> terrainMatrix) {
+    public AICommander(List<List<AEntity>> entityMatrix, List<List<ATile>> terrainMatrix) {
         this.entityMatrix = entityMatrix;
         this.terrainMatrixEncoded = UTileMatrixDecoder.decodeIntoIntMatrix(terrainMatrix);
     }
@@ -28,7 +28,7 @@ public class AICommander {
      * Sets the current entity matrix
      * @param entityMatrix The desired entity matrix
      */
-    public void setEntityMatrix(ArrayList<ArrayList<AEntity>> entityMatrix) {
+    public void setEntityMatrix(List<List<AEntity>> entityMatrix) {
         this.entityMatrix = entityMatrix;
     }
 

@@ -4,6 +4,7 @@ import static junit.framework.TestCase.assertEquals;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -15,12 +16,12 @@ import com.group11.model.utility.UEntityMatrixGenerator;
 public class UEntityMatrixGeneratorTest {
     @Test
     public void testCreationOfEmptyMatrix() {
-        ArrayList<ArrayList<AEntity>> entityMatrix = UEntityMatrixGenerator.createEntityMatrix(5,5);
+        List<List<AEntity>> entityMatrix = UEntityMatrixGenerator.createEntityMatrix(5,5);
         ArrayList<AEntity> testRow = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             testRow.add(null);
         }
-        for (ArrayList<AEntity> row : entityMatrix) {
+        for (List<AEntity> row : entityMatrix) {
             assertEquals(testRow, row);
         }
     }
@@ -32,7 +33,7 @@ public class UEntityMatrixGeneratorTest {
         for (int i = 0; i < 5; i++) {
             entities.add(director.createEnemy(new Point(2, i), 1));
         }
-        ArrayList<ArrayList<AEntity>> entityMatrix = UEntityMatrixGenerator.createEntityMatrix(5,5);
+        List<List<AEntity>> entityMatrix = UEntityMatrixGenerator.createEntityMatrix(5,5);
         entityMatrix = UEntityMatrixGenerator.populateEntityMatrix(entities, entityMatrix);
 
         for (AEntity entity : entities) {
