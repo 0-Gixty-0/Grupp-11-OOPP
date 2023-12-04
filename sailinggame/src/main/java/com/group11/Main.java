@@ -34,6 +34,7 @@ class Main {
     private ArrayList<ArrayList<Integer>> playerMatrix;
     private List<List<AEntity>> entityMatrix;
     private List<AEntity> enemyList;
+    private List<AEntity> entityList;
     private EntityDirector director;
 
     public Main(int windowWidth, int windowHeight) {
@@ -43,12 +44,18 @@ class Main {
         this.appWindow = new AppWindow(windowHeight, windowHeight, 50, 50, 16, 16);
         this.director = new EntityDirector(new ShipBuilder());
         this.world = this.createBasicWorld();
-        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(50, 50);
-        this.enemyList = this.createEnemyWave(this.waveNumber);
-        this.entityMatrix = UEntityMatrixGenerator.populateEntityMatrix(this.enemyList, this.entityMatrix);
-        this.player = this.createBasicPlayer();
+        this.initializeEntities();
         UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
         this.appWindow.updateTerrain((UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
+    }
+
+    private void initializeEntities() {
+        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(50, 50);
+        this.enemyList = this.createEnemyWave(this.waveNumber);
+        this.player = this.createBasicPlayer();
+        this.entityList.add(player);
+        this.entityList.addAll(this.enemyList);
+        this.entityMatrix = UEntityMatrixGenerator.populateEntityMatrix(this.entityList, this.entityMatrix);
     }
 
     private World createBasicWorld() {
