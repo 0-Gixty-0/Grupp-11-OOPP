@@ -7,7 +7,7 @@ package com.group11.model.gameentites;
  *
  * @param <T> the type of projectile that the cannon fires
  */
-public class BasicCannon<T> extends AWeapon<T> {
+public class BasicCannon extends AWeapon {
 
     /**
      * Constructs a new basic cannon with the given projectile type.
@@ -15,7 +15,7 @@ public class BasicCannon<T> extends AWeapon<T> {
      * @param projectileType the type of projectile that this cannon fires
      * @throws IllegalArgumentException if the projectileType is not of type AProjectile
      */
-    public BasicCannon(T projectileType){
+    public BasicCannon(Class<? extends AProjectile> projectileType){
         super(projectileType, 5);
     }
 

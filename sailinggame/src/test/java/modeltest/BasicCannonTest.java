@@ -5,15 +5,16 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import com.group11.model.gameentites.AProjectile;
 import com.group11.model.gameentites.BasicCannon;
 import com.group11.model.gameentites.BasicCannonBall;
 
 
 public class BasicCannonTest {
 
-    private class TestWeapon<T> extends BasicCannon<T> {
+    private class TestWeapon extends BasicCannon {
 
-        public TestWeapon(T projectileType) {
+        public TestWeapon(Class<? extends AProjectile> projectileType) {
             super(projectileType);
         }
 
@@ -21,14 +22,14 @@ public class BasicCannonTest {
             return this.getFiredProjectilesSize();
         }
 
-        public T debugGetProjectileType() {
+        public Class<? extends AProjectile> debugGetProjectileType() {
             return this.getProjectileType();
         }
 
     }
 
 
-    TestWeapon<BasicCannonBall> testCannon = new TestWeapon<>(new BasicCannonBall(null));
+    TestWeapon testCannon = new TestWeapon(BasicCannonBall.class);
 
     @Test
     public void testGetProjectileType() {

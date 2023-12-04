@@ -9,21 +9,18 @@ import java.util.List;
  *
  * A weapon has a list of projectiles that it has fired and a maximum number of times it can be fired.
  */
-public abstract class AWeapon<T> {
+public abstract class AWeapon {
 
     private List<AProjectile> firedProjectiles;
     private int maxTimesFired;
-    private T projectileType;
+    private Class<? extends AProjectile> projectileType;
 
     /**
      * Constructs a new weapon.
      * Initializes the list of fired projectiles.
      */
-    protected AWeapon(T projectileType, int maxTimesFired) {
-        if (!(projectileType instanceof AProjectile)) {
-            throw new IllegalArgumentException("projectileType must be of type AProjectile");
-        }
-        this.projectileType = projectileType;
+    protected AWeapon(Class<? extends AProjectile> projectileType, int maxTimesFired) {
+        this.projectileType =  projectileType;
         this.firedProjectiles = new ArrayList<>();
         this.maxTimesFired = maxTimesFired;
     }
@@ -32,7 +29,7 @@ public abstract class AWeapon<T> {
      * Returns the type of projectile that this cannon fires.
      * @return the type of projectile that this cannon fires.
      */
-    protected T getProjectileType() {
+    protected Class<? extends AProjectile> getProjectileType() {
         return this.projectileType;
     }
 
@@ -66,11 +63,14 @@ public abstract class AWeapon<T> {
      * @throws RuntimeException if the projectile could not be instantiated
      */
     protected AProjectile createProjectile(int [] direction) {
+        
         try {
-            return (AProjectile) this.projectileType.getClass().getDeclaredConstructor(int[].class).newInstance(direction);
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            throw new IllegalStateException("Could not instantiate projectile", e);
+            return this.projectileType.getDeclaredConstructor(int[].class).newInstance(direction);
+        } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+                | NoSuchMethodException | SecurityException e) {
+            throw new RuntimeException("Could not instantiate projectile, bad projectile type in weapon");
         }
+        
     }
 
     /**
