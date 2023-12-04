@@ -10,8 +10,6 @@ public class Ship extends AMovableBody implements IHasWeapon {
     private int shipLevel;
     private double armor;
     private int cannons;
-    private boolean sailIsUp;
-    private boolean anchorDown;
 
     /**
      * Constructor for creating objects of type Ship.
@@ -26,8 +24,6 @@ public class Ship extends AMovableBody implements IHasWeapon {
         this.shipLevel   = shipLevel;
         this.armor       = armor;
         this.cannons     = cannons;
-        this.sailIsUp  = true;
-        this.anchorDown = false;
     }
 
     /**
@@ -39,8 +35,6 @@ public class Ship extends AMovableBody implements IHasWeapon {
         this.shipLevel = 1;
         this.armor = 2;
         this.cannons = 5;
-        this.sailIsUp = true;
-        this.anchorDown = false;
     }
 
     /**
@@ -65,61 +59,6 @@ public class Ship extends AMovableBody implements IHasWeapon {
      */
     public int getCannons() {
         return this.cannons;
-    }
-
-    /**
-     * Raises the sail of the ship
-     */
-    public void raiseSail() {
-        if (!this.sailIsUp) {
-            sailIsUp = true;
-            int currVelocity = this.getVelocity();
-            this.setVelocity(currVelocity*2);
-        } 
-    }
-
-    /**
-     * Lower the sail of the ship
-     */
-    public void lowerSail() {
-        if (this.sailIsUp) {
-            sailIsUp = false;
-            int currVelocity = this.getVelocity();
-            this.setVelocity(currVelocity/2);
-        } 
-    }
-
-    /**
-     * Returns the sailStatus of the ship
-     *
-     * @return the sailStatus of the ship
-     */
-    public boolean getSailStatus() {
-        return this.sailIsUp;
-    }
-
-    /**
-     * Returns the anchorStatus of the ship. Down (true) up (false)
-     *
-     * @return the anchorStatus of the ship.
-     */
-    public boolean getAnchorStatus() {
-        return this.anchorDown;
-    }
-
-    /**
-     * Raises the anchor of the ship.
-     */
-    public void anchorUp() {
-        this.anchorDown = false;
-    }
-
-    /**
-     * Lowers the anchor of the ship, reducing its velocity to 0.
-     */
-    public void anchorDown() {
-        this.anchorDown = true;
-        setVelocity(0);
     }
 
     /**
