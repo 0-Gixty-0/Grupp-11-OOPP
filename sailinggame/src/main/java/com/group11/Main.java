@@ -23,6 +23,7 @@ import com.group11.model.utility.UTileMatrixDecoder;
 import com.group11.view.uicomponents.AppWindow;
 
 class Main {
+
     private AppWindow appWindow;
     private static final GlobalKeyListener keyboardController = new GlobalKeyListener();
     private static int windowHeight;

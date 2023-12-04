@@ -12,6 +12,7 @@ import com.group11.model.gameentites.Ship;
  * body being an object of type Ship
  */
 public class ShipBuilder implements IEntityBuilder {
+
     private static double hpScalingFactor = 1.5;
     private static double armorScalingFactor = 1.5;
     private AMovableBody body = null;
@@ -20,8 +21,6 @@ public class ShipBuilder implements IEntityBuilder {
     private int shipLevel = 0;
     private double armor = 0;
     private int weapon = 0;
-    private boolean sailIsUp = true;
-    private boolean anchorDown = false;
     private Point position = null;
     private double hp = 0;
 
@@ -53,10 +52,8 @@ public class ShipBuilder implements IEntityBuilder {
         this.friendly = true;
         this.hp = 0;
         this.weapon = 0;
-        this.anchorDown = false;
         this.armor = 0;
         this.position = null;
-        this.sailIsUp = true;
         this.shipLevel = 0;
     }
 
@@ -77,18 +74,34 @@ public class ShipBuilder implements IEntityBuilder {
         this.setWeapon(lvl);
     }
 
+    /**
+     * Sets the level for the ship
+     * @param shipLevel The level of the ship
+     */
     private void setShipLevel(int shipLevel) {
         this.shipLevel = shipLevel;
     }
 
+    /**
+     * Sets the armor for the ship
+     * @param armor The armor stat for the ship
+     */
     private void setArmor(double armor) {
         this.armor = armor;
     }
 
+    /**
+     * Sets the weapon for the ship
+     * @param weapon The weapon stat for the ship
+     */
     private void setWeapon(int weapon) {
         this.weapon = weapon;
     }
 
+    /**
+     * Sets the hp for the ship
+     * @param hp The hp stat for the ship
+     */
     private void setHp(double hp) {
         this.hp = hp;
     }

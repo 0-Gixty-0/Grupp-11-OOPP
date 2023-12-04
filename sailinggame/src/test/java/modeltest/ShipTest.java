@@ -1,8 +1,6 @@
 package modeltest;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -25,36 +23,6 @@ public class ShipTest {
     @Test
     public void testGetCannons() {
         assertEquals(testShip.getCannons(), 0);
-    }
-
-    @Test
-    public void testRaiseSail() {
-        testShip.raiseSail();
-        assertTrue(testShip.getSailStatus());
-    }
-
-    @Test
-    public void testLowerSail() {
-        testShip.lowerSail();
-        assertFalse(testShip.getSailStatus());
-    }
-
-    @Test
-    public void testGetAnchorStatus() {
-        testShip.anchorDown();
-        assertTrue(testShip.getAnchorStatus());
-    }
-
-    @Test
-    public void testAnchorUp() {
-        testShip.anchorUp();
-        assertFalse(testShip.getAnchorStatus());
-    }
-
-    @Test
-    public void testAnchorDown() {
-        testShip.anchorDown();
-        assertTrue(testShip.getAnchorStatus());
     }
 
     @Test

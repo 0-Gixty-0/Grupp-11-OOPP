@@ -23,8 +23,6 @@ public class ShipBuilderTest {
         assertEquals(new Point(0,0), player.getPos());
         assertEquals(22.5, body.getHitPoints());
         assertEquals(6.0, body.getArmor());
-        assertFalse(body.getAnchorStatus());
-        assertTrue(body.getSailStatus());
         assertEquals(1, body.getShipLevel());
         assertEquals(1, body.getCannons());
         assertTrue(player.isFriendly());
@@ -39,8 +37,6 @@ public class ShipBuilderTest {
         assertEquals(new Point(0,0), enemy.getPos());
         assertEquals(22.5, body.getHitPoints());
         assertEquals(6.0, body.getArmor());
-        assertFalse(body.getAnchorStatus());
-        assertTrue(body.getSailStatus());
         assertEquals(1, body.getShipLevel());
         assertEquals(1, body.getCannons());
         assertFalse(enemy.isFriendly());
@@ -55,8 +51,6 @@ public class ShipBuilderTest {
         assertEquals(new Point(0,0), enemy.getPos());
         assertEquals(45.0, body.getHitPoints());
         assertEquals(12.0, body.getArmor());
-        assertFalse(body.getAnchorStatus());
-        assertTrue(body.getSailStatus());
         assertEquals(2, body.getShipLevel());
         assertEquals(2, body.getCannons());
         assertFalse(enemy.isFriendly());
