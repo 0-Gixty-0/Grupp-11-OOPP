@@ -28,12 +28,15 @@ class Main {
     private World world;
     private CommandableEntity player;
     private ArrayList<ArrayList<Integer>> playerMatrix;
+    private List<CommandableEntity> enemyList;
+    private EntityDirector director;
 
     public Main(int windowWidth, int windowHeight) {
 
         windowHeight = windowHeight;
         windowWidth = windowWidth;
         this.appWindow = new AppWindow(windowHeight, windowHeight, 50, 50, 16, 16);
+        this.director = new EntityDirector(new ShipBuilder());
         this.world = this.createBasicWorld();
         this.player = this.createBasicPlayer();
         UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
@@ -47,8 +50,7 @@ class Main {
     }
 
     private CommandableEntity createBasicPlayer() {
-        AMovableBody ship = new Ship(new Point(3,3));
-        return new CommandableEntity(ship, "Player", true);
+        return (CommandableEntity) this.director.createPlayer(new Point(3,3));
     }
 
     private List<List<Integer>> generatePlayerMatrix(int newPosX, int newPosY) {
