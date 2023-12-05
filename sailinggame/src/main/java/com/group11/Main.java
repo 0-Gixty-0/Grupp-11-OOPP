@@ -104,12 +104,18 @@ class Main {
     }
 
     /**
-     * Starts the game. Proceeds to check for movement input from player and updates enemy positions.
+     * Starts the game.
+     * Checks if all enemies have been defeated. If true generates a new wave of enemies.
+     * Proceeds to check for movement input from player and updates enemy positions.
      * Then updates the view
      */
     public void run() throws InterruptedException {
         appWindow.showGame();
         while (true) {
+            if (this.enemyList.isEmpty()) {
+                this.waveNumber++;
+                this.enemyList = this.entitySpawner.createEnemyWave(this.waveNumber);
+            }
             updatePlayer();
             this.aiCommander.moveEnemies(this.enemyList);
             this.updateEntityMatrix();
