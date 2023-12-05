@@ -3,16 +3,12 @@ package com.group11;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import com.group11.controller.GlobalKeyListener;
 import com.group11.controller.KeyboardInterpretor;
 import com.group11.model.builders.EntityDirector;
 import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AEntity;
-import com.group11.model.gameentites.AMovableBody;
 import com.group11.model.gameentites.CommandableEntity;
-import com.group11.model.gameentites.Ship;
 import com.group11.model.gameworld.AdvancedMapGenerator;
 import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.IMapGenerator;
@@ -24,31 +20,24 @@ import com.group11.view.uicomponents.AppWindow;
 class Main {
 
     private AppWindow appWindow;
-    private static final GlobalKeyListener keyboardController = new GlobalKeyListener();
+    private int mapWidth;
+    private int mapHeight;
     private static final KeyboardInterpretor keyboardInterpreter = new KeyboardInterpretor();
     private AICommander aiCommander;
-    private static int windowHeight;
-    private static int windowWidth;
     private int waveNumber = 1;
     private World world;
     private CommandableEntity player;
-    private ArrayList<ArrayList<Integer>> playerMatrix;
     private List<List<AEntity>> entityMatrix;
     private List<CommandableEntity> enemyList;
     private List<AEntity> entityList = new ArrayList<>();
     private EntityDirector director;
 
-    public Main(int windowWidth, int windowHeight) {
-
-        windowHeight = windowHeight;
-        windowWidth = windowWidth;
-        this.appWindow = new AppWindow(windowHeight, windowHeight, 50, 50, 16, 16);
+    public Main(int windowWidth, int windowHeight, int mapWidth, int mapHeight) {
+        this.mapWidth = mapWidth;
+        this.mapHeight = mapHeight;
+        this.appWindow = new AppWindow(windowWidth, windowHeight, mapWidth, mapHeight, 16, 16);
         this.director = new EntityDirector(new ShipBuilder());
         this.world = this.createBasicWorld();
-        for (int i = 0; i < 50; i++) {
-            List<List<Integer>> encoded = UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix());
-            System.out.println(encoded.get(i));
-        }
         this.initializeEntities();
         UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
         this.aiCommander = new AICommander(this.entityMatrix, this.world.getMap().getTileMatrix());
@@ -57,7 +46,7 @@ class Main {
     }
 
     private void initializeEntities() {
-        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(50, 50);
+        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(this.mapWidth, this.mapHeight);
         this.enemyList = this.createEnemyWave(this.waveNumber);
         this.player = this.createBasicPlayer();
         this.entityList.add(player);
@@ -68,60 +57,12 @@ class Main {
     private World createBasicWorld() {
         IMapGenerator mapGenerator = new AdvancedMapGenerator();
         IWorldGenerator worldGenerator = new BasicWorldGenerator(mapGenerator);
-        return worldGenerator.generateWorld(50,50);
+        return worldGenerator.generateWorld(this.mapWidth,this.mapWidth);
     }
 
     private CommandableEntity createBasicPlayer() {
         return (CommandableEntity) this.director.createPlayer(new Point(3,3));
     }
-
-//    private List<List<Integer>> generatePlayerMatrix(int newPosX, int newPosY) {
-//        List<List<Integer>> playerMatrix = new ArrayList<>();
-//        for (int i = 0; i < 50; i++) {
-//            ArrayList<Integer> row = new ArrayList<>();
-//            for (int j = 0; j < 50; j++) {
-//                if (i == newPosX && j == newPosY) {
-//                    row.add(0);
-//                } else {
-//                    row.add(-1);
-//                }
-//            }
-//            playerMatrix.add(row);
-//        }
-//        return playerMatrix;
-//    }
-
-    private void decodeController() {
-        Set<Integer> request = Main.keyboardController.getInput();
-        int command = -1;
-
-        if (request.contains(65) && request.contains(83)) {
-            command = 5;
-        } else if (request.contains(65) && request.contains(87)) {
-            command = 7;
-        } else if (request.contains(68) && request.contains(83)) {
-            command = 3;
-        } else if (request.contains(68) && request.contains(87)) {
-            command = 1;
-        } else if (request.contains(87)) {
-            command = 0;
-        } else if (request.contains(68)) {
-            command = 2;
-        } else if (request.contains(65)) {
-            command = 6;
-        } else if (request.contains(83)) {
-            command = 4;
-        }
-
-        if (command != -1) {
-//            Point playerPosition = this.player.getPos();
-            this.player.moveIfAble(command);
-//            UEntityMatrixGenerator.removeEntity(playerPosition, this.entityMatrix);
-//            UEntityMatrixGenerator.addEntity(this.player.getPos(), this.player, this.entityMatrix);
-//            appWindow.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
-        }
-    }
-
 
     /**
      * This algorithm creates a list of enemy entities based on the desired wave
@@ -156,7 +97,7 @@ class Main {
     }
 
     private void updateEntityMatrix() {
-        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(50, 50);
+        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(this.mapWidth, this.mapHeight);
         UEntityMatrixGenerator.populateEntityMatrix(this.entityList, this.entityMatrix);
         this.aiCommander.setEntityMatrix(this.entityMatrix);
         appWindow.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
@@ -183,7 +124,7 @@ class Main {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Main main = new Main(800,800);
+        Main main = new Main(800,800, 50, 50);
         main.run();
     }
 }
