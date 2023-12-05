@@ -25,6 +25,6 @@ public class EntitySpawnerTest {
 
     @Test
     public void spawnPlayerTest() {
-        assertEquals(testSpawner.spawnPlayer(1).getClass(), CommandableEntity.class);
+        assertEquals(testSpawner.spawnPlayer().getClass(), CommandableEntity.class);
     }
 }
