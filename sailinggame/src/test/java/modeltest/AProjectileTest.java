@@ -23,7 +23,7 @@ public class AProjectileTest {
 
         @Override
         public void moveInTravelPath() {
-            this.moveIfPossible(this.direction);
+            this.moveIfPossible(this.getDirection());
         }
         
     }
