@@ -55,5 +55,12 @@ public final class ScoreBoard {
     public static void setScore(Object gameEntity, int value) {
         scoreMap.put(gameEntity, value);
     }
+
+    /**
+     * Clears the score map.
+     */
+    public static void clearScoreBoard() {
+        scoreMap.clear();
+    }
     
 }
