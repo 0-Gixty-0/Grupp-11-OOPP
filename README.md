@@ -974,7 +974,7 @@ When i configured the POM file in the maven project to be ready for deployment i
 
 ---
 
-### US-80: Renaming CommanbableEntity methods
+### US-80: Renaming CommandableEntity methods
 Date of completion: 3/12/2023
 Completed by: Erik Andreasson
 
@@ -1056,3 +1056,36 @@ The purpose of this user story was to make projectiles in the game cause damage 
 
 #### User Interaction
 The user will interact with this US every time the user fires a weapon or gets fired upon.
+
+---
+
+### US-62: Refactoring application
+Date of completion: 5/12/2023
+Completed by: Erik Andreasson
+
+As a developer I want to refactor the application so that the modules we have written are integrated into the
+game loop
+
+#### What
+This user story is about refactoring the application through creating a game loop and integrating existing classes into a cohesive
+application package.
+
+#### How
+I did this through multiple steps. I began by adding the enemies to the game
+by creating a list of enemies and entities where I updated the enemy list using the createEnemyWave method. I then used the
+EntityDirector class to create the player and added this to the list of entities. I then used the UEntityMatrixGenerator to
+create the entity matrix and populated it with the provided method. I then sent this information to the updateAppWindow method.
+I then created the game loop and used the AICommander class to move enemies and then created helper methods to update the entity
+matrix based on changed enemy positions and updated the view. I also removed the old test code for creating and moving the player
+and swapped it for methods using the KeyboardInterpreter class. Finally, I removed unused attributes and added parameterized map width
+and height as parameters to the main class constructor.
+
+#### Why
+This user story is critical to the MVP since it represents making the existing modules we have written in the model, view, and
+controller interact and work with each-other in a way that follows the SOLID principles. Without this user story the code we have
+written in previous user stories is in practice useless. While implementing this user story I tried to make the application depend
+on utility classes and classes that work as an interface into different modules. Such as using the EntityDirector and UEntityMatrixGenerator.
+
+#### User Interaction
+The player will spawn in a random valid location and enemies will generate in random valid locations based on the wave level.
+Once all the enemies are defeated a new wave will spawn with higher difficulty.

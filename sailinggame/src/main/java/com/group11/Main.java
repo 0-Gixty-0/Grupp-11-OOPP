@@ -1,146 +1,140 @@
 package com.group11;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import com.group11.controller.GlobalKeyListener;
+import com.group11.application.EntitySpawner;
+import com.group11.controller.KeyboardInterpretor;
 import com.group11.model.builders.EntityDirector;
 import com.group11.model.builders.ShipBuilder;
-import com.group11.model.gameentites.*;
+import com.group11.model.gameentites.AEntity;
+import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameworld.AdvancedMapGenerator;
 import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.IMapGenerator;
 import com.group11.model.gameworld.IWorldGenerator;
 import com.group11.model.gameworld.World;
-import com.group11.model.utility.UMovementUtility;
-import com.group11.model.utility.UTileMatrixDecoder;
+import com.group11.model.utility.*;
 import com.group11.view.uicomponents.AppWindow;
 
 class Main {
 
     private AppWindow appWindow;
-    private static final GlobalKeyListener keyboardController = new GlobalKeyListener();
-    private static int windowHeight;
-    private static int windowWidth;
+    private int mapWidth;
+    private int mapHeight;
+    private static final KeyboardInterpretor keyboardInterpreter = new KeyboardInterpretor();
+    private AICommander aiCommander;
+    private int waveNumber = 1;
     private World world;
     private CommandableEntity player;
-    private List<List<Integer>> playerMatrix;
+    private List<List<AEntity>> entityMatrix;
+    private List<CommandableEntity> enemyList;
+    private List<AEntity> entityList = new ArrayList<>();
+    private EntityDirector director;
+    private EntitySpawner entitySpawner;
 
-    public Main(int windowWidth, int windowHeight) {
-
-        windowHeight = windowHeight;
-        windowWidth = windowWidth;
-        this.appWindow = new AppWindow(windowHeight, windowHeight, 50, 50, 16, 16);
+    /**
+     * Constructor method performs the following tasks:
+     * Creates the app window used to display the game
+     * Creates an entity director and spawner
+     * Creates the game world in the model
+     * Creates initial entities when starting the game
+     * Sets tile matrix in UMovementUtility
+     * Creates the AI Commander
+     * Updates the window's displayed terrain
+     * Updates the window's diplayed entities
+     * @param windowWidth Width of Swing window
+     * @param windowHeight Height of Swing window
+     * @param mapWidth Width of game map
+     * @param mapHeight Height of game map
+     */
+    public Main(int windowWidth, int windowHeight, int mapWidth, int mapHeight) {
+        this.mapWidth = mapWidth;
+        this.mapHeight = mapHeight;
+        this.appWindow = new AppWindow(windowWidth, windowHeight, mapWidth, mapHeight, 16, 16);
+        this.director = new EntityDirector(new ShipBuilder());
         this.world = this.createBasicWorld();
-        this.player = this.createBasicPlayer();
+        this.entitySpawner = new EntitySpawner(this.world, this.director);
+        this.initializeEntities();
         UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
+        this.aiCommander = new AICommander(this.entityMatrix, this.world.getMap().getTileMatrix());
         this.appWindow.updateTerrain((UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
+        this.appWindow.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
     }
 
+    /**
+     * Initializes the entities upon starting the game by creating the player and spawning a level one wave
+     * of enemies. It then adds these entities to the entity list and creates the entity matrix
+     */
+    private void initializeEntities() {
+        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(this.mapWidth, this.mapHeight);
+        this.enemyList = this.entitySpawner.createEnemyWave(this.waveNumber);
+        this.player = this.createBasicPlayer();
+        this.entityList.add(player);
+        this.entityList.addAll(this.enemyList);
+        UEntityMatrixGenerator.populateEntityMatrix(this.entityList, this.entityMatrix);
+    }
+
+    /**
+     * Creates a basic world using the map and world generator. That being the random map generator.
+     * @return A randomly generated world
+     */
     private World createBasicWorld() {
         IMapGenerator mapGenerator = new AdvancedMapGenerator();
         IWorldGenerator worldGenerator = new BasicWorldGenerator(mapGenerator);
-        return worldGenerator.generateWorld(50,50);
-    }
-
-    private CommandableEntity createBasicPlayer() {
-        AMovableBody ship = new Ship(new Point(3,3));
-        return new CommandableEntity(ship, "Player", true);
-    }
-
-    private List<List<Integer>> generatePlayerMatrix(int newPosX, int newPosY) {
-        List<List<Integer>> playerMatrix = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
-            ArrayList<Integer> row = new ArrayList<>();
-            for (int j = 0; j < 50; j++) {
-                if (i == newPosX && j == newPosY) {
-                    row.add(0);
-                } else {
-                    row.add(-1);
-                }
-            }
-            playerMatrix.add(row);
-        }
-        return playerMatrix;
-    }
-
-    private void decodeController() {
-        Set<Integer> request = Main.keyboardController.getInput();
-        int command = -1;
-
-        if (request.contains(65) && request.contains(83)) {
-            command = 5;
-        } else if (request.contains(65) && request.contains(87)) {
-            command = 7;
-        } else if (request.contains(68) && request.contains(83)) {
-            command = 3;
-        } else if (request.contains(68) && request.contains(87)) {
-            command = 1;
-        } else if (request.contains(87)) {
-            command = 0;
-        } else if (request.contains(68)) {
-            command = 2;
-        } else if (request.contains(65)) {
-            command = 6;
-        } else if (request.contains(83)) {
-            command = 4;
-        }
-
-        if (command != -1) {
-            this.player.moveIfAble(command);
-            int newPosX = (int) this.player.getPos().getX();
-            int newPosY = (int) this.player.getPos().getY();
-            appWindow.updateEntities((generatePlayerMatrix(newPosX, newPosY)));
-        }
+        return worldGenerator.generateWorld(this.mapWidth,this.mapWidth);
     }
 
     /**
-     * This algorithm creates a list of enemy entities based on the desired wave
-     * @param waveNumber The wave number for which to generate
-     * @return A list of enemies
+     * Creates the basic version of a player using the entity spawner
+     * @return The model representation of a player
      */
-    // TODO
-    // We should play around with this algorithm and tweak it for improvements. Or rewrite it if necessary.
-    // It is difficult to test in current state of development since nothing can use the information
-    public List<CommandableEntity> createEnemyWave(int waveNumber) {
-        List<CommandableEntity> enemyList = new ArrayList<>();
-        EntityDirector director = new EntityDirector(new ShipBuilder());
-        // The lower limit for the enemy level increases by one every three waves
-        int enemyLevel = (int) (1 + Math.floor(waveNumber/3));
-        int maximumEnemies = 20;
-
-        // Decreasing order so that more low level enemies are created than high level ones
-        for (int i = waveNumber; i >= 0; i--) {
-            // The factor in which to increase the number of enemies per wave
-            int numEnemies = (int) Math.floor(1.2 * i);
-            // Checks so that the number of enemies does not exceed the maximum amount allowed
-            numEnemies = Math.min(numEnemies, maximumEnemies - enemyList.size());
-            for (int j = 0; j < numEnemies; j++) {
-                enemyList.add((CommandableEntity) director.createEnemy(new Point(i,j), enemyLevel));
-            }
-            enemyLevel++;
-            if (enemyList.size() >= maximumEnemies) {
-                break;
-            }
-        }
-        return enemyList;
+    private CommandableEntity createBasicPlayer() {
+        return (CommandableEntity) this.entitySpawner.spawnPlayer();
     }
 
     /**
-     * Starts the game
+     * Updates the entity matrix from the entity list and updates the visual representation of entities in the frame
+     */
+    private void updateEntityMatrix() {
+        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(this.mapWidth, this.mapHeight);
+        UEntityMatrixGenerator.populateEntityMatrix(this.entityList, this.entityMatrix);
+        this.aiCommander.setEntityMatrix(this.entityMatrix);
+        appWindow.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
+    }
+
+    /**
+     * Starts the game.
+     * Checks if all enemies have been defeated. If true generates a new wave of enemies.
+     * Proceeds to check for movement input from player and updates enemy positions.
+     * Then updates the view
      */
     public void run() throws InterruptedException {
         appWindow.showGame();
         while (true) {
-            this.decodeController();
+            if (this.enemyList.isEmpty()) {
+                this.waveNumber++;
+                this.enemyList = this.entitySpawner.createEnemyWave(this.waveNumber);
+            }
+            updatePlayer();
+            this.aiCommander.moveEnemies(this.enemyList);
+            this.updateEntityMatrix();
             Thread.sleep(50);
         }
     }
 
+    /**
+     * Updates player position based on keyboard input
+     */
+    private void updatePlayer() {
+        int movementInput = this.keyboardInterpreter.getMovementInput();
+        if (movementInput >= 0) {
+            this.player.moveIfAble(movementInput);
+        }
+    }
+
     public static void main(String[] args) throws InterruptedException {
-        Main main = new Main(800,800);
+        Main main = new Main(800,800, 50, 50);
         main.run();
     }
 }
