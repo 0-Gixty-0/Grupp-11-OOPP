@@ -1,5 +1,6 @@
 package com.group11.model.gameentites;
 
+import java.awt.Point;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,13 +60,15 @@ public abstract class AWeapon {
 
     /**
      * Creates a new instance of the projectile type that this Weapon fires.
+     * @param startingPoint the starting point of the projectile
+     * @param direction the direction of the projectile
      * @return a new instance of the projectile type that this Weapon fires.
      * @throws RuntimeException if the projectile could not be instantiated
      */
-    protected AProjectile createProjectile(int [] direction) {
+    protected AProjectile createProjectile(Point startingPoint, int [] direction) {
         
         try {
-            return this.projectileType.getDeclaredConstructor(int[].class).newInstance(direction);
+            return this.projectileType.getDeclaredConstructor(Point.class, int[].class).newInstance(startingPoint, direction);
         } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
                 | NoSuchMethodException | SecurityException e) {
             throw new RuntimeException("Could not instantiate projectile, bad projectile type in weapon");
@@ -75,7 +78,9 @@ public abstract class AWeapon {
 
     /**
      * Fires the weapon.
+     * @param firingPoint the position from which the projectile is fired
+     * @param direction the direction in which the projectile is fired
      * @throws RuntimeException if the projectile could not be instantiated
      */
-    public abstract void fireWeapon(int [] direction);
+    public abstract void fireWeapon(Point firingPoint, int [] direction);
 }
