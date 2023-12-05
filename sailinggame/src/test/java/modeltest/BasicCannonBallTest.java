@@ -12,21 +12,16 @@ import static org.junit.Assert.assertEquals;
 
 public class BasicCannonBallTest {
 
+    BasicCannonBall testBall = new BasicCannonBall(new Point(0,0), new int[]{1,1});
 
-
-    BasicCannonBall testBall = new BasicCannonBall(null);
     @Test
-    public void testMoveInTravelPath() {
-
-        Map map = (new BasicMapGenerator()).generateMap(10,10);
+    public void testFollowsCorrectPath() {
+        Map map = (new BasicMapGenerator()).generateMap(50, 50);
         UMovementUtility.setTileMatrix(map.getTileMatrix());
 
-
-        int[] testDir = {0,1};
-
-        testBall.setDirection(testDir);
-
-        testBall.moveInTravelPath();
-        assertEquals(testBall.getPos(), new Point(0,1));
+        for (int i = 1; i <= 5; i++) {
+            testBall.travel();
+            assertEquals(testBall.getPos(), new Point(i, i));
+        }
     }
 }
