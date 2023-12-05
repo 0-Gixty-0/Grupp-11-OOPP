@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.group11.application.EntitySpawner;
 import com.group11.controller.KeyboardInterpretor;
-import com.group11.model.builders.EntityDirector;
 import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
@@ -14,7 +13,11 @@ import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.IMapGenerator;
 import com.group11.model.gameworld.IWorldGenerator;
 import com.group11.model.gameworld.World;
-import com.group11.model.utility.*;
+import com.group11.model.utility.AICommander;
+import com.group11.model.utility.UEntityMatrixDecoder;
+import com.group11.model.utility.UEntityMatrixGenerator;
+import com.group11.model.utility.UMovementUtility;
+import com.group11.model.utility.UTileMatrixDecoder;
 import com.group11.view.uicomponents.AppWindow;
 
 class Main {
@@ -109,7 +112,7 @@ class Main {
      */
     public void run() throws InterruptedException {
         appWindow.showGame();
-        while (true) {
+        while (Thread.currentThread().isAlive()) {
             if (this.enemyList.isEmpty()) {
                 this.waveNumber++;
                 this.enemyList = this.entitySpawner.createEnemyWave(this.waveNumber);

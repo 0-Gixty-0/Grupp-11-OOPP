@@ -1,15 +1,14 @@
 package com.group11.application;
 
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.group11.model.builders.EntityDirector;
 import com.group11.model.builders.IEntityBuilder;
-import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameworld.World;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
