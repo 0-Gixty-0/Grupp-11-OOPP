@@ -70,7 +70,7 @@ public class AICommander {
      * @param entityMatrix The entity matrix to search in
      * @return True: Player is near, False: Player is not near
      */
-    private boolean isNearPlayer(CommandableEntity entity, ArrayList<ArrayList<AEntity>> entityMatrix) {
+    private boolean isNearPlayer(CommandableEntity entity, List<List<AEntity>> entityMatrix) {
         int entityRowIndex = entity.getBody().getPos().y;
         int entityColumnIndex = entity.getBody().getPos().x;
         int radius = 5;

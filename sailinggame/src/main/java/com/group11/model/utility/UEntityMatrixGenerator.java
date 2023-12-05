@@ -26,7 +26,7 @@ public final class UEntityMatrixGenerator {
     public static List<List<AEntity>> createEntityMatrix(int width, int height) {
         List<List<AEntity>> entityMatrix = new ArrayList<>();
         for (int rowIndex = 0; rowIndex < height; rowIndex++) {
-            ArrayList<AEntity> row = new ArrayList<>();
+            List<AEntity> row = new ArrayList<>();
             for (int columnIndex = 0; columnIndex < width; columnIndex++) {
                 row.add(null);
             }

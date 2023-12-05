@@ -114,7 +114,7 @@ I completed the class by creating a png containing 8 models of the player ship i
 I chose to do it this way so that it could be easily extended to implement animation of the sprite by adding more sprites "below" each direction respectively. Since all sprites take up 16px with no space in between this could easily be done using a loop incrementing the y-value representing what part of the png to draw and then start over on the first sprite.
 
 #### Tutorial
-This feature does not require a tutorial since it doesnt have functionality for the player other than visual
+This feature does not require a tutorial since it doesn't have functionality for the player other than visual
 
 ---
 
@@ -132,7 +132,7 @@ Created two PNGS:s using pixel-art that represent a land tile and a water tile r
 I completed the task by creating two PNG:s with the same dimensions 16x16 pixels.
 
 #### Why
-I created the two PNG:s separately filling the entire 16x16 area. I did this in orde to allow for different ways to access
+I created the two PNG:s separately filling the entire 16x16 area. I did this in order to allow for different ways to access
 the tile image. We may create a tile set containing all tiles and we may not. With this approach we keep our options open which
 is important this early in development.
 
@@ -151,7 +151,7 @@ Implement basic map generation according to the UML diagram. Basic generation me
 Implementing a basic inheritance hierarchy and interface for the world generation and creating basic world generation.
 
 #### How
-I completed the task by implementing the followign classes as specified by the UML-diagram.
+I completed the task by implementing the following classes as specified by the UML-diagram.
 Two abstract baseclasses (AWorldGenerator, AMapGenerator).
 A filler class ATile (a class that is really meant to be created in another unfinished task).
 Two classes (Map, World) to be used in the model/logic of the game.
@@ -161,11 +161,11 @@ Two concrete implementations of abstract classes (BasicMapGenerator, BasicWorldG
 I choose to make AWorldGenerator and AMapGenerator abstract to follow the DIP, so that the game may use any type of world and map generation.
 These two classes can/should be interfaces as they only contain one method each, i choose to make them abstract classes for four reasons.
 
-(1) I dont wany any class to be able to be a Map/World generator, making classes that are Map/World generators be subclasses of abstract classes rather than interface implementors makes it so it cant be subclasses of anything else.
+(1) I don't want any class to be able to be a Map/World generator, making classes that are Map/World generators be subclasses of abstract classes rather than interface implementors makes it so it cant be subclasses of anything else.
 
 (2) There probably will be additions to these classes that makes it so they cant be interfaces.
 
-(3) Semantically it makese a little more sense if you imagine inheritance as "is a" and interface implementations as "can do".
+(3) Semantically it makes a little more sense if you imagine inheritance as "is an" and interface implementations as "can do".
 
 (4) In the current state there is no practical difference.
 
@@ -232,7 +232,7 @@ Implementing interfaces and abstract classes as templates for the concrete class
 will be updated and changed during the course of the project.
 
 #### How
-The task had a checklist with the intefaces and classes required, and the UML diagram showed what methods and variables that was needed.
+The task had a checklist with the interfaces and classes required, and the UML diagram showed what methods and variables that was needed.
 During the course of implementing the module, I understood better which ones was necessary and which ones that was not.
 
 The abstract class ABody is a template for a body. It's implemented such that it contains a dimension, a position, it has hitpoints, and a velocity.
@@ -240,7 +240,7 @@ It uses the interface IDamageable, since every body can take damage.
 
 The abstract class AMovableBody is the structure for every body that can move around on the map. It is a subclass of ABody. It contains the method "move", which changes the position (x,y) of the body.
 
-The class Ship is the concrete class of the module. It gets the general structure of ABody and AMovableBody, and also implements It's own specific functionality, altough at the moment It's very limited.
+The class Ship is the concrete class of the module. It gets the general structure of ABody and AMovableBody, and also implements Its own specific functionality, although at the moment It's very limited.
 It has a level, armor, cannons, and sailStatus, which tells if the sail is up or down. It also has an anchor which can reduce the velocity of the ship to 0 when lowered down.
 
 #### Why
@@ -853,7 +853,7 @@ As a developer I want to factor out the duplicate code in the movement tests in 
 #### What
 The tests in the test class CommandableEntityTest reused the same snippet of code in all its tests, this US fixed this.
 
-#### Wow
+#### How
 Refactoring common code into a private helper method in the testclass.
 
 #### Why
@@ -978,7 +978,7 @@ When i configured the POM file in the maven project to be ready for deployment i
 Date of completion: 3/12/2023
 Completed by: Erik Andreasson
 
-As a developer I want to rename the moveCommand() and other similiar methods in the CommandableEntity class.
+As a developer I want to rename the moveCommand() and other similar methods in the CommandableEntity class.
 
 #### What
 This user story is about renaming the command method in CommandableEntity.
@@ -998,32 +998,21 @@ This change has to do with the functionality of entities such as the player that
 
 ---
 
-### US-85: Remove unused fields in Ship and AMoveablyBody
-Date of completion: 4/12/2023
-Completed by: William Norland
+### US-69: Implement smart entity spawning in application
+Date of completion: 5/12/2023
+Completed by: Noa Cavassi
 
-As a developer i want to remvoe unused fields in classes to improve readability
+As a user I want all entities to spawn on possible tiles.
 
 #### What
-This user story is about removing unused fields in classes Ship and AMoveablyBody
+This user story is about finding smart positions, or possible positions, for all entities to spawn on.
 
 #### How
-Removing fields from classes, removing associated unused methods, removing tests for these methods.
+By creating the class EntitySpawner, which contains the methods posIsPassable and generateRandomPos, I was able to find possible positions for enemies to spawn on.
+I then used a builder to create entities and gave them a position.
 
 #### Why
-Removing unused fields makes the code more readable because 
-
-For anyone new working on a project, they not only have to understand the working code, they have to understand unused material also. This is wasted time and creates confusion.
-
-There is a danger that at some time, someone will make a change which inadvertently involve the 'dormant' code and can introduce bugs.
-
-The maintenance of any code is an administrative burden. By preserving old redundant code that burden is increased. For example, merging changes in the main branch becomes harder because there is more code to work through and more possibility to make a mistake.
-
-What happens over time is that more and more old unused code is added to the codebase. This increases the confusion, potential misunderstanding and administrative overhead.
-
-The chances that the unused code will ever be used again is very unlikely. With time that possibility of re-use diminishes. If code is to be removed and is considered important enough then the code can be branched off and documented.
-
-Any personal feelings that a coder may have about code they may have worked hard on are understandable. But part of being professional requires that those thoughts have to be put to one side for the better good. Time stands for no-one and there is no place for preserving historical code in a working codebase.
+It was necessary to find and give entities possible positions to spawn on, so that they don't spawn on land tiles or other "not possible" tiles.
 
 #### User Interaction
-This US makes lives easier for future developers but the interaction with a non-developer user is very limited
+The user will interact with this feature every time a new entity spawns on the map.

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThrows;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +16,7 @@ import com.group11.model.utility.UBodyCollisionUtility;
 
 public class BodyCollisionUtilityTest {
 
-    private ArrayList<ArrayList<ABody>> bodies;
+    private List<List<ABody>> bodies;
     private ABody testBody;
     private ABody testBody2;
     private Point pos;
