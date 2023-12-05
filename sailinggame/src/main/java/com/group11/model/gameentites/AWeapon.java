@@ -82,5 +82,5 @@ public abstract class AWeapon {
      * @param direction the direction in which the projectile is fired
      * @throws RuntimeException if the projectile could not be instantiated
      */
-    public abstract void fireWeapon(Point firingPoint, int [] direction);
+    protected abstract void fireWeapon(Point firingPoint, int [] direction);
 }

@@ -26,8 +26,8 @@ public abstract class AProjectile extends AMovableBody{
      * @param direction the direction the projectile is traveling in
      */
 
-    protected AProjectile(Point pos, int maxRange, int damage, int [] direction){
-        super(pos, 1, "Projectile");
+    protected AProjectile(Point startingPos, int maxRange, int damage, int [] direction){
+        super(startingPos, 1, "Projectile");
         this.distanceTraveled = 0;
         this.maxRange = maxRange;
         this.damage = damage;
