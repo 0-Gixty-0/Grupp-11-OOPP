@@ -1,4 +1,4 @@
-package com.group11;
+package com.group11.application;
 
 import com.group11.model.builders.EntityDirector;
 import com.group11.model.gameentites.AEntity;
@@ -62,7 +62,7 @@ public class EntitySpawner {
      * @param pos the position to check
      * @return true if the position is passable, false otherwise
      */
-    public boolean posIsPassable(Point pos) {
+    private boolean posIsPassable(Point pos) {
         return world.getMap().getTileMatrix().get(pos.x).get(pos.y).isPassable();
     }
 
@@ -70,7 +70,7 @@ public class EntitySpawner {
      * Generates a random position in the world.
      * @return the generated position
      */
-    public Point generateRandomPos() {
+    private Point generateRandomPos() {
         int x = (int) (Math.random() * this.world.getMap().getMapWidth());
         int y = (int) (Math.random() * this.world.getMap().getMapHeight());
         return new Point(x, y);
