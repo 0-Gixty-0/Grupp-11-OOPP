@@ -13,9 +13,9 @@ import org.junit.Test;
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameentites.Ship;
-import com.group11.model.utility.UBodyCollisionUtility;
+import com.group11.model.utility.UEntityCollisionUtility;
 
-public class BodyCollisionUtilityTest {
+public class EntityCollisionUtilityTest {
 
     private List<List<AEntity>> entites;
     private AEntity testEntity;
@@ -36,19 +36,19 @@ public class BodyCollisionUtilityTest {
 
     @Test
     public void testSetBodies() {
-        UBodyCollisionUtility.setBodyMatrix(null);
-        assertThrows(IllegalStateException.class, ()->UBodyCollisionUtility.isPositionOccupied(pos));
+        UEntityCollisionUtility.setBodyMatrix(null);
+        assertThrows(IllegalStateException.class, ()->UEntityCollisionUtility.isPositionOccupied(pos));
     }
 
     @Test
     public void testIsPositionOccupied() {
-        UBodyCollisionUtility.setBodyMatrix(entites);
-        assertEquals(testEntity, UBodyCollisionUtility.isPositionOccupied(pos));
+        UEntityCollisionUtility.setBodyMatrix(entites);
+        assertEquals(testEntity, UEntityCollisionUtility.isPositionOccupied(pos));
     }
 
     @Test
     public void testIsBodyColliding() {
-        UBodyCollisionUtility.setBodyMatrix(entites);
-       assertEquals(testEntity, UBodyCollisionUtility.isEntityColliding(testEntity2));
+        UEntityCollisionUtility.setBodyMatrix(entites);
+       assertEquals(testEntity, UEntityCollisionUtility.isEntityColliding(testEntity2));
     }
 }
