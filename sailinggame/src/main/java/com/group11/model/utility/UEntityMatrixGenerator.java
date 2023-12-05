@@ -37,19 +37,18 @@ public final class UEntityMatrixGenerator {
 
     /**
      * Adds entities from list to an entity matrix in correct position according to body of entity
-     * @param entities List of entities to add to entity matrix
+     *
+     * @param entities     List of entities to add to entity matrix
      * @param entityMatrix Entity matrix to add entities to
-     * @return Entity matrix with input entities placed in correct position
      */
-    public static List<List<AEntity>> populateEntityMatrix(List<AEntity> entities, List<List<AEntity>> entityMatrix) {
+    public static void populateEntityMatrix(List<AEntity> entities, List<List<AEntity>> entityMatrix) {
         for (AEntity entity : entities) {
-            int rowPosition = entity.getBody().getPos().y;
-            int columnPosition = entity.getBody().getPos().x;
+            int rowPosition = entity.getBody().getPos().x;
+            int columnPosition = entity.getBody().getPos().y;
             List<AEntity> row = entityMatrix.get(rowPosition);
             row.set(columnPosition, entity);
             entityMatrix.set(rowPosition, row);
         }
-        return entityMatrix;
     }
 
     public static void removeEntity(Point position, List<List<AEntity>> entityMatrix) {

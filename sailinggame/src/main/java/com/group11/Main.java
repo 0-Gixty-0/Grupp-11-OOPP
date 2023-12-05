@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.group11.controller.GlobalKeyListener;
+import com.group11.controller.KeyboardInterpretor;
 import com.group11.model.builders.EntityDirector;
 import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AEntity;
@@ -17,16 +18,15 @@ import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.IMapGenerator;
 import com.group11.model.gameworld.IWorldGenerator;
 import com.group11.model.gameworld.World;
-import com.group11.model.utility.UEntityMatrixDecoder;
-import com.group11.model.utility.UEntityMatrixGenerator;
-import com.group11.model.utility.UMovementUtility;
-import com.group11.model.utility.UTileMatrixDecoder;
+import com.group11.model.utility.*;
 import com.group11.view.uicomponents.AppWindow;
 
 class Main {
 
     private AppWindow appWindow;
     private static final GlobalKeyListener keyboardController = new GlobalKeyListener();
+    private static final KeyboardInterpretor keyboardInterpreter = new KeyboardInterpretor();
+    private AICommander aiCommander;
     private static int windowHeight;
     private static int windowWidth;
     private int waveNumber = 1;
@@ -34,7 +34,7 @@ class Main {
     private CommandableEntity player;
     private ArrayList<ArrayList<Integer>> playerMatrix;
     private List<List<AEntity>> entityMatrix;
-    private List<AEntity> enemyList;
+    private List<CommandableEntity> enemyList;
     private List<AEntity> entityList = new ArrayList<>();
     private EntityDirector director;
 
@@ -45,8 +45,13 @@ class Main {
         this.appWindow = new AppWindow(windowHeight, windowHeight, 50, 50, 16, 16);
         this.director = new EntityDirector(new ShipBuilder());
         this.world = this.createBasicWorld();
+        for (int i = 0; i < 50; i++) {
+            List<List<Integer>> encoded = UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix());
+            System.out.println(encoded.get(i));
+        }
         this.initializeEntities();
         UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
+        this.aiCommander = new AICommander(this.entityMatrix, this.world.getMap().getTileMatrix());
         this.appWindow.updateTerrain((UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
         this.appWindow.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
     }
@@ -57,7 +62,7 @@ class Main {
         this.player = this.createBasicPlayer();
         this.entityList.add(player);
         this.entityList.addAll(this.enemyList);
-        this.entityMatrix = UEntityMatrixGenerator.populateEntityMatrix(this.entityList, this.entityMatrix);
+        UEntityMatrixGenerator.populateEntityMatrix(this.entityList, this.entityMatrix);
     }
 
     private World createBasicWorld() {
@@ -70,21 +75,21 @@ class Main {
         return (CommandableEntity) this.director.createPlayer(new Point(3,3));
     }
 
-    private List<List<Integer>> generatePlayerMatrix(int newPosX, int newPosY) {
-        List<List<Integer>> playerMatrix = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
-            ArrayList<Integer> row = new ArrayList<>();
-            for (int j = 0; j < 50; j++) {
-                if (i == newPosX && j == newPosY) {
-                    row.add(0);
-                } else {
-                    row.add(-1);
-                }
-            }
-            playerMatrix.add(row);
-        }
-        return playerMatrix;
-    }
+//    private List<List<Integer>> generatePlayerMatrix(int newPosX, int newPosY) {
+//        List<List<Integer>> playerMatrix = new ArrayList<>();
+//        for (int i = 0; i < 50; i++) {
+//            ArrayList<Integer> row = new ArrayList<>();
+//            for (int j = 0; j < 50; j++) {
+//                if (i == newPosX && j == newPosY) {
+//                    row.add(0);
+//                } else {
+//                    row.add(-1);
+//                }
+//            }
+//            playerMatrix.add(row);
+//        }
+//        return playerMatrix;
+//    }
 
     private void decodeController() {
         Set<Integer> request = Main.keyboardController.getInput();
@@ -109,11 +114,11 @@ class Main {
         }
 
         if (command != -1) {
-            Point playerPosition = this.player.getPos();
+//            Point playerPosition = this.player.getPos();
             this.player.moveIfAble(command);
-            UEntityMatrixGenerator.removeEntity(playerPosition, this.entityMatrix);
-            UEntityMatrixGenerator.addEntity(this.player.getPos(), this.player, this.entityMatrix);
-            appWindow.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
+//            UEntityMatrixGenerator.removeEntity(playerPosition, this.entityMatrix);
+//            UEntityMatrixGenerator.addEntity(this.player.getPos(), this.player, this.entityMatrix);
+//            appWindow.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
         }
     }
 
@@ -126,8 +131,8 @@ class Main {
     // TODO
     // We should play around with this algorithm and tweak it for improvements. Or rewrite it if necessary.
     // It is difficult to test in current state of development since nothing can use the information
-    public List<AEntity> createEnemyWave(int waveNumber) {
-        ArrayList<AEntity> enemyList = new ArrayList<>();
+    public List<CommandableEntity> createEnemyWave(int waveNumber) {
+        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
         EntityDirector director = new EntityDirector(new ShipBuilder());
         // The lower limit for the enemy level increases by one every three waves
         int enemyLevel = (int) (1 + Math.floor(waveNumber/3));
@@ -140,7 +145,7 @@ class Main {
             // Checks so that the number of enemies does not exceed the maximum amount allowed
             numEnemies = Math.min(numEnemies, maximumEnemies - enemyList.size());
             for (int j = 0; j < numEnemies; j++) {
-                enemyList.add(director.createEnemy(new Point(i,j), enemyLevel));
+                enemyList.add((CommandableEntity) director.createEnemy(new Point(i,j), enemyLevel));
             }
             enemyLevel++;
             if (enemyList.size() >= maximumEnemies) {
@@ -150,14 +155,30 @@ class Main {
         return enemyList;
     }
 
+    private void updateEntityMatrix() {
+        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(50, 50);
+        UEntityMatrixGenerator.populateEntityMatrix(this.entityList, this.entityMatrix);
+        this.aiCommander.setEntityMatrix(this.entityMatrix);
+        appWindow.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
+    }
+
     /**
      * Starts the game
      */
     public void run() throws InterruptedException {
         appWindow.showGame();
         while (true) {
-            this.decodeController();
+            updatePlayer();
+            this.aiCommander.moveEnemies(this.enemyList);
+            this.updateEntityMatrix();
             Thread.sleep(50);
+        }
+    }
+
+    private void updatePlayer() {
+        int movementInput = this.keyboardInterpreter.getMovementInput();
+        if (movementInput >= 0) {
+            this.player.moveIfAble(movementInput);
         }
     }
 

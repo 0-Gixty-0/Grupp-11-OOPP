@@ -34,11 +34,11 @@ public class UEntityMatrixGeneratorTest {
             entities.add(director.createEnemy(new Point(2, i), 1));
         }
         List<List<AEntity>> entityMatrix = UEntityMatrixGenerator.createEntityMatrix(5,5);
-        entityMatrix = UEntityMatrixGenerator.populateEntityMatrix(entities, entityMatrix);
+        UEntityMatrixGenerator.populateEntityMatrix(entities, entityMatrix);
 
         for (AEntity entity : entities) {
-            int rowIndex = entity.getBody().getPos().y;
-            int columnIndex = entity.getBody().getPos().x;
+            int rowIndex = entity.getBody().getPos().x;
+            int columnIndex = entity.getBody().getPos().y;
             assertEquals(entity, entityMatrix.get(rowIndex).get(columnIndex));
         }
     }

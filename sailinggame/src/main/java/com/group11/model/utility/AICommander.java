@@ -47,7 +47,7 @@ public class AICommander {
      * If the player is not in proximity than a random directional value is selected
      * @param enemies The list of enemies to move
      */
-    public void moveEnemies(ArrayList<CommandableEntity> enemies) {
+    public void moveEnemies(List<CommandableEntity> enemies) {
         Random random = new Random();
         for (CommandableEntity enemy : enemies) {
             int entityRowIndex = enemy.getBody().getPos().x;
