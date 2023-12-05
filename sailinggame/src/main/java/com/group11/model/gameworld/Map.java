@@ -25,6 +25,14 @@ public class Map {
         return mapWidth * mapHeight;
     }
 
+    public int getMapWidth() {
+        return this.mapWidth;
+    }
+
+    public int getMapHeight() {
+        return this.mapHeight;
+    }
+
     /**
      *  A getter for the tileMatrix attribute of the Map object.
      *  @return (ArrayList<ArrayList<Tile>>) matrix of Tiles representing the map in the game logic.
