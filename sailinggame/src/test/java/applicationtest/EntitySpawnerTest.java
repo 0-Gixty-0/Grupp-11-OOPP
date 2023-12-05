@@ -44,7 +44,6 @@ public class EntitySpawnerTest {
         int lvl2num = 0;
         int lvl1num = 0;
         for (CommandableEntity enemy : enemyList) {
-            System.out.println(enemy.getName());
             switch (enemy.getName()) {
                 case "Enemy: lvl 1":
                     lvl1num++;
