@@ -1,6 +1,7 @@
 package com.group11.application;
 
 import com.group11.model.builders.EntityDirector;
+import com.group11.model.builders.IEntityBuilder;
 import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
@@ -18,17 +19,17 @@ import java.util.List;
  */
 public class EntitySpawner {
 
-    private final World world;
+    private World world;
     private final EntityDirector director;
 
     /**
      * Constructs an EntitySpawner with the specified world and director.
      * @param world the game world where entities will be spawned
-     * @param director the director used to create entities
+     * @param builder the director used to create entities
      */
-    public EntitySpawner(World world, EntityDirector director) {
+    public EntitySpawner(World world, IEntityBuilder builder) {
         this.world = world;
-        this.director = director;
+        this.director = new EntityDirector(builder);
     }
 
     /**
@@ -44,6 +45,22 @@ public class EntitySpawner {
         }
 
         return director.createEnemy(pos, level);
+    }
+
+    /**
+     * Spawns a ship entity at a random passable position in the world.
+     * @return the spawned ship entity
+     */
+    public void changeBuilder(IEntityBuilder builder) {
+        this.director.changeBuilder(builder);
+    }
+
+    /**
+     * Spawns a ship entity at a random passable position in the world.
+     * @return the spawned ship entity
+     */
+    public void changeWorld(World world) {
+        this.world = world;
     }
 
     /**

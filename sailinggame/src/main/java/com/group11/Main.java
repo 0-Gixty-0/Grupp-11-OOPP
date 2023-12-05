@@ -30,7 +30,6 @@ class Main {
     private List<List<AEntity>> entityMatrix;
     private List<CommandableEntity> enemyList;
     private List<AEntity> entityList = new ArrayList<>();
-    private EntityDirector director;
     private EntitySpawner entitySpawner;
 
     /**
@@ -52,9 +51,8 @@ class Main {
         this.mapWidth = mapWidth;
         this.mapHeight = mapHeight;
         this.appWindow = new AppWindow(windowWidth, windowHeight, mapWidth, mapHeight, 16, 16);
-        this.director = new EntityDirector(new ShipBuilder());
         this.world = this.createBasicWorld();
-        this.entitySpawner = new EntitySpawner(this.world, this.director);
+        this.entitySpawner = new EntitySpawner(this.world, new ShipBuilder());
         this.initializeEntities();
         UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
         this.aiCommander = new AICommander(this.entityMatrix, this.world.getMap().getTileMatrix());
