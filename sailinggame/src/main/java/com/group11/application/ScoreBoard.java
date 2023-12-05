@@ -15,7 +15,7 @@ public final class ScoreBoard {
 
     /**
      * Adds an entity to the score board.
-     * @param entity the entity to be added
+     * @param gameEntity the entity to be added
      */
     public static void addEntityToScoreBoard(Object gameEntity) {
         scoreMap.put(gameEntity, 0);
@@ -23,7 +23,7 @@ public final class ScoreBoard {
 
     /**
      * Removes an entity from the score board.
-     * @param entity the entity to be removed
+     * @param gameEntity the entity to be removed
      */
     public static void removeFromScoreBoard(Object gameEntity) {
         scoreMap.remove(gameEntity);
@@ -31,7 +31,7 @@ public final class ScoreBoard {
     
     /**
      * Increments the score of an entity by a value.
-     * @param entity the entity whose score is to be incremented
+     * @param gameEntity the entity whose score is to be incremented
      * @param value the value by which the score is to be incremented
      */
     public static void incrementScore(Object gameEntity, int value) {
@@ -40,7 +40,7 @@ public final class ScoreBoard {
 
     /**
      * Returns the score of an entity.
-     * @param entity the entity whose score is to be returned
+     * @param gameEntity the entity whose score is to be returned
      * @return the score of the entity
      */
     public static int getScore(Object gameEntity) {
@@ -49,7 +49,7 @@ public final class ScoreBoard {
 
     /**
      * Sets the score of an entity to a value.
-     * @param entity the entity whose score is to be set
+     * @param gameEntity the entity whose score is to be set
      * @param value the value to which the score is to be set
      */
     public static void setScore(Object gameEntity, int value) {
