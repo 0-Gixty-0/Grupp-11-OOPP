@@ -44,10 +44,9 @@ public class EntitySpawner {
 
     /**
      * Spawns a player entity at a random passable position in the world.
-     * @param level the level of the player to be spawned
      * @return the spawned player entity
      */
-    public AEntity spawnPlayer(int level) {
+    public AEntity spawnPlayer() {
 
         Point pos = generateRandomPos();
         while (!posIsPassable(pos)) {
