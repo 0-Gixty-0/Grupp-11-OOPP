@@ -10,26 +10,27 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.group11.model.gameentites.ABody;
+import com.group11.model.gameentites.AEntity;
+import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameentites.Ship;
 import com.group11.model.utility.UBodyCollisionUtility;
 
 public class BodyCollisionUtilityTest {
 
-    private List<List<ABody>> bodies;
-    private ABody testBody;
-    private ABody testBody2;
+    private List<List<AEntity>> entites;
+    private AEntity testEntity;
+    private AEntity testEntity2;
     private Point pos;
 
     @Before
     public void setUp() {
-        this.bodies = new ArrayList<>();
+        this.entites = new ArrayList<>();
         this.pos = new Point(0, 0);
         Point pos2 = new Point(0,0);
-        this.testBody = new Ship(pos, 0, 0, 0, 0);
-        this.testBody2 = new Ship(pos2, 0, 0, 0, 0);
-        this.bodies.add(new ArrayList<ABody>() {{
-                add(testBody);
+        this.testEntity = new CommandableEntity(new Ship(pos, 0, 0, 0, 0), null, null);
+        this.testEntity2 = new CommandableEntity(new Ship(pos2, 0, 0, 0, 0), null, null);
+        this.entites.add(new ArrayList<AEntity>() {{
+                add(testEntity);
             }});
     }
 
@@ -41,13 +42,13 @@ public class BodyCollisionUtilityTest {
 
     @Test
     public void testIsPositionOccupied() {
-        UBodyCollisionUtility.setBodyMatrix(bodies);
-        assertEquals(testBody, UBodyCollisionUtility.isPositionOccupied(pos));
+        UBodyCollisionUtility.setBodyMatrix(entites);
+        assertEquals(testEntity, UBodyCollisionUtility.isPositionOccupied(pos));
     }
 
     @Test
     public void testIsBodyColliding() {
-        UBodyCollisionUtility.setBodyMatrix(bodies);
-       assertEquals(testBody, UBodyCollisionUtility.isBodyColliding(testBody2));;
+        UBodyCollisionUtility.setBodyMatrix(entites);
+       assertEquals(testEntity, UBodyCollisionUtility.isEntityColliding(testEntity2));
     }
 }

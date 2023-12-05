@@ -1019,6 +1019,46 @@ The user will interact with this feature every time a new entity spawns on the m
 
 ---
 
+### US-87: Implementing a score system
+Date of completion: 5/12/2023
+Completed by: William Norland
+
+As a user I would like a way to be rewarded for progress so there is a purpose with the game.
+
+#### What
+The ScoreBoard class is a utility class that manages the scores of game entities. It provides methods to add, remove, increment, get, and set scores for entities, as well as clear the entire scoreboard.
+
+#### How
+The ScoreBoard class uses a static HashMap where the keys are the game entities and the values are their respective scores. The class provides static methods to manipulate the scores of the entities in the HashMap.
+
+#### Why
+The score system was implemented to provide a way to track the progress of game entities. This gives a purpose to the game and a way to reward entities for their progress. The underlying hashmap uses the Object type which makes this scoreboard universal for any object used.
+
+#### User Interaction
+The user indirectly interacts with this feature. The score of the entities is updated as the user plays the game, and the user can see the scores to track their progress.
+
+--- 
+
+### US-88: Making projectiles cause damage
+Date of completion: 5/12/2023
+Completed by: William Norland
+
+As a use I want projectiles in the game to cause damage.
+
+#### What
+During this user story, I implemented the getDamage function in the AProjectile class. This allows the application to determine how much damage the projectile should cause to entities that are hit. I also made changes to the CollisionUtility class, as it was using ABody matrices to check the positions of entities. This approach was inefficient, as the rest of the application uses AEntity matrices. Additionally, I added a parameter for the starting position in created projectiles, as all projectiles were starting at (0,0) in the current source code. This was not the intended behavior and was likely an oversight. Lastly, I removed unnecessary methods in the AProjectile class that were not being used.
+
+#### How
+To implement the getDamage function, I added the necessary logic to calculate the damage based on the projectile's properties. In the CollisionUtility class, I updated the code to use AEntity matrices instead of ABody matrices for checking entity positions. I modified the projectile creation code to include a parameter for the starting position. Finally, I removed unused methods in the AProjectile class.
+
+#### Why
+The purpose of this user story was to make projectiles in the game cause damage to entities. By implementing the getDamage function and making the necessary changes, the application now accurately calculates the damage caused by projectiles. Additionally, updating the collision checking logic improves efficiency, and specifying the starting position for projectiles ensures they behave as intended. Removing unused methods helps to clean up the codebase and improve maintainability.
+
+#### User Interaction
+The user will interact with this US every time the user fires a weapon or gets fired upon.
+
+---
+
 ### US-62: Refactoring application
 Date of completion: 5/12/2023
 Completed by: Erik Andreasson

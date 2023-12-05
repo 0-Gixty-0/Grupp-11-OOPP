@@ -1,7 +1,9 @@
 package modeltest;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertSame;
+
+import java.awt.Point;
 
 import org.junit.Test;
 
@@ -28,19 +30,19 @@ public class BasicCannonTest {
 
     }
 
-
+    Point firingPoint = new Point(0,0);
     TestWeapon testCannon = new TestWeapon(BasicCannonBall.class);
 
     @Test
     public void testGetProjectileType() {
         Object projectile = testCannon.debugGetProjectileType();
-        assertTrue(projectile == BasicCannonBall.class);
+        assertSame(projectile, BasicCannonBall.class);
     }
 
     @Test
     public void testGetFiredProjectilesSize() {
         int [] direction = {0,1};
-        testCannon.fireWeapon(direction);
+        testCannon.fireWeapon(firingPoint, direction);
 
         assertEquals(1, testCannon.debugFiredProjectilesSize());
     }
@@ -48,7 +50,7 @@ public class BasicCannonTest {
     @Test
     public void testFireWeapon() {
         int [] direction = {0,1};
-        testCannon.fireWeapon(direction);
+        testCannon.fireWeapon(firingPoint, direction);
 
         assertEquals(1, testCannon.debugFiredProjectilesSize());
     }
