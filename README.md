@@ -1016,3 +1016,23 @@ It was necessary to find and give entities possible positions to spawn on, so th
 
 #### User Interaction
 The user will interact with this feature every time a new entity spawns on the map.
+
+---
+
+### US-87: Implementing a score system
+Date of completion: 5/12/2023
+Completed by: William Norland
+
+As a user I would like a way to be rewarded for progress so there is a purpose with the game.
+
+#### What
+The ScoreBoard class is a utility class that manages the scores of game entities. It provides methods to add, remove, increment, get, and set scores for entities, as well as clear the entire scoreboard.
+
+#### How
+The ScoreBoard class uses a static HashMap where the keys are the game entities and the values are their respective scores. The class provides static methods to manipulate the scores of the entities in the HashMap.
+
+#### Why
+The score system was implemented to provide a way to track the progress of game entities. This gives a purpose to the game and a way to reward entities for their progress. The underlying hashmap uses the Object type which makes this scoreboard universal for any object used.
+
+#### User Interaction
+The user indirectly interacts with this feature. The score of the entities is updated as the user plays the game, and the user can see the scores to track their progress.
