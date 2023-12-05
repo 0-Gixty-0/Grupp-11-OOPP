@@ -1,15 +1,14 @@
 package com.group11.model.utility;
 
 
-import com.group11.model.gameentites.AEntity;
-import com.group11.model.gameentites.CommandableEntity;
-import com.group11.model.gameworld.ATile;
-
-import java.awt.*;
-import java.util.ArrayList;
+import java.awt.Point;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+
+import com.group11.model.gameentites.AEntity;
+import com.group11.model.gameentites.CommandableEntity;
+import com.group11.model.gameworld.ATile;
 
 /**
  * Class representing controller for AI controlled entities

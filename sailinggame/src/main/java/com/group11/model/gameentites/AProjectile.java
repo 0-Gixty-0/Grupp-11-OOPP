@@ -20,16 +20,14 @@ public abstract class AProjectile extends AMovableBody{
 
     /**
      * Constructs a new projectile with the given parameters.
-     *
-     * @param distanceTraveled the distance the projectile has already traveled
-     * @param maxRange the maximum distance the projectile can travel
+     * @param pos the position of the projectile
+     * @param maxRange the maximum range the projectile can travel
      * @param damage the damage the projectile can cause
      * @param direction the direction the projectile is traveling in
-     * @param hitPoints the hitpoints of the projectile, which is always 1
      */
 
-    protected AProjectile(int maxRange, int damage, int [] direction){
-        super(new Point(0,0), 1, "A projectile");
+    protected AProjectile(Point startingPos, int maxRange, int damage, int [] direction){
+        super(startingPos, 1, "Projectile");
         this.distanceTraveled = 0;
         this.maxRange = maxRange;
         this.damage = damage;
@@ -39,48 +37,28 @@ public abstract class AProjectile extends AMovableBody{
 
     /**
      * Checks if the projectile is out of range.
-     *
      * @return true if the projectile has traveled beyond its maximum range, false otherwise
      */
     public boolean isOutOfRange() {
-        return(this.distanceTraveled > this.maxRange); 
-    }
-
-    /**
-     * Returns the distance the projectile has traveled.
-     *
-     * @return the distance the projectile has traveled
-     */
-    public int getDistanceTraveled() {
-        return this.distanceTraveled;
+        return(this.distanceTraveled >= this.maxRange); 
     }
 
     /**
      * Makes the projectile travel, increasing its traveled distance by one.
      */
     public void travel() {
-
-        this.distanceTraveled++;
-
-        continueTravelPath();
+        if (!isOutOfRange()) {
+            this.distanceTraveled++;
+            continueTravelPath();
+        }
     }
 
     /**
-     * Returns the direction the projectile is traveling in.
-     *
-     * @return the direction the projectile is traveling in
+     * Returns the damage the projectile can cause.
+     * @return the damage the projectile can cause
      */
-    public int[] getDirection() {
-        return this.direction;
-    }
-
-    /**
-     * Sets the direction the projectile is traveling in.
-     *
-     * @param direction the new direction for the projectile
-     */
-    public void setDirection(int[] direction) {
-        this.direction = direction;
+    public int getDamage() {
+        return this.damage;
     }
 
     /**
@@ -93,7 +71,7 @@ public abstract class AProjectile extends AMovableBody{
      * Continues the projectile along its travel path.
      * If an exception occurs during the movement, the method simply returns.
      */
-    public void continueTravelPath() {
+    private void continueTravelPath() {
         moveInTravelPath(); //Checking for out of bounds is done in moveInTravelPath
     }
 }

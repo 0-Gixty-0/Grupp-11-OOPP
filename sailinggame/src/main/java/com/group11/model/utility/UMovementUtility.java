@@ -44,11 +44,7 @@ public final class UMovementUtility {
 
         try {
             //Trying to move over impassable terrain
-            if (UMovementUtility.tileMatrix.get(newX).get(newY).isPassable()) {
-                return true;
-            } else {
-                return false;
-            }
+            return (UMovementUtility.tileMatrix.get(newX).get(newY).isPassable());
             //Trying to move outside the world
         } catch (IndexOutOfBoundsException e) {
             return false; 
