@@ -19,13 +19,14 @@ import com.group11.model.utility.UTileMatrixDecoder;
 import com.group11.view.uicomponents.AppWindow;
 
 class Main {
+
     private AppWindow appWindow;
     private static final GlobalKeyListener keyboardController = new GlobalKeyListener();
     private static int windowHeight;
     private static int windowWidth;
     private World world;
     private CommandableEntity player;
-    private ArrayList<ArrayList<Integer>> playerMatrix;
+    private List<List<Integer>> playerMatrix;
 
     public Main(int windowWidth, int windowHeight) {
 
@@ -103,8 +104,8 @@ class Main {
     // TODO
     // We should play around with this algorithm and tweak it for improvements. Or rewrite it if necessary.
     // It is difficult to test in current state of development since nothing can use the information
-    public ArrayList<CommandableEntity> createEnemyWave(int waveNumber) {
-        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+    public List<CommandableEntity> createEnemyWave(int waveNumber) {
+        List<CommandableEntity> enemyList = new ArrayList<>();
         EntityDirector director = new EntityDirector(new ShipBuilder());
         // The lower limit for the enemy level increases by one every three waves
         int enemyLevel = (int) (1 + Math.floor(waveNumber/3));

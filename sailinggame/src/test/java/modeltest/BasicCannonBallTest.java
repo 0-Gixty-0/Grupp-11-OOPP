@@ -14,7 +14,7 @@ public class BasicCannonBallTest {
 
 
 
-    BasicCannonBall testBall = new BasicCannonBall();
+    BasicCannonBall testBall = new BasicCannonBall(null);
     @Test
     public void testMoveInTravelPath() {
 

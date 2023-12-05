@@ -16,18 +16,6 @@ public class AMovableBodyTest {
     Ship testShip = new Ship(position, 0, 0, 0, 2);
 
     @Test
-    public void testGetVelocity() {
-        int velocity = testShip.getVelocity();
-        assertEquals(0, velocity);
-    }
-
-    @Test
-    public void testSetVelocity() {
-        testShip.setVelocity(10);
-        assertEquals(10,testShip.getVelocity());
-    }
-
-    @Test
     public void testMoveIfPossible() {
 
         Map map = (new BasicMapGenerator()).generateMap(10,10);

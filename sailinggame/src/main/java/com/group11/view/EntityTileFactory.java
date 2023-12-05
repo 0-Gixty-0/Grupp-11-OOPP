@@ -22,7 +22,7 @@ public class EntityTileFactory extends AViewTileFactory {
 
     @Override
     protected ImageIcon initTextureMapImageIcon() {
-        return (new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/player_ship.png"))));
+        return (new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/entityTextureMap.png"))));
     }
 
 }

@@ -1,35 +1,55 @@
 package modeltest;
 
-import com.group11.model.gameentites.BasicCannon;
-import com.group11.model.gameentites.BasicCannonBall;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import com.group11.model.gameentites.AProjectile;
+import com.group11.model.gameentites.BasicCannon;
+import com.group11.model.gameentites.BasicCannonBall;
 
 
 public class BasicCannonTest {
 
-    BasicCannon<BasicCannonBall> testCannon = new BasicCannon<>(new BasicCannonBall());
+    private class TestWeapon extends BasicCannon {
+
+        public TestWeapon(Class<? extends AProjectile> projectileType) {
+            super(projectileType);
+        }
+
+        public int debugFiredProjectilesSize() {
+            return this.getFiredProjectilesSize();
+        }
+
+        public Class<? extends AProjectile> debugGetProjectileType() {
+            return this.getProjectileType();
+        }
+
+    }
+
+
+    TestWeapon testCannon = new TestWeapon(BasicCannonBall.class);
 
     @Test
     public void testGetProjectileType() {
-        Object projectile = testCannon.getProjectileType();
-        assertTrue(projectile instanceof BasicCannonBall);
+        Object projectile = testCannon.debugGetProjectileType();
+        assertTrue(projectile == BasicCannonBall.class);
     }
 
     @Test
     public void testGetFiredProjectilesSize() {
+        int [] direction = {0,1};
+        testCannon.fireWeapon(direction);
 
-        testCannon.fireWeapon();
-
-        assertEquals(1, testCannon.getFiredProjectilesSize());
+        assertEquals(1, testCannon.debugFiredProjectilesSize());
     }
 
     @Test
     public void testFireWeapon() {
+        int [] direction = {0,1};
+        testCannon.fireWeapon(direction);
 
-        testCannon.fireWeapon();
-
-        assertEquals(1, testCannon.getFiredProjectilesSize());
+        assertEquals(1, testCannon.debugFiredProjectilesSize());
     }
 }

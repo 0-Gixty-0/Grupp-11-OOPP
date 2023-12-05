@@ -23,9 +23,9 @@ import static junit.framework.TestCase.assertEquals;
 public class AICommanderTest {
     private List<List<Integer>> grid = new ArrayList<>();
     private List<List<ATile>> terrainMatrix = new ArrayList<>();
-    private ArrayList<ArrayList<AEntity>> entityMatrix = UEntityMatrixGenerator.createEntityMatrix(5,5);
+    private List<List<AEntity>> entityMatrix = UEntityMatrixGenerator.createEntityMatrix(5,5);
     private EntityDirector director = new EntityDirector(new ShipBuilder());
-    private ArrayList<AEntity> entities = new ArrayList<>();
+    private List<AEntity> entities = new ArrayList<>();
     @Before
     public void beforePreconditions() {
         this.grid.add(Arrays.asList(1,1,0,1,1));
@@ -92,7 +92,7 @@ public class AICommanderTest {
 
     @Test
     public void testEnemyMovesTopRight() {
-        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        List<CommandableEntity> enemyList = new ArrayList<>();
         CommandableEntity enemy = (CommandableEntity) this.director.createEnemy(new Point(3,2), 1);
         enemyList.add(enemy);
         this.entities.add(enemy);
@@ -105,7 +105,7 @@ public class AICommanderTest {
 
     @Test
     public void testEnemyMovesRight() {
-        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        List<CommandableEntity> enemyList = new ArrayList<>();
         CommandableEntity enemy = (CommandableEntity) this.director.createEnemy(new Point(2,0), 1);
         enemyList.add(enemy);
         this.entities.add(enemy);
@@ -118,7 +118,7 @@ public class AICommanderTest {
 
     @Test
     public void testEnemyMovesBottomRight() {
-        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        List<CommandableEntity> enemyList = new ArrayList<>();
         CommandableEntity enemy = (CommandableEntity) this.director.createEnemy(new Point(0,1), 1);
         enemyList.add(enemy);
         this.entities.add(enemy);
@@ -131,7 +131,7 @@ public class AICommanderTest {
 
     @Test
     public void testEnemyMovesDown() {
-        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        List<CommandableEntity> enemyList = new ArrayList<>();
         CommandableEntity enemy = (CommandableEntity) this.director.createEnemy(new Point(0,4), 1);
         enemyList.add(enemy);
         this.entities.add(enemy);
@@ -144,7 +144,7 @@ public class AICommanderTest {
 
     @Test
     public void testEnemyMovesBottomLeft() {
-        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        List<CommandableEntity> enemyList = new ArrayList<>();
         CommandableEntity enemy = (CommandableEntity) this.director.createEnemy(new Point(0,3), 1);
         enemyList.add(enemy);
         this.entities.add(enemy);
@@ -157,7 +157,7 @@ public class AICommanderTest {
 
     @Test
     public void testEnemyMovesLeft() {
-        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        List<CommandableEntity> enemyList = new ArrayList<>();
         CommandableEntity enemy = (CommandableEntity) this.director.createEnemy(new Point(2,4), 1);
         enemyList.add(enemy);
         this.entities.add(enemy);
@@ -170,7 +170,7 @@ public class AICommanderTest {
 
     @Test
     public void testEnemyMovesTopLeft() {
-        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        List<CommandableEntity> enemyList = new ArrayList<>();
         CommandableEntity enemy = (CommandableEntity) this.director.createEnemy(new Point(3,4), 1);
         enemyList.add(enemy);
         this.entities.add(enemy);

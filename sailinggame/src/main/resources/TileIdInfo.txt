@@ -6,5 +6,6 @@ TERRAIN TILES
     SeaTile = 1
     
 ENTITY TILES
-    PlayerShip = 0,1,2,3,4,5,6,7
-    EnemyShip = 8,9
+    PlayerShip = 0
+    EnemyShip = 1
+    Cannonball = 2
