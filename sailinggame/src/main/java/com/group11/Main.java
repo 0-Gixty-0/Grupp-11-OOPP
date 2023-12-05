@@ -8,9 +8,7 @@ import java.util.Set;
 import com.group11.controller.GlobalKeyListener;
 import com.group11.model.builders.EntityDirector;
 import com.group11.model.builders.ShipBuilder;
-import com.group11.model.gameentites.AMovableBody;
-import com.group11.model.gameentites.CommandableEntity;
-import com.group11.model.gameentites.Ship;
+import com.group11.model.gameentites.*;
 import com.group11.model.gameworld.AdvancedMapGenerator;
 import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.IMapGenerator;
@@ -97,7 +95,6 @@ class Main {
             appWindow.updateEntities((generatePlayerMatrix(newPosX, newPosY)));
         }
     }
-
 
     /**
      * This algorithm creates a list of enemy entities based on the desired wave

@@ -23,4 +23,16 @@ public class MapTest {
         ATile tile = map.getTileMatrix().get(50).get(50);
         assertSame(LandTile.class, tile.getClass());
     }
+
+    @Test
+    public void testGetWindowHeight() {
+        Map testMap = (new BasicMapGenerator()).generateMap(50, 50);
+        assertEquals(testMap.getMapHeight(), 50);
+    }
+
+    @Test
+    public void testGetWindowWidth() {
+        Map testMap = (new BasicMapGenerator()).generateMap(50, 50);
+        assertEquals(testMap.getMapWidth(), 50);
+    }
 }
