@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.group11.application.EntitySpawner;
 import com.group11.controller.KeyboardInterpretor;
 import com.group11.model.builders.EntityDirector;
 import com.group11.model.builders.ShipBuilder;
@@ -31,6 +32,7 @@ class Main {
     private List<CommandableEntity> enemyList;
     private List<AEntity> entityList = new ArrayList<>();
     private EntityDirector director;
+    private EntitySpawner entitySpawner;
 
     public Main(int windowWidth, int windowHeight, int mapWidth, int mapHeight) {
         this.mapWidth = mapWidth;
@@ -38,6 +40,7 @@ class Main {
         this.appWindow = new AppWindow(windowWidth, windowHeight, mapWidth, mapHeight, 16, 16);
         this.director = new EntityDirector(new ShipBuilder());
         this.world = this.createBasicWorld();
+        this.entitySpawner = new EntitySpawner(this.world, this.director);
         this.initializeEntities();
         UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
         this.aiCommander = new AICommander(this.entityMatrix, this.world.getMap().getTileMatrix());
@@ -47,7 +50,7 @@ class Main {
 
     private void initializeEntities() {
         this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(this.mapWidth, this.mapHeight);
-        this.enemyList = this.createEnemyWave(this.waveNumber);
+        this.enemyList = this.entitySpawner.createEnemyWave(this.waveNumber);
         this.player = this.createBasicPlayer();
         this.entityList.add(player);
         this.entityList.addAll(this.enemyList);
@@ -61,39 +64,7 @@ class Main {
     }
 
     private CommandableEntity createBasicPlayer() {
-        return (CommandableEntity) this.director.createPlayer(new Point(3,3));
-    }
-
-    /**
-     * This algorithm creates a list of enemy entities based on the desired wave
-     * @param waveNumber The wave number for which to generate
-     * @return A list of enemies
-     */
-    // TODO
-    // We should play around with this algorithm and tweak it for improvements. Or rewrite it if necessary.
-    // It is difficult to test in current state of development since nothing can use the information
-    public List<CommandableEntity> createEnemyWave(int waveNumber) {
-        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
-        EntityDirector director = new EntityDirector(new ShipBuilder());
-        // The lower limit for the enemy level increases by one every three waves
-        int enemyLevel = (int) (1 + Math.floor(waveNumber/3));
-        int maximumEnemies = 20;
-
-        // Decreasing order so that more low level enemies are created than high level ones
-        for (int i = waveNumber; i >= 0; i--) {
-            // The factor in which to increase the number of enemies per wave
-            int numEnemies = (int) Math.floor(1.2 * i);
-            // Checks so that the number of enemies does not exceed the maximum amount allowed
-            numEnemies = Math.min(numEnemies, maximumEnemies - enemyList.size());
-            for (int j = 0; j < numEnemies; j++) {
-                enemyList.add((CommandableEntity) director.createEnemy(new Point(i,j), enemyLevel));
-            }
-            enemyLevel++;
-            if (enemyList.size() >= maximumEnemies) {
-                break;
-            }
-        }
-        return enemyList;
+        return (CommandableEntity) this.entitySpawner.spawnPlayer();
     }
 
     private void updateEntityMatrix() {

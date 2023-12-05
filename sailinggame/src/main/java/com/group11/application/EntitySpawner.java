@@ -1,10 +1,14 @@
 package com.group11.application;
 
 import com.group11.model.builders.EntityDirector;
+import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AEntity;
+import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameworld.World;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -73,5 +77,36 @@ public class EntitySpawner {
         int x = (int) (Math.random() * this.world.getMap().getMapWidth());
         int y = (int) (Math.random() * this.world.getMap().getMapHeight());
         return new Point(x, y);
+    }
+
+    /**
+     * This algorithm creates a list of enemy entities based on the desired wave
+     * @param waveNumber The wave number for which to generate
+     * @return A list of enemies
+     */
+    // TODO
+    // We should play around with this algorithm and tweak it for improvements. Or rewrite it if necessary.
+    // It is difficult to test in current state of development since nothing can use the information
+    public List<CommandableEntity> createEnemyWave(int waveNumber) {
+        ArrayList<CommandableEntity> enemyList = new ArrayList<>();
+        // The lower limit for the enemy level increases by one every three waves
+        int enemyLevel = (int) (1 + Math.floor(waveNumber/3));
+        int maximumEnemies = 20;
+
+        // Decreasing order so that more low level enemies are created than high level ones
+        for (int i = waveNumber; i >= 0; i--) {
+            // The factor in which to increase the number of enemies per wave
+            int numEnemies = (int) Math.floor(1.2 * i);
+            // Checks so that the number of enemies does not exceed the maximum amount allowed
+            numEnemies = Math.min(numEnemies, maximumEnemies - enemyList.size());
+            for (int j = 0; j < numEnemies; j++) {
+                enemyList.add((CommandableEntity) this.spawnEnemy(enemyLevel));
+            }
+            enemyLevel++;
+            if (enemyList.size() >= maximumEnemies) {
+                break;
+            }
+        }
+        return enemyList;
     }
 }
