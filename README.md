@@ -1036,3 +1036,23 @@ The score system was implemented to provide a way to track the progress of game 
 
 #### User Interaction
 The user indirectly interacts with this feature. The score of the entities is updated as the user plays the game, and the user can see the scores to track their progress.
+
+--- 
+
+### US-88: Making projectiles cause damage
+Date of completion: 5/12/2023
+Completed by: William Norland
+
+As a use I want projectiles in the game to cause damage.
+
+#### What
+During this user story, I implemented the getDamage function in the AProjectile class. This allows the application to determine how much damage the projectile should cause to entities that are hit. I also made changes to the CollisionUtility class, as it was using ABody matrices to check the positions of entities. This approach was inefficient, as the rest of the application uses AEntity matrices. Additionally, I added a parameter for the starting position in created projectiles, as all projectiles were starting at (0,0) in the current source code. This was not the intended behavior and was likely an oversight. Lastly, I removed unnecessary methods in the AProjectile class that were not being used.
+
+#### How
+To implement the getDamage function, I added the necessary logic to calculate the damage based on the projectile's properties. In the CollisionUtility class, I updated the code to use AEntity matrices instead of ABody matrices for checking entity positions. I modified the projectile creation code to include a parameter for the starting position. Finally, I removed unused methods in the AProjectile class.
+
+#### Why
+The purpose of this user story was to make projectiles in the game cause damage to entities. By implementing the getDamage function and making the necessary changes, the application now accurately calculates the damage caused by projectiles. Additionally, updating the collision checking logic improves efficiency, and specifying the starting position for projectiles ensures they behave as intended. Removing unused methods helps to clean up the codebase and improve maintainability.
+
+#### User Interaction
+The user will interact with this US every time the user fires a weapon or gets fired upon.
