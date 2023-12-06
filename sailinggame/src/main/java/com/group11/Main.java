@@ -118,6 +118,7 @@ class Main {
                 this.enemyList = this.entitySpawner.createEnemyWave(this.waveNumber);
             }
             updatePlayer();
+            this.aiCommander.fireWeapons(this.enemyList);
             this.aiCommander.moveEnemies(this.enemyList);
             this.updateEntityMatrix();
             Thread.sleep(50);

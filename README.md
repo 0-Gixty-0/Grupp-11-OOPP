@@ -1089,3 +1089,38 @@ on utility classes and classes that work as an interface into different modules.
 #### User Interaction
 The player will spawn in a random valid location and enemies will generate in random valid locations based on the wave level.
 Once all the enemies are defeated a new wave will spawn with higher difficulty.
+
+---
+
+### US-90: Implement AI Firing Of Weapons In AICommander
+Date of completion: 6/12/2023
+Completed by: Erik Andreasson
+
+As a player I want the enemies in the game to fire at me to make the game more engaging
+
+#### What
+This user story is about extending the AICommander class with methods allowing a list of entities to fire their weapon
+in the direction of the player
+
+#### How
+I added three methods to the AICommander class with one public and two private helper methods.
+The public fireWeapons method takes a list of entities and check if each entity is in a radius of the player.
+It then uses the helper method in AStar to get the direction value from the enemy to the player. It then uses the
+helper method isPathClear which checks if the projectile path is clear from impassable terrain. It does this using
+another helper method which checks if two points are nearly equal in value meaning either the row value difference or the
+column value difference is within a range of -1 to 1. If it is the case that the path is clear then the attackIfAble method
+is called with the directional value. If the player is not in range the entity will not fire their weapon. Lastly I added
+the method call fireWeapon with the enemy list as parameter to the game loop in application
+
+#### Why
+This user story is necessary for the MVP since for the game to be considered a "game" the enemies need to be able to fight back.
+I implemented the user story in this way in order to allow the range of firing to vary and to introduce some randomness to the 
+gameplay. Since the enemy fires in the general direction of the player given that the path is clear (so as not to bloat the screen
+with unnecessary projectiles and make the AI seem smart) the enemy does not have 100% accuracy. I feel this makes the game
+more fun to play and allows the player more freedom in how they approach enemies. In regard to the code itself I tried to make use
+of preexisting methods such as the one in AStar in order to avoid unnecessary code duplication.
+
+#### User Interaction
+Enemies will fire in the general direction of the player once they are in range of their cannons. Enemies will not attempt to
+fire through walls or in a way where their cannonball is wasted. If the player exits the enemy range then enemies will stop
+firing their cannons.
