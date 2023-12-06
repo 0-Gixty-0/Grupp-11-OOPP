@@ -8,7 +8,7 @@ import com.group11.model.gameentites.Ship;
 
 public class ShipTest {
 
-    Ship testShip = new Ship(null, 0, 0, 0, 2);
+    Ship testShip = new Ship(null, 0, 0, null, 2);
 
     @Test
     public void testGetShipLevel() {
@@ -22,7 +22,7 @@ public class ShipTest {
 
     @Test
     public void testGetCannons() {
-        assertEquals(testShip.getCannons(), 0);
+        assertEquals(testShip.getWeapon(), null);
     }
 
     @Test

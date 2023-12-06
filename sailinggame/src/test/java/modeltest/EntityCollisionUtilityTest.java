@@ -27,8 +27,8 @@ public class EntityCollisionUtilityTest {
         this.entites = new ArrayList<>();
         this.pos = new Point(0, 0);
         Point pos2 = new Point(0,0);
-        this.testEntity = new CommandableEntity(new Ship(pos, 0, 0, 0, 0), null, null);
-        this.testEntity2 = new CommandableEntity(new Ship(pos2, 0, 0, 0, 0), null, null);
+        this.testEntity = new CommandableEntity(new Ship(pos, 0, 0, null, 0), null, null);
+        this.testEntity2 = new CommandableEntity(new Ship(pos2, 0, 0, null, 0), null, null);
         this.entites.add(new ArrayList<AEntity>() {{
                 add(testEntity);
             }});
