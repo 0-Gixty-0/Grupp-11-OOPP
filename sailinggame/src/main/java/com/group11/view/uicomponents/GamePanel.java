@@ -12,27 +12,35 @@ import java.util.List;
  * AppWindow is the top-level class for the View component of the MVC design.
  * It is responsible for containing all other components of the UI.
  */
-public class AppWindow extends JFrame {
+public class GamePanel extends JPanel {
     
     private StatsPanel statsPanel;
     private GameWorldPanel gameWorldPanel;
     
     /**
-     * Constructor creates a new GameWorld object, a new GameEntities object, and initializes the window
+     * Constructor for creating a GamePanel.
+     * @param width width of the panel
+     * @param height height of the panel
+     * @param mapWidth width of the map
+     * @param mapHeight height of the map
+     * @param tileWidth width of the tiles
+     * @param tileHeight height of the tiles
      */
-    public AppWindow(int windowWidth, int windowHeight, int mapWidth, int mapHeight, int tileWidth, int tileHeight) {
+    public GamePanel(int width, int height, int mapWidth, int mapHeight, int tileWidth, int tileHeight) {
         super();
-        AViewTileFactory.setTileDimensions(tileWidth, tileHeight);
-        this.setSize(windowWidth, windowHeight);
-        this.setTitle("Sailing Game");
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.getContentPane().setBackground(Color.GRAY);
-        BufferPanel bufferPanel = new BufferPanel(1000, 6);
-        this.statsPanel = new StatsPanel(1000, 6);
-        this.add(statsPanel); //Adding a buffer pane to make sure the game world ends up in the center of the window
-        this.gameWorldPanel = new GameWorldPanel(mapWidth * tileWidth, mapHeight * tileHeight);
-        this.add(gameWorldPanel);
+        
+        this.setPreferredSize(new Dimension(width, height));
+        this.setBackground(java.awt.Color.GRAY);
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+        this.statsPanel = new StatsPanel(1000, 80);
+        this.gameWorldPanel = new GameWorldPanel(mapWidth * tileWidth, mapHeight * tileHeight);
+
+        AViewTileFactory.setTileDimensions(tileWidth, tileHeight);
+        BufferPanel bufferPanel = new BufferPanel(1000, 80);
+
+        this.add(statsPanel); //Adding a buffer pane to make sure the game world ends up in the center of the window
+        this.add(gameWorldPanel);
         this.add(bufferPanel); //Adding a buffer pane to make sure the game world ends up in the center of the window
     }
 
@@ -76,12 +84,5 @@ public class AppWindow extends JFrame {
     public void updateTerrain(List<List<Integer>> intMatrix) {
         List<List<ViewTile>> tileMatrix = ViewTileMatrixEncoder.createTerrainTileMatrix(intMatrix);
         this.gameWorldPanel.updateTerrainPanel(tileMatrix);
-    }
-
-    /**
-     * Sets visibility of the main window to true
-     */
-    public void showGame() {
-        this.setVisible(true);
     }
 }
