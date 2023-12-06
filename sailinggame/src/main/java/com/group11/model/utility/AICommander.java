@@ -2,6 +2,7 @@ package com.group11.model.utility;
 
 
 import java.awt.Point;
+import java.time.temporal.ValueRange;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -108,6 +109,22 @@ public class AICommander {
     }
 
     /**
+     * Method checks if two points are nearly equal defined by if dx is within -1 - 1 or dy is within -1 - 1
+     * If the above is true then returns true else false.
+     * @param p1 First point
+     * @param p2 Second point
+     * @return True: dx or dy within range -1 - 1, False: dx or dy not within range -1 - 1
+     */
+    private boolean isNearlyEqual(Point p1, Point p2) {
+        ValueRange range = ValueRange.of(-1, 1);
+        if (range.isValidIntValue(p2.x - p1.x) || range.isValidIntValue(p2.y - p1.y)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * This methods checks if the path between two points is clear. That meaning there are no impassable terrain between
      * the two locations in the direction given as parameter
      * @param direction The direction to move the path in
@@ -116,12 +133,13 @@ public class AICommander {
      * @return True: A clear path exists, False: A clear path does not exist
      */
     private boolean isPathClear(int[] direction, Point start, Point goal) {
-        while (start != goal) {
+        while (!this.isNearlyEqual(start, goal)) {
             Point newPos = new Point(start.x + direction[0], start.y + direction[1]);
+            System.out.println(newPos);
             if (this.terrainMatrixEncoded.get(newPos.x).get(newPos.y) == 0) {
                 return false;
             } else {
-                start.setLocation(newPos);
+                start = new Point(newPos);
             }
         }
         return true;
