@@ -125,7 +125,7 @@ public class AICommander {
     }
 
     /**
-     * This methods checks if the path between two points is clear. That meaning there are no impassable terrain between
+     * This method checks if the path between two points is clear. That meaning there are no impassable terrain between
      * the two locations in the direction given as parameter
      * @param direction The direction to move the path in
      * @param start The start point
@@ -135,7 +135,6 @@ public class AICommander {
     private boolean isPathClear(int[] direction, Point start, Point goal) {
         while (!this.isNearlyEqual(start, goal)) {
             Point newPos = new Point(start.x + direction[0], start.y + direction[1]);
-            System.out.println(newPos);
             if (this.terrainMatrixEncoded.get(newPos.x).get(newPos.y) == 0) {
                 return false;
             } else {
