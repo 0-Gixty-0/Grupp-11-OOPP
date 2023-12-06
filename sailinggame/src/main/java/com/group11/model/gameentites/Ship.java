@@ -9,21 +9,21 @@ public class Ship extends AMovableBody implements IHasWeapon {
 
     private int shipLevel;
     private double armor;
-    private int cannons;
+    private AWeapon weapon;
 
     /**
      * Constructor for creating objects of type Ship.
      * @param pos coordinate position of the ship
      * @param shipLevel  - the level of the ship
      * @param armor      - the armor of the ship
-     * @param cannons    - the cannons of the ship
+     * @param weapon    - the weapon of the ship
      * @param hitPoints the number of hitpoints of the ship
      */
-    public Ship(Point pos, int shipLevel, double armor, int cannons, double hitPoints){
+    public Ship(Point pos, int shipLevel, double armor, AWeapon weapon, double hitPoints){
         super(pos, hitPoints, "A basic ship");
         this.shipLevel   = shipLevel;
         this.armor       = armor;
-        this.cannons     = cannons;
+        this.weapon = weapon;
     }
 
     /**
@@ -34,7 +34,7 @@ public class Ship extends AMovableBody implements IHasWeapon {
         super(pos, 20, "Standard Ship, Custom: Position");
         this.shipLevel = 1;
         this.armor = 2;
-        this.cannons = 5;
+        this.weapon = new BasicCannon(BasicCannonBall.class);
     }
 
     /**
@@ -57,8 +57,8 @@ public class Ship extends AMovableBody implements IHasWeapon {
      * Returns cannon rating
      * @return cannon rating
      */
-    public int getCannons() {
-        return this.cannons;
+    public AWeapon getWeapon() {
+        return this.weapon;
     }
 
     /**
