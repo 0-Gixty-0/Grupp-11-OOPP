@@ -3,6 +3,8 @@ package com.group11;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JComponent;
+
 import com.group11.application.EntitySpawner;
 import com.group11.controller.KeyboardInterpretor;
 import com.group11.model.builders.ShipBuilder;
@@ -18,11 +20,17 @@ import com.group11.model.utility.UEntityMatrixDecoder;
 import com.group11.model.utility.UEntityMatrixGenerator;
 import com.group11.model.utility.UMovementUtility;
 import com.group11.model.utility.UTileMatrixDecoder;
-import com.group11.view.uicomponents.AppWindow;
+import com.group11.view.uicomponents.AppFrame;
+import com.group11.view.uicomponents.GameOverPanel;
+import com.group11.view.uicomponents.GamePanel;
+import com.group11.view.uicomponents.MainMenuPanel;
 
 class Main {
 
-    private AppWindow appWindow;
+    private AppFrame appWindow;
+    private GamePanel gameView;
+    private MainMenuPanel mainMenuView;
+    private GameOverPanel gameOverView;
     private int mapWidth;
     private int mapHeight;
     private static final KeyboardInterpretor keyboardInterpreter = new KeyboardInterpretor();
@@ -53,27 +61,90 @@ class Main {
     public Main(int windowWidth, int windowHeight, int mapWidth, int mapHeight) {
         this.mapWidth = mapWidth;
         this.mapHeight = mapHeight;
-        this.appWindow = new AppWindow(windowWidth, windowHeight, mapWidth, mapHeight, 16, 16);
-        this.world = this.createBasicWorld();
-        this.entitySpawner = new EntitySpawner(this.world, new ShipBuilder());
-        this.initializeEntities();
-        UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
-        this.aiCommander = new AICommander(this.entityMatrix, this.world.getMap().getTileMatrix());
-        this.appWindow.updateTerrain((UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
-        this.appWindow.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
+        this.gameView = new GamePanel(windowWidth, windowHeight, mapWidth, mapHeight, 16, 16);
+        this.mainMenuView = new MainMenuPanel(windowWidth, windowHeight);
+        this.gameOverView = new GameOverPanel(windowWidth, windowHeight);
+        this.appWindow = new AppFrame(windowWidth, windowHeight);
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        // proportion between window size and map size needs to be equal, application works when it isnt but it looks weird
+        Main main = new Main(1000,1000, 50, 35);
+        main.run();
     }
 
     /**
-     * Initializes the entities upon starting the game by creating the player and spawning a level one wave
+     * Main menu loop: Displays main menu and waits for user to press start game button
+     * Game loop: Updates player position based on keyboard input, moves enemies, updates entity matrix.
+     * Game over loop: Displays game over screen and waits for user to press back to menu button
+     */
+    public void run() throws InterruptedException {
+        this.gameView.setVisible(true);
+        appWindow.setVisible(true);
+
+        while (true) { 
+
+            addViewToWindow(mainMenuView);
+
+            while (Thread.currentThread().isAlive()) {
+                Thread.sleep(50);
+                if (this.mainMenuView.getStartButtonPressed()) { // Main menu loop
+                    removeViewFromWindow(mainMenuView);
+                    addViewToWindow(gameView);
+                    this.mainMenuView.resetStartButtonPressed();
+                    this.initializeGame();
+                    break;
+                }
+            }
+
+            while (true) { // Game loop
+                if (this.enemyList.isEmpty()) {
+                    this.waveNumber++;
+                    this.enemyList = this.entitySpawner.createEnemyWave(this.waveNumber);
+                }
+                updatePlayer();
+                this.aiCommander.moveEnemies(this.enemyList);
+                this.updateEntityMatrix();
+                Thread.sleep(50);
+
+                if (this.player.getBody().getPos().getX() == 0) { // Game over
+                    removeViewFromWindow(gameView);
+                    addViewToWindow(gameOverView);
+                    this.gameOverView.setScoreLabel(0);
+                    break;
+                }
+            }
+
+            while (true) { // Game over loop
+                Thread.sleep(50);
+                if (this.gameOverView.getBackToMenuButtonPressed()) {
+                    removeViewFromWindow(gameOverView);
+                    addViewToWindow(mainMenuView);
+                    this.gameOverView.resetBackToMenuButtonPressed();
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * Initializes the game upon pressing start game button by creating the player and spawning a level one wave
      * of enemies. It then adds these entities to the entity list and creates the entity matrix
      */
-    private void initializeEntities() {
+    private void initializeGame() {
+        this.entityList.clear();
+        this.world = this.createBasicWorld();
+        this.entitySpawner = new EntitySpawner(this.world, new ShipBuilder());
+        UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
         this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(this.mapWidth, this.mapHeight);
+        this.aiCommander = new AICommander(this.entityMatrix, this.world.getMap().getTileMatrix());
         this.enemyList = this.entitySpawner.createEnemyWave(this.waveNumber);
         this.player = this.createBasicPlayer();
         this.entityList.add(player);
         this.entityList.addAll(this.enemyList);
         UEntityMatrixGenerator.populateEntityMatrix(this.entityList, this.entityMatrix);
+        this.gameView.updateTerrain((UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
+        this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
     }
 
     /**
@@ -83,7 +154,7 @@ class Main {
     private World createBasicWorld() {
         IMapGenerator mapGenerator = new AdvancedMapGenerator();
         IWorldGenerator worldGenerator = new BasicWorldGenerator(mapGenerator);
-        return worldGenerator.generateWorld(this.mapWidth,this.mapWidth);
+        return worldGenerator.generateWorld(this.mapWidth,this.mapHeight);
     }
 
     /**
@@ -101,41 +172,35 @@ class Main {
         this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(this.mapWidth, this.mapHeight);
         UEntityMatrixGenerator.populateEntityMatrix(this.entityList, this.entityMatrix);
         this.aiCommander.setEntityMatrix(this.entityMatrix);
-        appWindow.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
+        this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
     }
 
     /**
-     * Starts the game.
-     * Checks if all enemies have been defeated. If true generates a new wave of enemies.
-     * Proceeds to check for movement input from player and updates enemy positions.
-     * Then updates the view
+     * Adds a view to the window
+     * @param view The view to be added
      */
-    public void run() throws InterruptedException {
-        appWindow.showGame();
-        while (Thread.currentThread().isAlive()) {
-            if (this.enemyList.isEmpty()) {
-                this.waveNumber++;
-                this.enemyList = this.entitySpawner.createEnemyWave(this.waveNumber);
-            }
-            updatePlayer();
-            this.aiCommander.moveEnemies(this.enemyList);
-            this.updateEntityMatrix();
-            Thread.sleep(50);
-        }
+    private void addViewToWindow(JComponent view) {
+        this.appWindow.add(view);
+        this.appWindow.validate();
+    }
+
+    /**
+     * Removes a view from the window
+     * @param view The view to be removed
+     */
+    private void removeViewFromWindow(JComponent view) {
+        this.appWindow.remove(view);
+        this.appWindow.repaint();
     }
 
     /**
      * Updates player position based on keyboard input
      */
     private void updatePlayer() {
-        int movementInput = this.keyboardInterpreter.getMovementInput();
+        int movementInput = keyboardInterpreter.getMovementInput();
         if (movementInput >= 0) {
             this.player.moveIfAble(movementInput);
         }
     }
 
-    public static void main(String[] args) throws InterruptedException {
-        Main main = new Main(800,800, 50, 50);
-        main.run();
-    }
 }
