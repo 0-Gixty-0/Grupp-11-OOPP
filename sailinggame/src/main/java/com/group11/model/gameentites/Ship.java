@@ -67,6 +67,7 @@ public class Ship extends AMovableBody implements IHasWeapon {
      */
     @Override
     public void fireWeapon(int[] direction) {
-        // Not yet implemented
+        Point firingPoint = new Point(this.getPos().x + direction[0], this.getPos().y + direction[1]);
+        this.weapon.fireWeapon(firingPoint, direction);
     }
 }
