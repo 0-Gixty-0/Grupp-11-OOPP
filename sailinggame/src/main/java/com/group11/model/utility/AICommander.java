@@ -107,6 +107,14 @@ public class AICommander {
         return surroundingElements;
     }
 
+    /**
+     * This methods checks if the path between two points is clear. That meaning there are no impassable terrain between
+     * the two locations in the direction given as parameter
+     * @param direction The direction to move the path in
+     * @param start The start point
+     * @param goal The end point
+     * @return True: A clear path exists, False: A clear path does not exist
+     */
     private boolean isPathClear(int[] direction, Point start, Point goal) {
         while (start != goal) {
             Point newPos = new Point(start.x + direction[0], start.y + direction[1]);
@@ -119,6 +127,12 @@ public class AICommander {
         return true;
     }
 
+    /**
+     * This method fires the weapons of the entities that are passed as parameter.
+     * It checks if the entity is within a range of the player and then checks if the projectile
+     * path is clear from impassable terrain. If the above is true then the entity will attack in the direction of the player
+     * @param entities The list of entities to issue fire commands for at the player
+     */
     public void fireWeapons(List<CommandableEntity> entities) {
         for (CommandableEntity entity : entities) {
             int entityRowIndex = entity.getBody().getPos().x;
