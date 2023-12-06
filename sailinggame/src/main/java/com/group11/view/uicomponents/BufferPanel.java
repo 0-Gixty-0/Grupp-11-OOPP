@@ -17,7 +17,9 @@ public class BufferPanel extends JPanel {
      */
     protected BufferPanel(int width, int height) {
         super();
-        this.setPreferredSize(new Dimension(width*16, height*16));
+        Dimension size = new Dimension(width, height);
+        this.setPreferredSize(size);
+        this.setMaximumSize(size);
         this.setBackground(Color.GRAY);
     }
 
