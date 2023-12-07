@@ -238,7 +238,7 @@ public class SailingGameApplication extends AApplication {
         for (AEntity entity : this.entityList) {
             ABody body = entity.getBody();
             if (body instanceof AProjectile) {
-                ((AProjectile)body).travel();
+                ((AProjectile)body).moveInTravelPath();;
             }
         }
     }

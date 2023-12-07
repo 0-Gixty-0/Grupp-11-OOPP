@@ -22,7 +22,7 @@ public class AProjectileTest {
         }
 
         @Override
-        public void moveInTravelPath() {
+        public void continueTravelPath() {
             this.moveIfPossible(this.getDirection());
         }
         
@@ -41,17 +41,17 @@ public class AProjectileTest {
         AProjectile testProjectile = setUp();
         assertFalse(testProjectile.isOutOfRange());
         for (int i = 0; i < 9; i++) {
-            testProjectile.travel();
+            testProjectile.moveInTravelPath();
         }
         assertFalse(testProjectile.isOutOfRange());
-        testProjectile.travel();
+        testProjectile.moveInTravelPath();
         assertTrue(testProjectile.isOutOfRange());
     }
 
     @Test
     public void testTravel() {
         AProjectile testProjectile = setUp();
-        testProjectile.travel();
+        testProjectile.moveInTravelPath();
         assertEquals(new Point(1,1), testProjectile.getPos());
     }
 

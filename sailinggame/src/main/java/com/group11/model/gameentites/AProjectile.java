@@ -42,9 +42,9 @@ public abstract class AProjectile extends AMovableBody{
     }
 
     /**
-     * Makes the projectile travel, increasing its traveled distance by one.
+     * Makes the projectile travel in a predetermined path.
      */
-    public void travel() {
+    public void moveInTravelPath() {
         if (!isOutOfRange()) {
             this.distanceTraveled++;
             continueTravelPath();
@@ -63,17 +63,10 @@ public abstract class AProjectile extends AMovableBody{
      * Abstract method to move the projectile along its travel path.
      * This method must be implemented by subclasses.
      */
-    protected abstract void moveInTravelPath();
+    protected abstract void continueTravelPath();
 
     protected int[] getDirection() {
         return this.direction;
     }
 
-    /**
-     * Continues the projectile along its travel path.
-     * If an exception occurs during the movement, the method simply returns.
-     */
-    private void continueTravelPath() {
-        moveInTravelPath(); //Checking for out of bounds is done in moveInTravelPath
-    }
 }

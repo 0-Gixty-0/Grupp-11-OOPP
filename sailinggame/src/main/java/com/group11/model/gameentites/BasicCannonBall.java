@@ -23,7 +23,7 @@ public class BasicCannonBall extends AProjectile {
      * The direction of the movement is determined by the current direction of the BasicCannonBall.
      */
     @Override
-    public void moveInTravelPath() {
+    public void continueTravelPath() {
         this.moveIfPossible(this.getDirection());
     }
 }
