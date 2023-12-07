@@ -2018,7 +2018,8 @@ firing their cannons.
 
 ---
 
-### US-84: Implement extendable mapping from entities names to int matrix in UEntityMatrixDecoder Date of completion: 6/12/2023
+### US-84: Implement extendable mapping from entities names to int matrix in UEntityMatrixDecoder
+Date of completion: 7/12/2023
 Completed by: Adam Kvarnsund
 
 As a developer I want to map the name of an entity to an integer that can easily be extendable
@@ -2035,3 +2036,17 @@ Makes the decoder more extendable with different kinds of entities and looks at 
 #### User Interaction
 The user does not interact with this functionality, it is just to make the codebase more extendable.
 
+### US-89: Adding a minimal menu to the game
+Date of completion: 7/12/2023
+Completed by: William Norland
+
+As a user I would like to control when the game starts through a menu
+
+#### What
+During this user story, a small menu and an infinite game loop were created. The game loop cycles between menus, allowing the player to start a new game after losing. The view was also made more extendable, as it was previously difficult to add new views to the game. Additionally, a quick abstract base class was created to host shared code among different view components.
+
+#### How
+To implement this user story, a menu system was developed using a combination of conditional statements and loops. The game loop was designed to continuously display menus and handle user input. The view components were refactored to utilize the abstract base class, reducing code duplication and improving maintainability.
+
+#### Why
+This user story was necessary to enhance the overall user experience of the game. By adding a menu system and an infinite game loop, players have the ability to start new games without having to restart the entire application. The improved extendability of the view components allows for easier addition of new features and views in the future. The creation of the abstract base class promotes code reusability and maintainability by centralizing shared code logic
