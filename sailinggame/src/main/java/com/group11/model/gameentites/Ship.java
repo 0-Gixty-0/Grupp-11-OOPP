@@ -37,6 +37,13 @@ public class Ship extends AMovableBody implements IHasWeapon {
         this.weapon = new BasicCannon(BasicCannonBall.class);
     }
 
+    @Override
+    public void takeDamage(int damage) {
+        damage = (int) Math.round(damage * (1 - this.armor/100));
+        int hp = (int) this.getHitPoints();
+        this.setHitPoints(hp - damage);
+    }
+
     /**
      * Returns ship level
      * @return ship level

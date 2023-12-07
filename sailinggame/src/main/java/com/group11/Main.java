@@ -7,7 +7,7 @@ class Main {
 
     public static void main(String[] args) throws InterruptedException {
         // proportion between window size and map size needs to be equal, application works when it isnt but it looks weird
-        AApplication app = new SailingGameApplication(1000, 1000, 50, 35);
+        AApplication app = new SailingGameApplication();
         app.run();
     }
 
