@@ -34,7 +34,7 @@ public class ShipBuilderTest {
         EntityDirector entityDirector = new EntityDirector(new ShipBuilder());
         AEntity enemy = entityDirector.createEnemy(new Point(0,0), 1);
         Ship body = (Ship) enemy.getBody();
-        assertEquals("Enemy: lvl 1", enemy.getName());
+        assertEquals(1, body.getShipLevel());
         assertEquals(new Point(0,0), enemy.getPos());
         assertEquals(22.5, body.getHitPoints());
         assertEquals(6.0, body.getArmor());
@@ -48,7 +48,7 @@ public class ShipBuilderTest {
         EntityDirector entityDirector = new EntityDirector(new ShipBuilder());
         AEntity enemy = entityDirector.createEnemy(new Point(0,0), 2);
         Ship body = (Ship) enemy.getBody();
-        assertEquals("Enemy: lvl 2", enemy.getName());
+        assertEquals(2, body.getShipLevel());
         assertEquals(new Point(0,0), enemy.getPos());
         assertEquals(45.0, body.getHitPoints());
         assertEquals(12.0, body.getArmor());

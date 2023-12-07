@@ -94,8 +94,8 @@ public class SailingGameApplication extends AApplication {
                     this.waveNumber++;
                     this.enemyList = this.entitySpawner.createEnemyWave(this.waveNumber);
                 }
-                updatePlayer();
                 this.aiCommander.moveEnemies(this.enemyList);
+                updatePlayer();
                 this.updateEntityMatrix();
                 Thread.sleep(50);
 

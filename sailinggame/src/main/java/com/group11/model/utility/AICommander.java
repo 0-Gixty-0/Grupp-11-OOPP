@@ -15,7 +15,7 @@ import com.group11.model.gameworld.ATile;
  * Class representing controller for AI controlled entities
  */
 public class AICommander {
-    private final int radius = 10;
+    protected int innerRadius = 5;
     private List<List<AEntity>> entityMatrix;
     private List<List<Integer>> terrainMatrixEncoded;
     private final int[][] directions = {{-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}};
@@ -45,6 +45,7 @@ public class AICommander {
      * This method moves the enemies in the input list based on their proximity to the player.
      * If the enemy is within the class specified radius the method runs an AStar search from the enemy
      * to the player and moves the enemy one step closer in the shortest path direction to the player.
+     * If the player has the enemy within a specified radius then the enemy will choose a random directional value
      * If the player is not in proximity than a random directional value is selected
      * @param enemies The list of enemies to move
      */
@@ -57,8 +58,12 @@ public class AICommander {
             if (namePosMap.containsKey("Player")) {
                 Point playerPoint = namePosMap.get("Player");
                 Point enemyPoint = enemy.getPos();
-                int directionToPlayer = AStar.aStar(this.terrainMatrixEncoded, enemyPoint.x, enemyPoint.y, playerPoint.x, playerPoint.y);
-                enemy.moveIfAble(directionToPlayer);
+                if (!this.isNearEnemy(playerPoint, this.innerRadius)) {
+                    int directionToPlayer = AStar.aStar(this.terrainMatrixEncoded, enemyPoint.x, enemyPoint.y, playerPoint.x, playerPoint.y);
+                    enemy.moveIfAble(directionToPlayer);
+                } else {
+                    enemy.moveIfAble(random.nextInt(8));
+                }
             } else {
                 enemy.moveIfAble(random.nextInt(8));
             }
@@ -66,15 +71,15 @@ public class AICommander {
     }
 
     /**
-     * Helper method checking if the input entity is in proximity to the player
-     * @param entity The entity to center the proximity search
-     * @return True: Player is near, False: Player is not near
+     * Helper method checking if the input entity is in proximity to an enemy
+     * @param entityPos The position to center the proximity search
+     * @return True: Enemy is near, False: Enemy is not near
      */
-    private boolean isNearPlayer(CommandableEntity entity, int radius) {
-        int entityRowIndex = entity.getBody().getPos().y;
-        int entityColumnIndex = entity.getBody().getPos().x;
+    private boolean isNearEnemy(Point entityPos, int radius) {
+        int entityRowIndex = entityPos.x;
+        int entityColumnIndex = entityPos.y;
         HashMap<String, Point> surroundingEntities = this.getSurroundingEntityNameAndPos(entityRowIndex, entityColumnIndex, radius);
-        if (surroundingEntities.containsKey("Player")) {
+        if (surroundingEntities.containsKey("Enemy")) {
             return true;
         } else {
             return false;
