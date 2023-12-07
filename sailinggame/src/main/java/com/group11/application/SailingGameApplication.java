@@ -217,16 +217,13 @@ public class SailingGameApplication extends AApplication {
         for (AEntity entity : this.entityList) {
             if (entity.getBody() instanceof IHasWeapon) {
                 AWeapon weapon = ((IHasWeapon) entity.getBody()).getWeapon();
+                weapon.removeOutOfRangeProjectiles();
                 List<AProjectile> firedProjectiles = weapon.getFiredProjectiles();
                 Iterator<AProjectile> iterator = firedProjectiles.iterator();
                 
                 while (iterator.hasNext()) {
                     AProjectile projectile = iterator.next();
-                    if (!projectile.isOutOfRange()) {
-                        projectiles.add(new ProjectileEntiy(projectile, "CannonBall", true));
-                    } else {
-                        iterator.remove();
-                    }
+                    projectiles.add(new ProjectileEntiy(projectile, "CannonBall", true));
                 }
             }
         }

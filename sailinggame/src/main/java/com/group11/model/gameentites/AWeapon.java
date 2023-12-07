@@ -76,6 +76,14 @@ public abstract class AWeapon {
         
     }
 
+    public void removeOutOfRangeProjectiles() {
+        for (int i = 0; i < this.firedProjectiles.size(); i++) {
+            if (firedProjectiles.get(i).isOutOfRange()) {
+                this.firedProjectiles.remove(i);
+            }
+        }
+    }
+
     /**
      * Fires the weapon.
      * @param firingPoint the position from which the projectile is fired
