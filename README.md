@@ -2036,6 +2036,8 @@ Makes the decoder more extendable with different kinds of entities and looks at 
 #### User Interaction
 The user does not interact with this functionality, it is just to make the codebase more extendable.
 
+---
+
 ### US-89: Adding a minimal menu to the game
 Date of completion: 7/12/2023
 Completed by: William Norland
