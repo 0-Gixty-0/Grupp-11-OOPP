@@ -91,12 +91,13 @@ public class AICommander {
     private HashMap<String, Point> getSurroundingEntityNameAndPos(int row, int col, int radius) {
         HashMap<String, Point> surroundingElements = new HashMap<>();
 
-        int n = this.entityMatrix.size();
+        int mapHeight = this.entityMatrix.size();
+        int mapWidth = this.entityMatrix.get(0).size();
 
         // Check bounds and add surrounding elements within the given radius
         for (int i = row - radius; i <= row + radius; i++) {
             for (int j = col - radius; j <= col + radius; j++) {
-                if (i >= 0 && i < n && j >= 0 && j < n && !(i == row && j == col)) {
+                if (i >= 0 && i < mapHeight && j >= 0 && j < mapWidth && !(i == row && j == col)) {
                     if (this.entityMatrix.get(i).get(j) != null) {
                         String name = this.entityMatrix.get(i).get(j).getName();
                         Point position = this.entityMatrix.get(i).get(j).getBody().getPos();
