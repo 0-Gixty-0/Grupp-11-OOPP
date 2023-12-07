@@ -16,6 +16,7 @@ import com.group11.model.gameworld.ATile;
  */
 public class AICommander {
     private final int radius = 10;
+    private final int innerRadius = 5;
     private List<List<AEntity>> entityMatrix;
     private List<List<Integer>> terrainMatrixEncoded;
     private final int[][] directions = {{-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}};
@@ -57,8 +58,12 @@ public class AICommander {
             if (namePosMap.containsKey("Player")) {
                 Point playerPoint = namePosMap.get("Player");
                 Point enemyPoint = enemy.getPos();
-                int directionToPlayer = AStar.aStar(this.terrainMatrixEncoded, enemyPoint.x, enemyPoint.y, playerPoint.x, playerPoint.y);
-                enemy.moveIfAble(directionToPlayer);
+                if (!this.isNearEnemy(playerPoint, this.innerRadius)) {
+                    int directionToPlayer = AStar.aStar(this.terrainMatrixEncoded, enemyPoint.x, enemyPoint.y, playerPoint.x, playerPoint.y);
+                    enemy.moveIfAble(directionToPlayer);
+                } else {
+                    enemy.moveIfAble(random.nextInt(8));
+                }
             } else {
                 enemy.moveIfAble(random.nextInt(8));
             }
@@ -67,14 +72,14 @@ public class AICommander {
 
     /**
      * Helper method checking if the input entity is in proximity to the player
-     * @param entity The entity to center the proximity search
+     * @param entityPos The position to center the proximity search
      * @return True: Player is near, False: Player is not near
      */
-    private boolean isNearPlayer(CommandableEntity entity, int radius) {
-        int entityRowIndex = entity.getBody().getPos().y;
-        int entityColumnIndex = entity.getBody().getPos().x;
+    private boolean isNearEnemy(Point entityPos, int radius) {
+        int entityRowIndex = entityPos.x;
+        int entityColumnIndex = entityPos.y;
         HashMap<String, Point> surroundingEntities = this.getSurroundingEntityNameAndPos(entityRowIndex, entityColumnIndex, radius);
-        if (surroundingEntities.containsKey("Player")) {
+        if (surroundingEntities.containsKey("Enemy")) {
             return true;
         } else {
             return false;
