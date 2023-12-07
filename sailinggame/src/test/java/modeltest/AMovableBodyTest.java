@@ -13,7 +13,7 @@ import java.awt.*;
 public class AMovableBodyTest {
 
     Point position = new Point(0, 0);
-    Ship testShip = new Ship(position, 0, 0, 0, 2);
+    Ship testShip = new Ship(position, 0, 0, null, 2);
 
     @Test
     public void testMoveIfPossible() {

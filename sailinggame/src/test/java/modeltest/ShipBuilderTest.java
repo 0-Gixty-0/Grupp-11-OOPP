@@ -6,6 +6,7 @@ import static junit.framework.TestCase.assertTrue;
 
 import java.awt.Point;
 
+import com.group11.model.gameentites.BasicCannon;
 import org.junit.Test;
 
 import com.group11.model.builders.EntityDirector;
@@ -24,7 +25,7 @@ public class ShipBuilderTest {
         assertEquals(22.5, body.getHitPoints());
         assertEquals(6.0, body.getArmor());
         assertEquals(1, body.getShipLevel());
-        assertEquals(1, body.getCannons());
+        assertTrue(body.getWeapon() instanceof BasicCannon);
         assertTrue(player.isFriendly());
     }
 
@@ -38,7 +39,7 @@ public class ShipBuilderTest {
         assertEquals(22.5, body.getHitPoints());
         assertEquals(6.0, body.getArmor());
         assertEquals(1, body.getShipLevel());
-        assertEquals(1, body.getCannons());
+        assertTrue(body.getWeapon() instanceof BasicCannon);
         assertFalse(enemy.isFriendly());
     }
 
@@ -52,7 +53,7 @@ public class ShipBuilderTest {
         assertEquals(45.0, body.getHitPoints());
         assertEquals(12.0, body.getArmor());
         assertEquals(2, body.getShipLevel());
-        assertEquals(2, body.getCannons());
+        assertTrue(body.getWeapon() instanceof BasicCannon);
         assertFalse(enemy.isFriendly());
     }
 }

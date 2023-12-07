@@ -2,10 +2,7 @@ package com.group11.model.builders;
 
 import java.awt.*;
 
-import com.group11.model.gameentites.AEntity;
-import com.group11.model.gameentites.AMovableBody;
-import com.group11.model.gameentites.CommandableEntity;
-import com.group11.model.gameentites.Ship;
+import com.group11.model.gameentites.*;
 
 /**
  * Builder class representing creation methods and attributes for creating entities with the
@@ -20,7 +17,7 @@ public class ShipBuilder implements IEntityBuilder {
     private Boolean friendly = null;
     private int shipLevel = 0;
     private double armor = 0;
-    private int weapon = 0;
+    private AWeapon weapon = null;
     private Point position = null;
     private double hp = 0;
 
@@ -51,7 +48,7 @@ public class ShipBuilder implements IEntityBuilder {
         this.name = null;
         this.friendly = true;
         this.hp = 0;
-        this.weapon = 0;
+        this.weapon = null;
         this.armor = 0;
         this.position = null;
         this.shipLevel = 0;
@@ -71,7 +68,9 @@ public class ShipBuilder implements IEntityBuilder {
         this.setHp(lvl * ShipBuilder.hpScalingFactor * 15);
         this.setArmor(lvl * ShipBuilder.armorScalingFactor * 4);
         this.setShipLevel(lvl);
-        this.setWeapon(lvl);
+        // TODO
+        // Once we have multiple weapon types allow percentage to get better weapon for higher level
+        this.setWeapon(new BasicCannon(BasicCannonBall.class));
     }
 
     /**
@@ -94,7 +93,7 @@ public class ShipBuilder implements IEntityBuilder {
      * Sets the weapon for the ship
      * @param weapon The weapon stat for the ship
      */
-    private void setWeapon(int weapon) {
+    private void setWeapon(AWeapon weapon) {
         this.weapon = weapon;
     }
 

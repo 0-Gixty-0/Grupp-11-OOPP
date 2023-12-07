@@ -36,13 +36,13 @@ TAS while new issues will have titles starting with US. Take a note of this whil
 Following is a list of implemented features in the form of tasks, these tasks are represented by solved GitHub issues with the same name. To get a deeper look into how each task was implemented, check the issues.
 
 ### TAS-25: Implement Basic View Module
-Date of completion: 07/11/2023 
+Date of completion: 07/11/2023  
 Completed by: Erik Andreasson
 
 #### What:
-Implement a basic view module that can display the map according to specifications obtained from the model. 
-The view should be fairly simple and open for extension so that other features can be integrated quickly. 
-Essentially it should draw the map and the player. 
+Implement a basic view module that can display the map according to specifications obtained from the model.
+The view should be fairly simple and open for extension so that other features can be integrated quickly.
+Essentially it should draw the map and the player.
 
 #### How:
 No particular design patterns were used in this task. Instead, the purpose was to create a simple and general
@@ -54,8 +54,8 @@ AppWindow: AppWindow creates GameWorld and GameEntities which are described belo
 with a constructor and basic functionality. It stores the terrain map and creates and fills the main window
 
 GameWorld: GameWorld creates and stores the tile matrix which represents a matrix of JLabels where each tile
-is a JLabel. It creates this from the specifications given by AppWindow upon constructing the object. 
-It has a simple getter for retrieving this matrix. 
+is a JLabel. It creates this from the specifications given by AppWindow upon constructing the object.
+It has a simple getter for retrieving this matrix.
 
 GameEntities: GameEntities currently has no functionality and is essentially just boilerplate code from the UMl diagram.
 It is meant to be implemented in later tasks.
@@ -70,22 +70,22 @@ Upon starting the game a window will be displayed. This window will contain tile
 ---
 
 ### TAS-28: Create A Tile Class In View Module
-Date of completion: 08/11/2023 
-Completed by: Erik Andreasson 
+Date of completion: 08/11/2023  
+Completed by: Erik Andreasson
 
 There should be a Tile class in the view module that represents individual tiles and their attributes and functionality
 
 #### What:
- Implementing a Tile class to represent the tiles that are to be drawn to the screen. The Tile class
+Implementing a Tile class to represent the tiles that are to be drawn to the screen. The Tile class
 is an extension of the AbstractTile and implements the interface drawable. It contains functionality for creating objects
 of type AbstractTile and Tile. It also has  getters for each attribute of the AbstractTile. Along with creating the Tile
-module I also made sure it was used in the rest of the view module. 
+module I also made sure it was used in the rest of the view module.
 
 #### How:
 I completed this task by creating three classes. Interface Drawable, Abstract class AbstractTile, and concrete class Tile.
 I also gave them basic functionality for representing a tile such as matrixPosition, pixelPosition, id, and size.
 I also modified the functionality of GameWorld and AppWindow to utilize the new Tile module in drawing the window to the frame.
-I also made GameWorld and AppWindow dependent on the AbstractTile class instead of directly dependent on the Tile class implementation. 
+I also made GameWorld and AppWindow dependent on the AbstractTile class instead of directly dependent on the Tile class implementation.
 I did this in order to follow the dependency inversion principle. This along with creating an abstract tile and an interface makes
 the code more open for extension.
 
@@ -100,16 +100,16 @@ This feature does not require a User Interaction for the player since tiles bein
 ---
 
 ### TAS-10 Design player model
-Date of completion: 08/11/2023 
+Date of completion: 08/11/2023  
 Completed by: Alexander Muhr
 
-There is a player model that can be displayed on the screen. 
+There is a player model that can be displayed on the screen.
 
 #### What
 Created texture map png that has 8 different rotations that can be switched between  depending on what direction the player is moving.
 
 #### How
- I created the texture map png by using an online pixel art editor (https://www.pixilart.com), the pixels were drawn in a 16x16 pixel resolution which will be the basic resolution in the game. 
+I created the texture map png by using an online pixel art editor (https://www.pixilart.com), the pixels were drawn in a 16x16 pixel resolution which will be the basic resolution in the game.
 
 #### Why
 I chose to do it this way so that it could be easily extended to implement animation of the sprite by adding more sprites "below" each direction respectively. Since all sprites take up 16px with no space in between this could easily be done using a loop incrementing the y-value representing what part of the png to draw and then start over on the first sprite.
@@ -120,7 +120,7 @@ This feature does not require a User Interaction since it does not have function
 ---
 
 ### TAS-20: Create Tile Designs For Terrain Types
-Date of completion: 08/11/2023 
+Date of completion: 08/11/2023  
 Completed by: Erik Andreasson
 
 #### What
@@ -140,14 +140,14 @@ This feature does not require a User Interaction since it doesn't have functiona
 ---
 
 ### TAS-24: Implement Basic Map Generation
-Date of completion: 09/11/2023 <br>
+Date of completion: 09/11/2023  
 Completed by: William Norland
 
-Implement basic map generation according to the UML diagram. Basic generation meaning that it should be barebones and simply generate a map consisting of Tiles in a certain order. 
+Implement basic map generation according to the UML diagram. Basic generation meaning that it should be barebones and simply generate a map consisting of Tiles in a certain order.
 
 #### What
 Implementing basic generation means that it should be barebones and simply generate a map consisting of Tiles in a certain predictable order. This includes
-Implementing a basic inheritance hierarchy and interface for the world generation and 
+Implementing a basic inheritance hierarchy and interface for the world generation and
 
 #### How
 Two abstract base classes (AWorldGenerator, AMapGenerator).
@@ -179,27 +179,27 @@ The player will see the implementation of this task by seeing different worlds i
 ---
 
 ### TAS-29: Implement Drawing Basic Terrain Types
-Date of completion: 11/11/2023 
+Date of completion: 11/11/2023  
 Completed by: Erik Andreasson
 
-Implement ability to draw certain graphical icons / pictures based on tile id to the view. 
-This should be integrated into the View Module and the Tile code. 
-The drawing logic should be generalized for all possible terrain ID:s and all possible "tile sets". 
-Essentially ability to switch out which images correspond to which id and in turn which terrain type is to be drawn. 
+Implement ability to draw certain graphical icons / pictures based on tile id to the view.
+This should be integrated into the View Module and the Tile code.
+The drawing logic should be generalized for all possible terrain ID:s and all possible "tile sets".
+Essentially ability to switch out which images correspond to which id and in turn which terrain type is to be drawn.
 At current development focus should be put into how the land and sea tile should be drawn.
 
 #### What
 Implementing drawing tiles of different terrain types to the screen according to specifications from  a matrix of integers.
 The implementation is to be general and independent of the model's representation of terrain.
-The drawing logic should be generalized for all possible terrain ID:s and all possible "tile sets". 
+The drawing logic should be generalized for all possible terrain ID:s and all possible "tile sets".
 
 #### How
 Initially I created a png texture map which is 64x64 pixels from merging the two land and sea tile png:s and then scaling them up.
 I then implemented an extension to the AbstractViewTile class by implementing the methods createImageIcon and getTextureMatrixCoordinate.
-I also modified the constructor and the method createComponent. 
+I also modified the constructor and the method createComponent.
 
-The method getTextureMatrixCoordinate takes a terrain id and converts that number to a corresponding matrix position (row, column). 
-This matrix position is the position of the tile image for that terrain type in the texture map. This method is 
+The method getTextureMatrixCoordinate takes a terrain id and converts that number to a corresponding matrix position (row, column).
+This matrix position is the position of the tile image for that terrain type in the texture map. This method is
 currently dependent on the size of the texture map being a 4x4 matrix.
 
 The method createImageIcon creates an object of type ImageIcon which is then later applied to the JLabel component in createComponent.
@@ -220,8 +220,8 @@ This feature does not require a User Interaction since it doesn't have functiona
 
 ---
 
-### TAS-22: Implement Ship Module 
-Date of completion: 12/11/2023 
+### TAS-22: Implement Ship Module
+Date of completion: 12/11/2023  
 Completed by: Noa Cavassi
 
 As a user I want a module for the creation and functionality for the bodies on the map.
@@ -249,7 +249,7 @@ This module will be updated during the course of the project. For the moment no 
 ---
 
 ### TAS-11 Implementing basic player movement
-Date of completion: 14/11/2023
+Date of completion: 14/11/2023  
 Completed by: William Norland
 
 As a user I want to be able to do basic movement of the player on the screen.
@@ -269,7 +269,7 @@ The user will interact heavily with the PlayableEntity when controlling the play
 ---
 
 ### US-33 Extracting decoding of Matrix<Tile> from Map class into a TileMatrixDecoder class
-Date of completion: 14/11/2023
+Date of completion: 14/11/2023  
 Completed by: William Norland
 
 As a developer I want to separate the creation of the integer matrix in the Map object to another class so that Map has one single responsibility.
@@ -290,7 +290,7 @@ The user won't really interact with this in any way more explicit than looking a
 ---
 
 ### US-36: Removing possibility for LocationEntity to have a AMovabelBody
-Date of completion: 15/11/2023
+Date of completion: 15/11/2023  
 Completed by: William Norland
 
 As a developer I don't want LocationEntity to be able to have a AMovableBody. Because a location entity is not supposed to have body capable of moving.
@@ -306,8 +306,8 @@ Even though LocationEntity couldn't really move because it had an ABody and ther
 
 ---
 
-### TAS-23: Implement Tile Module 
-Date of completion: 13/11/2023 
+### TAS-23: Implement Tile Module
+Date of completion: 13/11/2023  
 Completed by: Adam Kvarnsund
 
 #### What
@@ -317,15 +317,15 @@ Creating a base structure for the tiles used in the game. This includes an abstr
 Implementing an abstract-tile class ATile and concrete implementations LandTile and SeaTile.
 
 #### Why
- Making an abstract base class for all tiles in the game model is very logical because tiles will undoubtedly share behavior and their intended usage as components of a Map (more specifically a matrix containing tiles) rests on subtype-polymorphism.
+Making an abstract base class for all tiles in the game model is very logical because tiles will undoubtedly share behavior and their intended usage as components of a Map (more specifically a matrix containing tiles) rests on subtype-polymorphism.
 
 #### User Interaction
- The user will interact with this TAS by moving over tiles in the game and experiencing their different logic.
+The user will interact with this TAS by moving over tiles in the game and experiencing their different logic.
 
 ---
 
 ### US-15 Design An Enemy Ship Model
-Date of completion: 16/11/2023
+Date of completion: 16/11/2023  
 Completed by: Noa Cavassi
 
 #### What
@@ -338,12 +338,12 @@ I created the model by using an online pixel art editor (https://www.pixilart.co
 To make it easier to distinguish if an entity on the map is friendly or an enemy. I decided to draw the pirate ship texture over the water texture so that it fits in better with the water tiles of its neighbors. This is an interim solution since the entity textures will be rendered on top of the terrain in the final product.
 
 #### User Interaction
- The user will interact with this feature by seeing the enemies in the game being displayed on the screen using the pirate ship texture.
+The user will interact with this feature by seeing the enemies in the game being displayed on the screen using the pirate ship texture.
 
 ---
 
 ### US-37 Restricting player to only being able to move over passable terrain
-Date of completion: 16/11/2023 
+Date of completion: 16/11/2023  
 Completed by: William Norland
 
 As a user i don't want the player to be able to move on land because the player is a ship, a watercraft.
@@ -352,7 +352,7 @@ As a user i don't want the player to be able to move on land because the player 
 Preventing any AMovableEntity from moving outside the map or moving over impassable terrain. I also took some extra time to implement a safe way to get an ABody position since that getter was used in this feature.
 
 #### How
-I Achieved this by making a Utility class MovementUtility, this class is static so it always exists. The only thing you have to do is give the map you are using to it during game setup and it will check if any movement trying to be made is legal which means not on passable terrain or outside the map. 
+I Achieved this by making a Utility class MovementUtility, this class is static so it always exists. The only thing you have to do is give the map you are using to it during game setup and it will check if any movement trying to be made is legal which means not on passable terrain or outside the map.
 
 #### Why
 I made the position you get from ABody a safe copy so that outside classes cant modify the true position but they can know about it. I made the utility class into a static class because its purpose is to house a function, a map, and to act as a medium between Map and AmovableEntity to prevent dependencies between map and Entity. The function checking if the move is possible is nothing special, it just checks if the tiles in the direction you want to be are passable.
@@ -363,7 +363,7 @@ The player will use this feature a lot when trying to sail over islands or sail 
 ---
 
 ### US-38: Implement Drawing Player To Map
-Date of completion: 17/11/2023 
+Date of completion: 17/11/2023  
 Completed by: Erik Andreasson
 
 As a player I want to be able to see myself on the map in order to play the game.
@@ -405,7 +405,7 @@ A User Interaction is not quite necessary for this user story other than that th
 ---
 
 ### US-39: Reduce code duplication for the position attribute
-Date of completion: 17/11/2023 
+Date of completion: 17/11/2023  
 Completed by: Adam Kvarnsund
 
 #### What
@@ -418,12 +418,12 @@ Created a new abstract class APositionable and refactored the old classes to inh
 This reduces code duplication which is a practice we go by
 
 #### User Interaction
-The user interacts with mechanics using the Points a lot but this US was mostly to make extendibility easier for developers 
+The user interacts with mechanics using the Points a lot but this US was mostly to make extendibility easier for developers
 
 ---
 
 ### US-40: Implement Factory Hierarchy For Movable Game Entities
-Date of completion: 18/11/2023
+Date of completion: 18/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to make use of factories when creating movable entities in the game because it makes the code easier to understand and follows “high cohesion, low coupling”
@@ -446,12 +446,12 @@ default constructors for a Ship. I decided to finish the US anyway with the inte
 issues are resolved.
 
 #### User Interaction
- This US only affects developers working on the source code.
+This US only affects developers working on the source code.
 
 ---
 
 ### US-43: Removing ATextureIdentifiable from model
-Date of completion: 19/11/2023
+Date of completion: 19/11/2023  
 Completed by: William Norland
 
 As a developer, I want to remove the dependency on the ATextureIdentifiable class in the model, as it introduces unnecessary code and complexity.
@@ -466,12 +466,12 @@ I made TileMatrixDecoder use a list mapping .class attributes of types to certai
 It's now very easy to add support for new types, instead of having to write a new if statement you can just write a simple ".add()" to the list for the new terrain type.
 
 #### User Interaction
- This US only makes extension of the source code easier only affecting developers.
+This US only makes extension of the source code easier only affecting developers.
 
 ---
 
 ### US-45: Making AWorldGenerator and AMapGenerator into Interfaces
-Date of completion: 19/11/2023
+Date of completion: 19/11/2023  
 Completed by: William Norland
 
 As a developer I want to make AWorldGenerator and AMapGenerator into Interfaces as they only contain abstract methods.
@@ -490,11 +490,11 @@ This is also a much more traditional way of implementing the abstract factory pa
 ---
 
 ### US-43: Implement UnplayableEntity Class
-Date of completion: 21/11/2023
+Date of completion: 21/11/2023  
 Completed by: Erik Andreasson
 
 As a user I want there to be other ships and locations in the world to make the game more interesting to play
- 
+
 
 #### What
 This user story is about implementing the UnplayableEntity class and it's implemented interface ai commandable. This in order to allow ships other than the player to exist and move in the game.
@@ -506,18 +506,18 @@ By creating the UnplayableEntity class and letting it extend AMovableEntity and 
 There is no specific design choice related to this task, instead it is just a necessary component to the game.
 
 #### User Interaction
- The user will interact with this feature through interacting with other non playable controlled ships in the game world.
+The user will interact with this feature through interacting with other non playable controlled ships in the game world.
 
 ---
 
 ### US-51: Implement Interface HasWeapon
-Date of completion: 21/11/2023 
+Date of completion: 21/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to implement an interface for objects having weapons so that other classes can depend on abstractions and not implementations
 
 #### What
-I wanted there to be a layer of abstraction between the PlayableEntity and UnplayableEntity class, and their body. 
+I wanted there to be a layer of abstraction between the PlayableEntity and UnplayableEntity class, and their body.
 This is because I realized that a body does not necessarily have a weapon to fire if the attackCommand is called.
 The most direct way in the codes current state to check this is to see if the body is of type Ship since it is
 the only class with a weapon. However, this is not very extendable so instead I wanted some sort of type that
@@ -532,9 +532,9 @@ and UnplayableEntity which depends on the HasWeapon interface for checking if th
 #### Why
 Creating this layer of abstraction does multiple positive things to the codebase. It clearly signals to the developer
 that an object has some form of weapon. Furthermore, the interface allows the code to be more extendable since adding a new
-object with a weapon will not break the code since it depends on the interface that the class should implement. This also means 
-that any "body" tied to an entity will be able to run the attack command without issues. This makes the code better 
-follow the open closed and dependency inversion principles. 
+object with a weapon will not break the code since it depends on the interface that the class should implement. This also means
+that any "body" tied to an entity will be able to run the attack command without issues. This makes the code better
+follow the open closed and dependency inversion principles.
 
 #### Notes
 During this User Story I noticed some other issues that should be fixed. Such as code duplication in the MovableEntity
@@ -543,12 +543,12 @@ depend on HasWeapon and have code duplication. Since the MovableEntity classes a
 the body I think changes should be made.
 
 #### User Interaction
- The user will interact with this feature by using weapons and seeing other unplayable game entities use weapons.
+The user will interact with this feature by using weapons and seeing other unplayable game entities use weapons.
 
 ---
 
 ### US-48: Implementing a utility class to check for collisions between bodies
-Date of completion: 22/11/2023
+Date of completion: 22/11/2023  
 Completed by: William Norland
 
 As a developer I want a Utility class to check for collisions. Because It makes it possible to simulate combat among other things which is something we need for our MVP.
@@ -565,7 +565,7 @@ I decided to add both of the methods I talked about in "What" since I don't know
 The reason why we choose to use utility classes is because we want to follow the SRP. If a body is both responsible for being the physical representation of a game entity and also responsible for checking collisions that would bring too much responsibility into one class. It's better to outsource checking collisions to one class that knows where all bodies are instead of letting everybody know where every other body is.
 
 #### Notes
-Noticed i missed tests and documentation in an old user story where I made MovementUtility so I added that when working in the US. 
+Noticed i missed tests and documentation in an old user story where I made MovementUtility so I added that when working in the US.
 
 #### User Interaction
 The user will come in contact with this US during combat, when colliding with enemies or maybe when trying to interact with a friendly game entity.
@@ -573,7 +573,7 @@ The user will come in contact with this US during combat, when colliding with en
 ---
 
 ### US-52: Remove Dimensions Parameter From ABody Hierarchy
-Date completed: 22/11/2023 
+Date completed: 22/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to remove the dimensions parameter from the ABody hierarchy because it is confusing and unnecessary to the MVP
@@ -585,15 +585,15 @@ This user story is about removing an unneeded and confusing parameter (dimension
 I used the inbuilt refactor tool in Intellij to change the signature throughout the codebase, I didn't need to change anything else since it wasn't used anywhere.
 
 #### Why
- This parameter and corresponding attribute is unnecessary to the MVP and has been an confusing and unused skeleton code artifact in the codebase for a while. It also makes tests easier to write since it isnt required anymore.
+This parameter and corresponding attribute is unnecessary to the MVP and has been an confusing and unused skeleton code artifact in the codebase for a while. It also makes tests easier to write since it isnt required anymore.
 
 #### User Interaction
- The user won't interact with this feature at all since its purely about keeping the source code free from unused code.
+The user won't interact with this feature at all since its purely about keeping the source code free from unused code.
 
 ---
 
 ### US-42: Create Default Constructor For Ship
-Date of completion: 22/11/2023 
+Date of completion: 22/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want a default constructor for the ship class because it makes creating new objects of that type easier.
@@ -615,7 +615,7 @@ The user won't interact with this feature at all since it’s purely about keepi
 ---
 
 ### Tas-27: Implement basic controller module
-Date of completion: 23/11/2023
+Date of completion: 23/11/2023  
 Completed by: Alexander Muhr
 
 As a developer I want to implement a controller so that I can register keyboard inputs that can result in events in the game like moving etc.
@@ -629,24 +629,24 @@ This user story is about creating a controller that takes input from the keyboar
 Since we want to have a completely independent controller (from model and view), I chose to implement a KeyListener as a form of observer that always listens to keyboard input while the application is running. The reasoning for why we are using a global listener and not a regular KeyListener is so that it doesn't have to be bound to a specific JFrame but exists independently from the Swing application. I chose to store the currently pressed keys in a hashset for easy lookups and to be able to pass it along from the model to the application.
 
 #### Why
- The user will interact with this feature through using the keyboard to control the player.
+The user will interact with this feature through using the keyboard to control the player.
 
 ---
 
 ### US-53: Refactor Entity Hierarchy
-Date completed: 23/22/2023 
-Completed by: Erik Andreasson 
+Date completed: 23/22/2023  
+Completed by: Erik Andreasson
 
-As a developer I want to redesign and refactor the Entity class hierarchy in order to reduce code duplication, dependencies on concrete implementations, and make the code more extendable 
+As a developer I want to redesign and refactor the Entity class hierarchy in order to reduce code duplication, dependencies on concrete implementations, and make the code more extendable
 
 #### What
 The reasoning behind this user story is best described in the issue #81. However, in summary the user story is about cleaning up the code and solving multiple issues we have identified in the current structure of the Entity hierarchy. Partly in order to create a better builder class.
 
-Copied from issue #81: 
-Issue 1 
+Copied from issue #81:
+Issue 1
 There is some code duplication in the classes PlayableEntity and UnplayableEntity. Their implementation of the interface ICommandable is the exact same and I see no reason that this will change in the future since their only purpose is to pass a parameter based on some logic to the body of the entity to actually perform the command. Since it is the body that performs the command and therefore has it's own implementation there shouldn't be any difference in the implementation of actually passing this command to the body. I feel like this is reflected in the fact that I removed the IAICommandable interface when implementing UnplayableEntity since it had no difference to the normal Commandable. Both playable and unplayable entities are commandable!
 
-Issue 2 
+Issue 2
 PlayableEntity and UnplayableEntity are dependent on HasWeapon which is unnecessary. If they both need the dependency then it should be their superclass that has that dependency instead.
 
 End quote //
@@ -669,10 +669,10 @@ Can attack and interact but not move. Can move and interact but not attack. And 
 we would have to extend these abstract classes and each time we want to add a new type of command we would have to add more abstract
 classes and rewrite existing ones over and over again. Essentially you would have n! abstract classes where n is the number of commands an entity can accept.
 This is not ideal. Instead, when we create a concrete implementation we simply allow it to implement the command methods we want through
-the interfaces and then the CommandableEntity class handles all incoming command requests accordingly. 
+the interfaces and then the CommandableEntity class handles all incoming command requests accordingly.
 
 The central idea to the relationship between CommandableEntity and it's body is described in the following example:
-Think of the ACommandableEntity as a brain that takes in commands. The brain processes the command and reasons if it's body can perform the task it's been issued. Then passes that task to it's body. For example the "brain" of a guard tower receives the move command. It decides that it can't move and rejects the command (Because of being type Immovable). However it receives the attack command and decides that it can attack (because guard tower implements HasWeapon) and passes it to the body. On the other hand the brain of a merchant ship without cannons would make the reverse decisions. 
+Think of the ACommandableEntity as a brain that takes in commands. The brain processes the command and reasons if it's body can perform the task it's been issued. Then passes that task to it's body. For example the "brain" of a guard tower receives the move command. It decides that it can't move and rejects the command (Because of being type Immovable). However it receives the attack command and decides that it can attack (because guard tower implements HasWeapon) and passes it to the body. On the other hand the brain of a merchant ship without cannons would make the reverse decisions.
 
 Another positive to this solution is that it makes writing a builder class to construct concepts such as a player and enemy
 much easier since they can be constructed according to any desired specification of a body and still use the same entity code.
@@ -681,7 +681,7 @@ code would have to depend on concrete implementations of player and enemy which 
 
 The negative to this solution is that it partly sacrifices the single responsibility principle and the interface segregation principle
 by allowing bodies that do not need a move command access to the move command. However, it does not have to implement it since
-the interface is only forced by the interfaces. Regarding single responsibility once could reason that the class 
+the interface is only forced by the interfaces. Regarding single responsibility once could reason that the class
 CommandableEntity has only one responsibility and that is to handle incoming command requests and decide if it can be passed to the
 body or not. However, that may be viewed as somewhat of a stretch.
 
@@ -691,7 +691,7 @@ This user story is only about refactoring therefore not implementing new feature
 ---
 
 ### US-59: Fix Directional Vectors In CommandableEntity Methods
-Date of completion: 23/11/2023
+Date of completion: 23/11/2023  
 Completed by: Erik Andreasson
 
 #### What
@@ -711,7 +711,7 @@ The user will not interact with this feature as it only makes the code more unde
 ---
 
 ### US-57: Extending keyboard-controller
-Date of completion: 24/11/2023
+Date of completion: 24/11/2023  
 Completed by: Alexander Muhr
 
 #### What
@@ -722,15 +722,15 @@ The Interpreter checks if a set contains all the ascii-code inputs for a given d
 It checks directions one by one starting with multiple key inputs to not miss them.
 
 #### Why
- Encapsulating the interpreter code in a class makes it easier to use by clients.
+Encapsulating the interpreter code in a class makes it easier to use by clients.
 
 #### User Interaction
- This US only makes coding easier for developers.
+This US only makes coding easier for developers.
 
 ---
 
 ### US-60 Implement abstract class for ControllerInterpretor
-Date of completion: 24/11/2023
+Date of completion: 24/11/2023  
 Completed by: Alexander Muhr
 
 #### What
@@ -742,12 +742,12 @@ An abstract class with a abstract method that describes converting input to dire
 I did this so that other controllers than a keyboard can be more easily implemented keeping the code open for extension.
 
 #### User Interaction
- This US only makes coding easier for developers.
+This US only makes coding easier for developers.
 
 ---
 
 ### US-54 Refactoring and extendning the View
-Date of completion: 24/11/2023
+Date of completion: 24/11/2023  
 Completed by: William Norland
 
 As a user I want a map that is centered in the game window and a static camera.
@@ -781,12 +781,12 @@ I made View components that encapsulated JComponents into JComponentes because i
 This US grew out of hand and became huge very quickly, that does not really follow the principles of INVEST which is regrettable. To our defense this had to be rushed into one US to be able to present a working prototype to our user testers.
 
 #### User Interaction:
-The user will interact with this feature by seeing that entities are generated on top of the terrain instead of in the terrain. Other than that it's mostly refactoring to make the view package more readable and extendible. 
+The user will interact with this feature by seeing that entities are generated on top of the terrain instead of in the terrain. Other than that it's mostly refactoring to make the view package more readable and extendible.
 
 ---
 
 ### US-63 Adding Abstractions to the View
-Date of completion: 24/11/2023 
+Date of completion: 24/11/2023  
 Completed by: William Norland
 
 As a developer I want an abstraction above ViewTile so that the View follows the ISP.
@@ -806,7 +806,7 @@ Irrelevant for this US
 ---
 
 ### US-55: Implement realistic terrain generation
-Date of completion: 27/11/2023 
+Date of completion: 27/11/2023  
 Completed by: Adam Kvarnsund
 
 As a user I want the map terrain to look more realistic
@@ -816,7 +816,7 @@ Made the map terrain generation look realistic with the implementation of the cl
 
 #### How
 Created a new MapGenerator class AdvancedMapGenerator which used the simplex noise algorithm to create realistic islands and sea correlation. This class implements the IMapGenerator interface.
- 
+
 #### Why
 It creates a more enjoyable player experience and heightens the game quality. I used the simplex noise algorithm because it was best applicable with this particular game. It has lower complexity and is very extendable with higher dimension textures.
 
@@ -825,7 +825,7 @@ The user interacts with the islands graphically just as with the BasicMapGenerat
 
 
 ### US-65: Implement UEntityMatrixDecoder
-Date of completion: 3/12/2023 
+Date of completion: 3/12/2023  
 Completed by: Adam Kvarnsund
 
 As a developer I want the EntityMatrix to be delivered to the view as a matrix of ints
@@ -835,7 +835,7 @@ Converts the EntityMatrix that contains objects into a matrix of ints via the de
 
 #### How
 Created a class UEntityMatrixDecoder that maps the name of an entity to an ID that corresponds to its type. The class uses the method decodeIntoIntMatrix where it places the ID of the entity into its position in the matrix.
- 
+
 #### Why
 It makes the code more extensible using the adapter pattern to convert object code into a general int structure that the view can interpret separately from the models language.
 
@@ -843,31 +843,31 @@ It makes the code more extensible using the adapter pattern to convert object co
 The user does not directly interact with this class.
 
 ### US-79: Implement dynamic map dimensions into MapGenerators
-Date of completion: 3/12/2023 
+Date of completion: 3/12/2023  
 Completed by: Adam Kvarnsund
 
 As a user I want the size of the map to be any rectangular size
 
 #### What
-Changes the amount of tiles in the rows and columns of the map 
+Changes the amount of tiles in the rows and columns of the map
 
 #### How
 
 Changed the parameter side in several methods to be mapWidth and mapHeight instead and made the generators dependent on these values
- 
+
 #### Why
 Makes the game easier to play and can adapt to the window size of the computer the game is played on, the game becomes more professional and extendible
 
 #### User Interaction
 The user can see that the map has different sizes depending on the settings, also the map is not always a square.
 ### TAS-25: Implement Basic View Module
-Date of completion: 07/11/2023 
+Date of completion: 07/11/2023  
 Completed by: Erik Andreasson
 
 #### What:
-Implement a basic view module that can display the map according to specifications obtained from the model. 
-The view should be fairly simple and open for extension so that other features can be integrated quickly. 
-Essentially it should draw the map and the player. 
+Implement a basic view module that can display the map according to specifications obtained from the model.
+The view should be fairly simple and open for extension so that other features can be integrated quickly.
+Essentially it should draw the map and the player.
 
 #### How:
 No particular design patterns were used in this task. Instead, the purpose was to create a simple and general
@@ -879,8 +879,8 @@ AppWindow: AppWindow creates GameWorld and GameEntities which are described belo
 with a constructor and basic functionality. It stores the terrain map and creates and fills the main window
 
 GameWorld: GameWorld creates and stores the tile matrix which represents a matrix of JLabels where each tile
-is a JLabel. It creates this from the specifications given by AppWindow upon constructing the object. 
-It has a simple getter for retrieving this matrix. 
+is a JLabel. It creates this from the specifications given by AppWindow upon constructing the object.
+It has a simple getter for retrieving this matrix.
 
 GameEntities: GameEntities currently has no functionality and is essentially just boilerplate code from the UMl diagram.
 It is meant to be implemented in later tasks.
@@ -895,22 +895,22 @@ Upon starting the game a window will be displayed. This window will contain tile
 ---
 
 ### TAS-28: Create A Tile Class In View Module
-Date of completion: 08/11/2023 
-Completed by: Erik Andreasson 
+Date of completion: 08/11/2023  
+Completed by: Erik Andreasson
 
 There should be a Tile class in the view module that represents individual tiles and their attributes and functionality
 
 #### What:
- Implementing a Tile class to represent the tiles that are to be drawn to the screen. The Tile class
+Implementing a Tile class to represent the tiles that are to be drawn to the screen. The Tile class
 is an extension of the AbstractTile and implements the interface drawable. It contains functionality for creating objects
 of type AbstractTile and Tile. It also has  getters for each attribute of the AbstractTile. Along with creating the Tile
-module I also made sure it was used in the rest of the view module. 
+module I also made sure it was used in the rest of the view module.
 
 #### How:
 I completed this task by creating three classes. Interface Drawable, Abstract class AbstractTile, and concrete class Tile.
 I also gave them basic functionality for representing a tile such as matrixPosition, pixelPosition, id, and size.
 I also modified the functionality of GameWorld and AppWindow to utilize the new Tile module in drawing the window to the frame.
-I also made GameWorld and AppWindow dependent on the AbstractTile class instead of directly dependent on the Tile class implementation. 
+I also made GameWorld and AppWindow dependent on the AbstractTile class instead of directly dependent on the Tile class implementation.
 I did this in order to follow the dependency inversion principle. This along with creating an abstract tile and an interface makes
 the code more open for extension.
 
@@ -925,16 +925,16 @@ This feature does not require a User Interaction for the player since tiles bein
 ---
 
 ### TAS-10 Design player model
-Date of completion: 08/11/2023 
+Date of completion: 08/11/2023  
 Completed by: Alexander Muhr
 
-There is a player model that can be displayed on the screen. 
+There is a player model that can be displayed on the screen.
 
 #### What
 Created texture map png that has 8 different rotations that can be switched between  depending on what direction the player is moving.
 
 #### How
- I created the texture map png by using an online pixel art editor (https://www.pixilart.com), the pixels were drawn in a 16x16 pixel resolution which will be the basic resolution in the game. 
+I created the texture map png by using an online pixel art editor (https://www.pixilart.com), the pixels were drawn in a 16x16 pixel resolution which will be the basic resolution in the game.
 
 #### Why
 I chose to do it this way so that it could be easily extended to implement animation of the sprite by adding more sprites "below" each direction respectively. Since all sprites take up 16px with no space in between this could easily be done using a loop incrementing the y-value representing what part of the png to draw and then start over on the first sprite.
@@ -945,7 +945,7 @@ This feature does not require a User Interaction since it does not have function
 ---
 
 ### TAS-20: Create Tile Designs For Terrain Types
-Date of completion: 08/11/2023 
+Date of completion: 08/11/2023  
 Completed by: Erik Andreasson
 
 #### What
@@ -965,14 +965,14 @@ This feature does not require a User Interaction since it doesn't have functiona
 ---
 
 ### TAS-24: Implement Basic Map Generation
-Date of completion: 09/11/2023 <br>
+Date of completion: 09/11/2023  
 Completed by: William Norland
 
-Implement basic map generation according to the UML diagram. Basic generation meaning that it should be barebones and simply generate a map consisting of Tiles in a certain order. 
+Implement basic map generation according to the UML diagram. Basic generation meaning that it should be barebones and simply generate a map consisting of Tiles in a certain order.
 
 #### What
 Implementing basic generation means that it should be barebones and simply generate a map consisting of Tiles in a certain predictable order. This includes
-Implementing a basic inheritance hierarchy and interface for the world generation and 
+Implementing a basic inheritance hierarchy and interface for the world generation and
 
 #### How
 Two abstract base classes (AWorldGenerator, AMapGenerator).
@@ -1004,27 +1004,27 @@ The player will see the implementation of this task by seeing different worlds i
 ---
 
 ### TAS-29: Implement Drawing Basic Terrain Types
-Date of completion: 11/11/2023 
+Date of completion: 11/11/2023  
 Completed by: Erik Andreasson
 
-Implement ability to draw certain graphical icons / pictures based on tile id to the view. 
-This should be integrated into the View Module and the Tile code. 
-The drawing logic should be generalized for all possible terrain ID:s and all possible "tile sets". 
-Essentially ability to switch out which images correspond to which id and in turn which terrain type is to be drawn. 
+Implement ability to draw certain graphical icons / pictures based on tile id to the view.
+This should be integrated into the View Module and the Tile code.
+The drawing logic should be generalized for all possible terrain ID:s and all possible "tile sets".
+Essentially ability to switch out which images correspond to which id and in turn which terrain type is to be drawn.
 At current development focus should be put into how the land and sea tile should be drawn.
 
 #### What
 Implementing drawing tiles of different terrain types to the screen according to specifications from  a matrix of integers.
 The implementation is to be general and independent of the model's representation of terrain.
-The drawing logic should be generalized for all possible terrain ID:s and all possible "tile sets". 
+The drawing logic should be generalized for all possible terrain ID:s and all possible "tile sets".
 
 #### How
 Initially I created a png texture map which is 64x64 pixels from merging the two land and sea tile png:s and then scaling them up.
 I then implemented an extension to the AbstractViewTile class by implementing the methods createImageIcon and getTextureMatrixCoordinate.
-I also modified the constructor and the method createComponent. 
+I also modified the constructor and the method createComponent.
 
-The method getTextureMatrixCoordinate takes a terrain id and converts that number to a corresponding matrix position (row, column). 
-This matrix position is the position of the tile image for that terrain type in the texture map. This method is 
+The method getTextureMatrixCoordinate takes a terrain id and converts that number to a corresponding matrix position (row, column).
+This matrix position is the position of the tile image for that terrain type in the texture map. This method is
 currently dependent on the size of the texture map being a 4x4 matrix.
 
 The method createImageIcon creates an object of type ImageIcon which is then later applied to the JLabel component in createComponent.
@@ -1045,8 +1045,8 @@ This feature does not require a User Interaction since it doesn't have functiona
 
 ---
 
-### TAS-22: Implement Ship Module 
-Date of completion: 12/11/2023 
+### TAS-22: Implement Ship Module
+Date of completion: 12/11/2023  
 Completed by: Noa Cavassi
 
 As a user I want a module for the creation and functionality for the bodies on the map.
@@ -1074,7 +1074,7 @@ This module will be updated during the course of the project. For the moment no 
 ---
 
 ### TAS-11 Implementing basic player movement
-Date of completion: 14/11/2023
+Date of completion: 14/11/2023  
 Completed by: William Norland
 
 As a user I want to be able to do basic movement of the player on the screen.
@@ -1094,7 +1094,7 @@ The user will interact heavily with the PlayableEntity when controlling the play
 ---
 
 ### US-33 Extracting decoding of Matrix<Tile> from Map class into a TileMatrixDecoder class
-Date of completion: 14/11/2023
+Date of completion: 14/11/2023  
 Completed by: William Norland
 
 As a developer I want to separate the creation of the integer matrix in the Map object to another class so that Map has one single responsibility.
@@ -1115,7 +1115,7 @@ The user won't really interact with this in any way more explicit than looking a
 ---
 
 ### US-36: Removing possibility for LocationEntity to have a AMovabelBody
-Date of completion: 15/11/2023
+Date of completion: 15/11/2023  
 Completed by: William Norland
 
 As a developer I don't want LocationEntity to be able to have a AMovableBody. Because a location entity is not supposed to have body capable of moving.
@@ -1131,8 +1131,8 @@ Even though LocationEntity couldn't really move because it had an ABody and ther
 
 ---
 
-### TAS-23: Implement Tile Module 
-Date of completion: 13/11/2023 
+### TAS-23: Implement Tile Module
+Date of completion: 13/11/2023  
 Completed by: Adam Kvarnsund
 
 #### What
@@ -1142,15 +1142,15 @@ Creating a base structure for the tiles used in the game. This includes an abstr
 Implementing an abstract-tile class ATile and concrete implementations LandTile and SeaTile.
 
 #### Why
- Making an abstract base class for all tiles in the game model is very logical because tiles will undoubtedly share behavior and their intended usage as components of a Map (more specifically a matrix containing tiles) rests on subtype-polymorphism.
+Making an abstract base class for all tiles in the game model is very logical because tiles will undoubtedly share behavior and their intended usage as components of a Map (more specifically a matrix containing tiles) rests on subtype-polymorphism.
 
 #### User Interaction
- The user will interact with this TAS by moving over tiles in the game and experiencing their different logic.
+The user will interact with this TAS by moving over tiles in the game and experiencing their different logic.
 
 ---
 
 ### US-15 Design An Enemy Ship Model
-Date of completion: 16/11/2023
+Date of completion: 16/11/2023  
 Completed by: Noa Cavassi
 
 #### What
@@ -1163,12 +1163,12 @@ I created the model by using an online pixel art editor (https://www.pixilart.co
 To make it easier to distinguish if an entity on the map is friendly or an enemy. I decided to draw the pirate ship texture over the water texture so that it fits in better with the water tiles of its neighbors. This is an interim solution since the entity textures will be rendered on top of the terrain in the final product.
 
 #### User Interaction
- The user will interact with this feature by seeing the enemies in the game being displayed on the screen using the pirate ship texture.
+The user will interact with this feature by seeing the enemies in the game being displayed on the screen using the pirate ship texture.
 
 ---
 
 ### US-37 Restricting player to only being able to move over passable terrain
-Date of completion: 16/11/2023 
+Date of completion: 16/11/2023  
 Completed by: William Norland
 
 As a user i don't want the player to be able to move on land because the player is a ship, a watercraft.
@@ -1177,7 +1177,7 @@ As a user i don't want the player to be able to move on land because the player 
 Preventing any AMovableEntity from moving outside the map or moving over impassable terrain. I also took some extra time to implement a safe way to get an ABody position since that getter was used in this feature.
 
 #### How
-I Achieved this by making a Utility class MovementUtility, this class is static so it always exists. The only thing you have to do is give the map you are using to it during game setup and it will check if any movement trying to be made is legal which means not on passable terrain or outside the map. 
+I Achieved this by making a Utility class MovementUtility, this class is static so it always exists. The only thing you have to do is give the map you are using to it during game setup and it will check if any movement trying to be made is legal which means not on passable terrain or outside the map.
 
 #### Why
 I made the position you get from ABody a safe copy so that outside classes cant modify the true position but they can know about it. I made the utility class into a static class because its purpose is to house a function, a map, and to act as a medium between Map and AmovableEntity to prevent dependencies between map and Entity. The function checking if the move is possible is nothing special, it just checks if the tiles in the direction you want to be are passable.
@@ -1188,7 +1188,7 @@ The player will use this feature a lot when trying to sail over islands or sail 
 ---
 
 ### US-38: Implement Drawing Player To Map
-Date of completion: 17/11/2023 
+Date of completion: 17/11/2023  
 Completed by: Erik Andreasson
 
 As a player I want to be able to see myself on the map in order to play the game.
@@ -1230,7 +1230,7 @@ A User Interaction is not quite necessary for this user story other than that th
 ---
 
 ### US-39: Reduce code duplication for the position attribute
-Date of completion: 17/11/2023 
+Date of completion: 17/11/2023  
 Completed by: Adam Kvarnsund
 
 #### What
@@ -1243,12 +1243,12 @@ Created a new abstract class APositionable and refactored the old classes to inh
 This reduces code duplication which is a practice we go by
 
 #### User Interaction
-The user interacts with mechanics using the Points a lot but this US was mostly to make extendibility easier for developers 
+The user interacts with mechanics using the Points a lot but this US was mostly to make extendibility easier for developers
 
 ---
 
 ### US-40: Implement Factory Hierarchy For Movable Game Entities
-Date of completion: 18/11/2023
+Date of completion: 18/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to make use of factories when creating movable entities in the game because it makes the code easier to understand and follows “high cohesion, low coupling”
@@ -1271,12 +1271,12 @@ default constructors for a Ship. I decided to finish the US anyway with the inte
 issues are resolved.
 
 #### User Interaction
- This US only affects developers working on the source code.
+This US only affects developers working on the source code.
 
 ---
 
 ### US-43: Removing ATextureIdentifiable from model
-Date of completion: 19/11/2023
+Date of completion: 19/11/2023  
 Completed by: William Norland
 
 As a developer, I want to remove the dependency on the ATextureIdentifiable class in the model, as it introduces unnecessary code and complexity.
@@ -1291,12 +1291,12 @@ I made TileMatrixDecoder use a list mapping .class attributes of types to certai
 It's now very easy to add support for new types, instead of having to write a new if statement you can just write a simple ".add()" to the list for the new terrain type.
 
 #### User Interaction
- This US only makes extension of the source code easier only affecting developers.
+This US only makes extension of the source code easier only affecting developers.
 
 ---
 
 ### US-45: Making AWorldGenerator and AMapGenerator into Interfaces
-Date of completion: 19/11/2023
+Date of completion: 19/11/2023  
 Completed by: William Norland
 
 As a developer I want to make AWorldGenerator and AMapGenerator into Interfaces as they only contain abstract methods.
@@ -1315,11 +1315,11 @@ This is also a much more traditional way of implementing the abstract factory pa
 ---
 
 ### US-43: Implement UnplayableEntity Class
-Date of completion: 21/11/2023
+Date of completion: 21/11/2023  
 Completed by: Erik Andreasson
 
 As a user I want there to be other ships and locations in the world to make the game more interesting to play
- 
+
 
 #### What
 This user story is about implementing the UnplayableEntity class and it's implemented interface ai commandable. This in order to allow ships other than the player to exist and move in the game.
@@ -1331,18 +1331,18 @@ By creating the UnplayableEntity class and letting it extend AMovableEntity and 
 There is no specific design choice related to this task, instead it is just a necessary component to the game.
 
 #### User Interaction
- The user will interact with this feature through interacting with other non playable controlled ships in the game world.
+The user will interact with this feature through interacting with other non playable controlled ships in the game world.
 
 ---
 
 ### US-51: Implement Interface HasWeapon
-Date of completion: 21/11/2023 
+Date of completion: 21/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to implement an interface for objects having weapons so that other classes can depend on abstractions and not implementations
 
 #### What
-I wanted there to be a layer of abstraction between the PlayableEntity and UnplayableEntity class, and their body. 
+I wanted there to be a layer of abstraction between the PlayableEntity and UnplayableEntity class, and their body.
 This is because I realized that a body does not necessarily have a weapon to fire if the attackCommand is called.
 The most direct way in the codes current state to check this is to see if the body is of type Ship since it is
 the only class with a weapon. However, this is not very extendable so instead I wanted some sort of type that
@@ -1357,9 +1357,9 @@ and UnplayableEntity which depends on the HasWeapon interface for checking if th
 #### Why
 Creating this layer of abstraction does multiple positive things to the codebase. It clearly signals to the developer
 that an object has some form of weapon. Furthermore, the interface allows the code to be more extendable since adding a new
-object with a weapon will not break the code since it depends on the interface that the class should implement. This also means 
-that any "body" tied to an entity will be able to run the attack command without issues. This makes the code better 
-follow the open closed and dependency inversion principles. 
+object with a weapon will not break the code since it depends on the interface that the class should implement. This also means
+that any "body" tied to an entity will be able to run the attack command without issues. This makes the code better
+follow the open closed and dependency inversion principles.
 
 #### Notes
 During this User Story I noticed some other issues that should be fixed. Such as code duplication in the MovableEntity
@@ -1368,12 +1368,12 @@ depend on HasWeapon and have code duplication. Since the MovableEntity classes a
 the body I think changes should be made.
 
 #### User Interaction
- The user will interact with this feature by using weapons and seeing other unplayable game entities use weapons.
+The user will interact with this feature by using weapons and seeing other unplayable game entities use weapons.
 
 ---
 
 ### US-48: Implementing a utility class to check for collisions between bodies
-Date of completion: 22/11/2023
+Date of completion: 22/11/2023  
 Completed by: William Norland
 
 As a developer I want a Utility class to check for collisions. Because It makes it possible to simulate combat among other things which is something we need for our MVP.
@@ -1390,7 +1390,7 @@ I decided to add both of the methods I talked about in "What" since I don't know
 The reason why we choose to use utility classes is because we want to follow the SRP. If a body is both responsible for being the physical representation of a game entity and also responsible for checking collisions that would bring too much responsibility into one class. It's better to outsource checking collisions to one class that knows where all bodies are instead of letting everybody know where every other body is.
 
 #### Notes
-Noticed i missed tests and documentation in an old user story where I made MovementUtility so I added that when working in the US. 
+Noticed i missed tests and documentation in an old user story where I made MovementUtility so I added that when working in the US.
 
 #### User Interaction
 The user will come in contact with this US during combat, when colliding with enemies or maybe when trying to interact with a friendly game entity.
@@ -1398,7 +1398,7 @@ The user will come in contact with this US during combat, when colliding with en
 ---
 
 ### US-52: Remove Dimensions Parameter From ABody Hierarchy
-Date completed: 22/11/2023 
+Date completed: 22/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to remove the dimensions parameter from the ABody hierarchy because it is confusing and unnecessary to the MVP
@@ -1410,15 +1410,15 @@ This user story is about removing an unneeded and confusing parameter (dimension
 I used the inbuilt refactor tool in Intellij to change the signature throughout the codebase, I didn't need to change anything else since it wasn't used anywhere.
 
 #### Why
- This parameter and corresponding attribute is unnecessary to the MVP and has been an confusing and unused skeleton code artifact in the codebase for a while. It also makes tests easier to write since it isnt required anymore.
+This parameter and corresponding attribute is unnecessary to the MVP and has been an confusing and unused skeleton code artifact in the codebase for a while. It also makes tests easier to write since it isnt required anymore.
 
 #### User Interaction
- The user won't interact with this feature at all since its purely about keeping the source code free from unused code.
+The user won't interact with this feature at all since its purely about keeping the source code free from unused code.
 
 ---
 
 ### US-42: Create Default Constructor For Ship
-Date of completion: 22/11/2023 
+Date of completion: 22/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want a default constructor for the ship class because it makes creating new objects of that type easier.
@@ -1440,7 +1440,7 @@ The user won't interact with this feature at all since it’s purely about keepi
 ---
 
 ### Tas-27: Implement basic controller module
-Date of completion: 23/11/2023
+Date of completion: 23/11/2023  
 Completed by: Alexander Muhr
 
 As a developer I want to implement a controller so that I can register keyboard inputs that can result in events in the game like moving etc.
@@ -1454,24 +1454,24 @@ This user story is about creating a controller that takes input from the keyboar
 Since we want to have a completely independent controller (from model and view), I chose to implement a KeyListener as a form of observer that always listens to keyboard input while the application is running. The reasoning for why we are using a global listener and not a regular KeyListener is so that it doesn't have to be bound to a specific JFrame but exists independently from the Swing application. I chose to store the currently pressed keys in a hashset for easy lookups and to be able to pass it along from the model to the application.
 
 #### Why
- The user will interact with this feature through using the keyboard to control the player.
+The user will interact with this feature through using the keyboard to control the player.
 
 ---
 
 ### US-53: Refactor Entity Hierarchy
-Date completed: 23/22/2023 
-Completed by: Erik Andreasson 
+Date completed: 23/22/2023  
+Completed by: Erik Andreasson
 
-As a developer I want to redesign and refactor the Entity class hierarchy in order to reduce code duplication, dependencies on concrete implementations, and make the code more extendable 
+As a developer I want to redesign and refactor the Entity class hierarchy in order to reduce code duplication, dependencies on concrete implementations, and make the code more extendable
 
 #### What
 The reasoning behind this user story is best described in the issue #81. However, in summary the user story is about cleaning up the code and solving multiple issues we have identified in the current structure of the Entity hierarchy. Partly in order to create a better builder class.
 
-Copied from issue #81: 
-Issue 1 
+Copied from issue #81:
+Issue 1
 There is some code duplication in the classes PlayableEntity and UnplayableEntity. Their implementation of the interface ICommandable is the exact same and I see no reason that this will change in the future since their only purpose is to pass a parameter based on some logic to the body of the entity to actually perform the command. Since it is the body that performs the command and therefore has it's own implementation there shouldn't be any difference in the implementation of actually passing this command to the body. I feel like this is reflected in the fact that I removed the IAICommandable interface when implementing UnplayableEntity since it had no difference to the normal Commandable. Both playable and unplayable entities are commandable!
 
-Issue 2 
+Issue 2
 PlayableEntity and UnplayableEntity are dependent on HasWeapon which is unnecessary. If they both need the dependency then it should be their superclass that has that dependency instead.
 
 End quote //
@@ -1494,10 +1494,10 @@ Can attack and interact but not move. Can move and interact but not attack. And 
 we would have to extend these abstract classes and each time we want to add a new type of command we would have to add more abstract
 classes and rewrite existing ones over and over again. Essentially you would have n! abstract classes where n is the number of commands an entity can accept.
 This is not ideal. Instead, when we create a concrete implementation we simply allow it to implement the command methods we want through
-the interfaces and then the CommandableEntity class handles all incoming command requests accordingly. 
+the interfaces and then the CommandableEntity class handles all incoming command requests accordingly.
 
 The central idea to the relationship between CommandableEntity and it's body is described in the following example:
-Think of the ACommandableEntity as a brain that takes in commands. The brain processes the command and reasons if it's body can perform the task it's been issued. Then passes that task to it's body. For example the "brain" of a guard tower receives the move command. It decides that it can't move and rejects the command (Because of being type Immovable). However it receives the attack command and decides that it can attack (because guard tower implements HasWeapon) and passes it to the body. On the other hand the brain of a merchant ship without cannons would make the reverse decisions. 
+Think of the ACommandableEntity as a brain that takes in commands. The brain processes the command and reasons if it's body can perform the task it's been issued. Then passes that task to it's body. For example the "brain" of a guard tower receives the move command. It decides that it can't move and rejects the command (Because of being type Immovable). However it receives the attack command and decides that it can attack (because guard tower implements HasWeapon) and passes it to the body. On the other hand the brain of a merchant ship without cannons would make the reverse decisions.
 
 Another positive to this solution is that it makes writing a builder class to construct concepts such as a player and enemy
 much easier since they can be constructed according to any desired specification of a body and still use the same entity code.
@@ -1506,7 +1506,7 @@ code would have to depend on concrete implementations of player and enemy which 
 
 The negative to this solution is that it partly sacrifices the single responsibility principle and the interface segregation principle
 by allowing bodies that do not need a move command access to the move command. However, it does not have to implement it since
-the interface is only forced by the interfaces. Regarding single responsibility once could reason that the class 
+the interface is only forced by the interfaces. Regarding single responsibility once could reason that the class
 CommandableEntity has only one responsibility and that is to handle incoming command requests and decide if it can be passed to the
 body or not. However, that may be viewed as somewhat of a stretch.
 
@@ -1516,7 +1516,7 @@ This user story is only about refactoring therefore not implementing new feature
 ---
 
 ### US-59: Fix Directional Vectors In CommandableEntity Methods
-Date of completion: 23/11/2023
+Date of completion: 23/11/2023  
 Completed by: Erik Andreasson
 
 #### What
@@ -1536,7 +1536,7 @@ The user will not interact with this feature as it only makes the code more unde
 ---
 
 ### US-57: Extending keyboard-controller
-Date of completion: 24/11/2023
+Date of completion: 24/11/2023  
 Completed by: Alexander Muhr
 
 #### What
@@ -1547,15 +1547,15 @@ The Interpreter checks if a set contains all the ascii-code inputs for a given d
 It checks directions one by one starting with multiple key inputs to not miss them.
 
 #### Why
- Encapsulating the interpreter code in a class makes it easier to use by clients.
+Encapsulating the interpreter code in a class makes it easier to use by clients.
 
 #### User Interaction
- This US only makes coding easier for developers.
+This US only makes coding easier for developers.
 
 ---
 
 ### US-60 Implement abstract class for ControllerInterpretor
-Date of completion: 24/11/2023
+Date of completion: 24/11/2023  
 Completed by: Alexander Muhr
 
 #### What
@@ -1567,12 +1567,12 @@ An abstract class with a abstract method that describes converting input to dire
 I did this so that other controllers than a keyboard can be more easily implemented keeping the code open for extension.
 
 #### User Interaction
- This US only makes coding easier for developers.
+This US only makes coding easier for developers.
 
 ---
 
-### US-54 Refactoring and extendning the View
-Date of completion: 24/11/2023
+### US-54 Refactoring and extending the View
+Date of completion: 24/11/2023  
 Completed by: William Norland
 
 As a user I want a map that is centered in the game window and a static camera.
@@ -1606,12 +1606,12 @@ I made View components that encapsulated JComponents into JComponentes because i
 This US grew out of hand and became huge very quickly, that does not really follow the principles of INVEST which is regrettable. To our defense this had to be rushed into one US to be able to present a working prototype to our user testers.
 
 #### User Interaction:
-The user will interact with this feature by seeing that entities are generated on top of the terrain instead of in the terrain. Other than that it's mostly refactoring to make the view package more readable and extendible. 
+The user will interact with this feature by seeing that entities are generated on top of the terrain instead of in the terrain. Other than that it's mostly refactoring to make the view package more readable and extendible.
 
 ---
 
 ### US-63 Adding Abstractions to the View
-Date of completion: 24/11/2023 
+Date of completion: 24/11/2023  
 Completed by: William Norland
 
 As a developer I want an abstraction above ViewTile so that the View follows the ISP.
@@ -1631,7 +1631,7 @@ Irrelevant for this US
 ---
 
 ### US-55: Implement realistic terrain generation
-Date of completion: 27/11/2023 
+Date of completion: 27/11/2023  
 Completed by: Adam Kvarnsund
 
 As a user I want the map terrain to look more realistic
@@ -1641,7 +1641,7 @@ Made the map terrain generation look realistic with the implementation of the cl
 
 #### How
 Created a new MapGenerator class AdvancedMapGenerator which used the simplex noise algorithm to create realistic islands and sea correlation. This class implements the IMapGenerator interface.
- 
+
 #### Why
 It creates a more enjoyable player experience and heightens the game quality. I used the simplex noise algorithm because it was best applicable with this particular game. It has lower complexity and is very extendable with higher dimension textures.
 
@@ -1650,7 +1650,7 @@ The user interacts with the islands graphically just as with the BasicMapGenerat
 
 
 ### US-65: Implement UEntityMatrixDecoder
-Date of completion: 3/12/2023 
+Date of completion: 3/12/2023  
 Completed by: Adam Kvarnsund
 
 As a developer I want the EntityMatrix to be delivered to the view as a matrix of ints
@@ -1660,7 +1660,7 @@ Converts the EntityMatrix that contains objects into a matrix of ints via the de
 
 #### How
 Created a class UEntityMatrixDecoder that maps the name of an entity to an ID that corresponds to its type. The class uses the method decodeIntoIntMatrix where it places the ID of the entity into its position in the matrix.
- 
+
 #### Why
 It makes the code more extensible using the adapter pattern to convert object code into a general int structure that the view can interpret separately from the models language.
 
@@ -1668,18 +1668,18 @@ It makes the code more extensible using the adapter pattern to convert object co
 The user does not directly interact with this class.
 
 ### US-79: Implement dynamic map dimensions into MapGenerators
-Date of completion: 3/12/2023 
+Date of completion: 3/12/2023  
 Completed by: Adam Kvarnsund
 
 As a user I want the size of the map to be any rectangular size
 
 #### What
-Changes the amount of tiles in the rows and columns of the map 
+Changes the amount of tiles in the rows and columns of the map
 
 #### How
 
 Changed the parameter side in several methods to be mapWidth and mapHeight instead and made the generators dependent on these values
- 
+
 #### Why
 Makes the game easier to play and can adapt to the window size of the computer the game is played on, the game becomes more professional and extendible
 
@@ -1689,7 +1689,7 @@ The user can see that the map has different sizes depending on the settings, als
 ---
 
 ### US-44 As a developer I want to know what to test and have efficient tests for it
-Date of completion: 28/11/2023
+Date of completion: 28/11/2023  
 Completed by: Noa Cavassi
 
 #### What
@@ -1710,13 +1710,13 @@ This US is purely about tests which have no user interaction.
 ---
 
 ### US-70: Implement Entity Matrix Generator Utility Class
-Date of completion: 29/11/2023
+Date of completion: 29/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want entities in the model to be represented in a matrix so that collision detection between entities is easier to implement.
 
 #### What
-This user story is about creating an entity matrix similar to that of the terrain matrix. 
+This user story is about creating an entity matrix similar to that of the terrain matrix.
 This is then used by the collision detection and the encoder for the view.
 
 #### How
@@ -1736,7 +1736,7 @@ The user will interact with this feature through playing as an Entity on the ent
 ---
 
 ### US-76: Refactoring duplicated code in CommandableEntityTest
-Date of completion: 01/12/2023
+Date of completion: 01/12/2023  
 Completed by: William Norland
 
 As a developer I want to factor out the duplicate code in the movement tests in CommandableEntityTest. Because It makes the code easier to maintain.
@@ -1756,7 +1756,7 @@ This US is purely about tests which have no user interaction.
 ---
 
 ### US-66 Weapons and projectiles
-Date of completion: 1/12/2023
+Date of completion: 1/12/2023  
 Completed by: Noa Cavassi
 
 As a developer I want bodies with a weapon object to be able to shoot, and the bullets to have a hit box and a projectile.
@@ -1778,13 +1778,13 @@ The user will come in contact with this feature when firing the weapon, or when 
 ---
 
 ### US-77: Fixing SOLID violations in controller.
-Date of completion: 01/12/2023
+Date of completion: 01/12/2023  
 Completed by: William Norland
 
 As a developer I want the controller module to not violate the SOLID principles.
 
 #### What
-This US fixed that you couldnt depend on an abstract AControllerInterpretor because the methods for getting input where only in its concrete implementation KeyboardInterpretor. This violated the DIP. 
+This US fixed that you couldnt depend on an abstract AControllerInterpretor because the methods for getting input where only in its concrete implementation KeyboardInterpretor. This violated the DIP.
 This US fixed that you had to use two classes instead of the solutions one from the controller package which is unnecessary coupling.
 
 #### How
@@ -1799,7 +1799,7 @@ This affects the ability to add new ways for the player to interact with the app
 --- 
 
 ### US-71: Implement AI Movement For Enemies
-Date of completion: 2/12/2023
+Date of completion: 2/12/2023  
 Completed by: Erik Andreasson
 
 As a player I want the enemies in the game to move around so that the enemies are more challenging
@@ -1820,9 +1820,9 @@ unpassable. If the player is not in radius then the enemy chooses a random direc
 #### Why
 I created the AICommander class as the controller for enemies in the world. Therefore, it is meant to be extended with functionality for letting
 enemies fire at the player in the correct way. I also wrote the AStar method to work with already existing code, that being the encoded terrain matrix,
-since there was no reason to make the AStar pathfinding be based on any new type of system than the model already has. Similarly, for returning the 
+since there was no reason to make the AStar pathfinding be based on any new type of system than the model already has. Similarly, for returning the
 directional values already specified elsewhere in the model. Side note, even if the enemy can't move in the random direction the moveHelper method
-in CommandableEntity will account for this and simply not move the enemy. 
+in CommandableEntity will account for this and simply not move the enemy.
 
 #### User Interaction
 This code makes the game more engaging for the player since enemies appear to move intelligently when in proximity to the player
@@ -1830,7 +1830,7 @@ This code makes the game more engaging for the player since enemies appear to mo
 ---
 
 ###  US-78: Solution for projectile movement and IDamagable
-Date of completion: 3/12/2023
+Date of completion: 3/12/2023  
 Completed by: Noa Cavassi
 
 As a developer I want bodies with a weapon object to be able to shoot, and the bullets to have a hit box and a projectile.
@@ -1842,11 +1842,11 @@ some major issues with the implementation, this user story is a solution to thos
 #### How
 US-66 had projectiles that did not check if the new position for a projectile was possible or not. This because it was
 using the method move from ABody, which did not check if the new position was possible or not. This was fixed by
-implementing the method moveIfPossible. This method checks if the new position is possible, and if it is, it uses the 
+implementing the method moveIfPossible. This method checks if the new position is possible, and if it is, it uses the
 move method.
 
 There was also another issue. The class ABody implemented the interface IDamagable, which meant that every subclass of it
-should be able to take damage. But since the first idea of how projectiles works was that they can't take damage, this 
+should be able to take damage. But since the first idea of how projectiles works was that they can't take damage, this
 was problematic. My solution was that every projectile has 1 hitpoint, and will therefore die when taking damage.
 
 #### Why
@@ -1858,7 +1858,7 @@ The user will come in contact with this feature when firing the weapon, or when 
 ---
 
 ### Change-Note
-Date of completion: 3/12/2023
+Date of completion: 3/12/2023 
 Completed by: William Norland
 
 When i configured the POM file in the maven project to be ready for deployment i had to reconfigure how we accessed image resources in the View, this change led me to discover that all images we used in the application where created dynamically every time they where used. This explains subpar performance in some cases. Deeming this issue urgent i decided to fix it on the fly.
@@ -1866,7 +1866,7 @@ When i configured the POM file in the maven project to be ready for deployment i
 ---
 
 ### US-80: Renaming CommandableEntity methods
-Date of completion: 3/12/2023
+Date of completion: 3/12/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to rename the moveCommand() and other similar methods in the CommandableEntity class.
@@ -1878,7 +1878,7 @@ This user story is about renaming the command method in CommandableEntity.
 I used Intellij's builtin refactoring tool to rename three methods:  
 moveCommand -> moveIfAble  
 attackCommand -> attackIfAble  
-interactCommand -> interactIfAble  
+interactCommand -> interactIfAble
 
 #### Why
 This change was necessary in order to better reflect the contract the three methods give their clients. With this change the three
@@ -1890,7 +1890,7 @@ This change has to do with the functionality of entities such as the player that
 ---
 
 ### US-69: Implement smart entity spawning in application
-Date of completion: 5/12/2023
+Date of completion: 5/12/2023  
 Completed by: Noa Cavassi
 
 As a user I want all entities to spawn on possible tiles.
@@ -1911,7 +1911,7 @@ The user will interact with this feature every time a new entity spawns on the m
 ---
 
 ### US-87: Implementing a score system
-Date of completion: 5/12/2023
+Date of completion: 5/12/2023  
 Completed by: William Norland
 
 As a user I would like a way to be rewarded for progress so there is a purpose with the game.
@@ -1931,7 +1931,7 @@ The user indirectly interacts with this feature. The score of the entities is up
 --- 
 
 ### US-88: Making projectiles cause damage
-Date of completion: 5/12/2023
+Date of completion: 5/12/2023  
 Completed by: William Norland
 
 As a use I want projectiles in the game to cause damage.
@@ -1951,7 +1951,7 @@ The user will interact with this US every time the user fires a weapon or gets f
 ---
 
 ### US-62: Refactoring application
-Date of completion: 5/12/2023
+Date of completion: 5/12/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to refactor the application so that the modules we have written are integrated into the
@@ -1984,7 +1984,7 @@ Once all the enemies are defeated a new wave will spawn with higher difficulty.
 ---
 
 ### US-90: Implement AI Firing Of Weapons In AICommander
-Date of completion: 6/12/2023
+Date of completion: 6/12/2023  
 Completed by: Erik Andreasson
 
 As a player I want the enemies in the game to fire at me to make the game more engaging
@@ -2005,7 +2005,7 @@ the method call fireWeapon with the enemy list as parameter to the game loop in 
 
 #### Why
 This user story is necessary for the MVP since for the game to be considered a "game" the enemies need to be able to fight back.
-I implemented the user story in this way in order to allow the range of firing to vary and to introduce some randomness to the 
+I implemented the user story in this way in order to allow the range of firing to vary and to introduce some randomness to the
 gameplay. Since the enemy fires in the general direction of the player given that the path is clear (so as not to bloat the screen
 with unnecessary projectiles and make the AI seem smart) the enemy does not have 100% accuracy. I feel this makes the game
 more fun to play and allows the player more freedom in how they approach enemies. In regard to the code itself I tried to make use
@@ -2019,7 +2019,7 @@ firing their cannons.
 ---
 
 ### US-84: Implement extendable mapping from entities names to int matrix in UEntityMatrixDecoder
-Date of completion: 7/12/2023
+Date of completion: 7/12/2023  
 Completed by: Adam Kvarnsund
 
 As a developer I want to map the name of an entity to an integer that can easily be extendable
@@ -2039,7 +2039,7 @@ The user does not interact with this functionality, it is just to make the codeb
 ---
 
 ### US-89: Adding a minimal menu to the game
-Date of completion: 7/12/2023
+Date of completion: 7/12/2023  
 Completed by: William Norland
 
 As a user I would like to control when the game starts through a menu
@@ -2058,8 +2058,8 @@ The user will interact with this us when navigating the menus.
 
 ---
 
-US-93: Factoring ouut application from main
-Date of completion: 7/12/2023
+### US-93: Factoring out application from main
+Date of completion: 7/12/2023  
 Completed by: William Norland
 
 As a developer I want to factor out the application functionality from main.
@@ -2075,3 +2075,33 @@ By factoring out the code from main we can more clearly follow the flow of the a
 
 #### User interaction
 The developer using the source code of this application will have an easier time understanding the flow of the application.
+
+---
+
+#### US-81: Adding AWeapon to Ship Class
+Date of completion: 7/12/2023  
+Completed by: Erik Andreasson
+
+As a player I want my player model to fire weapons so that I can damage enemies
+
+#### What:
+This user story is about modifying the Ship class and the ShipBuilder class to use the AWeapon hierarchy to fire a weapon
+instead of using an int value as previously defined.
+
+#### How:
+Implementing this was fairly simple. I simply changed the constructors in the Ship class and the implementation of setting attributes
+for weapon in the ShipBuilder. I also implemented the fireWeapon method in the Ship class to spawn the projectile in the next
+adjacent space in the firing direction and sent that information the weapon. As a consequence of these changes I also had to modify
+some tests to account for the weapon parameter becoming an object instead of an int.
+
+#### Why:
+Our revised design included a hierarchy for weapons allowing the weapon and projectile itself to handle the firing and travel of
+projectiles respectively. The purpose of this hierarchy was to use composition in the bodies that implement the interface hasWeapon.
+Therefore, I had to rewrite the Ship class to use this composition and consequently also the ShipBuilder. We thought that composition was
+the best choice for bodies that implement hasWeapon since it reflects a separation of concerns where the weapon itself has logic
+for how to fire the projectile and the projectiles are responsible for traveling. Further along this will also allow us to select different
+weapon types and also allow the player to "upgrade" their weapon type at runtime instead of creating a new player object.
+
+#### User Interaction:
+When the player or enemy receives a fire weapon command this will be passed down through the body with correct parameters to the weapon
+which will spawn a traveling projectile.
