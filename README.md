@@ -2105,3 +2105,15 @@ weapon types and also allow the player to "upgrade" their weapon type at runtime
 #### User Interaction:
 When the player or enemy receives a fire weapon command this will be passed down through the body with correct parameters to the weapon
 which will spawn a traveling projectile.
+
+---
+
+### Change Note
+Date of completion: 7/12/2023  
+Completed by: Erik Andreasson
+
+#### What
+We found a bug where the enemy pathfinding stopped working for certain map sizes. Particularly the edges of the map.
+I found that in the method getSurroundingEntityNameAndPos in class AICommander I had previously assumed that the map would
+always be square so the method always searched through a square section of the map based on the map height. I changed
+the method to use both the map height and the map width which can now vary.
