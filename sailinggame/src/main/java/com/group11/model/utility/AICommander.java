@@ -46,6 +46,7 @@ public class AICommander {
      * This method moves the enemies in the input list based on their proximity to the player.
      * If the enemy is within the class specified radius the method runs an AStar search from the enemy
      * to the player and moves the enemy one step closer in the shortest path direction to the player.
+     * If the player has the enemy within a specified radius then the enemy will choose a random directional value
      * If the player is not in proximity than a random directional value is selected
      * @param enemies The list of enemies to move
      */
