@@ -1,26 +1,24 @@
 package applicationtest;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.List;
+
+import org.junit.Test;
+
 import com.group11.application.EntitySpawner;
-import com.group11.model.builders.EntityDirector;
 import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameworld.BasicMapGenerator;
 import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.IMapGenerator;
 import com.group11.model.gameworld.World;
-import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class EntitySpawnerTest {
 
     IMapGenerator testMapGenerator = new BasicMapGenerator();
     World testWorld = (new BasicWorldGenerator(testMapGenerator)).generateWorld(100 ,100);
-    EntitySpawner testSpawner = new EntitySpawner(testWorld, new EntityDirector(new ShipBuilder()));
+    EntitySpawner testSpawner = new EntitySpawner(testWorld, new ShipBuilder());
 
     @Test
     public void spawnEnemyTest() {
@@ -56,4 +54,5 @@ public class EntitySpawnerTest {
         assertEquals(2, lvl1num);
         assertEquals(1, lvl2num);
     }
+
 }

@@ -12,11 +12,10 @@ import java.awt.*;
 
 public abstract class AProjectile extends AMovableBody{
 
-    protected int distanceTraveled;
-    protected int maxRange;
-    protected int damage;
-    protected int [] direction;
-    protected int hitPoints;
+    private int distanceTraveled;
+    private int maxRange;
+    private int damage;
+    private int [] direction;
 
     /**
      * Constructs a new projectile with the given parameters.
@@ -32,7 +31,6 @@ public abstract class AProjectile extends AMovableBody{
         this.maxRange = maxRange;
         this.damage = damage;
         this.direction = direction;
-        this.hitPoints = 1;
     }
 
     /**
@@ -66,6 +64,10 @@ public abstract class AProjectile extends AMovableBody{
      * This method must be implemented by subclasses.
      */
     protected abstract void moveInTravelPath();
+
+    protected int[] getDirection() {
+        return this.direction;
+    }
 
     /**
      * Continues the projectile along its travel path.

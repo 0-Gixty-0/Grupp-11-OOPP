@@ -1,6 +1,7 @@
 package com.group11.model.utility;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.group11.model.gameentites.AEntity;
@@ -14,12 +15,12 @@ public final class UEntityMatrixDecoder {
     /**
      * List of entity names. The index of each name serves as the corresponding integer ID for that entity.
      */
-    private static List<String> entityNames = new ArrayList<>(); 
-        static {
-        entityNames.add("Player");
-        entityNames.add("Enemy: lvl 1");
-        entityNames.add("Enemy: lvl 2");
-        // Add more entity names as needed
+    private static final HashMap<String, Integer> entityIds = new HashMap<>();
+    static {
+        entityIds.put("Player", 0);
+        entityIds.put("Enemy", 1);
+        entityIds.put("CannonBall", 2);
+        // Add more entities as needed
     }
 
     /**
@@ -37,10 +38,21 @@ public final class UEntityMatrixDecoder {
      * @throws IllegalArgumentException if the entity's name is not found in entityNames
      */
     
-    private static int getEntityId(AEntity entity) {
+     private static int getEntityId(AEntity entity) {
         String entityName = entity.getName();
-        int entityId = entityNames.indexOf(entityName);
-        if (entityId == -1) throw new IllegalArgumentException("Entity name not found in entityNames");
+        Integer entityId = null;
+    
+        for (HashMap.Entry<String, Integer> entry : entityIds.entrySet()) {
+            if (entityName.contains(entry.getKey())) {
+                entityId = entry.getValue();
+                break;
+            }
+        }
+    
+        if (entityId == null) {
+            throw new IllegalArgumentException("Entity name not found: " + entityName);
+        }
+    
         return entityId;
     }
 

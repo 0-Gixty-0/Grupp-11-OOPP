@@ -4,10 +4,7 @@ import java.awt.Point;
 
 /**
  * This class represents the weapon "BasicCannon" in the game. A BasicCannon is a type of weapon that fires projectiles.
- *
  * A BasicCannon has a specific type of projectile that it fires, and a maximum number of times it can be fired.
- *
- * @param <T> the type of projectile that the cannon fires
  */
 public class BasicCannon extends AWeapon {
 

@@ -6,25 +6,25 @@ import java.util.List;
 import com.group11.model.gameentites.AEntity;
 
 /**
- * Utility class for checking if a body is going to collide with another body.
+ * Utility class for checking if an Entity is going to collide with another body.
  */
-public final class UBodyCollisionUtility {
+public final class UEntityCollisionUtility {
     
     /**
-     * List of bodies to check for collision.
+     * List of Entities to check for collision.
      */
     private static List<List<AEntity>> entities;
 
-    private UBodyCollisionUtility() {
+    private UEntityCollisionUtility() {
         throw new IllegalStateException("Utility class");
     }
 
     /**
-     * Set the bodies to check for collision.
-     * @param bodies Matrix of bodies.
+     * Set the entities to check for collision.
+     * @param bodies Matrix of entities.
      */
     public static void setBodyMatrix(List<List<AEntity>> entities) {
-        UBodyCollisionUtility.entities = entities;
+        UEntityCollisionUtility.entities = entities;
     }
 
     private static void checkBodies() {
@@ -34,9 +34,9 @@ public final class UBodyCollisionUtility {
     }
 
     /**
-     * Check if a position is occupied by another body.
+     * Check if a position is occupied by another entity.
      * @param pos Position in the matrix to check.
-     * @return (ABody) if the position is occupied by a body, null otherwise.
+     * @return (ABody) if the position is occupied by a entity, null otherwise.
      */
     public static AEntity isPositionOccupied(Point pos) {
 
@@ -49,9 +49,9 @@ public final class UBodyCollisionUtility {
     }
 
     /**
-     * Check if a body is colliding with another body.
-     * @param body Body to check.
-     * @return (ABody) if the position is occupied by a body, null otherwise.
+     * Check if a entity is colliding with another entity.
+     * @param body Entity to check.
+     * @return (ABody) if the position is occupied by a entity, null otherwise.
      */
     public static AEntity isEntityColliding(AEntity entity) {
         

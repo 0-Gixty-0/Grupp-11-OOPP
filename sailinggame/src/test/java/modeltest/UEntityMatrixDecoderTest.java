@@ -11,7 +11,6 @@ import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.utility.UEntityMatrixDecoder;
 
-
 public class UEntityMatrixDecoderTest {
 
     @Test
@@ -25,21 +24,21 @@ public class UEntityMatrixDecoderTest {
         AEntity player = builder.createEntity();
         builder.reset();
 
-        builder.setName("Enemy: lvl 1");
+        builder.setName("Enemy");
         builder.setFriendlyStatus(false);
         builder.setBody();
-        AEntity enemy1 = builder.createEntity();
+        AEntity enemy = builder.createEntity();
         builder.reset();
 
-        builder.setName("Enemy: lvl 2");
+        builder.setName("CannonBall");
         builder.setFriendlyStatus(false);
         builder.setBody();
-        AEntity enemy2 = builder.createEntity();
+        AEntity cannonBall = builder.createEntity();
         builder.reset();
 
         List<List<AEntity>> matrix = Arrays.asList(
-            Arrays.asList(player, enemy1, null),
-            Arrays.asList(null, enemy2, player)
+            Arrays.asList(player, enemy, null),
+            Arrays.asList(null, cannonBall, player)
         );
 
         // Act
@@ -50,5 +49,4 @@ public class UEntityMatrixDecoderTest {
         assertEquals(Arrays.asList(0, 1, -1), intMatrix.get(0));
         assertEquals(Arrays.asList(-1, 2, 0), intMatrix.get(1));
     }
-    
 }

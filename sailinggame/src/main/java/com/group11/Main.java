@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.group11.application.EntitySpawner;
 import com.group11.controller.KeyboardInterpretor;
-import com.group11.model.builders.EntityDirector;
 import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
@@ -14,7 +13,11 @@ import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.IMapGenerator;
 import com.group11.model.gameworld.IWorldGenerator;
 import com.group11.model.gameworld.World;
-import com.group11.model.utility.*;
+import com.group11.model.utility.AICommander;
+import com.group11.model.utility.UEntityMatrixDecoder;
+import com.group11.model.utility.UEntityMatrixGenerator;
+import com.group11.model.utility.UMovementUtility;
+import com.group11.model.utility.UTileMatrixDecoder;
 import com.group11.view.uicomponents.AppWindow;
 
 class Main {
@@ -30,7 +33,6 @@ class Main {
     private List<List<AEntity>> entityMatrix;
     private List<CommandableEntity> enemyList;
     private List<AEntity> entityList = new ArrayList<>();
-    private EntityDirector director;
     private EntitySpawner entitySpawner;
 
     /**
@@ -52,9 +54,8 @@ class Main {
         this.mapWidth = mapWidth;
         this.mapHeight = mapHeight;
         this.appWindow = new AppWindow(windowWidth, windowHeight, mapWidth, mapHeight, 16, 16);
-        this.director = new EntityDirector(new ShipBuilder());
         this.world = this.createBasicWorld();
-        this.entitySpawner = new EntitySpawner(this.world, this.director);
+        this.entitySpawner = new EntitySpawner(this.world, new ShipBuilder());
         this.initializeEntities();
         UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
         this.aiCommander = new AICommander(this.entityMatrix, this.world.getMap().getTileMatrix());
@@ -111,12 +112,13 @@ class Main {
      */
     public void run() throws InterruptedException {
         appWindow.showGame();
-        while (true) {
+        while (Thread.currentThread().isAlive()) {
             if (this.enemyList.isEmpty()) {
                 this.waveNumber++;
                 this.enemyList = this.entitySpawner.createEnemyWave(this.waveNumber);
             }
             updatePlayer();
+            this.aiCommander.fireWeapons(this.enemyList);
             this.aiCommander.moveEnemies(this.enemyList);
             this.updateEntityMatrix();
             Thread.sleep(50);
