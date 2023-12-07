@@ -6,6 +6,9 @@ import java.awt.Font;
 
 import javax.swing.JPanel;
 
+/**
+ * The class is an abstract JPanel that is used as a standard panel for the game.
+ */
 public abstract class AStandardPanel extends JPanel {
     
     Font bigFont;
