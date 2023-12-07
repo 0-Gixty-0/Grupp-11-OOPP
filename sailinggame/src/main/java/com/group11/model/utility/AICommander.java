@@ -72,9 +72,9 @@ public class AICommander {
     }
 
     /**
-     * Helper method checking if the input entity is in proximity to the player
+     * Helper method checking if the input entity is in proximity to an enemy
      * @param entityPos The position to center the proximity search
-     * @return True: Player is near, False: Player is not near
+     * @return True: Enemy is near, False: Enemy is not near
      */
     private boolean isNearEnemy(Point entityPos, int radius) {
         int entityRowIndex = entityPos.x;
