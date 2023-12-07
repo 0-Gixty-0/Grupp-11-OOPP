@@ -26,6 +26,14 @@ public class AICommanderTest {
     private List<List<AEntity>> entityMatrix = UEntityMatrixGenerator.createEntityMatrix(5,5);
     private EntityDirector director = new EntityDirector(new ShipBuilder());
     private List<AEntity> entities = new ArrayList<>();
+
+    private class TestAICommander extends AICommander {
+        public TestAICommander(List<List<AEntity>> entityMatrix, List<List<ATile>> terrainMatrix) {
+            super(entityMatrix, terrainMatrix);
+            super.innerRadius = 1;
+        }
+    }
+
     @Before
     public void beforePreconditions() {
         this.grid.add(Arrays.asList(1,1,0,1,1));
@@ -85,7 +93,7 @@ public class AICommanderTest {
         this.entities.add(enemy);
         this.entities.add(this.director.createPlayer(new Point(1,2)));
         UEntityMatrixGenerator.populateEntityMatrix(this.entities, this.entityMatrix);
-        AICommander commander = new AICommander(this.entityMatrix, this.terrainMatrix);
+        TestAICommander commander = new TestAICommander(this.entityMatrix, this.terrainMatrix);
         commander.moveEnemies(enemyList);
         assertEquals(new Point(2,2), enemy.getPos());
     }
@@ -98,7 +106,7 @@ public class AICommanderTest {
         this.entities.add(enemy);
         this.entities.add(this.director.createPlayer(new Point(1,4)));
         UEntityMatrixGenerator.populateEntityMatrix(this.entities, this.entityMatrix);
-        AICommander commander = new AICommander(this.entityMatrix, this.terrainMatrix);
+        TestAICommander commander = new TestAICommander(this.entityMatrix, this.terrainMatrix);
         commander.moveEnemies(enemyList);
         assertEquals(new Point(2,3), enemy.getPos());
     }
@@ -111,7 +119,7 @@ public class AICommanderTest {
         this.entities.add(enemy);
         this.entities.add(this.director.createPlayer(new Point(2,4)));
         UEntityMatrixGenerator.populateEntityMatrix(this.entities, this.entityMatrix);
-        AICommander commander = new AICommander(this.entityMatrix, this.terrainMatrix);
+        TestAICommander commander = new TestAICommander(this.entityMatrix, this.terrainMatrix);
         commander.moveEnemies(enemyList);
         assertEquals(new Point(2,1), enemy.getPos());
     }
@@ -124,7 +132,7 @@ public class AICommanderTest {
         this.entities.add(enemy);
         this.entities.add(this.director.createPlayer(new Point(3,4)));
         UEntityMatrixGenerator.populateEntityMatrix(this.entities, this.entityMatrix);
-        AICommander commander = new AICommander(this.entityMatrix, this.terrainMatrix);
+        TestAICommander commander = new TestAICommander(this.entityMatrix, this.terrainMatrix);
         commander.moveEnemies(enemyList);
         assertEquals(new Point(1,2), enemy.getPos());
     }
@@ -137,7 +145,7 @@ public class AICommanderTest {
         this.entities.add(enemy);
         this.entities.add(this.director.createPlayer(new Point(4,4)));
         UEntityMatrixGenerator.populateEntityMatrix(this.entities, this.entityMatrix);
-        AICommander commander = new AICommander(this.entityMatrix, this.terrainMatrix);
+        TestAICommander commander = new TestAICommander(this.entityMatrix, this.terrainMatrix);
         commander.moveEnemies(enemyList);
         assertEquals(new Point(1,4), enemy.getPos());
     }
@@ -150,7 +158,7 @@ public class AICommanderTest {
         this.entities.add(enemy);
         this.entities.add(this.director.createPlayer(new Point(2,1)));
         UEntityMatrixGenerator.populateEntityMatrix(this.entities, this.entityMatrix);
-        AICommander commander = new AICommander(this.entityMatrix, this.terrainMatrix);
+        TestAICommander commander = new TestAICommander(this.entityMatrix, this.terrainMatrix);
         commander.moveEnemies(enemyList);
         assertEquals(new Point(1,2), enemy.getPos());
     }
@@ -163,7 +171,7 @@ public class AICommanderTest {
         this.entities.add(enemy);
         this.entities.add(this.director.createPlayer(new Point(2,0)));
         UEntityMatrixGenerator.populateEntityMatrix(this.entities, this.entityMatrix);
-        AICommander commander = new AICommander(this.entityMatrix, this.terrainMatrix);
+        TestAICommander commander = new TestAICommander(this.entityMatrix, this.terrainMatrix);
         commander.moveEnemies(enemyList);
         assertEquals(new Point(2,3), enemy.getPos());
     }
@@ -176,7 +184,7 @@ public class AICommanderTest {
         this.entities.add(enemy);
         this.entities.add(this.director.createPlayer(new Point(0,1)));
         UEntityMatrixGenerator.populateEntityMatrix(this.entities, this.entityMatrix);
-        AICommander commander = new AICommander(this.entityMatrix, this.terrainMatrix);
+        TestAICommander commander = new TestAICommander(this.entityMatrix, this.terrainMatrix);
         commander.moveEnemies(enemyList);
         assertEquals(new Point(2,3), enemy.getPos());
     }

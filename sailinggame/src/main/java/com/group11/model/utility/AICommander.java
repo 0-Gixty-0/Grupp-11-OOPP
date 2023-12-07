@@ -16,7 +16,7 @@ import com.group11.model.gameworld.ATile;
  */
 public class AICommander {
     private final int radius = 10;
-    private final int innerRadius = 5;
+    protected int innerRadius = 5;
     private List<List<AEntity>> entityMatrix;
     private List<List<Integer>> terrainMatrixEncoded;
     private final int[][] directions = {{-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}};
