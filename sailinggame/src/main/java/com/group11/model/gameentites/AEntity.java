@@ -48,7 +48,6 @@ public abstract class AEntity {
     }
 
     /**
-     * 
      * @return (ABody) The body of the entity
      */
     public ABody getBody() {
@@ -69,6 +68,6 @@ public abstract class AEntity {
      * @return (Point) The position of the entities body
      */
     public Point getPos() {
-        return this.getBody().getPos();
+        return this.body.getPos();
     }
 }
