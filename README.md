@@ -2164,3 +2164,21 @@ statement.
 #### User Interaction
 Once the enemy has reached a certain radius around the player they will no longer move directly toward the player. Instead moving randomly around
 them.
+
+### US-94
+Date of completion 7/12/2023
+Completed by: William Norland
+
+As a user I want to be able to combat enemies.
+
+#### What
+During this US i implemented rendering projectiles to the view, handeling collisons between projectiles and the player, handeling collisons between projectiles and the enemies, getting score from destroying enemies.
+
+#### How
+By implementing methods in the SailingGameApplication class.
+
+#### Why
+By implementing these features we are finally finished with our mvp.
+
+#### User Interaction
+The user will interact with this us when the user is moving the player, fighting enemies, gaining score by destroying enemies, losing the game, taking damage, dealing damage etc..

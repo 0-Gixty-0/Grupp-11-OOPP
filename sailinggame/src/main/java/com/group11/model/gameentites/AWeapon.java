@@ -46,7 +46,7 @@ public abstract class AWeapon {
      * Returns the list of projectiles that this cannon has fired.
      * @return the list of projectiles that this cannon has fired.
      */
-    protected List<AProjectile> getFiredProjectiles() {
+    public List<AProjectile> getFiredProjectiles() {
         return this.firedProjectiles;
     }
 

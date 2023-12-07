@@ -20,7 +20,7 @@ public class MainMenuPanel extends AStandardPanel {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Dimension buttonSize = new Dimension(200, 50);
         this.startButton = new Button("Start Game");
-        this.exitButton = new Button("Exit Application");
+        this.exitButton = new Button("Rage quit >:(");
         startButton.setMaximumSize(buttonSize);
         exitButton.setMaximumSize(buttonSize);
         this.startButton.addActionListener(e -> startButtonPressed());

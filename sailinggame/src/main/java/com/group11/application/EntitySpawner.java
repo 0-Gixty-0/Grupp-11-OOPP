@@ -72,7 +72,7 @@ public class EntitySpawner {
         while (!posIsPassable(pos)) {
             pos = generateRandomPos();
         }
-
+        
         return director.createPlayer(pos);
     }
 
