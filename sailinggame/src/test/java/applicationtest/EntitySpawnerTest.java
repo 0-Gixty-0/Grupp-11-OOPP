@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+import com.group11.model.gameentites.Ship;
 import org.junit.Test;
 
 import com.group11.application.EntitySpawner;
@@ -33,7 +34,10 @@ public class EntitySpawnerTest {
     @Test
     public void testEnemyWaveLevelOne() {
         List<CommandableEntity> enemyList = this.testSpawner.createEnemyWave(1);
-        assertEquals("Enemy: lvl 1", enemyList.get(0).getName());
+        Ship ship = ((Ship) enemyList.get(0).getBody());
+        int shipLevel = ship.getShipLevel();
+        assertEquals("Enemy", enemyList.get(0).getName());
+        assertEquals(1, shipLevel);
     }
 
     @Test
@@ -42,11 +46,12 @@ public class EntitySpawnerTest {
         int lvl2num = 0;
         int lvl1num = 0;
         for (CommandableEntity enemy : enemyList) {
-            switch (enemy.getName()) {
-                case "Enemy: lvl 1":
+            Ship ship = ((Ship) enemy.getBody());
+            switch (ship.getShipLevel()) {
+                case 1:
                     lvl1num++;
                     break;
-                case "Enemy: lvl 2":
+                case 2:
                     lvl2num++;
                     break;
             }
