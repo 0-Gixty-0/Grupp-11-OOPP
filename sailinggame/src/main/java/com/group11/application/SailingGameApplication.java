@@ -6,6 +6,7 @@ import java.util.List;
 import com.group11.controller.KeyboardInterpretor;
 import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AEntity;
+import com.group11.model.gameentites.AWeapon;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameworld.AdvancedMapGenerator;
 import com.group11.model.gameworld.BasicWorldGenerator;
@@ -138,6 +139,9 @@ public class SailingGameApplication extends AApplication {
         this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
     }
 
+
+    
+
     /**
      * Creates a basic world using the map and world generator. That being the random map generator.
      * @return A randomly generated world
@@ -171,8 +175,13 @@ public class SailingGameApplication extends AApplication {
      */
     private void updatePlayer() {
         int movementInput = keyboardInterpreter.getMovementInput();
+        int fireInput = keyboardInterpreter.getFireInput();
         if (movementInput >= 0) {
             this.player.moveIfAble(movementInput);
+        }
+        if (fireInput >= 0) {
+            this.player.attackIfAble(fireInput);
+            AWeapon playerWeapon = this.player.getBody()
         }
     }
 }
