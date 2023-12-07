@@ -1124,3 +1124,22 @@ of preexisting methods such as the one in AStar in order to avoid unnecessary co
 Enemies will fire in the general direction of the player once they are in range of their cannons. Enemies will not attempt to
 fire through walls or in a way where their cannonball is wasted. If the player exits the enemy range then enemies will stop
 firing their cannons.
+
+---
+
+### US-84: Implement extendable mapping from entities names to int matrix in UEntityMatrixDecoder Date of completion: 6/12/2023
+Completed by: Adam Kvarnsund
+
+As a developer I want to map the name of an entity to an integer that can easily be extendable
+
+#### What
+Makes the getEntityId method in the matrix decoder look at the name of an entity in a way that only finds out if it is an enemy, player or cannonball etc. Easily extendable.
+
+#### How
+The getEntityId method checks if the name of an entity contains “Enemy”, which then maps it to be an enemy with a specific integer representation.
+
+#### Why
+Makes the decoder more extendable with different kinds of entities and looks at the type of entity instead of the exact name and attributes it has.
+
+#### User Interaction
+The user does not interact with this functionality, it is just to make the codebase more extendable.
