@@ -102,16 +102,17 @@ public class SailingGameApplication extends AApplication {
                     this.enemyList.addAll(this.entitySpawner.createEnemyWave(this.waveNumber));
                     this.entityList.addAll(this.enemyList);
                 }
+                updatePlayer();
                 this.aiCommander.moveEnemies(this.enemyList);
                 this.aiCommander.fireWeapons(this.enemyList);
-                this.entityList.addAll(this.createProjectiles());
+                this.entityList.addAll(createProjectiles());
                 updateProjectiles();
-                updatePlayer();
-                checkProjectileCollisions();
                 updateEntityMatrix();
+                checkProjectileCollisions();
                 Thread.sleep(50);
 
                 if (this.player.getBody().getHitPoints() <= 0) { // Game over
+                    this.waveNumber = 1;
                     this.removeViewFromWindow(gameView);
                     this.addViewToWindow(gameOverView);
                     this.gameOverView.setScoreLabel(0);
@@ -244,7 +245,7 @@ public class SailingGameApplication extends AApplication {
         int movementInput = keyboardInterpreter.getMovementInput();
         int fireInput = keyboardInterpreter.getFireInput();
         gameView.updateHp((int) player.getBody().getHitPoints());
-        
+
         if (movementInput >= 0) {
             this.player.moveIfAble(movementInput);
         }

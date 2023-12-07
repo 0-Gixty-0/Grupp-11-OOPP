@@ -2137,3 +2137,30 @@ This makes the code less coupled and contributes to a more maintainable and modu
 
 #### User Interaction
 The user does not interact with this functionality, it is just to make the codebase more extendable.
+
+---
+
+### US-98: Create Lower Bound For Radius When Finding Player
+Date of completion: 7/12/2023  
+Completed by: Erik Andreasson
+
+As a player I don't want the enemy to be able to move into and on top of me because it makes the gameplay difficult
+
+#### What
+This user story is about creating an inner radius from the player to enemies so that enemies do not move into or too close
+to the player. 
+
+#### How
+I repurposed the unused method isNearPlayer to isNearEnemy by simply changing the if statement to search for the key "Enemy" instead of "Player".
+For this to work I rewrote the EntityDirector to set the name attribute for the enemy entity to simply "Entity", dropping the level value interpolation.
+This meant I had to rewrite a few tests. I then introduced a new if statement to the moveEnemies method checking if the enemy is too close
+to the player. If so the enemy chooses a random direction to move in.
+
+#### Why
+This user story was meant to enhance the gameplay and make the game easier for the player. Having the enemies hang around the player within a radius
+instead of moving on top of the player makes it easier to combat them. In regard to the code I simply repurposed existing code and added an if
+statement.
+
+#### User Interaction
+Once the enemy has reached a certain radius around the player they will no longer move directly toward the player. Instead moving randomly around
+them.
