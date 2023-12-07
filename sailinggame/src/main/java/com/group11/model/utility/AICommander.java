@@ -15,7 +15,6 @@ import com.group11.model.gameworld.ATile;
  * Class representing controller for AI controlled entities
  */
 public class AICommander {
-    private final int radius = 10;
     protected int innerRadius = 5;
     private List<List<AEntity>> entityMatrix;
     private List<List<Integer>> terrainMatrixEncoded;
