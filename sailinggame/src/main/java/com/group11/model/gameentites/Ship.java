@@ -54,8 +54,8 @@ public class Ship extends AMovableBody implements IHasWeapon {
     }
 
     /**
-     * Returns cannon rating
-     * @return cannon rating
+     * Returns weapon
+     * @return active weapon
      */
     public AWeapon getWeapon() {
         return this.weapon;

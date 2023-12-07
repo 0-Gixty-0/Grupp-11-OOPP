@@ -1124,3 +1124,33 @@ of preexisting methods such as the one in AStar in order to avoid unnecessary co
 Enemies will fire in the general direction of the player once they are in range of their cannons. Enemies will not attempt to
 fire through walls or in a way where their cannonball is wasted. If the player exits the enemy range then enemies will stop
 firing their cannons.
+
+---
+
+#### US-81: Adding AWeapon to Ship Class
+Date of completion: 7/12/2023
+Completed by: Erik Andreasson
+
+As a player I want my player model to fire weapons so that I can damage enemies
+
+#### What:
+This user story is about modifying the Ship class and the ShipBuilder class to use the AWeapon hierarchy to fire a weapon
+instead of using an int value as previously defined.
+
+#### How:
+Implementing this was fairly simple. I simply changed the constructors in the Ship class and the implementation of setting attributes
+for weapon in the ShipBuilder. I also implemented the fireWeapon method in the Ship class to spawn the projectile in the next
+adjacent space in the firing direction and sent that information the weapon. As a consequence of these changes I also had to modify
+some tests to account for the weapon parameter becoming an object instead of an int.
+
+#### Why:
+Our revised design included a hierarchy for weapons allowing the weapon and projectile itself to handle the firing and travel of 
+projectiles respectively. The purpose of this hierarchy was to use composition in the bodies that implement the interface hasWeapon.
+Therefore, I had to rewrite the Ship class to use this composition and consequently also the ShipBuilder. We thought that composition was
+the best choice for bodies that implement hasWeapon since it reflects a separation of concerns where the weapon itself has logic
+for how to fire the projectile and the projectiles are responsible for traveling. Further along this will also allow us to select different
+weapon types and also allow the player to "upgrade" their weapon type at runtime instead of creating a new player object.
+
+#### User Interaction:
+When the player or enemy receives a fire weapon command this will be passed down through the body with correct parameters to the weapon
+which will spawn a traveling projectile.
