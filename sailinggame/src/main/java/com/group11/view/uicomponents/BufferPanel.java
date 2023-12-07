@@ -1,14 +1,9 @@
 package com.group11.view.uicomponents;
 
-import java.awt.Color;
-import java.awt.Dimension;
-
-import javax.swing.JPanel;
-
 /**
  * The class is a JPanel that is used as a buffer panel for the game world.
  */
-public class BufferPanel extends JPanel {
+public class BufferPanel extends AStandardPanel {
     
     /**
      * Constructor for creating a BufferPanel.
@@ -16,9 +11,7 @@ public class BufferPanel extends JPanel {
      * @param height height of the panel
      */
     protected BufferPanel(int width, int height) {
-        super();
-        this.setPreferredSize(new Dimension(width*16, height*16));
-        this.setBackground(Color.GRAY);
+        super(width, height);
     }
 
 }

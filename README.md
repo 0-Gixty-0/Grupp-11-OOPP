@@ -38,6 +38,7 @@ Following is a list of implemented features in the form of tasks, these tasks ar
 ### TAS-25: Implement Basic View Module
 Date of completion: 07/11/2023  
 Completed by: Erik Andreasson
+
 #### What:
 Implement a basic view module that can display the map according to specifications obtained from the model. 
 This should also be fairly simple so that other features can be integrated quickly. 
@@ -1127,6 +1128,66 @@ firing their cannons.
 
 ---
 
+### US-84: Implement extendable mapping from entities names to int matrix in UEntityMatrixDecoder
+Date of completion: 7/12/2023
+Completed by: Adam Kvarnsund
+
+As a developer I want to map the name of an entity to an integer that can easily be extendable
+
+#### What
+Makes the getEntityId method in the matrix decoder look at the name of an entity in a way that only finds out if it is an enemy, player or cannonball etc. Easily extendable.
+
+#### How
+The getEntityId method checks if the name of an entity contains “Enemy”, which then maps it to be an enemy with a specific integer representation.
+
+#### Why
+Makes the decoder more extendable with different kinds of entities and looks at the type of entity instead of the exact name and attributes it has.
+
+#### User Interaction
+The user does not interact with this functionality, it is just to make the codebase more extendable.
+
+---
+
+### US-89: Adding a minimal menu to the game
+Date of completion: 7/12/2023
+Completed by: William Norland
+
+As a user I would like to control when the game starts through a menu
+
+#### What
+During this user story, a small menu and an infinite game loop were created. The game loop cycles between menus, allowing the player to start a new game after losing. The view was also made more extendable, as it was previously difficult to add new views to the game. Additionally, a quick abstract base class was created to host shared code among different view components.
+
+#### How
+To implement this user story, a menu system was developed using a combination of conditional statements and loops. The game loop was designed to continuously display menus and handle user input. The view components were refactored to utilize the abstract base class, reducing code duplication and improving maintainability.
+
+#### Why
+This user story was necessary to enhance the overall user experience of the game. By adding a menu system and an infinite game loop, players have the ability to start new games without having to restart the entire application. The improved extendability of the view components allows for easier addition of new features and views in the future. The creation of the abstract base class promotes code reusability and maintainability by centralizing shared code logic.
+
+#### User interaction
+The user will interact with this us when navigating the menus.
+
+---
+
+US-93: Factoring out application from main
+Date of completion: 7/12/2023
+Completed by: William Norland
+
+As a developer I want to factor out the application functionality from main.
+
+#### What
+During this US I factored out application code from main into its own class inheriting from an abstract class representing the basic funcitonality of an application runnable by our software.
+
+#### How
+By moving out the game logic from main making it into its own class and making an abstract baseclass for applications.
+
+#### Why
+By factoring out the code from main we can more clearly follow the flow of the application code and make the code more readable.
+
+#### User interaction
+The developer using the source code of this application will have an easier time understanding the flow of the application.
+
+---
+
 #### US-81: Adding AWeapon to Ship Class
 Date of completion: 7/12/2023
 Completed by: Erik Andreasson
@@ -1144,7 +1205,7 @@ adjacent space in the firing direction and sent that information the weapon. As 
 some tests to account for the weapon parameter becoming an object instead of an int.
 
 #### Why:
-Our revised design included a hierarchy for weapons allowing the weapon and projectile itself to handle the firing and travel of 
+Our revised design included a hierarchy for weapons allowing the weapon and projectile itself to handle the firing and travel of
 projectiles respectively. The purpose of this hierarchy was to use composition in the bodies that implement the interface hasWeapon.
 Therefore, I had to rewrite the Ship class to use this composition and consequently also the ShipBuilder. We thought that composition was
 the best choice for bodies that implement hasWeapon since it reflects a separation of concerns where the weapon itself has logic

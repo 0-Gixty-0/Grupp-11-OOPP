@@ -90,8 +90,8 @@ public class EntitySpawner {
      * @return the generated position
      */
     private Point generateRandomPos() {
-        int x = (int) (Math.random() * this.world.getMap().getMapWidth());
-        int y = (int) (Math.random() * this.world.getMap().getMapHeight());
+        int y = (int) (Math.random() * this.world.getMap().getMapWidth());
+        int x = (int) (Math.random() * this.world.getMap().getMapHeight());
         return new Point(x, y);
     }
 
