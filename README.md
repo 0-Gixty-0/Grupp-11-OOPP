@@ -2051,4 +2051,27 @@ During this user story, a small menu and an infinite game loop were created. The
 To implement this user story, a menu system was developed using a combination of conditional statements and loops. The game loop was designed to continuously display menus and handle user input. The view components were refactored to utilize the abstract base class, reducing code duplication and improving maintainability.
 
 #### Why
-This user story was necessary to enhance the overall user experience of the game. By adding a menu system and an infinite game loop, players have the ability to start new games without having to restart the entire application. The improved extendability of the view components allows for easier addition of new features and views in the future. The creation of the abstract base class promotes code reusability and maintainability by centralizing shared code logic
+This user story was necessary to enhance the overall user experience of the game. By adding a menu system and an infinite game loop, players have the ability to start new games without having to restart the entire application. The improved extendability of the view components allows for easier addition of new features and views in the future. The creation of the abstract base class promotes code reusability and maintainability by centralizing shared code logic.
+
+#### User interaction
+The user will interact with this us when navigating the menus.
+
+---
+
+US-93: Factoring ouut application from main
+Date of completion: 7/12/2023
+Completed by: William Norland
+
+As a developer I want to factor out the application functionality from main.
+
+#### What
+During this US I factored out application code from main into its own class inheriting from an abstract class representing the basic funcitonality of an application runnable by our software.
+
+#### How
+By moving out the game logic from main making it into its own class and making an abstract baseclass for applications.
+
+#### Why
+By factoring out the code from main we can more clearly follow the flow of the application code and make the code more readable.
+
+#### User interaction
+The developer using the source code of this application will have an easier time understanding the flow of the application.
