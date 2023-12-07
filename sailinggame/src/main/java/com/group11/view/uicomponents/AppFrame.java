@@ -1,5 +1,6 @@
 package com.group11.view.uicomponents;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
@@ -16,7 +17,8 @@ public class AppFrame extends JFrame {
      */
     public AppFrame (int width, int height) {
         super();
-        this.setSize(width, height);
+        Dimension size = new Dimension(width, height);
+        this.setPreferredSize(size);
         this.setTitle("Sailing Game");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().setBackground(java.awt.Color.GRAY);

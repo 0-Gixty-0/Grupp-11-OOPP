@@ -4,22 +4,20 @@ import java.awt.Button;
 import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
-import javax.swing.JPanel;
 
 /**
  * Class used to represent the main meni of the game as a JPanel with components
  */
-public class MainMenuPanel extends JPanel {
+public class MainMenuPanel extends AStandardPanel {
     
     Button startButton;
     Button exitButton;
     Boolean startButtonPressed = false;
 
     public MainMenuPanel(int width, int height) {
-        super();
-        this.setPreferredSize(new Dimension(width, height));
+        super(width, height);
+        
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setBackground(java.awt.Color.GRAY);
         Dimension buttonSize = new Dimension(200, 50);
         this.startButton = new Button("Start Game");
         this.exitButton = new Button("Exit Application");

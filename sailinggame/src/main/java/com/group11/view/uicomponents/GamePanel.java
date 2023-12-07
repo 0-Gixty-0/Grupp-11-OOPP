@@ -1,18 +1,16 @@
 package com.group11.view.uicomponents;
 
-import javax.swing.*;
+import java.awt.FlowLayout;
+import java.util.List;
 
 import com.group11.view.AViewTileFactory;
 import com.group11.view.ViewTileMatrixEncoder;
-
-import java.awt.*;
-import java.util.List;
 
 /**
  * AppWindow is the top-level class for the View component of the MVC design.
  * It is responsible for containing all other components of the UI.
  */
-public class GamePanel extends JPanel {
+public class GamePanel extends AStandardPanel {
     
     private StatsPanel statsPanel;
     private GameWorldPanel gameWorldPanel;
@@ -27,17 +25,15 @@ public class GamePanel extends JPanel {
      * @param tileHeight height of the tiles
      */
     public GamePanel(int width, int height, int mapWidth, int mapHeight, int tileWidth, int tileHeight) {
-        super();
+        super(width, height);
         
-        this.setPreferredSize(new Dimension(width, height));
-        this.setBackground(java.awt.Color.GRAY);
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-        this.statsPanel = new StatsPanel(1000, 80);
+        this.statsPanel = new StatsPanel(width, 80);
         this.gameWorldPanel = new GameWorldPanel(mapWidth * tileWidth, mapHeight * tileHeight);
 
         AViewTileFactory.setTileDimensions(tileWidth, tileHeight);
-        BufferPanel bufferPanel = new BufferPanel(1000, 80);
+        BufferPanel bufferPanel = new BufferPanel(width, 80);
 
         this.add(statsPanel); //Adding a buffer pane to make sure the game world ends up in the center of the window
         this.add(gameWorldPanel);

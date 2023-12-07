@@ -2,16 +2,14 @@ package com.group11.view.uicomponents;
 
 import java.awt.Button;
 import java.awt.Dimension;
-import java.awt.Font;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 /**
  * Class used to represent the game over screen of the game as a JPanel with components
  */
-public class GameOverPanel extends JPanel {
+public class GameOverPanel extends AStandardPanel {
 
     private JLabel gameOverLabel;
     private JLabel scoreLabel;
@@ -24,17 +22,13 @@ public class GameOverPanel extends JPanel {
      * @param height height of the panel
      */
     public GameOverPanel(int width, int height) {
-        super();
-        this.setPreferredSize(new Dimension(width, height));
+        super(width, height);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setBackground(java.awt.Color.GRAY);
 
         this.gameOverLabel = new JLabel("GAME OVER");
         this.scoreLabel = new JLabel("SCORE: 0");
         this.backToMenuButton = new Button("Back to Menu");
 
-        Font bigFont = new Font("Arial", Font.PLAIN, 50);
-        Font smallFont = new Font("Arial", Font.PLAIN, 20);
         Dimension buttonSize = new Dimension(200, 50);
 
         gameOverLabel.setFont(smallFont);
