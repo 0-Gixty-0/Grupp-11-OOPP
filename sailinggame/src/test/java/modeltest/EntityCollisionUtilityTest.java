@@ -36,19 +36,19 @@ public class EntityCollisionUtilityTest {
 
     @Test
     public void testSetBodies() {
-        UEntityCollisionUtility.setBodyMatrix(null);
+        UEntityCollisionUtility.setEntityMatrix(null);
         assertThrows(IllegalStateException.class, ()->UEntityCollisionUtility.isPositionOccupied(pos));
     }
 
     @Test
     public void testIsPositionOccupied() {
-        UEntityCollisionUtility.setBodyMatrix(entites);
+        UEntityCollisionUtility.setEntityMatrix(entites);
         assertEquals(testEntity, UEntityCollisionUtility.isPositionOccupied(pos));
     }
 
     @Test
     public void testIsBodyColliding() {
-        UEntityCollisionUtility.setBodyMatrix(entites);
+        UEntityCollisionUtility.setEntityMatrix(entites);
        assertEquals(testEntity, UEntityCollisionUtility.isEntityColliding(testEntity2));
     }
 }

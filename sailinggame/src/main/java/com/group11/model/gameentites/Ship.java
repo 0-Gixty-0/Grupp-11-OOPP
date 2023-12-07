@@ -31,7 +31,7 @@ public class Ship extends AMovableBody implements IHasWeapon {
      * @param pos coordinate position of the ship
      */
     public Ship(Point pos) {
-        super(pos, 20, "Standard Ship, Custom: Position");
+        super(pos, 100, "Standard Ship, Custom: Position");
         this.shipLevel = 1;
         this.armor = 2;
         this.weapon = new BasicCannon(BasicCannonBall.class);

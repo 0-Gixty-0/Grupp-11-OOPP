@@ -3,8 +3,11 @@ package com.group11.application;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.text.html.parser.Entity;
+
 import com.group11.controller.KeyboardInterpretor;
 import com.group11.model.builders.ShipBuilder;
+import com.group11.model.gameentites.ABody;
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.AProjectile;
 import com.group11.model.gameentites.AWeapon;
@@ -89,8 +92,6 @@ public class SailingGameApplication extends AApplication {
                     this.addViewToWindow(gameView);
                     this.mainMenuView.resetStartButtonPressed();
                     this.initializeGame();
-                    this.gameView.updateTerrain((UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
-                    this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
                     break;
                 }
             }
@@ -103,9 +104,10 @@ public class SailingGameApplication extends AApplication {
                 }
                 this.aiCommander.moveEnemies(this.enemyList);
                 this.aiCommander.fireWeapons(this.enemyList);
+                this.entityList.addAll(this.createProjectiles());
                 updateProjectiles();
-                checkProjectileCollisions();
                 updatePlayer();
+                checkProjectileCollisions();
                 updateEntityMatrix();
                 Thread.sleep(50);
 
@@ -144,7 +146,8 @@ public class SailingGameApplication extends AApplication {
         this.entityList.addAll(this.enemyList);
         UEntityMatrixGenerator.populateEntityMatrix(this.entityList, this.entityMatrix);
         UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
-        UEntityCollisionUtility.setBodyMatrix(entityMatrix);
+        UEntityCollisionUtility.setEntityMatrix(entityMatrix);
+        this.gameView.updateTerrain((UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
     }
 
     /**
@@ -173,7 +176,7 @@ public class SailingGameApplication extends AApplication {
         UEntityMatrixGenerator.populateEntityMatrix(this.entityList, this.entityMatrix);
         this.aiCommander.setEntityMatrix(this.entityMatrix);
         this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
-        UEntityCollisionUtility.setBodyMatrix(entityMatrix);
+        UEntityCollisionUtility.setEntityMatrix(entityMatrix);
     }
 
     private class ProjectileEntiy extends AEntity {
@@ -185,34 +188,6 @@ public class SailingGameApplication extends AApplication {
         public AProjectile getBody() {
             return (AProjectile) super.getBody();
         }
-    }
-
-    private void updateProjectiles() {
-
-        List<AEntity> entitiesToRemove = new ArrayList<>();
-        List<AProjectile> projectilesToRemove = new ArrayList<>();
-
-        for (AEntity entity : this.entityList) {
-            if (entity.getBody() instanceof IHasWeapon) {
-               AWeapon weapon = ((IHasWeapon) entity.getBody()).getWeapon();
-                List<AProjectile> firedProjectiles = weapon.getFiredProjectiles();
-                for (AProjectile projectile : firedProjectiles) {
-                    if (projectile.isOutOfRange()) {
-                        projectilesToRemove.add(projectile);
-                    }
-                }
-                firedProjectiles.removeAll(projectilesToRemove);
-            }
-            if (entity.getBody() instanceof AProjectile) {
-                ((AProjectile) entity.getBody()).travel();
-                if (((AProjectile) entity.getBody()).isOutOfRange()) {
-                    entitiesToRemove.add(entity);
-                }
-            }
-        }
-
-        this.entityList.removeAll(entitiesToRemove);
-    
     }
 
     private void checkProjectileCollisions() {
@@ -231,26 +206,51 @@ public class SailingGameApplication extends AApplication {
         this.enemyList.removeAll(entitiesToRemove);
     }
 
+    private List<AEntity> createProjectiles() {
+        List<AEntity> projectiles = new ArrayList<>();
+        List<AProjectile> projectilesToRemove = new ArrayList<>();
+
+        for (AEntity entity : this.entityList) {
+            if (entity.getBody() instanceof IHasWeapon) {
+                AWeapon weapon = ((IHasWeapon) entity.getBody()).getWeapon();
+                List<AProjectile> firedProjectiles = weapon.getFiredProjectiles();
+                for (AProjectile projectile : firedProjectiles) {
+                    if (!projectile.isOutOfRange()) {
+                        projectiles.add(new ProjectileEntiy(projectile, "CannonBall", true));
+                    } else {
+                        projectilesToRemove.add(projectile);
+                    }
+                }
+                firedProjectiles.removeAll(projectilesToRemove);
+            }
+        }
+        
+        return projectiles;
+    }
+
+    private void updateProjectiles() {
+        for (AEntity entity : this.entityList) {
+            ABody body = entity.getBody();
+            if (body instanceof AProjectile) {
+                ((AProjectile)body).travel();
+            }
+        }
+    }
+
     /**
      * Updates player position based on keyboard input
      */
     private void updatePlayer() {
         int movementInput = keyboardInterpreter.getMovementInput();
         int fireInput = keyboardInterpreter.getFireInput();
-
+        gameView.updateHp((int) player.getBody().getHitPoints());
+        
         if (movementInput >= 0) {
             this.player.moveIfAble(movementInput);
         }
         if (fireInput >= 0) {
             this.player.attackIfAble(fireInput);
-            IHasWeapon playerBody = (IHasWeapon) this.player.getBody();
-            AWeapon weapon = playerBody.getWeapon();
-            List<AProjectile> firedProjectiles = weapon.getFiredProjectiles();
-            for (AProjectile projectile : firedProjectiles) {
-                AEntity projectileEntity = new ProjectileEntiy(projectile, "CannonBall", true);
-                this.entityList.add(projectileEntity);
-            }
-            gameView.updateHp((int) player.getBody().getHitPoints());
+            
         }
     }
 }

@@ -23,7 +23,7 @@ public final class UEntityCollisionUtility {
      * Set the entities to check for collision.
      * @param bodies Matrix of entities.
      */
-    public static void setBodyMatrix(List<List<AEntity>> entities) {
+    public static void setEntityMatrix(List<List<AEntity>> entities) {
         UEntityCollisionUtility.entities = entities;
     }
 
