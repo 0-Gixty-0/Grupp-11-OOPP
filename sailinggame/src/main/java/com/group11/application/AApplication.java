@@ -12,6 +12,7 @@ public abstract class AApplication {
 
     protected AApplication(JFrame appWindow) {
         this.appWindow = appWindow;
+        this.appWindow.setSize(500, 500);
     }
 
     /**
