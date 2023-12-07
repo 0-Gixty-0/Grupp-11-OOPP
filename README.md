@@ -36,7 +36,7 @@ TAS while new issues will have titles starting with US. Take a note of this whil
 Following is a list of implemented features in the form of tasks, these tasks are represented by solved GitHub issues with the same name. To get a deeper look into how each task was implemented, check the issues.
 
 ### TAS-25: Implement Basic View Module
-Date of completion: 07/11/2023
+Date of completion: 07/11/2023  
 Completed by: Erik Andreasson
 
 #### What:
@@ -70,7 +70,7 @@ Upon starting the game a window will be displayed. This window will contain tile
 ---
 
 ### TAS-28: Create A Tile Class In View Module
-Date of completion: 08/11/2023
+Date of completion: 08/11/2023  
 Completed by: Erik Andreasson
 
 There should be a Tile class in the view module that represents individual tiles and their attributes and functionality
@@ -100,7 +100,7 @@ This feature does not require a User Interaction for the player since tiles bein
 ---
 
 ### TAS-10 Design player model
-Date of completion: 08/11/2023
+Date of completion: 08/11/2023  
 Completed by: Alexander Muhr
 
 There is a player model that can be displayed on the screen.
@@ -120,7 +120,7 @@ This feature does not require a User Interaction since it does not have function
 ---
 
 ### TAS-20: Create Tile Designs For Terrain Types
-Date of completion: 08/11/2023
+Date of completion: 08/11/2023  
 Completed by: Erik Andreasson
 
 #### What
@@ -140,7 +140,7 @@ This feature does not require a User Interaction since it doesn't have functiona
 ---
 
 ### TAS-24: Implement Basic Map Generation
-Date of completion: 09/11/2023 <br>
+Date of completion: 09/11/2023  
 Completed by: William Norland
 
 Implement basic map generation according to the UML diagram. Basic generation meaning that it should be barebones and simply generate a map consisting of Tiles in a certain order.
@@ -179,7 +179,7 @@ The player will see the implementation of this task by seeing different worlds i
 ---
 
 ### TAS-29: Implement Drawing Basic Terrain Types
-Date of completion: 11/11/2023
+Date of completion: 11/11/2023  
 Completed by: Erik Andreasson
 
 Implement ability to draw certain graphical icons / pictures based on tile id to the view.
@@ -221,7 +221,7 @@ This feature does not require a User Interaction since it doesn't have functiona
 ---
 
 ### TAS-22: Implement Ship Module
-Date of completion: 12/11/2023
+Date of completion: 12/11/2023  
 Completed by: Noa Cavassi
 
 As a user I want a module for the creation and functionality for the bodies on the map.
@@ -249,7 +249,7 @@ This module will be updated during the course of the project. For the moment no 
 ---
 
 ### TAS-11 Implementing basic player movement
-Date of completion: 14/11/2023
+Date of completion: 14/11/2023  
 Completed by: William Norland
 
 As a user I want to be able to do basic movement of the player on the screen.
@@ -269,7 +269,7 @@ The user will interact heavily with the PlayableEntity when controlling the play
 ---
 
 ### US-33 Extracting decoding of Matrix<Tile> from Map class into a TileMatrixDecoder class
-Date of completion: 14/11/2023
+Date of completion: 14/11/2023  
 Completed by: William Norland
 
 As a developer I want to separate the creation of the integer matrix in the Map object to another class so that Map has one single responsibility.
@@ -290,7 +290,7 @@ The user won't really interact with this in any way more explicit than looking a
 ---
 
 ### US-36: Removing possibility for LocationEntity to have a AMovabelBody
-Date of completion: 15/11/2023
+Date of completion: 15/11/2023  
 Completed by: William Norland
 
 As a developer I don't want LocationEntity to be able to have a AMovableBody. Because a location entity is not supposed to have body capable of moving.
@@ -307,7 +307,7 @@ Even though LocationEntity couldn't really move because it had an ABody and ther
 ---
 
 ### TAS-23: Implement Tile Module
-Date of completion: 13/11/2023
+Date of completion: 13/11/2023  
 Completed by: Adam Kvarnsund
 
 #### What
@@ -325,7 +325,7 @@ The user will interact with this TAS by moving over tiles in the game and experi
 ---
 
 ### US-15 Design An Enemy Ship Model
-Date of completion: 16/11/2023
+Date of completion: 16/11/2023  
 Completed by: Noa Cavassi
 
 #### What
@@ -343,7 +343,7 @@ The user will interact with this feature by seeing the enemies in the game being
 ---
 
 ### US-37 Restricting player to only being able to move over passable terrain
-Date of completion: 16/11/2023
+Date of completion: 16/11/2023  
 Completed by: William Norland
 
 As a user i don't want the player to be able to move on land because the player is a ship, a watercraft.
@@ -363,7 +363,7 @@ The player will use this feature a lot when trying to sail over islands or sail 
 ---
 
 ### US-38: Implement Drawing Player To Map
-Date of completion: 17/11/2023
+Date of completion: 17/11/2023  
 Completed by: Erik Andreasson
 
 As a player I want to be able to see myself on the map in order to play the game.
@@ -405,7 +405,7 @@ A User Interaction is not quite necessary for this user story other than that th
 ---
 
 ### US-39: Reduce code duplication for the position attribute
-Date of completion: 17/11/2023
+Date of completion: 17/11/2023  
 Completed by: Adam Kvarnsund
 
 #### What
@@ -423,7 +423,7 @@ The user interacts with mechanics using the Points a lot but this US was mostly 
 ---
 
 ### US-40: Implement Factory Hierarchy For Movable Game Entities
-Date of completion: 18/11/2023
+Date of completion: 18/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to make use of factories when creating movable entities in the game because it makes the code easier to understand and follows “high cohesion, low coupling”
@@ -451,7 +451,7 @@ This US only affects developers working on the source code.
 ---
 
 ### US-43: Removing ATextureIdentifiable from model
-Date of completion: 19/11/2023
+Date of completion: 19/11/2023  
 Completed by: William Norland
 
 As a developer, I want to remove the dependency on the ATextureIdentifiable class in the model, as it introduces unnecessary code and complexity.
@@ -471,7 +471,7 @@ This US only makes extension of the source code easier only affecting developers
 ---
 
 ### US-45: Making AWorldGenerator and AMapGenerator into Interfaces
-Date of completion: 19/11/2023
+Date of completion: 19/11/2023  
 Completed by: William Norland
 
 As a developer I want to make AWorldGenerator and AMapGenerator into Interfaces as they only contain abstract methods.
@@ -490,7 +490,7 @@ This is also a much more traditional way of implementing the abstract factory pa
 ---
 
 ### US-43: Implement UnplayableEntity Class
-Date of completion: 21/11/2023
+Date of completion: 21/11/2023  
 Completed by: Erik Andreasson
 
 As a user I want there to be other ships and locations in the world to make the game more interesting to play
@@ -511,7 +511,7 @@ The user will interact with this feature through interacting with other non play
 ---
 
 ### US-51: Implement Interface HasWeapon
-Date of completion: 21/11/2023
+Date of completion: 21/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to implement an interface for objects having weapons so that other classes can depend on abstractions and not implementations
@@ -548,7 +548,7 @@ The user will interact with this feature by using weapons and seeing other unpla
 ---
 
 ### US-48: Implementing a utility class to check for collisions between bodies
-Date of completion: 22/11/2023
+Date of completion: 22/11/2023  
 Completed by: William Norland
 
 As a developer I want a Utility class to check for collisions. Because It makes it possible to simulate combat among other things which is something we need for our MVP.
@@ -573,7 +573,7 @@ The user will come in contact with this US during combat, when colliding with en
 ---
 
 ### US-52: Remove Dimensions Parameter From ABody Hierarchy
-Date completed: 22/11/2023
+Date completed: 22/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to remove the dimensions parameter from the ABody hierarchy because it is confusing and unnecessary to the MVP
@@ -593,7 +593,7 @@ The user won't interact with this feature at all since its purely about keeping 
 ---
 
 ### US-42: Create Default Constructor For Ship
-Date of completion: 22/11/2023
+Date of completion: 22/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want a default constructor for the ship class because it makes creating new objects of that type easier.
@@ -615,7 +615,7 @@ The user won't interact with this feature at all since it’s purely about keepi
 ---
 
 ### Tas-27: Implement basic controller module
-Date of completion: 23/11/2023
+Date of completion: 23/11/2023  
 Completed by: Alexander Muhr
 
 As a developer I want to implement a controller so that I can register keyboard inputs that can result in events in the game like moving etc.
@@ -634,7 +634,7 @@ The user will interact with this feature through using the keyboard to control t
 ---
 
 ### US-53: Refactor Entity Hierarchy
-Date completed: 23/22/2023
+Date completed: 23/22/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to redesign and refactor the Entity class hierarchy in order to reduce code duplication, dependencies on concrete implementations, and make the code more extendable
@@ -691,7 +691,7 @@ This user story is only about refactoring therefore not implementing new feature
 ---
 
 ### US-59: Fix Directional Vectors In CommandableEntity Methods
-Date of completion: 23/11/2023
+Date of completion: 23/11/2023  
 Completed by: Erik Andreasson
 
 #### What
@@ -711,7 +711,7 @@ The user will not interact with this feature as it only makes the code more unde
 ---
 
 ### US-57: Extending keyboard-controller
-Date of completion: 24/11/2023
+Date of completion: 24/11/2023  
 Completed by: Alexander Muhr
 
 #### What
@@ -730,7 +730,7 @@ This US only makes coding easier for developers.
 ---
 
 ### US-60 Implement abstract class for ControllerInterpretor
-Date of completion: 24/11/2023
+Date of completion: 24/11/2023  
 Completed by: Alexander Muhr
 
 #### What
@@ -747,7 +747,7 @@ This US only makes coding easier for developers.
 ---
 
 ### US-54 Refactoring and extendning the View
-Date of completion: 24/11/2023
+Date of completion: 24/11/2023  
 Completed by: William Norland
 
 As a user I want a map that is centered in the game window and a static camera.
@@ -786,7 +786,7 @@ The user will interact with this feature by seeing that entities are generated o
 ---
 
 ### US-63 Adding Abstractions to the View
-Date of completion: 24/11/2023
+Date of completion: 24/11/2023  
 Completed by: William Norland
 
 As a developer I want an abstraction above ViewTile so that the View follows the ISP.
@@ -806,7 +806,7 @@ Irrelevant for this US
 ---
 
 ### US-55: Implement realistic terrain generation
-Date of completion: 27/11/2023
+Date of completion: 27/11/2023  
 Completed by: Adam Kvarnsund
 
 As a user I want the map terrain to look more realistic
@@ -825,7 +825,7 @@ The user interacts with the islands graphically just as with the BasicMapGenerat
 
 
 ### US-65: Implement UEntityMatrixDecoder
-Date of completion: 3/12/2023
+Date of completion: 3/12/2023  
 Completed by: Adam Kvarnsund
 
 As a developer I want the EntityMatrix to be delivered to the view as a matrix of ints
@@ -843,7 +843,7 @@ It makes the code more extensible using the adapter pattern to convert object co
 The user does not directly interact with this class.
 
 ### US-79: Implement dynamic map dimensions into MapGenerators
-Date of completion: 3/12/2023
+Date of completion: 3/12/2023  
 Completed by: Adam Kvarnsund
 
 As a user I want the size of the map to be any rectangular size
@@ -861,7 +861,7 @@ Makes the game easier to play and can adapt to the window size of the computer t
 #### User Interaction
 The user can see that the map has different sizes depending on the settings, also the map is not always a square.
 ### TAS-25: Implement Basic View Module
-Date of completion: 07/11/2023
+Date of completion: 07/11/2023  
 Completed by: Erik Andreasson
 
 #### What:
@@ -895,7 +895,7 @@ Upon starting the game a window will be displayed. This window will contain tile
 ---
 
 ### TAS-28: Create A Tile Class In View Module
-Date of completion: 08/11/2023
+Date of completion: 08/11/2023  
 Completed by: Erik Andreasson
 
 There should be a Tile class in the view module that represents individual tiles and their attributes and functionality
@@ -925,7 +925,7 @@ This feature does not require a User Interaction for the player since tiles bein
 ---
 
 ### TAS-10 Design player model
-Date of completion: 08/11/2023
+Date of completion: 08/11/2023  
 Completed by: Alexander Muhr
 
 There is a player model that can be displayed on the screen.
@@ -945,7 +945,7 @@ This feature does not require a User Interaction since it does not have function
 ---
 
 ### TAS-20: Create Tile Designs For Terrain Types
-Date of completion: 08/11/2023
+Date of completion: 08/11/2023  
 Completed by: Erik Andreasson
 
 #### What
@@ -965,7 +965,7 @@ This feature does not require a User Interaction since it doesn't have functiona
 ---
 
 ### TAS-24: Implement Basic Map Generation
-Date of completion: 09/11/2023 <br>
+Date of completion: 09/11/2023  
 Completed by: William Norland
 
 Implement basic map generation according to the UML diagram. Basic generation meaning that it should be barebones and simply generate a map consisting of Tiles in a certain order.
@@ -1004,7 +1004,7 @@ The player will see the implementation of this task by seeing different worlds i
 ---
 
 ### TAS-29: Implement Drawing Basic Terrain Types
-Date of completion: 11/11/2023
+Date of completion: 11/11/2023  
 Completed by: Erik Andreasson
 
 Implement ability to draw certain graphical icons / pictures based on tile id to the view.
@@ -1046,7 +1046,7 @@ This feature does not require a User Interaction since it doesn't have functiona
 ---
 
 ### TAS-22: Implement Ship Module
-Date of completion: 12/11/2023
+Date of completion: 12/11/2023  
 Completed by: Noa Cavassi
 
 As a user I want a module for the creation and functionality for the bodies on the map.
@@ -1074,7 +1074,7 @@ This module will be updated during the course of the project. For the moment no 
 ---
 
 ### TAS-11 Implementing basic player movement
-Date of completion: 14/11/2023
+Date of completion: 14/11/2023  
 Completed by: William Norland
 
 As a user I want to be able to do basic movement of the player on the screen.
@@ -1094,7 +1094,7 @@ The user will interact heavily with the PlayableEntity when controlling the play
 ---
 
 ### US-33 Extracting decoding of Matrix<Tile> from Map class into a TileMatrixDecoder class
-Date of completion: 14/11/2023
+Date of completion: 14/11/2023  
 Completed by: William Norland
 
 As a developer I want to separate the creation of the integer matrix in the Map object to another class so that Map has one single responsibility.
@@ -1115,7 +1115,7 @@ The user won't really interact with this in any way more explicit than looking a
 ---
 
 ### US-36: Removing possibility for LocationEntity to have a AMovabelBody
-Date of completion: 15/11/2023
+Date of completion: 15/11/2023  
 Completed by: William Norland
 
 As a developer I don't want LocationEntity to be able to have a AMovableBody. Because a location entity is not supposed to have body capable of moving.
@@ -1132,7 +1132,7 @@ Even though LocationEntity couldn't really move because it had an ABody and ther
 ---
 
 ### TAS-23: Implement Tile Module
-Date of completion: 13/11/2023
+Date of completion: 13/11/2023  
 Completed by: Adam Kvarnsund
 
 #### What
@@ -1150,7 +1150,7 @@ The user will interact with this TAS by moving over tiles in the game and experi
 ---
 
 ### US-15 Design An Enemy Ship Model
-Date of completion: 16/11/2023
+Date of completion: 16/11/2023  
 Completed by: Noa Cavassi
 
 #### What
@@ -1168,7 +1168,7 @@ The user will interact with this feature by seeing the enemies in the game being
 ---
 
 ### US-37 Restricting player to only being able to move over passable terrain
-Date of completion: 16/11/2023
+Date of completion: 16/11/2023  
 Completed by: William Norland
 
 As a user i don't want the player to be able to move on land because the player is a ship, a watercraft.
@@ -1188,7 +1188,7 @@ The player will use this feature a lot when trying to sail over islands or sail 
 ---
 
 ### US-38: Implement Drawing Player To Map
-Date of completion: 17/11/2023
+Date of completion: 17/11/2023  
 Completed by: Erik Andreasson
 
 As a player I want to be able to see myself on the map in order to play the game.
@@ -1230,7 +1230,7 @@ A User Interaction is not quite necessary for this user story other than that th
 ---
 
 ### US-39: Reduce code duplication for the position attribute
-Date of completion: 17/11/2023
+Date of completion: 17/11/2023  
 Completed by: Adam Kvarnsund
 
 #### What
@@ -1248,7 +1248,7 @@ The user interacts with mechanics using the Points a lot but this US was mostly 
 ---
 
 ### US-40: Implement Factory Hierarchy For Movable Game Entities
-Date of completion: 18/11/2023
+Date of completion: 18/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to make use of factories when creating movable entities in the game because it makes the code easier to understand and follows “high cohesion, low coupling”
@@ -1276,7 +1276,7 @@ This US only affects developers working on the source code.
 ---
 
 ### US-43: Removing ATextureIdentifiable from model
-Date of completion: 19/11/2023
+Date of completion: 19/11/2023  
 Completed by: William Norland
 
 As a developer, I want to remove the dependency on the ATextureIdentifiable class in the model, as it introduces unnecessary code and complexity.
@@ -1296,7 +1296,7 @@ This US only makes extension of the source code easier only affecting developers
 ---
 
 ### US-45: Making AWorldGenerator and AMapGenerator into Interfaces
-Date of completion: 19/11/2023
+Date of completion: 19/11/2023  
 Completed by: William Norland
 
 As a developer I want to make AWorldGenerator and AMapGenerator into Interfaces as they only contain abstract methods.
@@ -1315,7 +1315,7 @@ This is also a much more traditional way of implementing the abstract factory pa
 ---
 
 ### US-43: Implement UnplayableEntity Class
-Date of completion: 21/11/2023
+Date of completion: 21/11/2023  
 Completed by: Erik Andreasson
 
 As a user I want there to be other ships and locations in the world to make the game more interesting to play
@@ -1336,7 +1336,7 @@ The user will interact with this feature through interacting with other non play
 ---
 
 ### US-51: Implement Interface HasWeapon
-Date of completion: 21/11/2023
+Date of completion: 21/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to implement an interface for objects having weapons so that other classes can depend on abstractions and not implementations
@@ -1373,7 +1373,7 @@ The user will interact with this feature by using weapons and seeing other unpla
 ---
 
 ### US-48: Implementing a utility class to check for collisions between bodies
-Date of completion: 22/11/2023
+Date of completion: 22/11/2023  
 Completed by: William Norland
 
 As a developer I want a Utility class to check for collisions. Because It makes it possible to simulate combat among other things which is something we need for our MVP.
@@ -1398,7 +1398,7 @@ The user will come in contact with this US during combat, when colliding with en
 ---
 
 ### US-52: Remove Dimensions Parameter From ABody Hierarchy
-Date completed: 22/11/2023
+Date completed: 22/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to remove the dimensions parameter from the ABody hierarchy because it is confusing and unnecessary to the MVP
@@ -1418,7 +1418,7 @@ The user won't interact with this feature at all since its purely about keeping 
 ---
 
 ### US-42: Create Default Constructor For Ship
-Date of completion: 22/11/2023
+Date of completion: 22/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want a default constructor for the ship class because it makes creating new objects of that type easier.
@@ -1440,7 +1440,7 @@ The user won't interact with this feature at all since it’s purely about keepi
 ---
 
 ### Tas-27: Implement basic controller module
-Date of completion: 23/11/2023
+Date of completion: 23/11/2023  
 Completed by: Alexander Muhr
 
 As a developer I want to implement a controller so that I can register keyboard inputs that can result in events in the game like moving etc.
@@ -1459,7 +1459,7 @@ The user will interact with this feature through using the keyboard to control t
 ---
 
 ### US-53: Refactor Entity Hierarchy
-Date completed: 23/22/2023
+Date completed: 23/22/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to redesign and refactor the Entity class hierarchy in order to reduce code duplication, dependencies on concrete implementations, and make the code more extendable
@@ -1516,7 +1516,7 @@ This user story is only about refactoring therefore not implementing new feature
 ---
 
 ### US-59: Fix Directional Vectors In CommandableEntity Methods
-Date of completion: 23/11/2023
+Date of completion: 23/11/2023  
 Completed by: Erik Andreasson
 
 #### What
@@ -1536,7 +1536,7 @@ The user will not interact with this feature as it only makes the code more unde
 ---
 
 ### US-57: Extending keyboard-controller
-Date of completion: 24/11/2023
+Date of completion: 24/11/2023  
 Completed by: Alexander Muhr
 
 #### What
@@ -1555,7 +1555,7 @@ This US only makes coding easier for developers.
 ---
 
 ### US-60 Implement abstract class for ControllerInterpretor
-Date of completion: 24/11/2023
+Date of completion: 24/11/2023  
 Completed by: Alexander Muhr
 
 #### What
@@ -1571,8 +1571,8 @@ This US only makes coding easier for developers.
 
 ---
 
-### US-54 Refactoring and extendning the View
-Date of completion: 24/11/2023
+### US-54 Refactoring and extending the View
+Date of completion: 24/11/2023  
 Completed by: William Norland
 
 As a user I want a map that is centered in the game window and a static camera.
@@ -1611,7 +1611,7 @@ The user will interact with this feature by seeing that entities are generated o
 ---
 
 ### US-63 Adding Abstractions to the View
-Date of completion: 24/11/2023
+Date of completion: 24/11/2023  
 Completed by: William Norland
 
 As a developer I want an abstraction above ViewTile so that the View follows the ISP.
@@ -1631,7 +1631,7 @@ Irrelevant for this US
 ---
 
 ### US-55: Implement realistic terrain generation
-Date of completion: 27/11/2023
+Date of completion: 27/11/2023  
 Completed by: Adam Kvarnsund
 
 As a user I want the map terrain to look more realistic
@@ -1650,7 +1650,7 @@ The user interacts with the islands graphically just as with the BasicMapGenerat
 
 
 ### US-65: Implement UEntityMatrixDecoder
-Date of completion: 3/12/2023
+Date of completion: 3/12/2023  
 Completed by: Adam Kvarnsund
 
 As a developer I want the EntityMatrix to be delivered to the view as a matrix of ints
@@ -1668,7 +1668,7 @@ It makes the code more extensible using the adapter pattern to convert object co
 The user does not directly interact with this class.
 
 ### US-79: Implement dynamic map dimensions into MapGenerators
-Date of completion: 3/12/2023
+Date of completion: 3/12/2023  
 Completed by: Adam Kvarnsund
 
 As a user I want the size of the map to be any rectangular size
@@ -1689,7 +1689,7 @@ The user can see that the map has different sizes depending on the settings, als
 ---
 
 ### US-44 As a developer I want to know what to test and have efficient tests for it
-Date of completion: 28/11/2023
+Date of completion: 28/11/2023  
 Completed by: Noa Cavassi
 
 #### What
@@ -1710,7 +1710,7 @@ This US is purely about tests which have no user interaction.
 ---
 
 ### US-70: Implement Entity Matrix Generator Utility Class
-Date of completion: 29/11/2023
+Date of completion: 29/11/2023  
 Completed by: Erik Andreasson
 
 As a developer I want entities in the model to be represented in a matrix so that collision detection between entities is easier to implement.
@@ -1736,7 +1736,7 @@ The user will interact with this feature through playing as an Entity on the ent
 ---
 
 ### US-76: Refactoring duplicated code in CommandableEntityTest
-Date of completion: 01/12/2023
+Date of completion: 01/12/2023  
 Completed by: William Norland
 
 As a developer I want to factor out the duplicate code in the movement tests in CommandableEntityTest. Because It makes the code easier to maintain.
@@ -1756,7 +1756,7 @@ This US is purely about tests which have no user interaction.
 ---
 
 ### US-66 Weapons and projectiles
-Date of completion: 1/12/2023
+Date of completion: 1/12/2023  
 Completed by: Noa Cavassi
 
 As a developer I want bodies with a weapon object to be able to shoot, and the bullets to have a hit box and a projectile.
@@ -1778,7 +1778,7 @@ The user will come in contact with this feature when firing the weapon, or when 
 ---
 
 ### US-77: Fixing SOLID violations in controller.
-Date of completion: 01/12/2023
+Date of completion: 01/12/2023  
 Completed by: William Norland
 
 As a developer I want the controller module to not violate the SOLID principles.
@@ -1799,7 +1799,7 @@ This affects the ability to add new ways for the player to interact with the app
 --- 
 
 ### US-71: Implement AI Movement For Enemies
-Date of completion: 2/12/2023
+Date of completion: 2/12/2023  
 Completed by: Erik Andreasson
 
 As a player I want the enemies in the game to move around so that the enemies are more challenging
@@ -1830,7 +1830,7 @@ This code makes the game more engaging for the player since enemies appear to mo
 ---
 
 ###  US-78: Solution for projectile movement and IDamagable
-Date of completion: 3/12/2023
+Date of completion: 3/12/2023  
 Completed by: Noa Cavassi
 
 As a developer I want bodies with a weapon object to be able to shoot, and the bullets to have a hit box and a projectile.
@@ -1858,7 +1858,7 @@ The user will come in contact with this feature when firing the weapon, or when 
 ---
 
 ### Change-Note
-Date of completion: 3/12/2023
+Date of completion: 3/12/2023 
 Completed by: William Norland
 
 When i configured the POM file in the maven project to be ready for deployment i had to reconfigure how we accessed image resources in the View, this change led me to discover that all images we used in the application where created dynamically every time they where used. This explains subpar performance in some cases. Deeming this issue urgent i decided to fix it on the fly.
@@ -1866,7 +1866,7 @@ When i configured the POM file in the maven project to be ready for deployment i
 ---
 
 ### US-80: Renaming CommandableEntity methods
-Date of completion: 3/12/2023
+Date of completion: 3/12/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to rename the moveCommand() and other similar methods in the CommandableEntity class.
@@ -1890,7 +1890,7 @@ This change has to do with the functionality of entities such as the player that
 ---
 
 ### US-69: Implement smart entity spawning in application
-Date of completion: 5/12/2023
+Date of completion: 5/12/2023  
 Completed by: Noa Cavassi
 
 As a user I want all entities to spawn on possible tiles.
@@ -1911,7 +1911,7 @@ The user will interact with this feature every time a new entity spawns on the m
 ---
 
 ### US-87: Implementing a score system
-Date of completion: 5/12/2023
+Date of completion: 5/12/2023  
 Completed by: William Norland
 
 As a user I would like a way to be rewarded for progress so there is a purpose with the game.
@@ -1931,7 +1931,7 @@ The user indirectly interacts with this feature. The score of the entities is up
 --- 
 
 ### US-88: Making projectiles cause damage
-Date of completion: 5/12/2023
+Date of completion: 5/12/2023  
 Completed by: William Norland
 
 As a use I want projectiles in the game to cause damage.
@@ -1951,7 +1951,7 @@ The user will interact with this US every time the user fires a weapon or gets f
 ---
 
 ### US-62: Refactoring application
-Date of completion: 5/12/2023
+Date of completion: 5/12/2023  
 Completed by: Erik Andreasson
 
 As a developer I want to refactor the application so that the modules we have written are integrated into the
@@ -1984,7 +1984,7 @@ Once all the enemies are defeated a new wave will spawn with higher difficulty.
 ---
 
 ### US-90: Implement AI Firing Of Weapons In AICommander
-Date of completion: 6/12/2023
+Date of completion: 6/12/2023  
 Completed by: Erik Andreasson
 
 As a player I want the enemies in the game to fire at me to make the game more engaging
@@ -2019,7 +2019,7 @@ firing their cannons.
 ---
 
 ### US-84: Implement extendable mapping from entities names to int matrix in UEntityMatrixDecoder
-Date of completion: 7/12/2023
+Date of completion: 7/12/2023  
 Completed by: Adam Kvarnsund
 
 As a developer I want to map the name of an entity to an integer that can easily be extendable
@@ -2039,7 +2039,7 @@ The user does not interact with this functionality, it is just to make the codeb
 ---
 
 ### US-89: Adding a minimal menu to the game
-Date of completion: 7/12/2023
+Date of completion: 7/12/2023  
 Completed by: William Norland
 
 As a user I would like to control when the game starts through a menu
@@ -2058,8 +2058,8 @@ The user will interact with this us when navigating the menus.
 
 ---
 
-US-93: Factoring out application from main
-Date of completion: 7/12/2023
+### US-93: Factoring out application from main
+Date of completion: 7/12/2023  
 Completed by: William Norland
 
 As a developer I want to factor out the application functionality from main.
@@ -2079,7 +2079,7 @@ The developer using the source code of this application will have an easier time
 ---
 
 #### US-81: Adding AWeapon to Ship Class
-Date of completion: 7/12/2023
+Date of completion: 7/12/2023  
 Completed by: Erik Andreasson
 
 As a player I want my player model to fire weapons so that I can damage enemies
