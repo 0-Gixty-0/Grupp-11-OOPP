@@ -2117,3 +2117,23 @@ We found a bug where the enemy pathfinding stopped working for certain map sizes
 I found that in the method getSurroundingEntityNameAndPos in class AICommander I had previously assumed that the map would
 always be square so the method always searched through a square section of the map based on the map height. I changed
 the method to use both the map height and the map width which can now vary.
+
+---
+
+### US-95: Create factory for projectiles
+Date of completion: 7/12/2023
+Completed by: Adam Kvarnsund
+
+As a user developer I want projectiles to be created through a factory
+
+#### What
+Created a factory named ProjectileFactory that uses the factory method pattern to create projectile objects. 
+
+#### How
+Made a class ProjectileFactory that uses the factory method pattern that calls the constructor of the specific projectile that is desired via its create[ProjectileType] and then creates the object.
+
+#### Why
+This makes the code less coupled and contributes to a more maintainable and modular codebase.
+
+#### User Interaction
+The user does not interact with this functionality, it is just to make the codebase more extendable.
