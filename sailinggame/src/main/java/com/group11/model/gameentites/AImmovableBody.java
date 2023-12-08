@@ -13,7 +13,7 @@ public class AImmovableBody extends ABody {
      * @param hitPoints The hitpoints of the body
      * @param description The description of the body
      */
-    protected AImmovableBody(Point pos, int hitPoints, String description) {
-        super(pos, hitPoints, description);
+    protected AImmovableBody(Point pos, int hitPoints) {
+        super(pos, hitPoints);
     }
 }

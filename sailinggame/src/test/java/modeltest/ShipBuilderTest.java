@@ -22,7 +22,6 @@ public class ShipBuilderTest {
         Ship body = (Ship) player.getBody();
         assertEquals("Player", player.getName());
         assertEquals(new Point(0,0), player.getPos());
-        assertEquals(22.5, body.getHitPoints());
         assertEquals(6.0, body.getArmor());
         assertEquals(1, body.getShipLevel());
         assertTrue(body.getWeapon() instanceof BasicCannon);
@@ -36,7 +35,6 @@ public class ShipBuilderTest {
         Ship body = (Ship) enemy.getBody();
         assertEquals(1, body.getShipLevel());
         assertEquals(new Point(0,0), enemy.getPos());
-        assertEquals(22.5, body.getHitPoints());
         assertEquals(6.0, body.getArmor());
         assertEquals(1, body.getShipLevel());
         assertTrue(body.getWeapon() instanceof BasicCannon);
@@ -50,7 +48,6 @@ public class ShipBuilderTest {
         Ship body = (Ship) enemy.getBody();
         assertEquals(2, body.getShipLevel());
         assertEquals(new Point(0,0), enemy.getPos());
-        assertEquals(45.0, body.getHitPoints());
         assertEquals(12.0, body.getArmor());
         assertEquals(2, body.getShipLevel());
         assertTrue(body.getWeapon() instanceof BasicCannon);

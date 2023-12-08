@@ -17,8 +17,8 @@ public abstract class AMovableBody extends ABody implements IMovable {
      * @param hitPoints The hitpoints of the body
      * @param description The description of the body   
      */
-    protected AMovableBody(Point pos, double hitPoints, String description){
-        super(pos, hitPoints, description);
+    protected AMovableBody(Point pos, double hitPoints){
+        super(pos, hitPoints);
     }
 
     /**

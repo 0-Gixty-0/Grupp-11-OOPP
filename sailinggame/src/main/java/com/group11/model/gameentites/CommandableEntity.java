@@ -67,4 +67,5 @@ public class CommandableEntity extends AEntity implements ICommandable {
             System.out.println(String.format("Objects of type %s cannot interact",this.getBody().getClass().getName()));
         }
     }
+
 }

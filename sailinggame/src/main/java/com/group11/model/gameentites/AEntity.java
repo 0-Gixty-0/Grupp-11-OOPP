@@ -5,7 +5,7 @@ import java.awt.Point;
 /**
  * An entity represents anything interactive in the world, it could be a town, creature, ship etc
  */
-public abstract class AEntity {
+public abstract class AEntity implements IDamageable {
     
     private String name;
     private Boolean friendly;
@@ -52,6 +52,18 @@ public abstract class AEntity {
      */
     public ABody getBody() {
         return body;
+    }
+
+    public void takeDamage(int damage) {
+        this.body.takeDamage(damage);
+    }
+
+    public int getHitPoints() {
+        return (int) this.body.getHitPoints();
+    }
+
+    public void setHitPoints(int hp) {
+        this.body.setHitPoints(hp);
     }
 
     /**

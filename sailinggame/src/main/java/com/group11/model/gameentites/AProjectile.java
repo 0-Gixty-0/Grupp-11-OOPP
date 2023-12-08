@@ -10,12 +10,13 @@ import java.awt.*;
  * the direction it is traveling in, and the hitpoints it has. A projectile has always 1 hitpoint.
  */
 
-public abstract class AProjectile extends AMovableBody{
+public abstract class AProjectile extends ABody{
 
     private int distanceTraveled;
     private int maxRange;
     private int damage;
     private int [] direction;
+    private String projectileName;
 
     /**
      * Constructs a new projectile with the given parameters.
@@ -25,8 +26,9 @@ public abstract class AProjectile extends AMovableBody{
      * @param direction the direction the projectile is traveling in
      */
 
-    protected AProjectile(Point startingPos, int maxRange, int damage, int [] direction){
-        super(startingPos, 1, "Projectile");
+    protected AProjectile(Point startingPos, int maxRange, int damage, int [] direction, String projectileName){
+        super(startingPos, 1);
+        this.projectileName = projectileName;
         this.distanceTraveled = 0;
         this.maxRange = maxRange;
         this.damage = damage;
@@ -34,17 +36,25 @@ public abstract class AProjectile extends AMovableBody{
     }
 
     /**
+     * Returns the name of the projectile.
+     * @return the name of the projectile
+     */
+    protected String getProjectileName() {
+        return this.projectileName;
+    }
+
+    /**
      * Checks if the projectile is out of range.
      * @return true if the projectile has traveled beyond its maximum range, false otherwise
      */
-    public boolean isOutOfRange() {
+    protected boolean isOutOfRange() {
         return(this.distanceTraveled >= this.maxRange); 
     }
 
     /**
      * Makes the projectile travel in a predetermined path.
      */
-    public void moveInTravelPath() {
+    protected void moveInTravelPath() {
         if (!isOutOfRange()) {
             this.distanceTraveled++;
             continueTravelPath();
@@ -55,7 +65,7 @@ public abstract class AProjectile extends AMovableBody{
      * Returns the damage the projectile can cause.
      * @return the damage the projectile can cause
      */
-    public int getDamage() {
+    protected int getDamage() {
         return this.damage;
     }
 
