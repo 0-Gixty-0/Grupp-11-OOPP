@@ -2182,3 +2182,23 @@ By implementing these features we are finally finished with our mvp.
 
 #### User Interaction
 The user will interact with this us when the user is moving the player, fighting enemies, gaining score by destroying enemies, losing the game, taking damage, dealing damage etc..
+
+--- 
+
+### US-97: Tutorial for controls
+Date of completion: 7/12/2023  
+Completed by: Noa Cavassi
+
+As a user I want to know what keys to use on my keyboard and what they do.
+
+#### What
+This user story is about making it more clear which keys to use to play the game and what they do.
+
+#### How
+By using a photo editor software, I created two images. Then I used some java swing components to display the images on a suited place on the screen.
+
+#### Why
+To make it easier for the user to understand how to play the game.
+
+#### User Interaction
+The user will always see the tutorial images when playing the game, and will therefore always be able to see what keys to use and what they do.
