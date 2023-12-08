@@ -20,7 +20,7 @@ public class Ship extends AMovableBody implements IHasWeapon {
      * @param hitPoints the number of hitpoints of the ship
      */
     public Ship(Point pos, int shipLevel, double armor, AWeapon weapon, double hitPoints){
-        super(pos, hitPoints, "A basic ship");
+        super(pos, hitPoints);
         this.shipLevel   = shipLevel;
         this.armor       = armor;
         this.weapon = weapon;
@@ -31,7 +31,7 @@ public class Ship extends AMovableBody implements IHasWeapon {
      * @param pos coordinate position of the ship
      */
     public Ship(Point pos) {
-        super(pos, 100, "Standard Ship, Custom: Position");
+        super(pos, 100);
         this.shipLevel = 1;
         this.armor = 2;
         this.weapon = new BasicCannon(BasicCannonBall.class);

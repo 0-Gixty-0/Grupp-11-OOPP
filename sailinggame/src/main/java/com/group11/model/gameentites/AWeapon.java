@@ -12,7 +12,7 @@ import java.util.List;
  */
 public abstract class AWeapon {
 
-    private List<AProjectile> firedProjectiles;
+    private List<ProjectileEntity> firedProjectiles;
     private int maxTimesFired;
     private Class<? extends AProjectile> projectileType;
 
@@ -46,7 +46,7 @@ public abstract class AWeapon {
      * Returns the list of projectiles that this cannon has fired.
      * @return the list of projectiles that this cannon has fired.
      */
-    public List<AProjectile> getFiredProjectiles() {
+    public List<ProjectileEntity> getFiredProjectiles() {
         return this.firedProjectiles;
     }
 
@@ -65,10 +65,11 @@ public abstract class AWeapon {
      * @return a new instance of the projectile type that this Weapon fires.
      * @throws RuntimeException if the projectile could not be instantiated
      */
-    protected AProjectile createProjectile(Point startingPoint, int [] direction) {
+    protected ProjectileEntity createProjectile(Point startingPoint, int [] direction) {
         
         try {
-            return this.projectileType.getDeclaredConstructor(Point.class, int[].class).newInstance(startingPoint, direction);
+            AProjectile projectile = this.projectileType.getDeclaredConstructor(Point.class, int[].class).newInstance(startingPoint, direction);
+            return new ProjectileEntity(projectile, projectile.getProjectileName());
         } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
                 | NoSuchMethodException | SecurityException e) {
             throw new RuntimeException("Could not instantiate projectile, bad projectile type in weapon");

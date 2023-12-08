@@ -8,29 +8,17 @@ import java.awt.Point;
 
 import org.junit.Test;
 
-import com.group11.model.gameentites.AProjectile;
+import com.group11.model.gameentites.BasicCannonBall;
+import com.group11.model.gameentites.ProjectileEntity;
 import com.group11.model.gameworld.BasicMapGenerator;
 import com.group11.model.gameworld.Map;
 import com.group11.model.utility.UMovementUtility;
 
-public class AProjectileTest {
+public class ProjectileEntityTest {
 
-    private class TestProjectile extends AProjectile {
-
-        public TestProjectile(Point pos, int maxRange, int damage, int[] direction) {
-            super(pos, maxRange, damage, direction);
-        }
-
-        @Override
-        public void continueTravelPath() {
-            this.moveIfPossible(this.getDirection());
-        }
-        
-    }
-
-    private AProjectile setUp() {
+    private ProjectileEntity setUp() {
         int [] direction = {1,1};
-        AProjectile testProjectile = new TestProjectile(new Point(0,0), 10, 10, direction);
+        ProjectileEntity testProjectile = (ProjectileEntity) new ProjectileEntity(new BasicCannonBall(new Point(0,0), direction), "CannonBall");
         Map map = (new BasicMapGenerator()).generateMap(50,50);
         UMovementUtility.setTileMatrix(map.getTileMatrix());
         return testProjectile;
@@ -38,19 +26,20 @@ public class AProjectileTest {
 
     @Test
     public void testIsOutOfRange() {
-        AProjectile testProjectile = setUp();
+        ProjectileEntity testProjectile = setUp();
         assertFalse(testProjectile.isOutOfRange());
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 19; i++) {
             testProjectile.moveInTravelPath();
         }
         assertFalse(testProjectile.isOutOfRange());
         testProjectile.moveInTravelPath();
+        System.out.println(testProjectile.getPos());
         assertTrue(testProjectile.isOutOfRange());
     }
 
     @Test
     public void testTravel() {
-        AProjectile testProjectile = setUp();
+        ProjectileEntity testProjectile = setUp();
         testProjectile.moveInTravelPath();
         assertEquals(new Point(1,1), testProjectile.getPos());
     }

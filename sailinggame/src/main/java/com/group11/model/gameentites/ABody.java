@@ -7,9 +7,9 @@ import java.awt.Point;
  * since a body can take damage.
  */
 
-public abstract class ABody extends APositonable implements IDamageable {
+public abstract class ABody extends APositonable {
     private double hitPoints;
-    String description;
+
 
     /**
      * Constructor for creating objects of type ABody, the physical part of an entity in the game.
@@ -18,7 +18,7 @@ public abstract class ABody extends APositonable implements IDamageable {
      * @param hitPoints - the hitpoints of the body
      * @param description - the description of the body
      */
-    protected ABody(Point pos, double hitPoints, String description) {
+    protected ABody(Point pos, double hitPoints) {
         super(pos);
         this.hitPoints  = hitPoints;
     }
@@ -27,8 +27,7 @@ public abstract class ABody extends APositonable implements IDamageable {
      * Reduces the hitpoints of the body
      * @param damage - the amount of damage taken by the body
      */
-    @Override
-    public void takeDamage(int damage){
+    protected void takeDamage(int damage){
         this.hitPoints -= damage;
     }
 
@@ -36,7 +35,7 @@ public abstract class ABody extends APositonable implements IDamageable {
      * Returns the current hitpoints of the body
      * @return the current hitpoints of the body
      */
-    public double getHitPoints() {
+    protected double getHitPoints() {
         return this.hitPoints;
     }
 
@@ -44,7 +43,7 @@ public abstract class ABody extends APositonable implements IDamageable {
      * Sets the hitpoints of the body
      * @param newHitpoints - the new hitpoints value of the body
      */
-    public void setHitPoints(int newHitpoints) {
+    protected void setHitPoints(int newHitpoints) {
         this.hitPoints = newHitpoints;
     }
 }

@@ -3,7 +3,9 @@ package modeltest;
 import com.group11.model.gameentites.*;
 import org.junit.Test;
 
-import java.awt.*;
+import java.awt.Point;
+import java.util.List;
+
 
 import static org.junit.Assert.*;
 
@@ -35,7 +37,7 @@ public class ShipTest {
         public Class<? extends AProjectile> debugGetProjectileType() {
             return this.getProjectileType();
         }
-        public AProjectile getProjectile() {
+        public ProjectileEntity getProjectile() {
             return this.getFiredProjectiles().get(0);
         }
 
