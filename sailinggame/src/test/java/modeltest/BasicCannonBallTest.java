@@ -20,7 +20,7 @@ public class BasicCannonBallTest {
         UMovementUtility.setTileMatrix(map.getTileMatrix());
 
         for (int i = 1; i <= 5; i++) {
-            testBall.travel();
+            testBall.moveInTravelPath();
             assertEquals(testBall.getPos(), new Point(i, i));
         }
     }

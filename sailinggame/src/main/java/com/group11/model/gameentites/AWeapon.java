@@ -46,7 +46,7 @@ public abstract class AWeapon {
      * Returns the list of projectiles that this cannon has fired.
      * @return the list of projectiles that this cannon has fired.
      */
-    protected List<AProjectile> getFiredProjectiles() {
+    public List<AProjectile> getFiredProjectiles() {
         return this.firedProjectiles;
     }
 
@@ -74,6 +74,14 @@ public abstract class AWeapon {
             throw new RuntimeException("Could not instantiate projectile, bad projectile type in weapon");
         }
         
+    }
+
+    public void removeOutOfRangeProjectiles() {
+        for (int i = 0; i < this.firedProjectiles.size(); i++) {
+            if (firedProjectiles.get(i).isOutOfRange()) {
+                this.firedProjectiles.remove(i);
+            }
+        }
     }
 
     /**

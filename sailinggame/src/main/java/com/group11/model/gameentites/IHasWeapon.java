@@ -5,4 +5,5 @@ package com.group11.model.gameentites;
  */
 public interface IHasWeapon {
     void fireWeapon(int[] direction);
+    AWeapon getWeapon();
 }

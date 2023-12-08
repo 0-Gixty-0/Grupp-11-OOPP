@@ -1,18 +1,27 @@
 package com.group11.application;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import com.group11.controller.KeyboardInterpretor;
 import com.group11.model.builders.ShipBuilder;
+import com.group11.model.gameentites.ABody;
 import com.group11.model.gameentites.AEntity;
+import com.group11.model.gameentites.AProjectile;
+import com.group11.model.gameentites.AWeapon;
+import com.group11.model.gameentites.BasicCannonBall;
 import com.group11.model.gameentites.CommandableEntity;
+import com.group11.model.gameentites.IHasWeapon;
 import com.group11.model.gameworld.AdvancedMapGenerator;
 import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.IMapGenerator;
 import com.group11.model.gameworld.IWorldGenerator;
 import com.group11.model.gameworld.World;
 import com.group11.model.utility.AICommander;
+import com.group11.model.utility.UEntityCollisionUtility;
 import com.group11.model.utility.UEntityMatrixDecoder;
 import com.group11.model.utility.UEntityMatrixGenerator;
 import com.group11.model.utility.UMovementUtility;
@@ -24,11 +33,14 @@ import com.group11.view.uicomponents.MainMenuPanel;
 
 public class SailingGameApplication extends AApplication {
 
+    private static final int WINDOWWITH = 1100;
+    private static final int WINDOWHEIGHT = 1000;
+    private static final int MAPWIDTH = 65;
+    private static final int MAPHEIGHT = 35;
+
     private GamePanel gameView;
     private MainMenuPanel mainMenuView;
     private GameOverPanel gameOverView;
-    private int mapWidth;
-    private int mapHeight;
     private static final KeyboardInterpretor keyboardInterpreter = new KeyboardInterpretor();
     private AICommander aiCommander;
     private int waveNumber = 1;
@@ -41,27 +53,13 @@ public class SailingGameApplication extends AApplication {
 
 
     /**
-     * Constructor method performs the following tasks:
-     * Creates the app window used to display the game
-     * Creates an entity director and spawner
-     * Creates the game world in the model
-     * Creates initial entities when starting the game
-     * Sets tile matrix in UMovementUtility
-     * Creates the AI Commander
-     * Updates the window's displayed terrain
-     * Updates the window's diplayed entities
-     * @param windowWidth Width of Swing window
-     * @param windowHeight Height of Swing window
-     * @param mapWidth Width of game map
-     * @param mapHeight Height of game map
+     * Constructs a SailingGameApplication.
      */
-    public SailingGameApplication(int windowWidth, int windowHeight, int mapWidth, int mapHeight) {
-        super(new AppFrame(windowWidth, windowHeight));
-        this.mapWidth = mapWidth;
-        this.mapHeight = mapHeight;
-        this.gameView = new GamePanel(windowWidth, windowHeight, mapWidth, mapHeight, 16, 16);
-        this.mainMenuView = new MainMenuPanel(windowWidth, windowHeight);
-        this.gameOverView = new GameOverPanel(windowWidth, windowHeight);
+    public SailingGameApplication() {
+        super(new AppFrame(WINDOWWITH, WINDOWHEIGHT));
+        this.gameView = new GamePanel(WINDOWWITH, WINDOWHEIGHT, MAPWIDTH, MAPHEIGHT, 16, 16);
+        this.mainMenuView = new MainMenuPanel(WINDOWWITH, WINDOWHEIGHT);
+        this.gameOverView = new GameOverPanel(WINDOWWITH, WINDOWHEIGHT);
     }
 
     /**
@@ -81,8 +79,8 @@ public class SailingGameApplication extends AApplication {
             while (Thread.currentThread().isAlive()) {
                 Thread.sleep(50);
                 if (this.mainMenuView.getStartButtonPressed()) { // Main menu loop
-                    removeViewFromWindow(mainMenuView);
-                    addViewToWindow(gameView);
+                    this.removeViewFromWindow(mainMenuView);
+                    this.addViewToWindow(gameView);
                     this.mainMenuView.resetStartButtonPressed();
                     this.initializeGame();
                     break;
@@ -90,19 +88,28 @@ public class SailingGameApplication extends AApplication {
             }
 
             while (true) { // Game loop
+                Thread.sleep(50);
                 if (this.enemyList.isEmpty()) {
                     this.waveNumber++;
-                    this.enemyList = this.entitySpawner.createEnemyWave(this.waveNumber);
+                    this.enemyList.addAll(this.entitySpawner.createEnemyWave(this.waveNumber));
+                    this.entityList.addAll(this.enemyList);
+                    this.player.getBody().setHitPoints(50);
                 }
-                this.aiCommander.moveEnemies(this.enemyList);
                 updatePlayer();
-                this.updateEntityMatrix();
-                Thread.sleep(50);
-
-                if (this.player.getBody().getPos().getX() == 0) { // Game over
-                    removeViewFromWindow(gameView);
-                    addViewToWindow(gameOverView);
-                    this.gameOverView.setScoreLabel(0);
+                this.aiCommander.moveEnemies(this.enemyList);
+                this.aiCommander.fireWeapons(this.enemyList);
+                this.entityList.addAll(createProjectiles());
+                moveProjectiles();
+                updateEntityMatrix();
+                moveProjectiles();
+                updateEntityMatrix();
+                checkProjectileCollisions();
+                
+                if (this.player.getBody().getHitPoints() <= 0) { // Game over
+                    this.waveNumber = 1;
+                    this.removeViewFromWindow(gameView);
+                    this.addViewToWindow(gameOverView);
+                    this.gameOverView.setScoreLabel(ScoreBoard.getScore(player));
                     break;
                 }
             }
@@ -110,7 +117,7 @@ public class SailingGameApplication extends AApplication {
             while (true) { // Game over loop
                 Thread.sleep(50);
                 if (this.gameOverView.getBackToMenuButtonPressed()) {
-                    removeViewFromWindow(gameOverView);
+                    this.removeViewFromWindow(gameOverView);
                     this.gameOverView.resetBackToMenuButtonPressed();
                     break;
                 }
@@ -126,16 +133,20 @@ public class SailingGameApplication extends AApplication {
         this.entityList.clear();
         this.world = this.createWorld();
         this.entitySpawner = new EntitySpawner(this.world, new ShipBuilder());
-        UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
-        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(this.mapWidth, this.mapHeight);
+        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(MAPWIDTH, MAPHEIGHT);
         this.aiCommander = new AICommander(this.entityMatrix, this.world.getMap().getTileMatrix());
         this.enemyList = this.entitySpawner.createEnemyWave(this.waveNumber);
-        this.player = this.createPlayer();
+        this.player = (CommandableEntity) this.entitySpawner.spawnPlayer();
+        this.player.getBody().setHitPoints(100);
         this.entityList.add(player);
         this.entityList.addAll(this.enemyList);
         UEntityMatrixGenerator.populateEntityMatrix(this.entityList, this.entityMatrix);
+        UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
+        UEntityCollisionUtility.setEntityMatrix(entityMatrix);
         this.gameView.updateTerrain((UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
-        this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
+        ScoreBoard.clearScoreBoard();
+        ScoreBoard.addEntityToScoreBoard(this.player);
+        ScoreBoard.setScore(this.player, 0);
     }
 
     /**
@@ -145,25 +156,91 @@ public class SailingGameApplication extends AApplication {
     private World createWorld() {
         IMapGenerator mapGenerator = new AdvancedMapGenerator();
         IWorldGenerator worldGenerator = new BasicWorldGenerator(mapGenerator);
-        return worldGenerator.generateWorld(this.mapWidth,this.mapHeight);
-    }
-
-    /**
-     * Creates the basic version of a player using the entity spawner
-     * @return The model representation of a player
-     */
-    private CommandableEntity createPlayer() {
-        return (CommandableEntity) this.entitySpawner.spawnPlayer();
+        return worldGenerator.generateWorld(this.MAPWIDTH,this.MAPHEIGHT);
     }
 
     /**
      * Updates the entity matrix from the entity list and updates the visual representation of entities in the frame
      */
     private void updateEntityMatrix() {
-        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(this.mapWidth, this.mapHeight);
+        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(this.MAPWIDTH, this.MAPHEIGHT);
         UEntityMatrixGenerator.populateEntityMatrix(this.entityList, this.entityMatrix);
         this.aiCommander.setEntityMatrix(this.entityMatrix);
         this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
+        UEntityCollisionUtility.setEntityMatrix(entityMatrix);
+    }
+
+    /**
+     * Private class used to wrap projectiles in an entity, QuickFix
+     */
+    private class ProjectileEntiy extends AEntity {
+
+        public ProjectileEntiy(AProjectile body, String name, Boolean friendly) {
+            super(body, name, friendly);
+        }
+
+        public AProjectile getBody() {
+            return (AProjectile) super.getBody();
+        }
+    }
+
+    /**
+     * Checks if any projectiles are colliding with any entities and deals damage to the entity if so
+     */
+    private void checkProjectileCollisions() {
+        Set<AEntity> entitiesToRemove = new HashSet<>();
+        for (AEntity entity : this.entityList) {
+            AEntity collidingEntity = UEntityCollisionUtility.isEntityColliding(entity);
+            if (collidingEntity != null && collidingEntity.getBody() instanceof AProjectile)  {
+                int damage = ((AProjectile) collidingEntity.getBody()).getDamage();
+                entity.getBody().takeDamage(damage);
+                if (entity.getBody().getHitPoints() <= 0) {
+                    if (!entity.isFriendly()) {
+                        ScoreBoard.incrementScore(player, waveNumber*10);
+                        gameView.updateScore(ScoreBoard.getScore(player));
+                    }
+                    entitiesToRemove.add(entity);
+                }
+            }
+        }
+        this.entityList.removeAll(entitiesToRemove);
+        this.enemyList.removeAll(entitiesToRemove);
+    }
+
+    /**
+     * Creates a list of projectiles from the entity list
+     * @return A list of projectiles
+     */
+    private List<AEntity> createProjectiles() {
+        List<AEntity> projectiles = new ArrayList<>();
+
+        for (AEntity entity : this.entityList) {
+            if (entity.getBody() instanceof IHasWeapon) {
+                AWeapon weapon = ((IHasWeapon) entity.getBody()).getWeapon();
+                weapon.removeOutOfRangeProjectiles();
+                List<AProjectile> firedProjectiles = weapon.getFiredProjectiles();
+                Iterator<AProjectile> iterator = firedProjectiles.iterator();
+                
+                while (iterator.hasNext()) {
+                    AProjectile projectile = iterator.next();
+                    projectiles.add(new ProjectileEntiy(projectile, "CannonBall", true));
+                }
+            }
+        }
+        
+        return projectiles;
+    }
+
+    /**
+     * Moves all projectiles in the entity list
+     */
+    private void moveProjectiles() {
+        for (AEntity entity : this.entityList) {
+            ABody body = entity.getBody();
+            if (body instanceof AProjectile) {
+                ((AProjectile)body).moveInTravelPath();;
+            }
+        }
     }
 
     /**
@@ -171,8 +248,14 @@ public class SailingGameApplication extends AApplication {
      */
     private void updatePlayer() {
         int movementInput = keyboardInterpreter.getMovementInput();
+        int fireInput = keyboardInterpreter.getFireInput();
+        gameView.updateHp((int) player.getBody().getHitPoints());
+
         if (movementInput >= 0) {
             this.player.moveIfAble(movementInput);
+        }
+        if (fireInput >= 0) {
+            this.player.attackIfAble(fireInput);
         }
     }
 }

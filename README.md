@@ -2165,22 +2165,20 @@ statement.
 Once the enemy has reached a certain radius around the player they will no longer move directly toward the player. Instead moving randomly around
 them.
 
----
+### US-94
+Date of completion 7/12/2023
+Completed by: William Norland
 
-### US-97: Tutorial for controls
-Date of completion: 7/12/2023  
-Completed by: Noa Cavassi
-
-As a user I want to know what keys to use on my keyboard and what they do.
+As a user I want to be able to combat enemies.
 
 #### What
-This user story is about making it more clear which keys to use to play the game and what they do.
+During this US i implemented rendering projectiles to the view, handeling collisons between projectiles and the player, handeling collisons between projectiles and the enemies, getting score from destroying enemies.
 
 #### How
-By using a photo editor software, I created two images. Then I used some java swing components to display the images on a suited place on the screen.
+By implementing methods in the SailingGameApplication class.
 
 #### Why
-To make it easier for the user to understand how to play the game. 
+By implementing these features we are finally finished with our mvp.
 
 #### User Interaction
-The user will always see the tutorial images when playing the game, and will therefore always be able to see what keys to use and what they do.
+The user will interact with this us when the user is moving the player, fighting enemies, gaining score by destroying enemies, losing the game, taking damage, dealing damage etc..

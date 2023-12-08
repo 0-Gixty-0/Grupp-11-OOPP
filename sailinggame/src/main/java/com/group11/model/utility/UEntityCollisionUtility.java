@@ -23,13 +23,13 @@ public final class UEntityCollisionUtility {
      * Set the entities to check for collision.
      * @param bodies Matrix of entities.
      */
-    public static void setBodyMatrix(List<List<AEntity>> entities) {
+    public static void setEntityMatrix(List<List<AEntity>> entities) {
         UEntityCollisionUtility.entities = entities;
     }
 
-    private static void checkBodies() {
+    private static void checkEntityMatrix() {
         if (entities == null) {
-            throw new IllegalStateException("Bodies not set in BodyCollisionUtility");
+            throw new IllegalStateException("entity matrix not set in UEntityCollisionUtility");
         }
     }
 
@@ -40,7 +40,7 @@ public final class UEntityCollisionUtility {
      */
     public static AEntity isPositionOccupied(Point pos) {
 
-        checkBodies();
+        checkEntityMatrix();
 
         int x = (int) pos.getX();
         int y = (int) pos.getY();
@@ -55,7 +55,7 @@ public final class UEntityCollisionUtility {
      */
     public static AEntity isEntityColliding(AEntity entity) {
         
-        checkBodies();
+        checkEntityMatrix();
 
         Point bodyPos = entity.getPos();
         int x = (int) bodyPos.getX();
