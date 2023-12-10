@@ -37,12 +37,13 @@ public final class UProjectileUtility {
                 }
             }
         }
+        
         entityList.removeIf(e -> e.getHitPoints() <= 0);
         enemyList.removeIf(e -> e.getHitPoints() <= 0);
     }
 
     /**
-     * Creates a list of projectiles from the entity list
+     * Updates the projectile entities in the entity list
      */
     public static void updateProjectiles(List<AEntity> entityList) {
         List<AEntity> projectiles = new ArrayList<>();

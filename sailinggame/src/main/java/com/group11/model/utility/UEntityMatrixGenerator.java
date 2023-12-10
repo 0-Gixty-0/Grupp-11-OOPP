@@ -23,7 +23,7 @@ public final class UEntityMatrixGenerator {
      * @param height Number of rows in matrix
      * @return Entity matrix, all values null
      */
-    public static List<List<AEntity>> createEntityMatrix(int width, int height) {
+    public static List<List<AEntity>> createEntityMatrix(int width, int height, List<AEntity> entities) {
         List<List<AEntity>> entityMatrix = new ArrayList<>();
         for (int rowIndex = 0; rowIndex < height; rowIndex++) {
             List<AEntity> row = new ArrayList<>();
@@ -32,6 +32,30 @@ public final class UEntityMatrixGenerator {
             }
             entityMatrix.add(row);
         }
+        
+        addEntitiesToMatrix(entityMatrix, entities);
+
+        return entityMatrix;
+    }
+
+    private static void addEntitiesToMatrix(List<List<AEntity>> entityMatrix, List<AEntity> entities) {
+        for (AEntity entity : entities) {
+            int entityX = entity.getPos().x;
+            int entityY = entity.getPos().y;
+            entityMatrix.get(entityX).set(entityY, entity);
+        }
+    }
+
+    public static List<List<AEntity>> updateEntityMatrix(List<List<AEntity>> entityMatrix, List<AEntity> entityList) {
+        
+        for (int rowIndex = 0; rowIndex < entityMatrix.size(); rowIndex++) {
+            for (int colIndex = 0; colIndex < entityMatrix.get(rowIndex).size(); colIndex++) {
+                entityMatrix.get(rowIndex).set(colIndex, null);
+            }
+        }
+
+        addEntitiesToMatrix(entityMatrix, entityList);
+
         return entityMatrix;
     }
 

@@ -90,7 +90,7 @@ public class SailingGameApplication extends AApplication {
              * in-Game loop.
              */
             while (true) {
-                Thread.sleep(50);
+                Thread.sleep(75);
                 if (this.enemyList.isEmpty()) {
                     this.waveNumber++;
                     this.enemyList.addAll(this.entitySpawner.createEnemyWave(this.waveNumber));
@@ -100,11 +100,15 @@ public class SailingGameApplication extends AApplication {
                 updatePlayer();
                 this.aiCommander.moveEnemies(this.enemyList);
                 this.aiCommander.fireWeapons(this.enemyList);
+                
                 UProjectileUtility.updateProjectiles(this.entityList);
-                UProjectileUtility.moveProjectiles(this.entityList);
                 UProjectileUtility.moveProjectiles(this.entityList);
                 updateEntityMatrix();
                 UProjectileUtility.checkProjectileCollisions(this.entityList, this.enemyList, this.player, this.gameView, this.waveNumber);
+                UProjectileUtility.moveProjectiles(this.entityList);
+                UProjectileUtility.checkProjectileCollisions(this.entityList, this.enemyList, this.player, this.gameView, this.waveNumber);
+                
+                
                 
                 // Game over
                 if (this.player.getHitPoints() <= 0) {
@@ -138,14 +142,13 @@ public class SailingGameApplication extends AApplication {
         this.entityList.clear();
         this.world = this.createWorld();
         this.entitySpawner = new EntitySpawner(this.world, new ShipBuilder());
-        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(MAPWIDTH, MAPHEIGHT);
-        this.aiCommander = new AICommander(this.entityMatrix, this.world.getMap().getTileMatrix());
         this.enemyList = this.entitySpawner.createEnemyWave(this.waveNumber);
         this.player = (CommandableEntity) this.entitySpawner.spawnPlayer();
         this.player.setHitPoints(100);
         this.entityList.add(player);
         this.entityList.addAll(this.enemyList);
-        UEntityMatrixGenerator.populateEntityMatrix(this.entityList, this.entityMatrix);
+        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(MAPWIDTH, MAPHEIGHT,entityList);
+        this.aiCommander = new AICommander(this.entityMatrix, this.world.getMap().getTileMatrix());
         UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
         UEntityCollisionUtility.setEntityMatrix(entityMatrix);
         this.gameView.updateTerrain((UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
@@ -169,11 +172,8 @@ public class SailingGameApplication extends AApplication {
      * Updates the entity matrix from the entity list and updates the visual representation of entities in the frame
      */
     private void updateEntityMatrix() {
-        this.entityMatrix = UEntityMatrixGenerator.createEntityMatrix(MAPWIDTH, MAPHEIGHT);
-        UEntityMatrixGenerator.populateEntityMatrix(this.entityList, this.entityMatrix);
-        this.aiCommander.setEntityMatrix(this.entityMatrix);
+        this.entityMatrix = UEntityMatrixGenerator.updateEntityMatrix(entityMatrix, entityList);
         this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
-        UEntityCollisionUtility.setEntityMatrix(entityMatrix);
     }
 
     /**
