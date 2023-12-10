@@ -220,10 +220,10 @@ public class SailingGameApplication extends AApplication {
         gameView.updateHp((int) player.getHitPoints());
 
         if (movementInput >= 0) {
-            this.player.moveIfAble(movementInput);
+            this.player.moveIfPossible(movementInput);
         }
         if (fireInput >= 0) {
-            this.player.attackIfAble(fireInput);
+            this.player.attackIfPossible(fireInput);
         }
     }
 }

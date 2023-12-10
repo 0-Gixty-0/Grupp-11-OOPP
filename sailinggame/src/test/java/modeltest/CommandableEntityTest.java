@@ -25,7 +25,7 @@ public class CommandableEntityTest {
 
         //Starting position is (0,0) which is the top left corner of the map
         for (int i = 0; i < 50; i++) { //Try to move entity to the top of the map. Through the big middle island created by BasicMapNGenerator.
-            entity.moveIfAble(3); //1 is a right down diagonal move
+            entity.moveIfPossible(3); //1 is a right down diagonal move
         }
 
         int entityY = (int) entity.getPos().getY();
@@ -38,7 +38,7 @@ public class CommandableEntityTest {
         Map map = (new BasicMapGenerator()).generateMap(50,50);
         UMovementUtility.setTileMatrix(map.getTileMatrix());
         CommandableEntity entity = new CommandableEntity(body, "testy mcTest", true);
-        entity.moveIfAble(direction);
+        entity.moveIfPossible(direction);
     }
 
     @Test

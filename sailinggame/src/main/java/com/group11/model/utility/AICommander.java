@@ -60,12 +60,12 @@ public class AICommander {
                 Point enemyPoint = enemy.getPos();
                 if (!this.isNearEnemy(playerPoint, this.innerRadius)) {
                     int directionToPlayer = AStar.aStar(this.terrainMatrixEncoded, enemyPoint.x, enemyPoint.y, playerPoint.x, playerPoint.y);
-                    enemy.moveIfAble(directionToPlayer);
+                    enemy.moveIfPossible(directionToPlayer);
                 } else {
-                    enemy.moveIfAble(random.nextInt(8));
+                    enemy.moveIfPossible(random.nextInt(8));
                 }
             } else {
-                enemy.moveIfAble(random.nextInt(8));
+                enemy.moveIfPossible(random.nextInt(8));
             }
         }
     }
@@ -168,7 +168,7 @@ public class AICommander {
                 int dy = playerPoint.y - enemyPoint.y;
                 int fireDirection = AStar.getDirection(dx,dy);
                 if (this.isPathClear(this.directions[fireDirection], enemyPoint, playerPoint)) {
-                    entity.attackIfAble(fireDirection);
+                    entity.attackIfPossible(fireDirection);
                 }
             }
         }
