@@ -1,16 +1,12 @@
 package com.group11.application;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import com.group11.controller.KeyboardInterpretor;
 import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
-import com.group11.model.gameentites.IHasWeapon;
-import com.group11.model.gameentites.ProjectileEntity;
 import com.group11.model.gameworld.AdvancedMapGenerator;
 import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.IMapGenerator;
@@ -27,6 +23,10 @@ import com.group11.view.uicomponents.GameOverPanel;
 import com.group11.view.uicomponents.GamePanel;
 import com.group11.view.uicomponents.MainMenuPanel;
 
+/**
+ * A class containing logic specific to the SailingGame application. The idea of our project was to make the source
+ * code as extendable as possibile, therefore if you wanted to create a new game you would only need to change this class.
+ */
 public class SailingGameApplication extends AApplication {
 
     private static final int WINDOWWITH = 1100;
@@ -72,9 +72,12 @@ public class SailingGameApplication extends AApplication {
 
             addViewToWindow(mainMenuView);
 
+            /**
+             * Main menu loop.
+             */
             while (Thread.currentThread().isAlive()) {
                 Thread.sleep(50);
-                if (this.mainMenuView.getStartButtonPressed()) { // Main menu loop
+                if (this.mainMenuView.getStartButtonPressed()) {
                     this.removeViewFromWindow(mainMenuView);
                     this.addViewToWindow(gameView);
                     this.mainMenuView.resetStartButtonPressed();
@@ -83,7 +86,10 @@ public class SailingGameApplication extends AApplication {
                 }
             }
 
-            while (true) { // Game loop
+            /**
+             * in-Game loop.
+             */
+            while (true) {
                 Thread.sleep(50);
                 if (this.enemyList.isEmpty()) {
                     this.waveNumber++;
@@ -100,7 +106,8 @@ public class SailingGameApplication extends AApplication {
                 updateEntityMatrix();
                 UProjectileUtility.checkProjectileCollisions(this.entityList, this.enemyList, this.player, this.gameView, this.waveNumber);
                 
-                if (this.player.getHitPoints() <= 0) { // Game over
+                // Game over
+                if (this.player.getHitPoints() <= 0) {
                     this.waveNumber = 1;
                     this.removeViewFromWindow(gameView);
                     this.addViewToWindow(gameOverView);
@@ -109,7 +116,10 @@ public class SailingGameApplication extends AApplication {
                 }
             }
 
-            while (true) { // Game over loop
+            /**
+             * Game over screen loop.
+             */
+            while (true) {
                 Thread.sleep(50);
                 if (this.gameOverView.getBackToMenuButtonPressed()) {
                     this.removeViewFromWindow(gameOverView);
