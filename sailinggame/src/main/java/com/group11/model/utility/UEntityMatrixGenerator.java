@@ -43,8 +43,8 @@ public final class UEntityMatrixGenerator {
      */
     public static void populateEntityMatrix(List<AEntity> entities, List<List<AEntity>> entityMatrix) {
         for (AEntity entity : entities) {
-            int rowPosition = entity.getBody().getPos().x;
-            int columnPosition = entity.getBody().getPos().y;
+            int rowPosition = entity.getPos().x;
+            int columnPosition = entity.getPos().y;
             List<AEntity> row = entityMatrix.get(rowPosition);
             row.set(columnPosition, entity);
             entityMatrix.set(rowPosition, row);
