@@ -77,12 +77,11 @@ public abstract class AWeapon {
         
     }
 
+    /**
+     * Removes projectiles that are out of range from the list of fired projectiles.
+     */
     public void removeOutOfRangeProjectiles() {
-        for (int i = 0; i < this.firedProjectiles.size(); i++) {
-            if (firedProjectiles.get(i).isOutOfRange()) {
-                this.firedProjectiles.remove(i);
-            }
-        }
+        firedProjectiles.removeIf(e -> e.isOutOfRange());
     }
 
     /**

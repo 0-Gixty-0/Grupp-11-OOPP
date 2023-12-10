@@ -94,11 +94,11 @@ public class SailingGameApplication extends AApplication {
                 updatePlayer();
                 this.aiCommander.moveEnemies(this.enemyList);
                 this.aiCommander.fireWeapons(this.enemyList);
-                updateProjectiles();
-                moveProjectiles();
-                moveProjectiles();
+                UProjectileUtility.updateProjectiles(this.entityList);
+                UProjectileUtility.moveProjectiles(this.entityList);
+                UProjectileUtility.moveProjectiles(this.entityList);
                 updateEntityMatrix();
-                checkProjectileCollisions();
+                UProjectileUtility.checkProjectileCollisions(this.entityList, this.enemyList, this.player, this.gameView, this.waveNumber);
                 
                 if (this.player.getHitPoints() <= 0) { // Game over
                     this.waveNumber = 1;
@@ -164,51 +164,6 @@ public class SailingGameApplication extends AApplication {
         this.aiCommander.setEntityMatrix(this.entityMatrix);
         this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
         UEntityCollisionUtility.setEntityMatrix(entityMatrix);
-    }
-
-    /**
-     * Checks if any projectiles are colliding with any entities and deals damage to the entity if so
-     */
-    private void checkProjectileCollisions() {
-        
-        for (AEntity entity : this.entityList) {
-            AEntity collidingEntity = UEntityCollisionUtility.isEntityColliding(entity);
-            if (collidingEntity != null && collidingEntity instanceof ProjectileEntity)  {
-                entity.takeDamage(((ProjectileEntity) collidingEntity).getDamage());
-                if (entity.getHitPoints() <= 0 && !entity.isFriendly()) {
-                    ScoreBoard.incrementScore(player, waveNumber*10);
-                    gameView.updateScore(ScoreBoard.getScore(player));
-                }
-            }
-        }
-        this.entityList.removeIf(e -> e.getHitPoints() <= 0);
-        this.enemyList.removeIf(e -> e.getHitPoints() <= 0);
-    }
-
-    /**
-     * Creates a list of projectiles from the entity list
-     */
-    private void updateProjectiles() {
-        List<AEntity> projectiles = new ArrayList<>();
-        for (AEntity entity : this.entityList) {
-            if (entity.getBody() instanceof IHasWeapon) {
-                ((IHasWeapon) entity.getBody()).getWeapon().removeOutOfRangeProjectiles();
-                projectiles.addAll(((IHasWeapon) entity.getBody()).getWeapon().getFiredProjectiles());
-            }
-        }
-        entityList.removeIf(e -> e instanceof ProjectileEntity && ((ProjectileEntity) e).isOutOfRange());
-        entityList.addAll(projectiles);
-    }
-
-    /**
-     * Moves all projectiles in the entity list
-     */
-    private void moveProjectiles() {
-        for (AEntity entity : this.entityList) {
-            if (entity instanceof ProjectileEntity) {
-                ((ProjectileEntity) entity).moveInTravelPath();
-            }
-        }
     }
 
     /**

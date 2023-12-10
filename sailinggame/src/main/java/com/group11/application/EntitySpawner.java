@@ -16,7 +16,7 @@ import com.group11.model.gameworld.World;
  * It uses the EntityDirector to create entities and places them at a random position in the world.
  * The position is determined such that it is passable, i.e., an entity can exist at that position.
  */
-public class EntitySpawner {
+public final class EntitySpawner {
 
     private World world;
     private final EntityDirector director;
