@@ -7,8 +7,8 @@ import java.util.List;
 
 /**
  * This abstract class represents a weapon in the game. A weapon is capable of firing projectiles.
- *
  * A weapon has a list of projectiles that it has fired and a maximum number of times it can be fired.
+ * Intended to be used by ships and other subclasses of body.
  */
 public abstract class AWeapon {
 
