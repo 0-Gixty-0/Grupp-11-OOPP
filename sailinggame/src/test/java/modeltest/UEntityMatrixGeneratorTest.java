@@ -33,9 +33,9 @@ public class UEntityMatrixGeneratorTest {
         for (int i = 0; i < 5; i++) {
             entities.add(director.createEnemy(new Point(2, i), 1));
         }
+        
         List<List<AEntity>> entityMatrix = UEntityMatrixGenerator.createEntityMatrix(5,5,entities);
         
-
         for (AEntity entity : entities) {
             int rowIndex = entity.getBody().getPos().x;
             int columnIndex = entity.getBody().getPos().y;

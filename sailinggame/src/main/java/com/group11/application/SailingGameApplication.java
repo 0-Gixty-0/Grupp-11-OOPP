@@ -108,8 +108,6 @@ public class SailingGameApplication extends AApplication {
                 UProjectileUtility.moveProjectiles(this.entityList);
                 UProjectileUtility.checkProjectileCollisions(this.entityList, this.enemyList, this.player, this.gameView, this.waveNumber);
                 
-                
-                
                 // Game over
                 if (this.player.getHitPoints() <= 0) {
                     this.waveNumber = 1;
@@ -172,7 +170,7 @@ public class SailingGameApplication extends AApplication {
      * Updates the entity matrix from the entity list and updates the visual representation of entities in the frame
      */
     private void updateEntityMatrix() {
-        this.entityMatrix = UEntityMatrixGenerator.updateEntityMatrix(entityMatrix, entityList);
+        UEntityMatrixGenerator.updateEntityMatrix(entityList);
         this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
     }
 
