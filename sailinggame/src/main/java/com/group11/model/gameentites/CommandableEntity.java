@@ -68,4 +68,14 @@ public class CommandableEntity extends AEntity implements ICommandable {
         }
     }
 
+    @Override
+    public AWeapon getWeaponIfExists() {
+        if (this.getBody() instanceof IHasWeapon) {
+            return ((IHasWeapon) this.getBody()).getWeapon();
+        } else {
+            System.out.println(String.format("Objects of type %s doesnt have weapons",this.getBody().getClass().getName()));
+            return null;
+        }
+    }
+
 }

@@ -60,87 +60,6 @@ public class SailingGameApplication extends AApplication {
     }
 
     /**
-     * Main menu loop: Displays main menu and waits for user to press start game button
-     * Game loop: Updates player position based on keyboard input, moves enemies, updates entity matrix.
-     * Game over loop: Displays game over screen and waits for user to press back to menu button
-     */
-    @Override
-    public void run() throws InterruptedException {
-        this.gameView.setVisible(true);
-        appWindow.setVisible(true);
-
-        while (true) { 
-
-            addViewToWindow(mainMenuView);
-
-            /**
-             * Main menu loop.
-             */
-            while (Thread.currentThread().isAlive()) {
-                Thread.sleep(50);
-                if (this.mainMenuView.getStartButtonPressed()) {
-                    this.removeViewFromWindow(mainMenuView);
-                    this.addViewToWindow(gameView);
-                    this.mainMenuView.resetStartButtonPressed();
-                    this.initializeGame();
-                    break;
-                }
-            }
-
-            /**
-             * in-Game loop.
-             */
-            while (true) {
-                Thread.sleep(75);
-                if (this.enemyList.isEmpty()) {
-                    this.waveNumber++;
-                    this.enemyList.addAll(this.entitySpawner.createEnemyWave(this.waveNumber));
-                    this.entityList.addAll(this.enemyList);
-                    this.player.setHitPoints(100);
-                }
-
-                removeEntitiesWithZeroHp();
-
-                updatePlayer();
-                this.aiCommander.moveEnemies(this.enemyList);
-                this.aiCommander.fireWeapons(this.enemyList);
-                
-                UProjectileUtility.moveProjectiles(this.entityList);
-                UEntityMatrixGenerator.updateEntityMatrix(this.entityList);
-                UProjectileUtility.checkProjectileCollisions(this.entityList, this.enemyList);
-                UProjectileUtility.moveProjectiles(this.entityList);
-                UEntityMatrixGenerator.updateEntityMatrix(this.entityList);
-                UProjectileUtility.checkProjectileCollisions(this.entityList, this.enemyList);
-                
-                UProjectileUtility.updateProjectiles(this.entityList); 
-
-                this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
-                
-                // Game over
-                if (this.player.getHitPoints() <= 0) {
-                    this.waveNumber = 1;
-                    this.removeViewFromWindow(gameView);
-                    this.addViewToWindow(gameOverView);
-                    this.gameOverView.setScoreLabel(ScoreBoard.getScore(player));
-                    break;
-                }
-            }
-
-            /**
-             * Game over screen loop.
-             */
-            while (true) {
-                Thread.sleep(50);
-                if (this.gameOverView.getBackToMenuButtonPressed()) {
-                    this.removeViewFromWindow(gameOverView);
-                    this.gameOverView.resetBackToMenuButtonPressed();
-                    break;
-                }
-            }
-        }
-    }
-
-    /**
      * Initializes the game upon pressing start game button by creating the player and spawning a level one wave
      * of enemies. It then adds these entities to the entity list and creates the entity matrix
      */
@@ -165,6 +84,87 @@ public class SailingGameApplication extends AApplication {
     }
 
     /**
+     * Main menu loop: Displays main menu and waits for user to press start game button
+     * Game loop: Updates player position based on keyboard input, moves enemies, updates entity matrix.
+     * Game over loop: Displays game over screen and waits for user to press back to menu button
+     * @param cycleSpeedMS The time (in milli seconds) that the application sleeps inbetween every cycle.
+     */
+    @Override
+    public void run(int cyclespeedMS) throws InterruptedException {
+        this.gameView.setVisible(true);
+        appWindow.setVisible(true);
+
+        while (true) { 
+
+            addViewToWindow(mainMenuView);
+
+            /**
+             * Main menu loop.
+             */
+            while (Thread.currentThread().isAlive()) {
+                Thread.sleep(cyclespeedMS);
+                if (this.mainMenuView.getStartButtonPressed()) {
+                    this.removeViewFromWindow(mainMenuView);
+                    this.addViewToWindow(gameView);
+                    this.mainMenuView.resetStartButtonPressed();
+                    this.initializeGame();
+                    break;
+                }
+            }
+
+            /**
+             * in-Game loop.
+             */
+            while (true) {
+                Thread.sleep(cyclespeedMS);
+                if (this.enemyList.isEmpty()) {
+                    this.waveNumber++;
+                    this.enemyList.addAll(this.entitySpawner.createEnemyWave(this.waveNumber));
+                    this.entityList.addAll(this.enemyList);
+                    this.player.setHitPoints(100);
+                }
+
+                updatePlayer();
+                this.aiCommander.moveEnemies(this.enemyList);
+                this.aiCommander.fireWeapons(this.enemyList);
+
+                UProjectileUtility.updateProjectiles(this.entityList);
+                UProjectileUtility.moveProjectiles(this.entityList);
+                UEntityMatrixGenerator.updateEntityMatrix(this.entityList);
+                UProjectileUtility.checkProjectileCollisions(this.entityList);
+                UProjectileUtility.moveProjectiles(this.entityList);
+                UEntityMatrixGenerator.updateEntityMatrix(this.entityList);
+                UProjectileUtility.checkProjectileCollisions(this.entityList);
+                
+                removeEntitiesWithZeroHp();
+
+                this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
+                
+                // Game over
+                if (this.player.getHitPoints() <= 0) {
+                    this.waveNumber = 1;
+                    this.removeViewFromWindow(gameView);
+                    this.addViewToWindow(gameOverView);
+                    this.gameOverView.setScoreLabel(ScoreBoard.getScore(player));
+                    break;
+                }
+            }
+
+            /**
+             * Game over screen loop.
+             */
+            while (true) {
+                Thread.sleep(cyclespeedMS);
+                if (this.gameOverView.getBackToMenuButtonPressed()) {
+                    this.removeViewFromWindow(gameOverView);
+                    this.gameOverView.resetBackToMenuButtonPressed();
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
      * Creates a basic world using the map and world generator. That being the random map generator.
      * @return A randomly generated world
      */
@@ -177,7 +177,7 @@ public class SailingGameApplication extends AApplication {
     private void removeEntitiesWithZeroHp() {
         List<AEntity> entitiesToRemove = new ArrayList<>();
         for (AEntity entity : entityList) {
-            if (entity.getHitPoints() <= 0 && !(entity instanceof ProjectileEntity)) {
+            if (entity.getHitPoints() <= 0) {
                 if (!entity.isFriendly()) {
                     ScoreBoard.incrementScore(player, waveNumber*10);
                     gameView.updateScore(ScoreBoard.getScore(player));

@@ -10,7 +10,7 @@ import javax.swing.*;
  * The layout of the panel is a centered FlowLayout.
  */
 
-public class StatsPanel extends BufferPanel {
+public class StatsPanel extends AStandardPanel {
 
     /**
      * JLabel for displaying the player's score.

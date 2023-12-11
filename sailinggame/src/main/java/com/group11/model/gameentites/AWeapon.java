@@ -79,8 +79,15 @@ public abstract class AWeapon {
     /**
      * Removes projectiles that are out of range from the list of fired projectiles.
      */
-    protected void removeOutOfRangeProjectiles() {
+    public void removeOutOfRangeProjectiles() {
         firedProjectiles.removeIf(e -> e.isOutOfRange());
+    }
+
+    /**
+     * Removes projectiles with <= 0 hp from the list of fired projectiles.
+     */
+    public void removeDeadProjectiles() {
+        firedProjectiles.removeIf(e -> e.getHitPoints() <= 0);
     }
 
     /**

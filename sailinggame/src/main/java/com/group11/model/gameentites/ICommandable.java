@@ -8,4 +8,6 @@ public interface ICommandable {
 
     public void interactIfPossible();
 
+    public AWeapon getWeaponIfExists();
+
 }
