@@ -16,7 +16,7 @@ import com.group11.model.gameworld.World;
  * It uses the EntityDirector to create entities and places them at a random position in the world.
  * The position is determined such that it is passable, i.e., an entity can exist at that position.
  */
-public class EntitySpawner {
+public final class EntitySpawner {
 
     private World world;
     private final EntityDirector director;
@@ -100,9 +100,6 @@ public class EntitySpawner {
      * @param waveNumber The wave number for which to generate
      * @return A list of enemies
      */
-    // TODO
-    // We should play around with this algorithm and tweak it for improvements. Or rewrite it if necessary.
-    // It is difficult to test in current state of development since nothing can use the information
     public List<CommandableEntity> createEnemyWave(int waveNumber) {
         ArrayList<CommandableEntity> enemyList = new ArrayList<>();
         // The lower limit for the enemy level increases by one every three waves
