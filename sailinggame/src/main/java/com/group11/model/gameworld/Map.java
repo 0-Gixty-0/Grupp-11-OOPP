@@ -34,6 +34,16 @@ public class Map {
     }
 
     /**
+     * A getter for the tile at the specified coordinates.
+     * @param x the x-coordinate of the tile
+     * @param y the y-coordinate of the tile
+     * @return the tile at the specified coordinates
+     */
+    public ATile getTile(int x, int y) {
+        return this.tileMatrix.get(y).get(x);
+}
+
+    /**
      *  A getter for the tileMatrix attribute of the Map object.
      *  @return (ArrayList<ArrayList<Tile>>) matrix of Tiles representing the map in the game logic.
      */
