@@ -128,18 +128,21 @@ public class SailingGameApplication extends AApplication {
                 this.aiCommander.moveEnemies(this.enemyList);
                 this.aiCommander.fireWeapons(this.enemyList);
 
-                UProjectileUtility.updateProjectiles(this.entityList);
+                UProjectileUtility.updateProjectiles(this.entityList); // Adds new projectiles to entity list and removes old dead projectiles.
+
+                UProjectileUtility.moveProjectiles(this.entityList); // Moves the projectiles.
+                UEntityMatrixGenerator.updateEntityMatrix(this.entityList); // Updates the entity matrix.
+                UProjectileUtility.checkProjectileCollisions(this.entityList); // Checks for collisions.
+                // Two iterations so that projectiles moves faster than other entities.
                 UProjectileUtility.moveProjectiles(this.entityList);
                 UEntityMatrixGenerator.updateEntityMatrix(this.entityList);
                 UProjectileUtility.checkProjectileCollisions(this.entityList);
-                UProjectileUtility.moveProjectiles(this.entityList);
-                UEntityMatrixGenerator.updateEntityMatrix(this.entityList);
-                UProjectileUtility.checkProjectileCollisions(this.entityList);
-                
+                // Updating the view.
+                this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
+
+                // Removes dead entities
                 removeEntitiesWithZeroHp();
 
-                this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
-                
                 // Game over
                 if (this.player.getHitPoints() <= 0) {
                     this.waveNumber = 1;

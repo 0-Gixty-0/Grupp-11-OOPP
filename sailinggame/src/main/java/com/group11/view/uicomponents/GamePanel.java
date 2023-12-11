@@ -4,7 +4,7 @@ import java.awt.FlowLayout;
 import java.util.List;
 
 import com.group11.view.AViewTileFactory;
-import com.group11.view.ViewTileMatrixEncoder;
+import com.group11.view.UViewTileMatrixEncoder;
 
 /**
  * AppWindow is the top-level class for the View component of the MVC design.
@@ -69,7 +69,7 @@ public class GamePanel extends AStandardPanel {
      * @param intMatrix The matrix of integers representing the entities.
      */
     public void updateEntities(List<List<Integer>> intMatrix) {
-        List<List<ViewTile>> tileMatrix = ViewTileMatrixEncoder.createEntityTileMatrix(intMatrix);
+        List<List<ViewTile>> tileMatrix = UViewTileMatrixEncoder.createEntityTileMatrix(intMatrix);
         this.gameWorldPanel.updateEntityPanel(tileMatrix);
     }
 
@@ -78,7 +78,7 @@ public class GamePanel extends AStandardPanel {
      * @param intMatrix The matrix of integers representing the terrain.
      */
     public void updateTerrain(List<List<Integer>> intMatrix) {
-        List<List<ViewTile>> tileMatrix = ViewTileMatrixEncoder.createTerrainTileMatrix(intMatrix);
+        List<List<ViewTile>> tileMatrix = UViewTileMatrixEncoder.createTerrainTileMatrix(intMatrix);
         this.gameWorldPanel.updateTerrainPanel(tileMatrix);
     }
 }
