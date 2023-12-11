@@ -2202,3 +2202,22 @@ To make it easier for the user to understand how to play the game.
 
 #### User Interaction
 The user will always see the tutorial images when playing the game, and will therefore always be able to see what keys to use and what they do.
+
+---
+
+### US-75: Implement decoding for arrows to direction
+Date of completion: 30/11/2023
+Completed by: Alexander Muhr
+
+As a developer I want to implement a decoding method for arrows to directon in keyboardinterpretor
+
+#### What
+This user story is about implementing a decoder that takes keyboardinput from the arrow keys and converts them to a direction between 0-7.
+
+#### How
+I chose to remake the keyboard interpretor so that the logic is in the superclass AControllerInterpretor since both the arrowkeys and WASD uses the same logic. 
+
+#### Why
+This is not really template pattern but i fullfills the same requirements since it uses the same logic but different parameters. I chose to put it in the superclass because it uses a general solution for keycodes to direcion which later on in development could be used to let the player themselves choose what keys to use for movement and shooting without any code duplication and only a small change in KeyboardInterpretor.
+
+---
