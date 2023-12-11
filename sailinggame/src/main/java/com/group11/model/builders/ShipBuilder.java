@@ -38,8 +38,7 @@ public class ShipBuilder implements IEntityBuilder {
 
     @Override
     public AEntity createEntity() {
-        AEntity product = new CommandableEntity(this.body, this.name, this.friendly);
-        return product;
+        return new CommandableEntity(this.body, this.name, this.friendly);
     }
 
     @Override
@@ -68,8 +67,6 @@ public class ShipBuilder implements IEntityBuilder {
         this.setHp(lvl * ShipBuilder.hpScalingFactor * 15);
         this.setArmor(lvl * ShipBuilder.armorScalingFactor * 4);
         this.setShipLevel(lvl);
-        // TODO
-        // Once we have multiple weapon types allow percentage to get better weapon for higher level
         this.setWeapon(new BasicCannon(BasicCannonBall.class));
     }
 

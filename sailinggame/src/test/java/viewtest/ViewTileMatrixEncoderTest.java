@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.group11.view.ViewTileMatrixEncoder;
+import com.group11.view.UViewTileMatrixEncoder;
 
 import com.group11.view.uicomponents.ViewTile;
 
@@ -32,7 +32,7 @@ public class ViewTileMatrixEncoderTest {
     @Test
     public void testCreateEntityMatrix() {
         List<List<Integer>> playerIntMatrix = createIntMatrix(0, -1);
-        List<List<ViewTile>> playerTileMatrix = ViewTileMatrixEncoder.createEntityTileMatrix(playerIntMatrix);
+        List<List<ViewTile>> playerTileMatrix = UViewTileMatrixEncoder.createEntityTileMatrix(playerIntMatrix);
         ViewTile playerTile = playerTileMatrix.get(0).get(0);
         ViewTile emptyTile = playerTileMatrix.get(1).get(1);
         assertEquals("0", playerTile.getName());
@@ -43,7 +43,7 @@ public class ViewTileMatrixEncoderTest {
     @Test
     public void testCreateTerrainMatrix() {
         List<List<Integer>> playerIntMatrix = createIntMatrix(0, 1);
-        List<List<ViewTile>> playerTileMatrix = ViewTileMatrixEncoder.createEntityTileMatrix(playerIntMatrix);
+        List<List<ViewTile>> playerTileMatrix = UViewTileMatrixEncoder.createEntityTileMatrix(playerIntMatrix);
         ViewTile landTile = playerTileMatrix.get(0).get(0);
         ViewTile seaTile = playerTileMatrix.get(1).get(1);
         assertEquals("0", landTile.getName());

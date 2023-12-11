@@ -28,6 +28,9 @@ Erik Andreasson [@0-Gixty-0](https://github.com/0-Gixty-0), <br>
 
 **Acknowledgements:** Thanks to Arthur for mentoring this project.
 
+## Game Tutorial
+The game itself is very simple, once you have compiled the source code to a runnable format you will be greeted by a simple menu. If you choose to start the game you will spawn in a randomly generated map togheter with 1 single enemy. The goal is to get a score as high as possible by destroying enemy ships (the dark coloured ship). When you destroy all enemy ships on the screen a new wave of (more and stronger) enemies will spawn repeatedly until you eventually meet your demise.
+
 ## ❗ A note about Issues ❗
 In the beginning of this project we followed another form of workflow for creating issues which we now deem as confusing and inefficient. Issues created during this time will have titles starting with
 TAS while new issues will have titles starting with US. Take a note of this while reading about issues in the project.
@@ -2202,3 +2205,22 @@ To make it easier for the user to understand how to play the game.
 
 #### User Interaction
 The user will always see the tutorial images when playing the game, and will therefore always be able to see what keys to use and what they do.
+
+---
+
+### US-75: Implement decoding for arrows to direction
+Date of completion: 30/11/2023
+Completed by: Alexander Muhr
+
+As a developer I want to implement a decoding method for arrows to directon in keyboardinterpretor
+
+#### What
+This user story is about implementing a decoder that takes keyboardinput from the arrow keys and converts them to a direction between 0-7.
+
+#### How
+I chose to remake the keyboard interpretor so that the logic is in the superclass AControllerInterpretor since both the arrowkeys and WASD uses the same logic. 
+
+#### Why
+This is not really template pattern but i fullfills the same requirements since it uses the same logic but different parameters. I chose to put it in the superclass because it uses a general solution for keycodes to direcion which later on in development could be used to let the player themselves choose what keys to use for movement and shooting without any code duplication and only a small change in KeyboardInterpretor.
+
+---
