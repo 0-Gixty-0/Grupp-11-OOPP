@@ -28,6 +28,9 @@ Erik Andreasson [@0-Gixty-0](https://github.com/0-Gixty-0), <br>
 
 **Acknowledgements:** Thanks to Arthur for mentoring this project.
 
+## Game Tutorial
+The game itself is very simple, once you have compiled the source code to a runnable format you will be greeted by a simple menu. If you choose to start the game you will spawn in a randomly generated map togheter with 1 single enemy. The goal is to get a score as high as possible by destroying enemy ships (the dark coloured ship). When you destroy all enemy ships on the screen a new wave of (more and stronger) enemies will spawn repeatedly until you eventually meet your demise.
+
 ## ❗ A note about Issues ❗
 In the beginning of this project we followed another form of workflow for creating issues which we now deem as confusing and inefficient. Issues created during this time will have titles starting with
 TAS while new issues will have titles starting with US. Take a note of this while reading about issues in the project.
