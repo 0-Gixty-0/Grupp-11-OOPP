@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -56,6 +56,10 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <excludes>
+                        <exclude>**/test/**</exclude>
+                        <exclude>**/controller/keyboardtester.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             

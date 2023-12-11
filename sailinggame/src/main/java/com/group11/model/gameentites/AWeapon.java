@@ -7,8 +7,8 @@ import java.util.List;
 
 /**
  * This abstract class represents a weapon in the game. A weapon is capable of firing projectiles.
- *
  * A weapon has a list of projectiles that it has fired and a maximum number of times it can be fired.
+ * Intended to be used by ships and other subclasses of body.
  */
 public abstract class AWeapon {
 
@@ -66,7 +66,6 @@ public abstract class AWeapon {
      * @throws RuntimeException if the projectile could not be instantiated
      */
     protected ProjectileEntity createProjectile(Point startingPoint, int [] direction) {
-        
         try {
             AProjectile projectile = this.projectileType.getDeclaredConstructor(Point.class, int[].class).newInstance(startingPoint, direction);
             return new ProjectileEntity(projectile, projectile.getProjectileName());
@@ -77,12 +76,18 @@ public abstract class AWeapon {
         
     }
 
+    /**
+     * Removes projectiles that are out of range from the list of fired projectiles.
+     */
     public void removeOutOfRangeProjectiles() {
-        for (int i = 0; i < this.firedProjectiles.size(); i++) {
-            if (firedProjectiles.get(i).isOutOfRange()) {
-                this.firedProjectiles.remove(i);
-            }
-        }
+        firedProjectiles.removeIf(e -> e.isOutOfRange());
+    }
+
+    /**
+     * Removes projectiles with <= 0 hp from the list of fired projectiles.
+     */
+    public void removeDeadProjectiles() {
+        firedProjectiles.removeIf(e -> e.getHitPoints() <= 0);
     }
 
     /**

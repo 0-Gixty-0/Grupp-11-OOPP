@@ -2,10 +2,12 @@ package com.group11.model.gameentites;
 
 public interface ICommandable {
     
-    public void moveIfAble(Integer direction);
+    public void moveIfPossible(Integer direction);
 
-    public void attackIfAble(Integer direction);
+    public void attackIfPossible(Integer direction);
 
-    public void interactIfAble();
+    public void interactIfPossible();
+
+    public AWeapon getWeaponIfExists();
 
 }

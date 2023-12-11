@@ -9,12 +9,12 @@ import com.group11.view.uicomponents.ViewTile;
  * A static utility class that creates a matrix of ViewTiles from a matrix of integers. 
  * In other words this class encodes a universal language into a domain (View) specific language.
  */
-public class ViewTileMatrixEncoder {
+public class UViewTileMatrixEncoder {
     
     private static AViewTileFactory entityTileFactory = new EntityTileFactory();
     private static AViewTileFactory terrainTileFactory = new TerrainTileFactory();
 
-    private ViewTileMatrixEncoder() {
+    private UViewTileMatrixEncoder() {
         throw new IllegalStateException("Utility class");
     }
 

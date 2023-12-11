@@ -33,6 +33,6 @@ public abstract class AApplication {
         this.appWindow.repaint();
     }
 
-    public abstract void run() throws InterruptedException;
+    public abstract void run(int cyclespeedMS) throws InterruptedException;
 
 }

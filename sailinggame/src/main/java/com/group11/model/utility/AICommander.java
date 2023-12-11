@@ -52,20 +52,20 @@ public class AICommander {
     public void moveEnemies(List<CommandableEntity> enemies) {
         Random random = new Random();
         for (CommandableEntity enemy : enemies) {
-            int entityRowIndex = enemy.getBody().getPos().x;
-            int entityColumnIndex = enemy.getBody().getPos().y;
+            int entityRowIndex = enemy.getPos().x;
+            int entityColumnIndex = enemy.getPos().y;
             HashMap<String, Point> namePosMap = this.getSurroundingEntityNameAndPos(entityRowIndex, entityColumnIndex, 10);
             if (namePosMap.containsKey("Player")) {
                 Point playerPoint = namePosMap.get("Player");
                 Point enemyPoint = enemy.getPos();
                 if (!this.isNearEnemy(playerPoint, this.innerRadius)) {
                     int directionToPlayer = AStar.aStar(this.terrainMatrixEncoded, enemyPoint.x, enemyPoint.y, playerPoint.x, playerPoint.y);
-                    enemy.moveIfAble(directionToPlayer);
+                    enemy.moveIfPossible(directionToPlayer);
                 } else {
-                    enemy.moveIfAble(random.nextInt(8));
+                    enemy.moveIfPossible(random.nextInt(8));
                 }
             } else {
-                enemy.moveIfAble(random.nextInt(8));
+                enemy.moveIfPossible(random.nextInt(8));
             }
         }
     }
@@ -105,7 +105,7 @@ public class AICommander {
                 if (i >= 0 && i < mapHeight && j >= 0 && j < mapWidth && !(i == row && j == col)) {
                     if (this.entityMatrix.get(i).get(j) != null) {
                         String name = this.entityMatrix.get(i).get(j).getName();
-                        Point position = this.entityMatrix.get(i).get(j).getBody().getPos();
+                        Point position = this.entityMatrix.get(i).get(j).getPos();
                         surroundingElements.put(name, position);
                     }
                 }
@@ -158,8 +158,8 @@ public class AICommander {
      */
     public void fireWeapons(List<CommandableEntity> entities) {
         for (CommandableEntity entity : entities) {
-            int entityRowIndex = entity.getBody().getPos().x;
-            int entityColumnIndex = entity.getBody().getPos().y;
+            int entityRowIndex = entity.getPos().x;
+            int entityColumnIndex = entity.getPos().y;
             HashMap<String, Point> namePosMap = this.getSurroundingEntityNameAndPos(entityRowIndex, entityColumnIndex, 15);
             if (namePosMap.containsKey("Player")) {
                 Point playerPoint = namePosMap.get("Player");
@@ -168,7 +168,7 @@ public class AICommander {
                 int dy = playerPoint.y - enemyPoint.y;
                 int fireDirection = AStar.getDirection(dx,dy);
                 if (this.isPathClear(this.directions[fireDirection], enemyPoint, playerPoint)) {
-                    entity.attackIfAble(fireDirection);
+                    entity.attackIfPossible(fireDirection);
                 }
             }
         }
