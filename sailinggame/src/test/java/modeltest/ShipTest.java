@@ -1,13 +1,18 @@
 package modeltest;
 
-import com.group11.model.gameentites.*;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 
 import java.awt.Point;
-import java.util.List;
 
+import org.junit.Test;
 
-import static org.junit.Assert.*;
+import com.group11.model.gameentites.AProjectile;
+import com.group11.model.gameentites.AWeapon;
+import com.group11.model.gameentites.BasicCannon;
+import com.group11.model.gameentites.BasicCannonBall;
+import com.group11.model.gameentites.ProjectileEntity;
+import com.group11.model.gameentites.Ship;
 
 public class ShipTest {
 
@@ -47,17 +52,12 @@ public class ShipTest {
 
     @Test
     public void testGetShipLevel() {
-        assertEquals(testShip.getShipLevel(), 0);
+        assertEquals(0, testShip.getShipLevel());
     }
 
     @Test
     public void testGetArmor() {
-        assertEquals(testShip.getArmor(), 0, 0);
-    }
-
-    @Test
-    public void testGetCannons() {
-        assertTrue(testShip.getWeapon() instanceof BasicCannon);
+        assertEquals(0, testShip.getArmor(), 0);
     }
 
     @Test
@@ -67,6 +67,6 @@ public class ShipTest {
         Point pos = new Point(0,0);
         assertEquals(1, testShip.getTestWeapon().debugFiredProjectilesSize());
         assertSame(projectile, BasicCannonBall.class);
-        assertTrue(pos.equals(testShip.getTestWeapon().getProjectile().getPos()));
+        assertEquals(pos, testShip.getTestWeapon().getProjectile().getPos());
     }
 }

@@ -193,6 +193,6 @@ public class AICommanderTest {
     // Currently untestable due to weapons not being integrated into ship class
     @Test
     public void testFireAtPlayer() {
-
+        
     }
 }

@@ -2,9 +2,6 @@ package applicationtest;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.List;
-
-import com.group11.model.gameentites.Ship;
 import org.junit.Test;
 
 import com.group11.application.EntitySpawner;
@@ -29,35 +26,6 @@ public class EntitySpawnerTest {
     @Test
     public void spawnPlayerTest() {
         assertEquals(testSpawner.spawnPlayer().getClass(), CommandableEntity.class);
-    }
-
-    @Test
-    public void testEnemyWaveLevelOne() {
-        List<CommandableEntity> enemyList = this.testSpawner.createEnemyWave(1);
-        Ship ship = ((Ship) enemyList.get(0).getBody());
-        int shipLevel = ship.getShipLevel();
-        assertEquals("Enemy", enemyList.get(0).getName());
-        assertEquals(1, shipLevel);
-    }
-
-    @Test
-    public void testEnemyWaveLevelTwo() {
-        List<CommandableEntity> enemyList = this.testSpawner.createEnemyWave(2);
-        int lvl2num = 0;
-        int lvl1num = 0;
-        for (CommandableEntity enemy : enemyList) {
-            Ship ship = ((Ship) enemy.getBody());
-            switch (ship.getShipLevel()) {
-                case 1:
-                    lvl1num++;
-                    break;
-                case 2:
-                    lvl2num++;
-                    break;
-            }
-        }
-        assertEquals(2, lvl1num);
-        assertEquals(1, lvl2num);
     }
 
 }

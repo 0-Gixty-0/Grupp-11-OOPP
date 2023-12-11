@@ -100,9 +100,6 @@ public final class EntitySpawner {
      * @param waveNumber The wave number for which to generate
      * @return A list of enemies
      */
-    // TODO
-    // We should play around with this algorithm and tweak it for improvements. Or rewrite it if necessary.
-    // It is difficult to test in current state of development since nothing can use the information
     public List<CommandableEntity> createEnemyWave(int waveNumber) {
         ArrayList<CommandableEntity> enemyList = new ArrayList<>();
         // The lower limit for the enemy level increases by one every three waves

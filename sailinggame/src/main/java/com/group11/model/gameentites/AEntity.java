@@ -3,7 +3,7 @@ package com.group11.model.gameentites;
 import java.awt.Point;
 
 /**
- * An entity represents anything interactive in the world, it could be a town, creature, ship etc
+ * An entity represents anything interactive in the world, it could be a town, creature, ship etc.
  */
 public abstract class AEntity implements IDamageable {
     
@@ -48,26 +48,48 @@ public abstract class AEntity implements IDamageable {
     }
 
     /**
+     * @return (ABody) The class of the entities body
+     */
+    public Class<? extends ABody> getBodyType() {
+        return body.getClass();
+    }
+
+    /**
+     * *WARNING*
+     * This method should only be used for testing purposes and it 
+     * should not be used as an interface to modify the body of the entity.
+     * *WARNING*
      * @return (ABody) The body of the entity
      */
     public ABody getBody() {
-        return body;
+        return this.body;
     }
 
+    /**
+     * Make the body of the entity take damage
+     */
     public void takeDamage(int damage) {
         this.body.takeDamage(damage);
     }
 
+    /**
+     * Returns the hitpoints of the body
+     * @return (int) The hitpoints of the body
+     */
     public int getHitPoints() {
         return (int) this.body.getHitPoints();
     }
 
+    /**
+     * Sets the hitpoints of the body
+     * @param hp The new hitpoints of the body
+     */
     public void setHitPoints(int hp) {
         this.body.setHitPoints(hp);
     }
 
     /**
-     * 
+     * sets the body of the entity
      * @param body The new body of the entity
      */
     protected void setBody(ABody body) {

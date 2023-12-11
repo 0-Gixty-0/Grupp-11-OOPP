@@ -7,7 +7,7 @@ import com.group11.controller.KeyboardInterpretor;
 import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
-import com.group11.model.gameentites.ProjectileEntity;
+import com.group11.model.gameentites.Ship;
 import com.group11.model.gameworld.AdvancedMapGenerator;
 import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.IMapGenerator;
@@ -48,7 +48,8 @@ public class SailingGameApplication extends AApplication {
     private List<AEntity> entityList = new ArrayList<>();
     private EntitySpawner entitySpawner;
 
-
+    Ship body;
+    
     /**
      * Constructs a SailingGameApplication.
      */
