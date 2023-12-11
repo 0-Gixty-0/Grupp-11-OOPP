@@ -56,6 +56,10 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <excludes>
+                        <exclude>**/test/**</exclude>
+                        <exclude>**/controller/keyboardtester.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             

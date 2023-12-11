@@ -64,7 +64,7 @@ public class ShipTest {
     public void testFireWeapon() {
         testShip.fireWeapon(new int[] {0, 1});
         Object projectile = testShip.getTestWeapon().debugGetProjectileType();
-        Point pos = new Point(0,1);
+        Point pos = new Point(0,0);
         assertEquals(1, testShip.getTestWeapon().debugFiredProjectilesSize());
         assertSame(projectile, BasicCannonBall.class);
         assertTrue(pos.equals(testShip.getTestWeapon().getProjectile().getPos()));

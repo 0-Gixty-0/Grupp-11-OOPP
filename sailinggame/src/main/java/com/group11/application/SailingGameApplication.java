@@ -33,7 +33,7 @@ public class SailingGameApplication extends AApplication {
     private static final int WINDOWWITH = 1100;
     private static final int WINDOWHEIGHT = 1000;
     private static final int MAPWIDTH = 65;
-    private static final int MAPHEIGHT = 35;
+    private static final int MAPHEIGHT = 30;
 
     private GamePanel gameView;
     private MainMenuPanel mainMenuView;
@@ -177,6 +177,9 @@ public class SailingGameApplication extends AApplication {
         return worldGenerator.generateWorld(MAPWIDTH,MAPHEIGHT);
     }
 
+    /**
+     * Removes entities that are dead (0 hp or lower)
+     */
     private void removeEntitiesWithZeroHp() {
         List<AEntity> entitiesToRemove = new ArrayList<>();
         for (AEntity entity : entityList) {
@@ -198,7 +201,7 @@ public class SailingGameApplication extends AApplication {
     private void updatePlayer() {
         int movementInput = keyboardInterpreter.getMovementInput();
         int fireInput = keyboardInterpreter.getFireInput();
-        gameView.updateHp((int) player.getHitPoints());
+        gameView.updateHp(player.getHitPoints());
 
         if (movementInput >= 0) {
             this.player.moveIfPossible(movementInput);
