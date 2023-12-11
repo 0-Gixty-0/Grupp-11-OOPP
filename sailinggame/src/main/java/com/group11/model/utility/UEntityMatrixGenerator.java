@@ -22,20 +22,14 @@ public final class UEntityMatrixGenerator {
     }
 
     /**
-     * Creates the entity matrix populated with entities. There can only exist on instance of EntityMatrix at a time.
-     * if this method is called more than once, the first instance will be returned.
+     * Creates the entity matrix populated with entities. The most recently created entity matrix is the only one that
+     * can be updated by calling updateEntityMatrix.
      * @param width Number of columns in matrix.
      * @param height Number of rows in matrix.
      * @param entityList List of entities to add to matrix.
      * @return Populated entity matrix.
      */
     public static List<List<AEntity>> createEntityMatrix(int width, int height, List<AEntity> entityList) {
-
-        // There should only be one entity matrix instance at a time to not break the system with.
-        // occupied positions and entity matrix not being in sync.
-        if (entityMatrixInstance != null) {
-            return entityMatrixInstance;
-        }
 
         // Check that entity positions are within bounds of entity matrix.
         // adding entities to occupiedPositions list to easier update.

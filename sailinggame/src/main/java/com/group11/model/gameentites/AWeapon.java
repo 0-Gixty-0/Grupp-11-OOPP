@@ -66,7 +66,6 @@ public abstract class AWeapon {
      * @throws RuntimeException if the projectile could not be instantiated
      */
     protected ProjectileEntity createProjectile(Point startingPoint, int [] direction) {
-        
         try {
             AProjectile projectile = this.projectileType.getDeclaredConstructor(Point.class, int[].class).newInstance(startingPoint, direction);
             return new ProjectileEntity(projectile, projectile.getProjectileName());
@@ -80,7 +79,7 @@ public abstract class AWeapon {
     /**
      * Removes projectiles that are out of range from the list of fired projectiles.
      */
-    public void removeOutOfRangeProjectiles() {
+    protected void removeOutOfRangeProjectiles() {
         firedProjectiles.removeIf(e -> e.isOutOfRange());
     }
 

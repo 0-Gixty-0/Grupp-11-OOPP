@@ -60,7 +60,9 @@ public final class UEntityCollisionUtility {
         Point bodyPos = entity.getPos();
         int x = (int) bodyPos.getX();
         int y = (int) bodyPos.getY();
-
+        if (entities.get(x).get(y) == entity) {
+            return null;
+        }
         return entities.get(x).get(y);
     }
 }

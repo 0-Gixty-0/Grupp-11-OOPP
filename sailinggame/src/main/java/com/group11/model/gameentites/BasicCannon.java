@@ -22,6 +22,7 @@ public class BasicCannon extends AWeapon {
      */
     @Override
     public void fireWeapon(Point firingPoint, int [] direction) {
+        removeOutOfRangeProjectiles();
         if (this.getFiredProjectilesSize() < this.getMaxTimesFired()) {
             this.getFiredProjectiles().add(this.createProjectile(firingPoint, direction));
         }

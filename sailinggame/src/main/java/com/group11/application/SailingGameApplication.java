@@ -7,6 +7,7 @@ import com.group11.controller.KeyboardInterpretor;
 import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
+import com.group11.model.gameentites.ProjectileEntity;
 import com.group11.model.gameworld.AdvancedMapGenerator;
 import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.IMapGenerator;
@@ -97,16 +98,23 @@ public class SailingGameApplication extends AApplication {
                     this.entityList.addAll(this.enemyList);
                     this.player.setHitPoints(100);
                 }
+
+                removeEntitiesWithZeroHp();
+
                 updatePlayer();
                 this.aiCommander.moveEnemies(this.enemyList);
                 this.aiCommander.fireWeapons(this.enemyList);
                 
-                UProjectileUtility.updateProjectiles(this.entityList);
                 UProjectileUtility.moveProjectiles(this.entityList);
-                updateEntityMatrix();
-                UProjectileUtility.checkProjectileCollisions(this.entityList, this.enemyList, this.player, this.gameView, this.waveNumber);
+                UEntityMatrixGenerator.updateEntityMatrix(this.entityList);
+                UProjectileUtility.checkProjectileCollisions(this.entityList, this.enemyList);
                 UProjectileUtility.moveProjectiles(this.entityList);
-                UProjectileUtility.checkProjectileCollisions(this.entityList, this.enemyList, this.player, this.gameView, this.waveNumber);
+                UEntityMatrixGenerator.updateEntityMatrix(this.entityList);
+                UProjectileUtility.checkProjectileCollisions(this.entityList, this.enemyList);
+                
+                UProjectileUtility.updateProjectiles(this.entityList); 
+
+                this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
                 
                 // Game over
                 if (this.player.getHitPoints() <= 0) {
@@ -166,12 +174,19 @@ public class SailingGameApplication extends AApplication {
         return worldGenerator.generateWorld(MAPWIDTH,MAPHEIGHT);
     }
 
-    /**
-     * Updates the entity matrix from the entity list and updates the visual representation of entities in the frame
-     */
-    private void updateEntityMatrix() {
-        UEntityMatrixGenerator.updateEntityMatrix(entityList);
-        this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
+    private void removeEntitiesWithZeroHp() {
+        List<AEntity> entitiesToRemove = new ArrayList<>();
+        for (AEntity entity : entityList) {
+            if (entity.getHitPoints() <= 0 && !(entity instanceof ProjectileEntity)) {
+                if (!entity.isFriendly()) {
+                    ScoreBoard.incrementScore(player, waveNumber*10);
+                    gameView.updateScore(ScoreBoard.getScore(player));
+                }
+                entitiesToRemove.add(entity);
+            }
+        }
+        this.entityList.removeAll(entitiesToRemove);
+        this.enemyList.removeAll(entitiesToRemove);
     }
 
     /**
