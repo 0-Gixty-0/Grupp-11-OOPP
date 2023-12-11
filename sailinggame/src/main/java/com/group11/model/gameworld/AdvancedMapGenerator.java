@@ -16,7 +16,7 @@ public class AdvancedMapGenerator implements IMapGenerator {
     private static final int NUM_OCTAVES = 1;
     private static final double FREQUENCY = 0.5;
     // Increase the threshold to generate fewer islands
-    private static final double NOISE_THRESHOLD = 0.3;
+    private static final double NOISE_THRESHOLD = 0.5;
     private static final int OFFSET_RANGE = 1000;
     private static final int OFFSET_SHIFT = 500;
     private static final double SCALE_FACTOR = 10.0;
