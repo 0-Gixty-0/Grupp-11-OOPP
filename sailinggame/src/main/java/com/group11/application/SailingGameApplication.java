@@ -7,7 +7,6 @@ import com.group11.controller.KeyboardInterpretor;
 import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
-import com.group11.model.gameentites.Ship;
 import com.group11.model.gameworld.AdvancedMapGenerator;
 import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.IMapGenerator;
@@ -20,9 +19,6 @@ import com.group11.model.utility.UEntityMatrixGenerator;
 import com.group11.model.utility.UMovementUtility;
 import com.group11.model.utility.UTileMatrixDecoder;
 import com.group11.view.uicomponents.AppFrame;
-import com.group11.view.uicomponents.GameOverPanel;
-import com.group11.view.uicomponents.GamePanel;
-import com.group11.view.uicomponents.MainMenuPanel;
 
 /**
  * A class containing logic specific to the SailingGame application. The idea of our project was to make the source
@@ -35,9 +31,6 @@ public class SailingGameApplication extends AApplication {
     private static final int MAPWIDTH = 65;
     private static final int MAPHEIGHT = 30;
 
-    private GamePanel gameView;
-    private MainMenuPanel mainMenuView;
-    private GameOverPanel gameOverView;
     private static final KeyboardInterpretor keyboardInterpreter = new KeyboardInterpretor();
     private AICommander aiCommander;
     private int waveNumber = 1;
@@ -47,17 +40,12 @@ public class SailingGameApplication extends AApplication {
     private List<CommandableEntity> enemyList;
     private List<AEntity> entityList = new ArrayList<>();
     private EntitySpawner entitySpawner;
-
-    Ship body;
     
     /**
      * Constructs a SailingGameApplication.
      */
     public SailingGameApplication() {
-        super(new AppFrame(WINDOWWITH, WINDOWHEIGHT));
-        this.gameView = new GamePanel(WINDOWWITH, WINDOWHEIGHT, MAPWIDTH, MAPHEIGHT, 16, 16);
-        this.mainMenuView = new MainMenuPanel(WINDOWWITH, WINDOWHEIGHT);
-        this.gameOverView = new GameOverPanel(WINDOWWITH, WINDOWHEIGHT);
+        super(new AppFrame(WINDOWWITH, WINDOWHEIGHT, MAPWIDTH, MAPHEIGHT, 16, 16));
     }
 
     /**
@@ -65,6 +53,7 @@ public class SailingGameApplication extends AApplication {
      * of enemies. It then adds these entities to the entity list and creates the entity matrix
      */
     private void initializeGame() {
+        this.waveNumber = 1;
         this.entityList.clear();
         this.world = this.createWorld();
         this.entitySpawner = new EntitySpawner(this.world, new ShipBuilder());
@@ -77,11 +66,11 @@ public class SailingGameApplication extends AApplication {
         this.aiCommander = new AICommander(this.entityMatrix, this.world.getMap().getTileMatrix());
         UMovementUtility.setTileMatrix(this.world.getMap().getTileMatrix());
         UEntityCollisionUtility.setEntityMatrix(entityMatrix);
-        this.gameView.updateTerrain((UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
+        this.appWindow.updateTerrain((UTileMatrixDecoder.decodeIntoIntMatrix(world.getMap().getTileMatrix())));
         ScoreBoard.clearScoreBoard();
         ScoreBoard.addEntityToScoreBoard(this.player);
         ScoreBoard.setScore(this.player, 0);
-        gameView.updateScore(ScoreBoard.getScore(player));
+        this.appWindow.updateScore(ScoreBoard.getScore(player));
     }
 
     /**
@@ -92,22 +81,20 @@ public class SailingGameApplication extends AApplication {
      */
     @Override
     public void run(int cyclespeedMS) throws InterruptedException {
-        this.gameView.setVisible(true);
+        
         appWindow.setVisible(true);
 
         while (true) { 
 
-            addViewToWindow(mainMenuView);
+            this.appWindow.displayMainMenuView();
 
             /**
              * Main menu loop.
              */
             while (Thread.currentThread().isAlive()) {
                 Thread.sleep(cyclespeedMS);
-                if (this.mainMenuView.getStartButtonPressed()) {
-                    this.removeViewFromWindow(mainMenuView);
-                    this.addViewToWindow(gameView);
-                    this.mainMenuView.resetStartButtonPressed();
+                if (this.appWindow.getStartButtonPressed()) {
+                    this.appWindow.displayGameView();
                     this.initializeGame();
                     break;
                 }
@@ -116,7 +103,7 @@ public class SailingGameApplication extends AApplication {
             /**
              * in-Game loop.
              */
-            while (true) {
+            while (Thread.currentThread().isAlive()) {
                 Thread.sleep(cyclespeedMS);
                 if (this.enemyList.isEmpty()) {
                     this.waveNumber++;
@@ -139,17 +126,14 @@ public class SailingGameApplication extends AApplication {
                 UEntityMatrixGenerator.updateEntityMatrix(this.entityList);
                 UProjectileUtility.checkProjectileCollisions(this.entityList);
                 // Updating the view.
-                this.gameView.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
+                this.appWindow.updateEntities(UEntityMatrixDecoder.decodeIntoIntMatrix(this.entityMatrix));
 
                 // Removes dead entities
                 removeEntitiesWithZeroHp();
 
                 // Game over
                 if (this.player.getHitPoints() <= 0) {
-                    this.waveNumber = 1;
-                    this.removeViewFromWindow(gameView);
-                    this.addViewToWindow(gameOverView);
-                    this.gameOverView.setScoreLabel(ScoreBoard.getScore(player));
+                    this.appWindow.displayGameOverView();
                     break;
                 }
             }
@@ -157,11 +141,9 @@ public class SailingGameApplication extends AApplication {
             /**
              * Game over screen loop.
              */
-            while (true) {
+            while (Thread.currentThread().isAlive()) {
                 Thread.sleep(cyclespeedMS);
-                if (this.gameOverView.getBackToMenuButtonPressed()) {
-                    this.removeViewFromWindow(gameOverView);
-                    this.gameOverView.resetBackToMenuButtonPressed();
+                if (this.appWindow.getBackToMenuButtonPressed()) {
                     break;
                 }
             }
@@ -187,7 +169,7 @@ public class SailingGameApplication extends AApplication {
             if (entity.getHitPoints() <= 0) {
                 if (!entity.isFriendly()) {
                     ScoreBoard.incrementScore(player, waveNumber*10);
-                    gameView.updateScore(ScoreBoard.getScore(player));
+                    this.appWindow.updateScore(ScoreBoard.getScore(player));
                 }
                 entitiesToRemove.add(entity);
             }
@@ -202,7 +184,7 @@ public class SailingGameApplication extends AApplication {
     private void updatePlayer() {
         int movementInput = keyboardInterpreter.getMovementInput();
         int fireInput = keyboardInterpreter.getFireInput();
-        gameView.updateHp(player.getHitPoints());
+        this.appWindow.updateHp(player.getHitPoints());
 
         if (movementInput >= 0) {
             this.player.moveIfPossible(movementInput);
