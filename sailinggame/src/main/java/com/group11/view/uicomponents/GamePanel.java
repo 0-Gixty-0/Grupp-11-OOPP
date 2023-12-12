@@ -44,7 +44,7 @@ public class GamePanel extends AStandardPanel {
      * Updates the hp label in the stats panel.
      * @param newHp The new hp value.
      */
-    public void updateHp(int newHp) {
+    protected void updateHp(int newHp) {
         statsPanel.setHpLabel(newHp);
     }
 
@@ -52,7 +52,7 @@ public class GamePanel extends AStandardPanel {
      * Updates the lvl label in the stats panel.
      * @param newLvl The new lvl value.
      */
-    public void updateLvl(int newLvl) {
+    protected void updateLvl(int newLvl) {
         statsPanel.setLvlLabel(newLvl);
     }
 
@@ -60,7 +60,7 @@ public class GamePanel extends AStandardPanel {
      * Updates the score label in the stats panel.
      * @param newScore The new score value.
      */
-    public void updateScore(int newScore) {
+    protected void updateScore(int newScore) {
         statsPanel.setScoreLabel(newScore);
     }
 
@@ -68,7 +68,7 @@ public class GamePanel extends AStandardPanel {
      * Updates the entities on the map.
      * @param intMatrix The matrix of integers representing the entities.
      */
-    public void updateEntities(List<List<Integer>> intMatrix) {
+    protected void updateEntities(List<List<Integer>> intMatrix) {
         List<List<ViewTile>> tileMatrix = UViewTileMatrixEncoder.createEntityTileMatrix(intMatrix);
         this.gameWorldPanel.updateEntityPanel(tileMatrix);
     }
@@ -77,7 +77,7 @@ public class GamePanel extends AStandardPanel {
      * Updates the terrain on the map.
      * @param intMatrix The matrix of integers representing the terrain.
      */
-    public void updateTerrain(List<List<Integer>> intMatrix) {
+    protected void updateTerrain(List<List<Integer>> intMatrix) {
         List<List<ViewTile>> tileMatrix = UViewTileMatrixEncoder.createTerrainTileMatrix(intMatrix);
         this.gameWorldPanel.updateTerrainPanel(tileMatrix);
     }

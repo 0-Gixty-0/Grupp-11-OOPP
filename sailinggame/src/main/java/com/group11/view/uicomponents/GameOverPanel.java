@@ -48,7 +48,7 @@ public class GameOverPanel extends AStandardPanel {
      * Method used to set the score label for the game over screen.
      * @param score
      */
-    public void setScoreLabel(int score) {
+    protected void setScoreLabel(int score) {
         this.scoreLabel.setText("SCORE: " + score);
     }
 
@@ -56,14 +56,14 @@ public class GameOverPanel extends AStandardPanel {
      * Method used to get the back to menu button pressed boolean
      * @return
      */
-    public boolean getBackToMenuButtonPressed() {
+    protected boolean getBackToMenuButtonPressed() {
         return this.backToMenuButtonPressed;
     }
 
     /**
      * Method used to reset the back to menu button to not pressed
      */
-    public void resetBackToMenuButtonPressed() {
+    protected void resetBackToMenuButtonPressed() {
         this.backToMenuButtonPressed = false;
     }
 
