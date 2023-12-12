@@ -2224,3 +2224,22 @@ I chose to remake the keyboard interpretor so that the logic is in the superclas
 This is not really template pattern but i fullfills the same requirements since it uses the same logic but different parameters. I chose to put it in the superclass because it uses a general solution for keycodes to direcion which later on in development could be used to let the player themselves choose what keys to use for movement and shooting without any code duplication and only a small change in KeyboardInterpretor.
 
 ---
+
+### US-109: Reduce coupling between view and application
+Date of completion: 12/12/2023
+Completed by: William Norland
+
+As a developer i want to decrease coupling between application and view.
+
+#### What
+This US is the result of an issue raised about a high count of dependencies between the view and application package. During this issue i reduced coupling by making interaction between the view and application go through a single top level class.
+
+#### How
+Removing references to individual viewcomponents from the application and adding them to the top level AppFrame class.
+
+#### Why
+Reducing coupling makes code more robust. This approach makes it more likely to violate the SRP through a very big
+"do it all" view class. I do however believe the AppFrame class isnt that.
+
+#### User interaction
+The user will interact with this through looking at the different views, the developer will interact with this through interaction with a lower coupling codebase.
