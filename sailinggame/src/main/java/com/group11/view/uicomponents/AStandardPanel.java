@@ -11,8 +11,8 @@ import javax.swing.JPanel;
  */
 public abstract class AStandardPanel extends JPanel {
     
-    Font bigFont;
-    Font smallFont;
+    private Font bigFont;
+    private Font smallFont;
 
     protected AStandardPanel(int width, int height) {
         super();
@@ -24,4 +24,11 @@ public abstract class AStandardPanel extends JPanel {
         this.smallFont = new Font("Arial", Font.PLAIN, 20);
     }
 
+    protected Font getBigFont() {
+        return this.bigFont;
+    }
+
+    protected Font getSmallFont() {
+        return this.smallFont;
+    }
 }

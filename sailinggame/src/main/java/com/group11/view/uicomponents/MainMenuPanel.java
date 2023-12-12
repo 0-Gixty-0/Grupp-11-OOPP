@@ -10,9 +10,9 @@ import javax.swing.BoxLayout;
  */
 public class MainMenuPanel extends AStandardPanel {
     
-    Button startButton;
-    Button exitButton;
-    Boolean startButtonPressed = false;
+    private Button startButton;
+    private Button exitButton;
+    private Boolean startButtonPressed = false;
 
     public MainMenuPanel(int width, int height) {
         super(width, height);

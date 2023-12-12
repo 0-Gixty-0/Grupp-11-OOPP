@@ -31,9 +31,9 @@ public class GameOverPanel extends AStandardPanel {
 
         Dimension buttonSize = new Dimension(200, 50);
 
-        gameOverLabel.setFont(smallFont);
+        gameOverLabel.setFont(this.getSmallFont());
         scoreLabel.setAlignmentX(CENTER_ALIGNMENT);
-        gameOverLabel.setFont(bigFont);
+        gameOverLabel.setFont(this.getBigFont());
         gameOverLabel.setAlignmentX(CENTER_ALIGNMENT);
         backToMenuButton.setMaximumSize(buttonSize);
         backToMenuButton.addActionListener(e -> backToMenuButtonPressed());
