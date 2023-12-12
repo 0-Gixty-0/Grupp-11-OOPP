@@ -8,7 +8,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 /**
- * this class is used to create an application window (JFrame) for hosting views.
+ * this class is used to create an application window (JFrame) for hosting views. This is the top level class in the view.
  */ 
 public class AppFrame extends JFrame {
 
