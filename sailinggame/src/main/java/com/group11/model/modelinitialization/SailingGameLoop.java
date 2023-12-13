@@ -27,7 +27,7 @@ public class SailingGameLoop implements IGameLoop {
     int waveNumber;
 
     public SailingGameLoop(AModelInitialization initializedModel) {
-        this.waveNumber = 0;
+        this.waveNumber = 1;
         this.map = initializedModel.getMap();
         this.enemyList = initializedModel.getEnemyList();
         this.player = initializedModel.getPlayer();

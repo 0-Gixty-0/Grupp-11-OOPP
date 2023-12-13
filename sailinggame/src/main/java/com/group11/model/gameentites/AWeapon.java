@@ -71,7 +71,7 @@ public abstract class AWeapon {
             return new ProjectileEntity(projectile, projectile.getProjectileName());
         } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
                 | NoSuchMethodException | SecurityException e) {
-            throw new RuntimeException("Could not instantiate projectile, bad projectile type in weapon");
+            throw new IllegalStateException("Could not instantiate projectile, bad projectile type in weapon");
         }
         
     }

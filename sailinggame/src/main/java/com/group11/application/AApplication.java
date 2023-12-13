@@ -1,8 +1,5 @@
 package com.group11.application;
 
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-
 import com.group11.view.uicomponents.AppFrame;
 
 /**

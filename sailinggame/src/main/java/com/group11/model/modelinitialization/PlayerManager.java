@@ -11,6 +11,7 @@ public class PlayerManager {
 
     public PlayerManager(CommandableEntity player) {
         this.player = player;
+        ScoreBoard.addEntityToScoreBoard(player);
     }
 
     /**

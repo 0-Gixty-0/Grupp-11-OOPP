@@ -7,7 +7,6 @@ import com.group11.model.builders.IEntityBuilder;
 import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
-import com.group11.model.gameworld.ATile;
 import com.group11.model.gameworld.AdvancedMapGenerator;
 import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.Map;
@@ -56,8 +55,7 @@ public class SailingGameModel extends AModelInitialization {
 
     @Override
     protected AICommander initializeAICommander() {
-        List<List<ATile>> terrainMatrix = this.map.getTileMatrix();
-        return new AICommander(this.entityMatrix, terrainMatrix);
+        return new AICommander(this.entityMatrix);
     }
 
     @Override

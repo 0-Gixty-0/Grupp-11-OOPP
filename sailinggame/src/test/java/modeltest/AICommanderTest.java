@@ -30,7 +30,7 @@ public class AICommanderTest {
 
     private class TestAICommander extends AICommander {
         public TestAICommander(List<List<AEntity>> entityMatrix, List<List<ATile>> terrainMatrix) {
-            super(entityMatrix, terrainMatrix);
+            super(entityMatrix);
             super.innerRadius = 1;
         }
     }

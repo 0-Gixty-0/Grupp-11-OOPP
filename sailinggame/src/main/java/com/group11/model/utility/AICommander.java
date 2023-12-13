@@ -9,7 +9,6 @@ import java.util.Random;
 
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
-import com.group11.model.gameworld.ATile;
 
 /**
  * Class representing controller for AI controlled entities
@@ -22,7 +21,7 @@ public class AICommander {
     private List<List<Integer>> terrainMatrixEncoded;
     private final int[][] directions = {{-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}};
 
-    public AICommander(List<List<AEntity>> entityMatrix, List<List<ATile>> terrainMatrix) {
+    public AICommander(List<List<AEntity>> entityMatrix) {
         this.entityMatrix = entityMatrix;
         this.terrainMatrixEncoded = UTileMatrixDecoder.decodeIntoIntMatrix();
     }
@@ -100,12 +99,17 @@ public class AICommander {
         // Check bounds and add surrounding elements within the given radius
         for (int i = row - radius; i <= row + radius; i++) {
             for (int j = col - radius; j <= col + radius; j++) {
-                if (i >= 0 && i < mapHeight && j >= 0 && j < mapWidth && !(i == row && j == col)) {
-                    if (this.entityMatrix.get(i).get(j) != null) {
-                        String name = this.entityMatrix.get(i).get(j).getName();
-                        Point position = this.entityMatrix.get(i).get(j).getPos();
-                        surroundingElements.put(name, position);
-                    }
+                if (i >= 0 && 
+                    i < mapHeight &&
+                    j >= 0 && 
+                    j < mapWidth &&
+                    !(i == row && j == col) &&
+                    (this.entityMatrix.get(i).get(j) != null)) {
+
+                    String name = this.entityMatrix.get(i).get(j).getName();
+                    Point position = this.entityMatrix.get(i).get(j).getPos();
+                    surroundingElements.put(name, position);
+                    
                 }
             }
         }

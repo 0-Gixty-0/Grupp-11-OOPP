@@ -26,11 +26,11 @@ public class EntityManager {
         this.enemyList = enemyList;
         this.entityList = entityList;
         this.player = player;
-        ScoreBoard.addEntityToScoreBoard(player);
     }
 
     /**
-     * Removes entities that are dead (0 hp or lower)
+     * Removes entities that are dead (0 hp or lower). Increments the players score when an enemy is killed.
+     * @param waveNumber the current wave number
      */
     protected void removeEntitiesWithZeroHp(int waveNumber) {
         List<AEntity> entitiesToRemove = new ArrayList<>();
