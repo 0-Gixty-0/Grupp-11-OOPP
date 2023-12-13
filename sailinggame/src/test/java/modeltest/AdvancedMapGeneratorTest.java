@@ -1,6 +1,7 @@
 package modeltest;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
@@ -14,14 +15,15 @@ public class AdvancedMapGeneratorTest {
      * This test checks that the method generates a map of the correct area.
      */
     @Test
-    public void testGenerateMap() {
-        // Create an instance of BasicMapGenerator
-        AdvancedMapGenerator testMapGenerator = new AdvancedMapGenerator();
-
-        // Generate a map with a side length of 10
-        Map generatedMap = testMapGenerator.generateMap(10,10);
-
-        // Check that the map has the correct area
-        assertEquals(100, generatedMap.getArea());
+    void testGenerateMap() {
+        AdvancedMapGenerator generator = new AdvancedMapGenerator();
+        Map map = generator.generateMap(10, 10);
+        
+        // Check that the map is not null
+        assertNotNull(map);
+        
+        // Check that the map has the correct dimensions
+        assertEquals(10, map.getMapWidth());
+        assertEquals(10, map.getMapHeight());
     }
 }
