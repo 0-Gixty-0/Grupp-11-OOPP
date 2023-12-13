@@ -15,7 +15,8 @@ public class AdvancedMapGenerator implements IMapGenerator {
     // Constants for the fractal noise generation
     private static final int NUM_OCTAVES = 1;
     private static final double FREQUENCY = 0.5;
-    private static final double NOISE_THRESHOLD = 0.6;
+    // Increase the threshold to generate fewer islands
+    private static final double NOISE_THRESHOLD = 0.5;
     private static final int OFFSET_RANGE = 1000;
     private static final int OFFSET_SHIFT = 500;
     private static final double SCALE_FACTOR = 10.0;
@@ -41,8 +42,17 @@ public class AdvancedMapGenerator implements IMapGenerator {
         // Generate the map tiles
         generateMapTiles(mapWidth, mapHeight, fractal, tileMatrix, offsets);
 
+        Map map = new Map(tileMatrix, mapWidth, mapHeight);
+
+        while(isAllSeaConnected(map) == false) {
+            offsets = generateRandomOffsets();
+            tileMatrix = new ArrayList<>();
+            generateMapTiles(mapWidth, mapHeight, fractal, tileMatrix, offsets);
+            map = new Map(tileMatrix, mapWidth, mapHeight);
+        }
+
         // Return a new Map object with the generated tile matrix
-        return new Map(tileMatrix, mapWidth, mapHeight);
+        return map;
     }
 
     /**
@@ -115,5 +125,51 @@ public class AdvancedMapGenerator implements IMapGenerator {
         } else {
             return new LandTile(new Point(x, y));
         }
+    }
+
+    private boolean isAllSeaConnected(Map map) {
+        boolean[][] visited = new boolean[map.getMapWidth()][map.getMapHeight()];
+        Point start = findFirstSeaTile(map);
+        if (start == null) {
+            return false; // No sea tiles found
+        }
+        floodFill(map, visited, start.x, start.y);
+        return areAllSeaTilesVisited(map, visited);
+    }
+    
+    private Point findFirstSeaTile(Map map) {
+        for (int x = 0; x < map.getMapWidth(); x++) {
+            for (int y = 0; y < map.getMapHeight(); y++) {
+                if (map.getTile(x, y) instanceof SeaTile) {
+                    return new Point(x, y);
+                }
+            }
+        }
+        return null; // No sea tiles found
+    }
+    
+    private void floodFill(Map map, boolean[][] visited, int x, int y) {
+        if (x < 0 || x >= map.getMapWidth() || y < 0 || y >= map.getMapHeight()) {
+            return; // Out of bounds
+        }
+        if (visited[x][y] || map.getTile(x,y) instanceof LandTile) {
+            return; // Already visited or not a sea tile
+        }
+        visited[x][y] = true;
+        floodFill(map,visited, x + 1, y); // Right
+        floodFill(map,visited, x - 1, y); // Left
+        floodFill(map,visited, x, y + 1); // Down
+        floodFill(map,visited, x, y - 1); // Up
+    }
+
+    private boolean areAllSeaTilesVisited(Map map, boolean[][] visited) {
+        for (int x = 0; x <  map.getMapWidth(); x++) {
+            for (int y = 0; y < map.getMapHeight(); y++) {
+                if (map.getTile(x,y) instanceof SeaTile && !visited[x][y]) {
+                    return false; // Found a sea tile that was not visited
+                }
+            }
+        }
+        return true; // All sea tiles were visited
     }
 }
