@@ -41,8 +41,8 @@ public class UEntityMatrixDecoderTest {
             Arrays.asList(null, cannonBall, player)
         );
 
-        // Act
-        List<List<Integer>> intMatrix = UEntityMatrixDecoder.decodeIntoIntMatrix(matrix);
+        UEntityMatrixDecoder.setEntityMatrix(matrix);
+        List<List<Integer>> intMatrix = UEntityMatrixDecoder.decodeIntoIntMatrix();
 
         // Assert
         assertEquals(2, intMatrix.size());

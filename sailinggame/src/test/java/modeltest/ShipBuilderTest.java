@@ -19,38 +19,32 @@ public class ShipBuilderTest {
     public void createPlayerTest() {
         EntityDirector entityDirector = new EntityDirector(new ShipBuilder());
         AEntity player = entityDirector.createPlayer(new Point(0,0));
-        Ship body = (Ship) player.getBody();
-        assertEquals("Player", player.getName());
         assertEquals(new Point(0,0), player.getPos());
-        assertEquals(6.0, body.getArmor());
-        assertEquals(1, body.getShipLevel());
-        assertTrue(body.getWeapon() instanceof BasicCannon);
+        assertEquals(player.getBodyType(), Ship.class);
         assertTrue(player.isFriendly());
+        assertEquals(player.getName(), "Player");
+        assertEquals(player.getHitPoints(), 112);
     }
 
     @Test
     public void createEnemyLevelOneTest() {
         EntityDirector entityDirector = new EntityDirector(new ShipBuilder());
         AEntity enemy = entityDirector.createEnemy(new Point(0,0), 1);
-        Ship body = (Ship) enemy.getBody();
-        assertEquals(1, body.getShipLevel());
         assertEquals(new Point(0,0), enemy.getPos());
-        assertEquals(6.0, body.getArmor());
-        assertEquals(1, body.getShipLevel());
-        assertTrue(body.getWeapon() instanceof BasicCannon);
+        assertEquals(enemy.getBodyType(), Ship.class);
         assertFalse(enemy.isFriendly());
+        assertEquals(enemy.getName(), "Enemy");
+        assertEquals(enemy.getHitPoints(), 22);
     }
 
     @Test
     public void createEnemyLevelTwoTest() {
         EntityDirector entityDirector = new EntityDirector(new ShipBuilder());
         AEntity enemy = entityDirector.createEnemy(new Point(0,0), 2);
-        Ship body = (Ship) enemy.getBody();
-        assertEquals(2, body.getShipLevel());
         assertEquals(new Point(0,0), enemy.getPos());
-        assertEquals(12.0, body.getArmor());
-        assertEquals(2, body.getShipLevel());
-        assertTrue(body.getWeapon() instanceof BasicCannon);
+        assertEquals(enemy.getBodyType(), Ship.class);
         assertFalse(enemy.isFriendly());
+        assertEquals(enemy.getName(), "Enemy");
+        assertEquals(enemy.getHitPoints(), 45);
     }
 }

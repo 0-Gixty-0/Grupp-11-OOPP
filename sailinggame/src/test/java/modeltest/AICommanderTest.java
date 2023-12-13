@@ -9,6 +9,7 @@ import com.group11.model.gameworld.LandTile;
 import com.group11.model.gameworld.SeaTile;
 import com.group11.model.utility.AICommander;
 import com.group11.model.utility.UMovementUtility;
+import com.group11.model.utility.UTileMatrixDecoder;
 import com.group11.model.utility.UEntityMatrixGenerator;
 import org.junit.Before;
 import org.junit.Test;
@@ -83,6 +84,7 @@ public class AICommanderTest {
         this.terrainMatrix.add(tileRow);
 
         UMovementUtility.setTileMatrix(this.terrainMatrix);
+        UTileMatrixDecoder.setTilematrix(terrainMatrix);
     }
 
     @Test
@@ -93,6 +95,7 @@ public class AICommanderTest {
         this.entities.add(enemy);
         this.entities.add(this.director.createPlayer(new Point(1,2)));
         UEntityMatrixGenerator.updateEntityMatrix(entities);
+
         TestAICommander commander = new TestAICommander(this.entityMatrix, this.terrainMatrix);
         commander.moveEnemies(enemyList);
         assertEquals(new Point(2,2), enemy.getPos());
