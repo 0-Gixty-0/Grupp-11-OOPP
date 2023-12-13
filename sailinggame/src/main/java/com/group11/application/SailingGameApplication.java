@@ -2,7 +2,7 @@ package com.group11.application;
 
 import com.group11.controller.AControllerInterpretor;
 import com.group11.controller.KeyboardInterpretor;
-import com.group11.model.modelinitialization.AModelInitialization;
+import com.group11.model.modelinitialization.AModelInitializer;
 import com.group11.model.modelinitialization.IGameLoop;
 import com.group11.model.modelinitialization.SailingGameLoop;
 import com.group11.model.modelinitialization.SailingGameModel;
@@ -20,7 +20,7 @@ public class SailingGameApplication extends AApplication {
     private static final int MAPHEIGHT = 30;
 
     IGameLoop gameLoop;
-    AModelInitialization model;
+    AModelInitializer model;
     AControllerInterpretor keyBoardInterpretor;
     
     /**

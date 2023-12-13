@@ -16,7 +16,7 @@ import com.group11.model.utility.UEntityMatrixGenerator;
 /**
  * Initializes the model for SailingGame.
  */
-public class SailingGameModel extends AModelInitialization {
+public class SailingGameModel extends AModelInitializer {
 
     public SailingGameModel(int worldWidth, int worldHeight) {
         super(worldWidth, worldHeight);

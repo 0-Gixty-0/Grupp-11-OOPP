@@ -14,7 +14,7 @@ import com.group11.model.utility.UTileMatrixDecoder;
 /**
  * Abstract class for initializing a model.
  */
-public abstract class AModelInitialization {
+public abstract class AModelInitializer {
     
     World world;
     Map map;
@@ -29,7 +29,7 @@ public abstract class AModelInitialization {
     int worldWidth;
     int worldHeight;
 
-    protected AModelInitialization(int worldWidth, int worldHeight) {
+    protected AModelInitializer(int worldWidth, int worldHeight) {
         this.worldWidth = worldWidth;
         this.worldHeight = worldHeight;
         this.world = initializeWorld(worldWidth, worldHeight);
