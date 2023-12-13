@@ -13,6 +13,7 @@ import com.group11.model.gameworld.IMapGenerator;
 import com.group11.model.gameworld.IWorldGenerator;
 import com.group11.model.gameworld.World;
 import com.group11.model.utility.AICommander;
+import com.group11.model.utility.EntitySpawner;
 import com.group11.model.utility.UEntityCollisionUtility;
 import com.group11.model.utility.UEntityMatrixDecoder;
 import com.group11.model.utility.UEntityMatrixGenerator;
