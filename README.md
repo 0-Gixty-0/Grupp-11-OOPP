@@ -2243,3 +2243,15 @@ Reducing coupling makes code more robust. This approach makes it more likely to 
 
 #### User interaction
 The user will interact with this through looking at the different views, the developer will interact with this through interaction with a lower coupling codebase.
+
+---
+
+### US-108: Change dependencies on CommandableEntity to ICommandable
+Date of completion: 13/12/2023
+Completed by: William Norland
+
+This us started as changing dependencies from CommandableEntity to ICommandable but when we examined the code further we noticed that ICommandible should actually be removed. The reasing being that:
+
+CommandableEntity is used as an AEntity in the code not as an ICommandable.
+
+ICommandable will only ever be used by CommandableEntity because CommandableEntity is a top-level class and in the scope of the project it doesnt have much reason to change
