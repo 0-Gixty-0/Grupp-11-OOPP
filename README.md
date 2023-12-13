@@ -1,5 +1,5 @@
 # SailingGame
-**Project Descripiton:** A 2d, openworld adventure game made in Java with Maven for the TDA367/DIT213 course at Chalemers University of Technology with focus on perfect MVC implementation, OOP principles and extendability.
+**Project Descripiton:** A 2d, openworld adventure game made in Java with Maven for the TDA367/DIT213 course at Chalemers University of Technology with focus on correct MVC implementation, OOP principles and extendability.
 
 **Project Boundaries:** The boundaries set for this project is that its a game logically and visually based on 2d tiles, tiles are either entities (living things) or terrain (non living). Its supposed to be played with a keyboard. Other than that its a very open scope which is what we intended.
 
