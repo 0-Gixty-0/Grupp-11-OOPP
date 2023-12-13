@@ -1,4 +1,4 @@
-package com.group11.application;
+package com.group11.model.utility;
 
 import java.awt.Point;
 import java.util.ArrayList;

@@ -4,13 +4,13 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.group11.application.EntitySpawner;
 import com.group11.model.builders.ShipBuilder;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameworld.BasicMapGenerator;
 import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.IMapGenerator;
 import com.group11.model.gameworld.World;
+import com.group11.model.utility.EntitySpawner;
 
 public class EntitySpawnerTest {
 
