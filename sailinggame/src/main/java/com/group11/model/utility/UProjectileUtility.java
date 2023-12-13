@@ -1,4 +1,4 @@
-package com.group11.application;
+package com.group11.model.utility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,6 @@ import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.AWeapon;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameentites.ProjectileEntity;
-import com.group11.model.utility.UEntityCollisionUtility;
 
 /**
  * Class responsible for handling projectiles for the SailingGameApplication class.

@@ -18,6 +18,7 @@ import com.group11.model.utility.UEntityCollisionUtility;
 import com.group11.model.utility.UEntityMatrixDecoder;
 import com.group11.model.utility.UEntityMatrixGenerator;
 import com.group11.model.utility.UMovementUtility;
+import com.group11.model.utility.UProjectileUtility;
 import com.group11.model.utility.UTileMatrixDecoder;
 import com.group11.view.uicomponents.AppFrame;
 
