@@ -37,8 +37,8 @@ public class CommandableEntity extends AEntity {
      */
     public void moveIfPossible(Integer direction) {
         int[][] directions = {{-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}};
-        if (this.getBody() instanceof IMovable) {
-            ((IMovable) this.getBody()).moveIfPossible(directions[direction]);
+        if (this.getBody() instanceof AMovableBody) {
+            ((AMovableBody) this.getBody()).moveIfPossible(directions[direction]);
         } else {
             System.out.println(String.format("Objects of type %s cannot move",this.getBody().getClass().getName()));
         }

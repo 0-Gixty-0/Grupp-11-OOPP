@@ -39,7 +39,7 @@ public class SailingGameModel extends AModelInitialization {
 
     @Override
     protected List<CommandableEntity> initializeEnemyList() {
-        return new ArrayList<>();
+        return this.entitySpawner.createEnemyWave(1);
     }
 
     @Override

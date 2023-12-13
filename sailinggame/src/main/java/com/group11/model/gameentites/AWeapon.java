@@ -30,7 +30,7 @@ public abstract class AWeapon {
      * Returns the type of projectile that this cannon fires.
      * @return the type of projectile that this cannon fires.
      */
-    protected Class<? extends AProjectile> getProjectileType() {
+    public Class<? extends AProjectile> getProjectileType() {
         return this.projectileType;
     }
 
@@ -46,7 +46,7 @@ public abstract class AWeapon {
      * Returns the list of projectiles that this cannon has fired.
      * @return the list of projectiles that this cannon has fired.
      */
-    public List<ProjectileEntity> getFiredProjectiles() {
+    protected List<ProjectileEntity> getFiredProjectiles() {
         return this.firedProjectiles;
     }
 
@@ -96,5 +96,5 @@ public abstract class AWeapon {
      * @param direction the direction in which the projectile is fired
      * @throws RuntimeException if the projectile could not be instantiated
      */
-    protected abstract void fireWeapon(Point firingPoint, int [] direction);
+    public abstract void fireWeapon(Point firingPoint, int [] direction);
 }

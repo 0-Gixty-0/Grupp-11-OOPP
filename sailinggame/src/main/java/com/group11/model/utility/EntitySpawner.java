@@ -8,7 +8,7 @@ import com.group11.model.builders.EntityDirector;
 import com.group11.model.builders.IEntityBuilder;
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
-import com.group11.model.gameworld.World;
+import com.group11.model.gameworld.Map;
 
 
 /**
@@ -18,7 +18,7 @@ import com.group11.model.gameworld.World;
  */
 public final class EntitySpawner {
 
-    private World world;
+    private Map map;
     private final EntityDirector director;
 
     /**
@@ -26,8 +26,8 @@ public final class EntitySpawner {
      * @param world the game world where entities will be spawned
      * @param builder the director used to create entities
      */
-    public EntitySpawner(World world, IEntityBuilder builder) {
-        this.world = world;
+    public EntitySpawner(Map map, IEntityBuilder builder) {
+        this.map = map;
         this.director = new EntityDirector(builder);
     }
 
@@ -58,22 +58,22 @@ public final class EntitySpawner {
      * Spawns a ship entity at a random passable position in the world.
      * @return the spawned ship entity
      */
-    public void changeWorld(World world) {
-        this.world = world;
+    public void changeWorld(Map map) {
+        this.map = map;
     }
 
     /**
      * Spawns a player entity at a random passable position in the world.
      * @return the spawned player entity
      */
-    public AEntity spawnPlayer() {
+    public CommandableEntity spawnPlayer() {
 
         Point pos = generateRandomPos();
         while (!posIsPassable(pos)) {
             pos = generateRandomPos();
         }
         
-        return director.createPlayer(pos);
+        return (CommandableEntity) director.createPlayer(pos);
     }
 
     /**
@@ -82,7 +82,7 @@ public final class EntitySpawner {
      * @return true if the position is passable, false otherwise
      */
     private boolean posIsPassable(Point pos) {
-        return world.getMap().getTileMatrix().get(pos.x).get(pos.y).isPassable();
+        return map.getTileMatrix().get(pos.x).get(pos.y).isPassable();
     }
 
     /**
@@ -90,8 +90,8 @@ public final class EntitySpawner {
      * @return the generated position
      */
     private Point generateRandomPos() {
-        int y = (int) (Math.random() * this.world.getMap().getMapWidth());
-        int x = (int) (Math.random() * this.world.getMap().getMapHeight());
+        int y = (int) (Math.random() * this.map.getMapWidth());
+        int x = (int) (Math.random() * this.map.getMapHeight());
         return new Point(x, y);
     }
 

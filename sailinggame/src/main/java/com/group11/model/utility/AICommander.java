@@ -15,6 +15,8 @@ import com.group11.model.gameworld.ATile;
  * Class representing controller for AI controlled entities
  */
 public class AICommander {
+
+    private Random random = new Random();
     protected int innerRadius = 5;
     private List<List<AEntity>> entityMatrix;
     private List<List<Integer>> terrainMatrixEncoded;
@@ -22,7 +24,7 @@ public class AICommander {
 
     public AICommander(List<List<AEntity>> entityMatrix, List<List<ATile>> terrainMatrix) {
         this.entityMatrix = entityMatrix;
-        this.terrainMatrixEncoded = UTileMatrixDecoder.decodeIntoIntMatrix(terrainMatrix);
+        this.terrainMatrixEncoded = UTileMatrixDecoder.decodeIntoIntMatrix();
     }
 
     /**
@@ -37,8 +39,8 @@ public class AICommander {
      * Sets the current encoded terrain matrix through the object terrain matrix
      * @param terrainMatrix The object terrain matrix to set as encoded
      */
-    public void setTerrainMatrixEncoded(List<List<ATile>> terrainMatrix) {
-        this.terrainMatrixEncoded = UTileMatrixDecoder.decodeIntoIntMatrix(terrainMatrix);
+    public void updateTerrainMatrixEncoded() {
+        this.terrainMatrixEncoded = UTileMatrixDecoder.decodeIntoIntMatrix();
     }
 
     /**
@@ -50,7 +52,7 @@ public class AICommander {
      * @param enemies The list of enemies to move
      */
     public void moveEnemies(List<CommandableEntity> enemies) {
-        Random random = new Random();
+        
         for (CommandableEntity enemy : enemies) {
             int entityRowIndex = enemy.getPos().x;
             int entityColumnIndex = enemy.getPos().y;
@@ -79,11 +81,7 @@ public class AICommander {
         int entityRowIndex = entityPos.x;
         int entityColumnIndex = entityPos.y;
         HashMap<String, Point> surroundingEntities = this.getSurroundingEntityNameAndPos(entityRowIndex, entityColumnIndex, radius);
-        if (surroundingEntities.containsKey("Enemy")) {
-            return true;
-        } else {
-            return false;
-        }
+        return (surroundingEntities.containsKey("Enemy"));
     }
 
     /**
@@ -123,11 +121,7 @@ public class AICommander {
      */
     private boolean isNearlyEqual(Point p1, Point p2) {
         ValueRange range = ValueRange.of(-1, 1);
-        if (range.isValidIntValue(p2.x - p1.x) || range.isValidIntValue(p2.y - p1.y)) {
-            return true;
-        } else {
-            return false;
-        }
+        return (range.isValidIntValue(p2.x - p1.x) || range.isValidIntValue(p2.y - p1.y));
     }
 
     /**

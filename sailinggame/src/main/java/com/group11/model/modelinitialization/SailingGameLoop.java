@@ -4,11 +4,11 @@ import java.util.List;
 
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
+import com.group11.model.gameentites.UProjectileUtility;
 import com.group11.model.gameworld.Map;
 import com.group11.model.utility.AICommander;
 import com.group11.model.utility.EntitySpawner;
 import com.group11.model.utility.UEntityMatrixGenerator;
-import com.group11.model.utility.UProjectileUtility;
 
 /**
  * The SailingGameLoop class is responsible for running the game loop for the SailingGame application.
@@ -46,7 +46,7 @@ public class SailingGameLoop implements IGameLoop {
             waveNumber++;
             enemyList.addAll(entitySpawner.createEnemyWave(waveNumber));
             entityList.addAll(enemyList);
-            player.setHitPoints(100);
+            player.setHitPoints(112);
         }
 
         playerManager.updatePlayer(movementInput, fireInput);
