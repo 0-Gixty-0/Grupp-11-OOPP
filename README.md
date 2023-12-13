@@ -2266,4 +2266,10 @@ As a user i want a smaller application package because game logic should be conf
 During this us i factored out all of the model initialization and lifecycle (game loop) to the model.
 
 #### How
-By creating a facade class with the AModelInizializer
+By creating a facade class with the AModelInizializer and SailingGameModel i reduced coupling to just 4 model classes. This also allowed me to hide a lot of methods that were unnecessary for the client to see.
+
+#### Why
+Reducing coupling makes the application more robust
+
+#### User interaction
+Developers will interact with a much lower coupled source code.
