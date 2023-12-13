@@ -1,6 +1,6 @@
 package modeltest;
 
-import com.group11.model.utility.AStar;
+import com.group11.model.utility.UAStar;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,41 +22,41 @@ public class AStarTest {
     }
     @Test
     public void testUpDirectionReturned() {
-        assertEquals(0, AStar.aStar(this.grid, 2, 2, 1, 2));
+        assertEquals(0, UAStar.aStar(this.grid, 2, 2, 1, 2));
     }
 
     @Test
     public void testTopRightDirectionReturned() {
-        assertEquals(1, AStar.aStar(this.grid, 3, 2, 1, 4));
+        assertEquals(1, UAStar.aStar(this.grid, 3, 2, 1, 4));
     }
 
     @Test
     public void testRightDirectionReturned() {
-        assertEquals(2, AStar.aStar(this.grid, 2, 2, 2, 4));
+        assertEquals(2, UAStar.aStar(this.grid, 2, 2, 2, 4));
     }
 
     @Test
     public void testBottomRightDirectionReturned() {
-        assertEquals(3, AStar.aStar(this.grid, 1, 2, 3, 4));
+        assertEquals(3, UAStar.aStar(this.grid, 1, 2, 3, 4));
     }
 
     @Test
     public void testDownDirectionReturned() {
-        assertEquals(4, AStar.aStar(this.grid, 1, 2, 3, 2));
+        assertEquals(4, UAStar.aStar(this.grid, 1, 2, 3, 2));
     }
 
     @Test
     public void testBottomLeftDirectionReturned() {
-        assertEquals(5, AStar.aStar(this.grid, 0, 3, 3, 0));
+        assertEquals(5, UAStar.aStar(this.grid, 0, 3, 3, 0));
     }
 
     @Test
     public void testLeftDirectionReturned() {
-        assertEquals(6, AStar.aStar(this.grid, 2, 4, 2, 0));
+        assertEquals(6, UAStar.aStar(this.grid, 2, 4, 2, 0));
     }
 
     @Test
     public void testTopLeftDirectionReturned() {
-        assertEquals(7, AStar.aStar(this.grid, 3, 4, 2, 0));
+        assertEquals(7, UAStar.aStar(this.grid, 3, 4, 2, 0));
     }
 }

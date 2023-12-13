@@ -9,7 +9,7 @@ import java.awt.Point;
  * since a movable body can take move.
  */
 
-public abstract class AMovableBody extends ABody implements IMovable {
+public abstract class AMovableBody extends ABody {
 
     /**
      * Constructor for a movable body, like a body but its meant to move around the game world.
@@ -36,7 +36,7 @@ public abstract class AMovableBody extends ABody implements IMovable {
      * that does the actual moving of the body in subclasses.
      * @param dirVector The direction the body should move in.
      */
-    public void moveIfPossible(int [] dirVector) {
+    protected void moveIfPossible(int [] dirVector) {
         Point currPos = this.getPos();
         if (UMovementUtility.movementIsPossible(currPos, dirVector)) {
             int currX = (int) currPos.getX();

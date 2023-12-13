@@ -1,6 +1,7 @@
 package com.group11.model.utility;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.group11.model.gameworld.ATile;
@@ -13,13 +14,16 @@ import com.group11.model.gameworld.SeaTile;
  */
 public final class UTileMatrixDecoder {
     
+
+    private static List<List<ATile>> tileMatrix;
+
     /**
      * Mapping of Tile classes to textureId's.
      */
-    private static List<Class<? extends ATile>> tileMap = new ArrayList<>();
+    private static HashMap<Class<? extends ATile>, Integer> tileMap = new HashMap<>();
     static {
-        tileMap.add(LandTile.class); // 0
-        tileMap.add(SeaTile.class); // 1
+        tileMap.put(LandTile.class, 0);
+        tileMap.put(SeaTile.class, 1);
     }
 
     /**
@@ -36,9 +40,13 @@ public final class UTileMatrixDecoder {
      */ 
     private static int getTextureId(ATile tile) {
         Class<? extends ATile> tileClass = tile.getClass();
-        Integer textureId = tileMap.indexOf(tileClass);
+        Integer textureId = tileMap.get(tileClass);
         if (textureId == -1) throw new IllegalArgumentException("Tile class not found in tileMap");
         return textureId;
+    }
+
+    public static void setTilematrix(List<List<ATile>> tileMatrix) {
+        UTileMatrixDecoder.tileMatrix = tileMatrix;
     }
 
     /**
@@ -46,17 +54,17 @@ public final class UTileMatrixDecoder {
      * @param matrix A Matrix<Tile> (ArrayList of ArrayLists) you want to convert.
      * @return (Matrix<Integer>) representation of map in textureId's.
      */
-    public static List<List<Integer>> decodeIntoIntMatrix(List<List<ATile>> matrix) {
+    public static List<List<Integer>> decodeIntoIntMatrix() {
         
-        List<List<Integer>> intMatrix = new ArrayList<List<Integer>>();
+        List<List<Integer>> intMatrix = new ArrayList<>();
 
-        for (int row = 0; row < matrix.size(); row++) {
+        for (int row = 0; row < tileMatrix.size(); row++) {
 
-            intMatrix.add(new ArrayList<Integer>());
+            intMatrix.add(new ArrayList<>());
 
-            for (int col = 0; col < matrix.get(row).size(); col++) {
+            for (int col = 0; col < tileMatrix.get(row).size(); col++) {
 
-                ATile tile = matrix.get(row).get(col);
+                ATile tile = tileMatrix.get(row).get(col);
 
                 Integer textureId = UTileMatrixDecoder.getTextureId(tile);
 

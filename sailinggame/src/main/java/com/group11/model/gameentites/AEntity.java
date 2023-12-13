@@ -5,7 +5,7 @@ import java.awt.Point;
 /**
  * An entity represents anything interactive in the world, it could be a town, creature, ship etc.
  */
-public abstract class AEntity implements IDamageable {
+public abstract class AEntity {
     
     private String name;
     private Boolean friendly;
@@ -55,13 +55,10 @@ public abstract class AEntity implements IDamageable {
     }
 
     /**
-     * *WARNING*
-     * This method should only be used for testing purposes and it 
-     * should not be used as an interface to modify the body of the entity.
-     * *WARNING*
+     * returns the body of the entity
      * @return (ABody) The body of the entity
      */
-    public ABody getBody() {
+    protected ABody getBody() {
         return this.body;
     }
 
