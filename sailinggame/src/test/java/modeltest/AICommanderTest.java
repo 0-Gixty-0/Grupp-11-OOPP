@@ -192,8 +192,6 @@ public class AICommanderTest {
         assertEquals(new Point(2,3), enemy.getPos());
     }
 
-    // TODO
-    // Currently untestable due to weapons not being integrated into ship class
     @Test
     public void testFireAtPlayer() {
         

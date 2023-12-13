@@ -22,7 +22,6 @@ public class EntityManager {
      * @param entityMatrix the entity matrix containg all entities
      */
     public EntityManager(List<CommandableEntity> enemyList, List<AEntity> entityList, CommandableEntity player) {
-        ScoreBoard.clearScoreBoard();
         this.enemyList = enemyList;
         this.entityList = entityList;
         this.player = player;

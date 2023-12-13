@@ -10,8 +10,10 @@ public class PlayerManager {
     private CommandableEntity player;
 
     public PlayerManager(CommandableEntity player) {
+        ScoreBoard.clearScoreBoard();
         this.player = player;
         ScoreBoard.addEntityToScoreBoard(player);
+        ScoreBoard.setScore(player, 0);
     }
 
     /**

@@ -6,7 +6,6 @@ import static junit.framework.TestCase.assertTrue;
 
 import java.awt.Point;
 
-import com.group11.model.gameentites.BasicCannon;
 import org.junit.Test;
 
 import com.group11.model.builders.EntityDirector;
