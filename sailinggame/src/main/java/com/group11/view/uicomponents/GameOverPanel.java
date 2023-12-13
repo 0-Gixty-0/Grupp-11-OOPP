@@ -31,9 +31,9 @@ public class GameOverPanel extends AStandardPanel {
 
         Dimension buttonSize = new Dimension(200, 50);
 
-        gameOverLabel.setFont(smallFont);
+        gameOverLabel.setFont(this.getSmallFont());
         scoreLabel.setAlignmentX(CENTER_ALIGNMENT);
-        gameOverLabel.setFont(bigFont);
+        gameOverLabel.setFont(this.getBigFont());
         gameOverLabel.setAlignmentX(CENTER_ALIGNMENT);
         backToMenuButton.setMaximumSize(buttonSize);
         backToMenuButton.addActionListener(e -> backToMenuButtonPressed());
@@ -48,7 +48,7 @@ public class GameOverPanel extends AStandardPanel {
      * Method used to set the score label for the game over screen.
      * @param score
      */
-    public void setScoreLabel(int score) {
+    protected void setScoreLabel(int score) {
         this.scoreLabel.setText("SCORE: " + score);
     }
 
@@ -56,14 +56,14 @@ public class GameOverPanel extends AStandardPanel {
      * Method used to get the back to menu button pressed boolean
      * @return
      */
-    public boolean getBackToMenuButtonPressed() {
+    protected boolean getBackToMenuButtonPressed() {
         return this.backToMenuButtonPressed;
     }
 
     /**
      * Method used to reset the back to menu button to not pressed
      */
-    public void resetBackToMenuButtonPressed() {
+    protected void resetBackToMenuButtonPressed() {
         this.backToMenuButtonPressed = false;
     }
 

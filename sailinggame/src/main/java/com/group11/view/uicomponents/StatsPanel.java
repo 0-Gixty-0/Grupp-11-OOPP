@@ -60,9 +60,9 @@ public class StatsPanel extends AStandardPanel {
 
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 0));
 
-        lvlLabel.setFont(smallFont);
-        hpLabel.setFont(smallFont);
-        scoreLabel.setFont(smallFont);
+        lvlLabel.setFont(this.getSmallFont());
+        hpLabel.setFont(this.getSmallFont());
+        scoreLabel.setFont(this.getSmallFont());
 
         this.add(movementIconLabel);
         this.add(arrowsIconLabel);

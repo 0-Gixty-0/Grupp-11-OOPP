@@ -11,7 +11,7 @@ public class CommandableEntity extends AEntity implements ICommandable {
      * @param name The entity's name
      * @param friendly A single factor which assigns the lifelong allegiance of the entity
      */
-    public CommandableEntity(AMovableBody body, String name, Boolean friendly) {
+    public CommandableEntity(ABody body, String name, Boolean friendly) {
         super(body, name, friendly);
     }
 
@@ -19,7 +19,7 @@ public class CommandableEntity extends AEntity implements ICommandable {
      * Sets the body of the movable entity.
      * @param body The new body of the movable entity.
      */
-    public void setMovableBody(AMovableBody body) {
+    public void setMovableBody(ABody body) {
         this.setBody(body);
     }
 

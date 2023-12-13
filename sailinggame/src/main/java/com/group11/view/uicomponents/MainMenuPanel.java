@@ -10,9 +10,9 @@ import javax.swing.BoxLayout;
  */
 public class MainMenuPanel extends AStandardPanel {
     
-    Button startButton;
-    Button exitButton;
-    Boolean startButtonPressed = false;
+    private Button startButton;
+    private Button exitButton;
+    private Boolean startButtonPressed = false;
 
     public MainMenuPanel(int width, int height) {
         super(width, height);
@@ -34,21 +34,21 @@ public class MainMenuPanel extends AStandardPanel {
      * Method used to get the start button pressed boolean
      * @return Boolean
      */
-    public Boolean getStartButtonPressed() {
+    protected Boolean getStartButtonPressed() {
         return this.startButtonPressed;
     }   
 
     /**
      * Method used to reset the start button to not pressed
      */
-    public void resetStartButtonPressed() {
+    protected void resetStartButtonPressed() {
         this.startButtonPressed = false;
     }
 
     /**
      * Method used to set the start button to pressed
      */
-    private void startButtonPressed() {
+    protected void startButtonPressed() {
         if (startButton.hasFocus()) {
             this.startButtonPressed = true;
         }
