@@ -2273,3 +2273,23 @@ Reducing coupling makes the application more robust
 
 #### User interaction
 Developers will interact with a much lower coupled source code.
+
+---
+
+### US-99: Fix terrain generation bug
+Date of completion: 13/12/2023
+Completed by: Adam Kvarnsund
+
+As a user I never want to get stuck in a water pocket when playing the game
+
+#### What
+I added a connectivity check system that uses the flood fill algorithm to check if all sea tiles are reachable for the player
+
+#### How
+Created a findFirstSeaTile method that finds the first tile and uses it as a starting point. Then the isAllSeaConnected method creates a list of visited tiles and uses the floodFill method to fill up all sea tiles as true. The method areAllSeaTilesVisited then checks if all sea tiles are visited/connected and returns true/false depending on the result. These methods will be run until the map is as we want it, i.e. it will be constructed with all sea tiles connected to each other.
+
+#### Why
+Makes the game more playable and eliminates the chance for a bug where the player would get stuck and then making the game not playable.
+
+#### User interaction
+The user will notice that the game always will be playable without any need for a restart.
