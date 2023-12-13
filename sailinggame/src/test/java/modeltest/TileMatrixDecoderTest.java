@@ -17,7 +17,8 @@ public class TileMatrixDecoderTest {
     public void testDecodeIntoIntMatrix() {
         Map map = (new BasicMapGenerator()).generateMap(50,50);
         List<List<ATile>> tileMatrix = map.getTileMatrix();
-        List<List<Integer>> gMap = UTileMatrixDecoder.decodeIntoIntMatrix(tileMatrix);
+        UTileMatrixDecoder.setTilematrix(tileMatrix);
+        List<List<Integer>> gMap = UTileMatrixDecoder.decodeIntoIntMatrix();
         
         assertEquals(1, (int) gMap.get(0).get(0));
         assertEquals(0, (int) gMap.get(25).get(25));

@@ -33,7 +33,8 @@ public class EntityDirector {
         builder.setName("Player");
         builder.setFriendlyStatus(true);
         builder.setPosition(position);
-        builder.setAttributesForLevel(1);
+        builder.setAttributesForLevel(0);
+        builder.setAttributesForLevel(5);
         builder.setBody();
         return builder.createEntity();
     }
@@ -45,7 +46,7 @@ public class EntityDirector {
      */
     public AEntity createEnemy(Point position, int lvl) {
         builder.reset();
-        builder.setName(String.format("Enemy",lvl));
+        builder.setName("Enemy");
         builder.setFriendlyStatus(false);
         builder.setPosition(position);
         builder.setAttributesForLevel(lvl);

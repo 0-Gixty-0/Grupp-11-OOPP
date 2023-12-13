@@ -5,12 +5,16 @@ import java.util.*;
 /**
  * AStar search algorithm modified for use with directional values in CommandableEntity
  */
-public class AStar {
+public class UAStar {
+
+    private UAStar() {
+        throw new IllegalStateException("Utility class");
+    }
 
     /**
      * Node class representing an entity tile along with AStar attributes for cost and guess heuristic
      */
-    public static class Node implements Comparable<Node> {
+    private static class Node implements Comparable<Node> {
         int x, y, cost, heuristic;
 
         public Node(int x, int y, int cost, int heuristic) {
@@ -87,7 +91,7 @@ public class AStar {
      * @param y2 Second node column index
      * @return Distance value between first and second node
      */
-    public static int chebyshevDistance(int x1, int y1, int x2, int y2) {
+    private static int chebyshevDistance(int x1, int y1, int x2, int y2) {
         return Math.max(Math.abs(x1 - x2), Math.abs(y1 - y2));
     }
 

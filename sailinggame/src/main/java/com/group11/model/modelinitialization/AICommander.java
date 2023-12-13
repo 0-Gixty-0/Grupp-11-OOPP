@@ -1,4 +1,4 @@
-package com.group11.model.utility;
+package com.group11.model.modelinitialization;
 
 
 import java.awt.Point;
@@ -9,20 +9,23 @@ import java.util.Random;
 
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
-import com.group11.model.gameworld.ATile;
+import com.group11.model.utility.UAStar;
+import com.group11.model.utility.UTileMatrixDecoder;
 
 /**
  * Class representing controller for AI controlled entities
  */
 public class AICommander {
+
+    private Random random = new Random();
     protected int innerRadius = 5;
     private List<List<AEntity>> entityMatrix;
     private List<List<Integer>> terrainMatrixEncoded;
     private final int[][] directions = {{-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}};
 
-    public AICommander(List<List<AEntity>> entityMatrix, List<List<ATile>> terrainMatrix) {
+    public AICommander(List<List<AEntity>> entityMatrix) {
         this.entityMatrix = entityMatrix;
-        this.terrainMatrixEncoded = UTileMatrixDecoder.decodeIntoIntMatrix(terrainMatrix);
+        this.terrainMatrixEncoded = UTileMatrixDecoder.decodeIntoIntMatrix();
     }
 
     /**
@@ -37,8 +40,8 @@ public class AICommander {
      * Sets the current encoded terrain matrix through the object terrain matrix
      * @param terrainMatrix The object terrain matrix to set as encoded
      */
-    public void setTerrainMatrixEncoded(List<List<ATile>> terrainMatrix) {
-        this.terrainMatrixEncoded = UTileMatrixDecoder.decodeIntoIntMatrix(terrainMatrix);
+    public void updateTerrainMatrixEncoded() {
+        this.terrainMatrixEncoded = UTileMatrixDecoder.decodeIntoIntMatrix();
     }
 
     /**
@@ -50,7 +53,7 @@ public class AICommander {
      * @param enemies The list of enemies to move
      */
     public void moveEnemies(List<CommandableEntity> enemies) {
-        Random random = new Random();
+        
         for (CommandableEntity enemy : enemies) {
             int entityRowIndex = enemy.getPos().x;
             int entityColumnIndex = enemy.getPos().y;
@@ -59,7 +62,7 @@ public class AICommander {
                 Point playerPoint = namePosMap.get("Player");
                 Point enemyPoint = enemy.getPos();
                 if (!this.isNearEnemy(playerPoint, this.innerRadius)) {
-                    int directionToPlayer = AStar.aStar(this.terrainMatrixEncoded, enemyPoint.x, enemyPoint.y, playerPoint.x, playerPoint.y);
+                    int directionToPlayer = UAStar.aStar(this.terrainMatrixEncoded, enemyPoint.x, enemyPoint.y, playerPoint.x, playerPoint.y);
                     enemy.moveIfPossible(directionToPlayer);
                 } else {
                     enemy.moveIfPossible(random.nextInt(8));
@@ -79,11 +82,7 @@ public class AICommander {
         int entityRowIndex = entityPos.x;
         int entityColumnIndex = entityPos.y;
         HashMap<String, Point> surroundingEntities = this.getSurroundingEntityNameAndPos(entityRowIndex, entityColumnIndex, radius);
-        if (surroundingEntities.containsKey("Enemy")) {
-            return true;
-        } else {
-            return false;
-        }
+        return (surroundingEntities.containsKey("Enemy"));
     }
 
     /**
@@ -102,12 +101,17 @@ public class AICommander {
         // Check bounds and add surrounding elements within the given radius
         for (int i = row - radius; i <= row + radius; i++) {
             for (int j = col - radius; j <= col + radius; j++) {
-                if (i >= 0 && i < mapHeight && j >= 0 && j < mapWidth && !(i == row && j == col)) {
-                    if (this.entityMatrix.get(i).get(j) != null) {
-                        String name = this.entityMatrix.get(i).get(j).getName();
-                        Point position = this.entityMatrix.get(i).get(j).getPos();
-                        surroundingElements.put(name, position);
-                    }
+                if (i >= 0 && 
+                    i < mapHeight &&
+                    j >= 0 && 
+                    j < mapWidth &&
+                    !(i == row && j == col) &&
+                    (this.entityMatrix.get(i).get(j) != null)) {
+
+                    String name = this.entityMatrix.get(i).get(j).getName();
+                    Point position = this.entityMatrix.get(i).get(j).getPos();
+                    surroundingElements.put(name, position);
+                    
                 }
             }
         }
@@ -123,11 +127,7 @@ public class AICommander {
      */
     private boolean isNearlyEqual(Point p1, Point p2) {
         ValueRange range = ValueRange.of(-1, 1);
-        if (range.isValidIntValue(p2.x - p1.x) || range.isValidIntValue(p2.y - p1.y)) {
-            return true;
-        } else {
-            return false;
-        }
+        return (range.isValidIntValue(p2.x - p1.x) || range.isValidIntValue(p2.y - p1.y));
     }
 
     /**
@@ -166,7 +166,7 @@ public class AICommander {
                 Point enemyPoint = entity.getPos();
                 int dx = playerPoint.x - enemyPoint.x;
                 int dy = playerPoint.y - enemyPoint.y;
-                int fireDirection = AStar.getDirection(dx,dy);
+                int fireDirection = UAStar.getDirection(dx,dy);
                 if (this.isPathClear(this.directions[fireDirection], enemyPoint, playerPoint)) {
                     entity.attackIfPossible(fireDirection);
                 }

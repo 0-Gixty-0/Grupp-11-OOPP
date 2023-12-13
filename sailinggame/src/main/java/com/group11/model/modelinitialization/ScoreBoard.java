@@ -1,4 +1,4 @@
-package com.group11.application;
+package com.group11.model.modelinitialization;
 
 import java.util.HashMap;
 
@@ -17,7 +17,7 @@ public final class ScoreBoard {
      * Adds an entity to the score board.
      * @param gameEntity the entity to be added
      */
-    public static void addEntityToScoreBoard(Object gameEntity) {
+    protected static void addEntityToScoreBoard(Object gameEntity) {
         scoreMap.put(gameEntity, 0);
     }
 
@@ -25,7 +25,7 @@ public final class ScoreBoard {
      * Removes an entity from the score board.
      * @param gameEntity the entity to be removed
      */
-    public static void removeFromScoreBoard(Object gameEntity) {
+    protected static void removeFromScoreBoard(Object gameEntity) {
         scoreMap.remove(gameEntity);
     }
     
@@ -34,7 +34,7 @@ public final class ScoreBoard {
      * @param gameEntity the entity whose score is to be incremented
      * @param value the value by which the score is to be incremented
      */
-    public static void incrementScore(Object gameEntity, int value) {
+    protected static void incrementScore(Object gameEntity, int value) {
         scoreMap.put(gameEntity, scoreMap.get(gameEntity) + value);
     }
 
@@ -43,7 +43,7 @@ public final class ScoreBoard {
      * @param gameEntity the entity whose score is to be returned
      * @return the score of the entity
      */
-    public static int getScore(Object gameEntity) {
+    protected static int getScore(Object gameEntity) {
         return scoreMap.get(gameEntity);
     }
 
@@ -52,14 +52,14 @@ public final class ScoreBoard {
      * @param gameEntity the entity whose score is to be set
      * @param value the value to which the score is to be set
      */
-    public static void setScore(Object gameEntity, int value) {
+    protected static void setScore(Object gameEntity, int value) {
         scoreMap.put(gameEntity, value);
     }
 
     /**
      * Clears the score map.
      */
-    public static void clearScoreBoard() {
+    protected static void clearScoreBoard() {
         scoreMap.clear();
     }
     

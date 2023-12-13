@@ -16,12 +16,15 @@ public class AppFrame extends JFrame {
     private GamePanel gameView;
     private MainMenuPanel mainMenuView;
 
+    private static final int TILEWIDTH = 16;
+    private static final int TILEHEIGHT = 16;
+
     /**
      * Constructor for creating an AppFrame.
      * @param width width of the frame
      * @param height height of the frame
      */
-    public AppFrame (int width, int height, int mapWidth, int mapHeight, int tileWidth, int tileHeight) {
+    public AppFrame (int width, int height, int mapWidth, int mapHeight) {
         super();
         Dimension size = new Dimension(width, height);
         this.setPreferredSize(size);
@@ -31,7 +34,7 @@ public class AppFrame extends JFrame {
         this.setLayout(new FlowLayout(FlowLayout.CENTER));
         this.setVisible(true);
         this.gameOverView = new GameOverPanel(width, height);
-        this.gameView = new GamePanel(width, height, mapWidth, mapHeight, 16, 16);
+        this.gameView = new GamePanel(width, height, mapWidth, mapHeight, TILEWIDTH, TILEHEIGHT);
         this.mainMenuView = new MainMenuPanel(width, height);
     }
 

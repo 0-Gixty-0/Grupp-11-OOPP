@@ -2255,3 +2255,21 @@ This us started as changing dependencies from CommandableEntity to ICommandable 
 CommandableEntity is used as an AEntity in the code not as an ICommandable.
 
 ICommandable will only ever be used by CommandableEntity because CommandableEntity is a top-level class and in the scope of the project it doesnt have much reason to change
+
+### US-110: Refactoring application package
+Date of completion: 13/12/2023
+Completed by: William Norland
+
+As a user i want a smaller application package because game logic should be confined to the module
+
+#### What
+During this us i factored out all of the model initialization and lifecycle (game loop) to the model.
+
+#### How
+By creating a facade class with the AModelInizializer and SailingGameModel i reduced coupling to just 4 model classes. This also allowed me to hide a lot of methods that were unnecessary for the client to see.
+
+#### Why
+Reducing coupling makes the application more robust
+
+#### User interaction
+Developers will interact with a much lower coupled source code.

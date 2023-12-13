@@ -3,6 +3,7 @@ package com.group11.model.utility;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
 import com.group11.model.gameentites.AEntity;
 
@@ -23,6 +24,8 @@ public final class UEntityMatrixDecoder {
         // Add more entities as needed
     }
 
+    private static List<List<AEntity>> entityMatrix;
+
     /**
      * Private constructor to prevent instantiation of this utility class.
      */
@@ -42,7 +45,7 @@ public final class UEntityMatrixDecoder {
         String entityName = entity.getName();
         Integer entityId = null;
     
-        for (HashMap.Entry<String, Integer> entry : entityIds.entrySet()) {
+        for (Entry<String, Integer> entry : entityIds.entrySet()) {
             if (entityName.contains(entry.getKey())) {
                 entityId = entry.getValue();
                 break;
@@ -56,6 +59,11 @@ public final class UEntityMatrixDecoder {
         return entityId;
     }
 
+
+    public static void setEntityMatrix(List<List<AEntity>> entityMatrix) {
+        UEntityMatrixDecoder.entityMatrix = entityMatrix;
+    }
+
     /**
      * Converts a 2D matrix of AEntity objects into a 2D matrix of integers.
      * Each AEntity object is replaced by its corresponding integer ID, as determined by the getEntityId method.
@@ -63,9 +71,9 @@ public final class UEntityMatrixDecoder {
      * @param matrix the 2D matrix of AEntity objects to be converted
      * @return the converted 2D matrix of integers
      */
-    public static List<List<Integer>> decodeIntoIntMatrix(List<List<AEntity>> matrix) {
+    public static List<List<Integer>> decodeIntoIntMatrix() {
         List<List<Integer>> intMatrix = new ArrayList<>();
-        for (List<AEntity> row : matrix) {
+        for (List<AEntity> row : entityMatrix) {
             List<Integer> intRow = new ArrayList<>();
             for (AEntity entity : row) {
                 intRow.add(entity == null ? -1 : getEntityId(entity));
