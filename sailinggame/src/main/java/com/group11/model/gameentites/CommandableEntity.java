@@ -3,7 +3,7 @@ package com.group11.model.gameentites;
 /**
  * A movable entity is a subset of entities that can move around the gameworld
  */
-public class CommandableEntity extends AEntity implements ICommandable {
+public class CommandableEntity extends AEntity {
 
     /**
      * Used to create a commandable entity
@@ -35,7 +35,6 @@ public class CommandableEntity extends AEntity implements ICommandable {
      * 7 move at a left angle up,
      * @param direction Moves the Entity in the chosen direction (see the index above).
      */
-    @Override
     public void moveIfPossible(Integer direction) {
         int[][] directions = {{-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}};
         if (this.getBody() instanceof IMovable) {
@@ -49,7 +48,6 @@ public class CommandableEntity extends AEntity implements ICommandable {
      * This method checks if the entities body has a weapon and if so fires it in the desired direction
      * @param direction The direction to fire the weapon
      */
-    @Override
     public void attackIfPossible(Integer direction) {
         int[][] directions = {{-1,0}, {-1,1}, {0,1}, {1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}};
         if (this.getBody() instanceof IHasWeapon) {
@@ -59,7 +57,6 @@ public class CommandableEntity extends AEntity implements ICommandable {
         }
     }
 
-    @Override
     public void interactIfPossible() {
         if (this.getBody() instanceof ICanInteract) {
             //Placeholder for later implementation.
@@ -68,7 +65,6 @@ public class CommandableEntity extends AEntity implements ICommandable {
         }
     }
 
-    @Override
     public AWeapon getWeaponIfExists() {
         if (this.getBody() instanceof IHasWeapon) {
             return ((IHasWeapon) this.getBody()).getWeapon();
