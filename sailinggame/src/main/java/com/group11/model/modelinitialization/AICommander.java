@@ -1,4 +1,4 @@
-package com.group11.model.utility;
+package com.group11.model.modelinitialization;
 
 
 import java.awt.Point;
@@ -9,6 +9,8 @@ import java.util.Random;
 
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
+import com.group11.model.utility.UAStar;
+import com.group11.model.utility.UTileMatrixDecoder;
 
 /**
  * Class representing controller for AI controlled entities
@@ -60,7 +62,7 @@ public class AICommander {
                 Point playerPoint = namePosMap.get("Player");
                 Point enemyPoint = enemy.getPos();
                 if (!this.isNearEnemy(playerPoint, this.innerRadius)) {
-                    int directionToPlayer = AStar.aStar(this.terrainMatrixEncoded, enemyPoint.x, enemyPoint.y, playerPoint.x, playerPoint.y);
+                    int directionToPlayer = UAStar.aStar(this.terrainMatrixEncoded, enemyPoint.x, enemyPoint.y, playerPoint.x, playerPoint.y);
                     enemy.moveIfPossible(directionToPlayer);
                 } else {
                     enemy.moveIfPossible(random.nextInt(8));
@@ -164,7 +166,7 @@ public class AICommander {
                 Point enemyPoint = entity.getPos();
                 int dx = playerPoint.x - enemyPoint.x;
                 int dy = playerPoint.y - enemyPoint.y;
-                int fireDirection = AStar.getDirection(dx,dy);
+                int fireDirection = UAStar.getDirection(dx,dy);
                 if (this.isPathClear(this.directions[fireDirection], enemyPoint, playerPoint)) {
                     entity.attackIfPossible(fireDirection);
                 }

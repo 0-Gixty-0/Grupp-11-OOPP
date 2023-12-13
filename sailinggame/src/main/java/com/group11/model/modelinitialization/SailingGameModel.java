@@ -11,8 +11,6 @@ import com.group11.model.gameworld.AdvancedMapGenerator;
 import com.group11.model.gameworld.BasicWorldGenerator;
 import com.group11.model.gameworld.Map;
 import com.group11.model.gameworld.World;
-import com.group11.model.utility.AICommander;
-import com.group11.model.utility.EntitySpawner;
 import com.group11.model.utility.UEntityMatrixGenerator;
 
 /**

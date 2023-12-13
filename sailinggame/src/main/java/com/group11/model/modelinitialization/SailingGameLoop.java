@@ -6,8 +6,6 @@ import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameentites.UProjectileUtility;
 import com.group11.model.gameworld.Map;
-import com.group11.model.utility.AICommander;
-import com.group11.model.utility.EntitySpawner;
 import com.group11.model.utility.UEntityMatrixGenerator;
 
 /**

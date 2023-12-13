@@ -7,7 +7,7 @@ import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameworld.ATile;
 import com.group11.model.gameworld.LandTile;
 import com.group11.model.gameworld.SeaTile;
-import com.group11.model.utility.AICommander;
+import com.group11.model.modelinitialization.AICommander;
 import com.group11.model.utility.UMovementUtility;
 import com.group11.model.utility.UTileMatrixDecoder;
 import com.group11.model.utility.UEntityMatrixGenerator;
