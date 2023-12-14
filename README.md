@@ -17,7 +17,7 @@ Joise 1.0.2 is used to generate random maps,<br>
 Java 17 is specified as project JDK in the pom.xml file,<br>
 the runnable Jar requires you to have Java 17 or higher.
 
-**Documentation:** Indepth docs of all project features is available under the **Implemented features** tab of this README, JavaDoc for the project is available [here](placeholderlink).
+**Documentation:** Indepth docs of all project features is available under the **Implemented features** tab of this README, the source code of the project is commented using the JavaDoc format.
 
 **Credit:** <br>
 Noa Cavassi [@cavassi](https://github.com/cavassi), <br>
