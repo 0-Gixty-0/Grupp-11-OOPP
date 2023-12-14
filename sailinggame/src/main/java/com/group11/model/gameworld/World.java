@@ -9,6 +9,7 @@ public class World {
 
     /**
      * Creates a World out of a Map. Constructor is protected because Worlds should only be created by WorldGenerators.
+     *
      * @param map the map used in the world
      */
     protected World(Map map) {
@@ -17,6 +18,7 @@ public class World {
 
     /**
      * getter for the map attribute
+     *
      * @return (Map)
      */
     public Map getMap() {
@@ -25,10 +27,10 @@ public class World {
 
     /**
      * setter fot the map attribute
+     *
      * @param map
      */
     public void setMap(Map map) {
         this.map = map;
     }
-
 }

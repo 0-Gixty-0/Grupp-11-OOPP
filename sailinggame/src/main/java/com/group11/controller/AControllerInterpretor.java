@@ -85,5 +85,4 @@ public abstract class AControllerInterpretor{
      * @return Returns the fire input
      */
     public abstract int getFireInput();
-
 }

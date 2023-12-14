@@ -6,9 +6,9 @@ import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameworld.Map;
 import com.group11.model.gameworld.World;
-import com.group11.model.utility.UEntityCollisionUtility;
+import com.group11.model.utility.UEntityCollision;
 import com.group11.model.utility.UEntityMatrixDecoder;
-import com.group11.model.utility.UMovementUtility;
+import com.group11.model.utility.UMovement;
 import com.group11.model.utility.UTileMatrixDecoder;
 
 /**
@@ -39,8 +39,8 @@ public abstract class AModelInitializer {
         this.player = initializePlayer();
         this.entityList = initializeEntityList();
         this.entityMatrix = initializeEntityMatrix();
-        UMovementUtility.setTileMatrix(map.getTileMatrix());
-        UEntityCollisionUtility.setEntityMatrix(entityMatrix);
+        UMovement.setTileMatrix(map.getTileMatrix());
+        UEntityCollision.setEntityMatrix(entityMatrix);
         UTileMatrixDecoder.setTilematrix(map.getTileMatrix());
         UEntityMatrixDecoder.setEntityMatrix(entityMatrix);
         this.aiCommander = initializeAICommander();
@@ -169,5 +169,4 @@ public abstract class AModelInitializer {
     protected List<AEntity> getEntityList() {
         return this.entityList;
     }
-
 }

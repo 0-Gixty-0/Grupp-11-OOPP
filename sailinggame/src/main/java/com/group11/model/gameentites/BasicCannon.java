@@ -26,5 +26,4 @@ public class BasicCannon extends AWeapon {
             this.getFiredProjectiles().add(this.createProjectile(firingPoint, direction));
         }
     }
-
 }
