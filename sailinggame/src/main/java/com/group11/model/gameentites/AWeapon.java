@@ -19,6 +19,9 @@ public abstract class AWeapon {
     /**
      * Constructs a new weapon.
      * Initializes the list of fired projectiles.
+     *
+     * @param projectileType The type of projectile that this weapon fires.
+     * @param maxTimesFired The maximum number of times this weapon can be fired.
      */
     protected AWeapon(Class<? extends AProjectile> projectileType, int maxTimesFired) {
         this.projectileType =  projectileType;
@@ -28,6 +31,7 @@ public abstract class AWeapon {
 
     /**
      * Returns the type of projectile that this cannon fires.
+     *
      * @return the type of projectile that this cannon fires.
      */
     public Class<? extends AProjectile> getProjectileType() {
@@ -36,6 +40,7 @@ public abstract class AWeapon {
 
     /**
      * Returns the number of projectiles that this cannon has fired.
+     *
      * @return the number of projectiles that this cannon has fired.
      */
     protected int getFiredProjectilesSize() {
@@ -44,6 +49,7 @@ public abstract class AWeapon {
 
     /**
      * Returns the list of projectiles that this cannon has fired.
+     *
      * @return the list of projectiles that this cannon has fired.
      */
     protected List<ProjectileEntity> getFiredProjectiles() {
@@ -51,7 +57,8 @@ public abstract class AWeapon {
     }
 
     /**
-     * Returns the the max amount of times this cannon can be fired.
+     * Returns the max amount of times this cannon can be fired.
+     *
      * @return the max amount of times this cannon can be fired.
      */
     protected int getMaxTimesFired() {
@@ -60,6 +67,7 @@ public abstract class AWeapon {
 
     /**
      * Creates a new instance of the projectile type that this Weapon fires.
+     *
      * @param startingPoint the starting point of the projectile
      * @param direction the direction of the projectile
      * @return a new instance of the projectile type that this Weapon fires.
@@ -92,6 +100,7 @@ public abstract class AWeapon {
 
     /**
      * Fires the weapon.
+     *
      * @param firingPoint the position from which the projectile is fired
      * @param direction the direction in which the projectile is fired
      * @throws RuntimeException if the projectile could not be instantiated

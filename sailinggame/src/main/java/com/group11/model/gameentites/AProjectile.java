@@ -7,9 +7,8 @@ import java.awt.*;
  * that can travel in a certain direction and cause damage.
  *
  * A projectile has a distance it has traveled, a maximum range it can travel, the damage it can cause,
- * the direction it is traveling in, and the hitpoints it has. A projectile has always 1 hitpoint.
+ * the direction it is traveling in, and the hitpoints it has. A projectile always has 1 hitpoint.
  */
-
 public abstract class AProjectile extends ABody{
 
     private int distanceTraveled;
@@ -20,7 +19,6 @@ public abstract class AProjectile extends ABody{
 
     /**
      * Constructs a new projectile with the given parameters.
-     * @param pos the position of the projectile
      * @param maxRange the maximum range the projectile can travel
      * @param damage the damage the projectile can cause
      * @param direction the direction the projectile is traveling in
@@ -78,5 +76,4 @@ public abstract class AProjectile extends ABody{
     protected int[] getDirection() {
         return this.direction;
     }
-
 }

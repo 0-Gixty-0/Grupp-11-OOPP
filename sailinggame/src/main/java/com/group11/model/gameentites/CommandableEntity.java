@@ -33,6 +33,7 @@ public class CommandableEntity extends AEntity {
      * 5 moves at a left angle down,
      * 6 moves straight left,
      * 7 move at a left angle up,
+     *
      * @param direction Moves the Entity in the chosen direction (see the index above).
      */
     public void moveIfPossible(Integer direction) {
@@ -73,5 +74,4 @@ public class CommandableEntity extends AEntity {
             return null;
         }
     }
-
 }

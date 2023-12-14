@@ -14,7 +14,7 @@ public abstract class AEntity {
     /**
      * Used to construct an entity
      * @param name The entities name
-     * @param friendly A single factor which assigns the life long allegience of the entity
+     * @param friendly A single factor which assigns the lifelong allegiance of the entity
      * @param body The body of the entity
      */
     protected AEntity(ABody body, String name, Boolean friendly) {
@@ -33,7 +33,7 @@ public abstract class AEntity {
 
     /**
      * 
-     * @return (Boolean) The Allegience of the entity
+     * @return (Boolean) The Allegiance of the entity
      */
     public Boolean isFriendly() {
         return friendly;
@@ -41,7 +41,7 @@ public abstract class AEntity {
 
     /**
      * 
-     * @param friendly The allegience of the entity
+     * @param friendly The allegiance of the entity
      */
     public void setFriendly(Boolean friendly) {
         this.friendly = friendly;
@@ -94,8 +94,8 @@ public abstract class AEntity {
     }
 
     /**
-     * A safe (wihout giving outside access and possibilty to modify position) 
-     * way to return the positon of the entities body.
+     * A safe (without giving outside access and possibility to modify position)
+     * way to return the position of the entities body.
      * @return (Point) The position of the entities body
      */
     public Point getPos() {

@@ -3,7 +3,9 @@ package com.group11.model.gameentites;
 import java.awt.Point;
 
 /**
- * Class representing a ship. This class extends AMovableBody.
+ * This class represents a ship in the game. A ship is a movable body that has a level, armor, and a weapon.
+ * The ship can take damage, which is reduced by its armor. The ship can also fire its weapon in a certain direction.
+ * This class extends AMovableBody and implements IHasWeapon.
  */
 public class Ship extends AMovableBody implements IHasWeapon {
 
@@ -13,6 +15,7 @@ public class Ship extends AMovableBody implements IHasWeapon {
 
     /**
      * Constructor for creating objects of type Ship.
+     *
      * @param pos coordinate position of the ship
      * @param shipLevel  - the level of the ship
      * @param armor      - the armor of the ship
@@ -28,6 +31,7 @@ public class Ship extends AMovableBody implements IHasWeapon {
 
     /**
      * Constructor for creating default objects of type Ship with custom position
+     *
      * @param pos coordinate position of the ship
      */
     public Ship(Point pos) {
@@ -37,6 +41,11 @@ public class Ship extends AMovableBody implements IHasWeapon {
         this.weapon = new BasicCannon(BasicCannonBall.class);
     }
 
+    /**
+     * Reduces the hit points of the ship by the given damage, taking into account the ship's armor.
+     *
+     * @param damage The damage to be inflicted on the ship.
+     */
     @Override
     public void takeDamage(int damage) {
         damage = (int) Math.round(damage * (1 - this.armor/100));
@@ -46,6 +55,7 @@ public class Ship extends AMovableBody implements IHasWeapon {
 
     /**
      * Returns ship level
+     *
      * @return ship level
      */
     public int getShipLevel() {
@@ -54,6 +64,7 @@ public class Ship extends AMovableBody implements IHasWeapon {
 
     /**
      * Returns armor rating
+     *
      * @return armor rating
      */
     public double getArmor() {
@@ -62,6 +73,7 @@ public class Ship extends AMovableBody implements IHasWeapon {
 
     /**
      * Returns weapon
+     *
      * @return active weapon
      */
     public AWeapon getWeapon() {
@@ -70,6 +82,7 @@ public class Ship extends AMovableBody implements IHasWeapon {
 
     /**
      * This method fires the weapon of the ship in a certain direction
+     *
      * @param direction Direction to fire the weapon in
      */
     @Override

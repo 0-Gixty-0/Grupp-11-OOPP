@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
-import com.group11.model.gameentites.UProjectileUtility;
+import com.group11.model.gameentites.UProjectile;
 import com.group11.model.gameworld.Map;
 import com.group11.model.utility.UEntityMatrixGenerator;
 
@@ -51,16 +51,16 @@ public class SailingGameLoop implements IGameLoop {
         aiCommander.moveEnemies(enemyList);
         aiCommander.fireWeapons(enemyList);
 
-        UProjectileUtility.updateProjectiles(entityList); // Adds new projectiles to entity list and removes old dead projectiles.
+        UProjectile.updateProjectiles(entityList); // Adds new projectiles to entity list and removes old dead projectiles.
 
-        UProjectileUtility.moveProjectiles(entityList); // Moves the projectiles.
+        UProjectile.moveProjectiles(entityList); // Moves the projectiles.
         UEntityMatrixGenerator.updateEntityMatrix(entityList); // Updates the entity matrix.
-        UProjectileUtility.checkProjectileCollisions(entityList); // Checks for collisions.
+        UProjectile.checkProjectileCollisions(entityList); // Checks for collisions.
         
         // Two iterations so that projectiles moves faster than other entities.
-        UProjectileUtility.moveProjectiles(entityList);
+        UProjectile.moveProjectiles(entityList);
         UEntityMatrixGenerator.updateEntityMatrix(entityList);
-        UProjectileUtility.checkProjectileCollisions(entityList);
+        UProjectile.checkProjectileCollisions(entityList);
         
         // Removes dead entities
         entityManager.removeEntitiesWithZeroHp(waveNumber);

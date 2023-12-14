@@ -8,8 +8,6 @@ import java.util.Set;
 /*
  * This is a globalkeylistener that exists in the background and takes the keyboard input from your computer
  */
-
-
 public class GlobalKeyListener implements KeyEventDispatcher, Runnable {
 
     /*
@@ -34,11 +32,11 @@ public class GlobalKeyListener implements KeyEventDispatcher, Runnable {
     public boolean dispatchKeyEvent(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
-        /*If the the event is a key pressed, add it to the inputSet */
+        /*If the event is a key pressed, add it to the inputSet */
         if (e.getID() == KeyEvent.KEY_PRESSED) {
             inputSet.add(keyCode);
         } 
-        /*If the the event is a key released, remove it from the inputSet */
+        /*If the event is a key released, remove it from the inputSet */
         else if (e.getID() == KeyEvent.KEY_RELEASED) {
             inputSet.remove(keyCode);
         } 
@@ -58,8 +56,6 @@ public class GlobalKeyListener implements KeyEventDispatcher, Runnable {
             }
         }
     }
-
-
     /*Getter that can be called to get keyboardinputs */
     public Set<Integer> getInput() {
         return inputSet;

@@ -2,7 +2,6 @@ package com.group11.controller;
 
 import java.util.Set;
 
-
 public class KeyboardInterpretor extends AControllerInterpretor{
 
     @Override
@@ -16,7 +15,6 @@ public class KeyboardInterpretor extends AControllerInterpretor{
         Set<Integer> inputSet = this.getInputSet();
         return this.keycodeToDir(inputSet, 38, 40, 37,39);
     }
-
 }
 
     

@@ -7,7 +7,7 @@ import org.junit.Test;
 import com.group11.controller.KeyboardInterpretor;
 
 public class KeyboardInterpretorTest {
-    
+
     private KeyboardInterpretor keyboardInterpretor = new KeyboardInterpretor();
 
     @Test
@@ -72,12 +72,11 @@ public class KeyboardInterpretorTest {
         assertEquals(keyboardInterpretor.getMovementInput(), -1);
     }
 
-
     @Test
     public void UpAndLeftReturnsDir7(){
         keyboardInterpretor.getInputSet().add(38);
         keyboardInterpretor.getInputSet().add(37);
-    
+
         assertEquals(7, keyboardInterpretor.getFireInput());
     }
     @Test
@@ -136,5 +135,4 @@ public class KeyboardInterpretorTest {
 
         assertEquals(keyboardInterpretor.getFireInput(), -1);
     }
-
 }

@@ -17,6 +17,7 @@ public class BasicWorldGenerator implements IWorldGenerator {
 
     /**
      * Method for generating a World object.
+     *
      * @param mapWidth the width of the world.
      * @param mapHeight the height of the world.
      * @return a World object 
@@ -27,7 +28,5 @@ public class BasicWorldGenerator implements IWorldGenerator {
         Map map = this.mapGenerator.generateMap(mapWidth, mapHeight);
 
         return new World(map);
-
     }
-    
 }

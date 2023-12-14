@@ -8,10 +8,10 @@ public class SeaTile extends ATile {
 
     /**
     * Constructor for the class SeaTile
+     *
     * @param pos - The position of a tile as a Java Point 
     */
     public SeaTile(Point pos) {
         super(0, pos, true);
     }
-    
 }
