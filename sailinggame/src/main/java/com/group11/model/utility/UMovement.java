@@ -8,14 +8,14 @@ import com.group11.model.gameworld.ATile;
 /**
  * Utility class for checking if movement is possible.
  */
-public final class UMovementUtility {
+public final class UMovement {
 
     /**
      * Matrix of ATiles to check for collision.
      */
     private static List<List<ATile>> tileMatrix;
 
-    private UMovementUtility() {
+    private UMovement() {
         throw new IllegalStateException("Utility class");
     }
 
@@ -24,7 +24,7 @@ public final class UMovementUtility {
      * @param tileMatrix
      */
     public static void setTileMatrix(List<List<ATile>> tileMatrix) {
-        UMovementUtility.tileMatrix = tileMatrix;
+        UMovement.tileMatrix = tileMatrix;
     }
 
     /**
@@ -35,7 +35,7 @@ public final class UMovementUtility {
      */
     public static Boolean movementIsPossible(Point currPos, int[] dirVector) {
 
-        if (UMovementUtility.tileMatrix == null) {
+        if (UMovement.tileMatrix == null) {
             throw new IllegalStateException("Unable to move because a tileMatrix has not been set for MovementUtility");
         }
 
@@ -44,7 +44,7 @@ public final class UMovementUtility {
 
         try {
             //Trying to move over impassable terrain
-            return (UMovementUtility.tileMatrix.get(newX).get(newY).isPassable());
+            return (UMovement.tileMatrix.get(newX).get(newY).isPassable());
             //Trying to move outside the world
         } catch (IndexOutOfBoundsException e) {
             return false; 

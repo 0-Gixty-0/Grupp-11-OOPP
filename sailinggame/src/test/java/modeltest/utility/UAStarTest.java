@@ -10,7 +10,7 @@ import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class AStarTest {
+public class UAStarTest {
     private List<List<Integer>> grid = new ArrayList<>();
     @Before
     public void beforePreconditions() {

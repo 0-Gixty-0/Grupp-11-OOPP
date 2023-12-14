@@ -2,7 +2,7 @@ package com.group11.model.gameentites;
 
 import java.awt.Point;
 
-import com.group11.model.utility.UMovementUtility;
+import com.group11.model.utility.UMovement;
 
 /**
  * This class represents a BasicCannonBall in the game. A BasicCannonBall is a type of projectile that can be fired by a weapon.
@@ -26,7 +26,7 @@ public class BasicCannonBall extends AProjectile {
      */
     @Override
     protected void continueTravelPath() {
-        if (UMovementUtility.movementIsPossible(getPos(), getDirection())) {
+        if (UMovement.movementIsPossible(getPos(), getDirection())) {
             Point pos = this.getTruePos();
             pos.setLocation(pos.getX() + getDirection()[0] , pos.getY() + getDirection()[1]);
         }

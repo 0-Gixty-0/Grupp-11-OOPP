@@ -3,20 +3,20 @@ package com.group11.model.gameentites;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.group11.model.utility.UEntityCollisionUtility;
+import com.group11.model.utility.UEntityCollision;
 
 /**
  * This utility class is responsible for handling projectiles in the SailingGameApplication.
  * It provides methods to check for projectile collisions, update projectiles, and move projectiles.
  * This class is not meant to be instantiated.
  */
-public final class UProjectileUtility {
+public final class UProjectile {
 
     /**
      * Private constructor to prevent instantiation.
      * Throws an IllegalStateException if an attempt is made.
      */
-    private UProjectileUtility() {
+    private UProjectile() {
 
         throw new IllegalStateException("Utility class");
     }
@@ -31,7 +31,7 @@ public final class UProjectileUtility {
 
         for (AEntity entity : entityList) {
 
-            AEntity collidingEntity = UEntityCollisionUtility.isEntityColliding(entity);
+            AEntity collidingEntity = UEntityCollision.isEntityColliding(entity);
 
             if (collidingEntity instanceof ProjectileEntity)  {
 

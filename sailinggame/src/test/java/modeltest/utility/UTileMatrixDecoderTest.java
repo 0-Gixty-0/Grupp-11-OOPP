@@ -11,7 +11,7 @@ import com.group11.model.gameworld.BasicMapGenerator;
 import com.group11.model.gameworld.Map;
 import com.group11.model.utility.UTileMatrixDecoder;
 
-public class TileMatrixDecoderTest {
+public class UTileMatrixDecoderTest {
 
     @Test
     public void testDecodeIntoIntMatrix() {

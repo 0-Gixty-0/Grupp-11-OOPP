@@ -12,7 +12,7 @@ import com.group11.model.gameentites.BasicCannonBall;
 import com.group11.model.gameentites.ProjectileEntity;
 import com.group11.model.gameworld.BasicMapGenerator;
 import com.group11.model.gameworld.Map;
-import com.group11.model.utility.UMovementUtility;
+import com.group11.model.utility.UMovement;
 
 public class ProjectileEntityTest {
 
@@ -20,7 +20,7 @@ public class ProjectileEntityTest {
         int [] direction = {1,1};
         ProjectileEntity testProjectile = (ProjectileEntity) new ProjectileEntity(new BasicCannonBall(new Point(0,0), direction), "CannonBall");
         Map map = (new BasicMapGenerator()).generateMap(50,50);
-        UMovementUtility.setTileMatrix(map.getTileMatrix());
+        UMovement.setTileMatrix(map.getTileMatrix());
         return testProjectile;
     }
 

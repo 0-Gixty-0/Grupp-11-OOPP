@@ -8,14 +8,14 @@ import com.group11.model.gameentites.AEntity;
 /**
  * Utility class for checking if an Entity is going to collide with another body.
  */
-public final class UEntityCollisionUtility {
+public final class UEntityCollision {
     
     /**
      * List of Entities to check for collision.
      */
     private static List<List<AEntity>> entities;
 
-    private UEntityCollisionUtility() {
+    private UEntityCollision() {
         throw new IllegalStateException("Utility class");
     }
 
@@ -24,12 +24,12 @@ public final class UEntityCollisionUtility {
      * @param bodies Matrix of entities.
      */
     public static void setEntityMatrix(List<List<AEntity>> entities) {
-        UEntityCollisionUtility.entities = entities;
+        UEntityCollision.entities = entities;
     }
 
     private static void checkEntityMatrix() {
         if (entities == null) {
-            throw new IllegalStateException("entity matrix not set in UEntityCollisionUtility");
+            throw new IllegalStateException("entity matrix not set in UEntityCollision");
         }
     }
 

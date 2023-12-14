@@ -11,7 +11,7 @@ import com.group11.view.UViewTileMatrixEncoder;
 
 import com.group11.view.uicomponents.ViewTile;
 
-public class ViewTileMatrixEncoderTest {
+public class UViewTileMatrixEncoderTest {
 
     private List<List<Integer>> createIntMatrix(int tile1, int tile2) {
         List<List<Integer>> playerIntMatrix = new ArrayList<>(); // Spawning the player at (0,0)

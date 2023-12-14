@@ -7,15 +7,15 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.group11.model.utility.UEntityCollision;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameentites.Ship;
-import com.group11.model.utility.UEntityCollisionUtility;
 
-public class EntityCollisionUtilityTest {
+public class UEntityCollisionTest {
 
     private List<List<AEntity>> entites;
     private AEntity testEntity;
@@ -36,19 +36,19 @@ public class EntityCollisionUtilityTest {
 
     @Test
     public void testSetBodies() {
-        UEntityCollisionUtility.setEntityMatrix(null);
-        assertThrows(IllegalStateException.class, ()->UEntityCollisionUtility.isPositionOccupied(pos));
+        UEntityCollision.setEntityMatrix(null);
+        assertThrows(IllegalStateException.class, ()-> UEntityCollision.isPositionOccupied(pos));
     }
 
     @Test
     public void testIsPositionOccupied() {
-        UEntityCollisionUtility.setEntityMatrix(entites);
-        assertEquals(testEntity, UEntityCollisionUtility.isPositionOccupied(pos));
+        UEntityCollision.setEntityMatrix(entites);
+        assertEquals(testEntity, UEntityCollision.isPositionOccupied(pos));
     }
 
     @Test
     public void testIsBodyColliding() {
-        UEntityCollisionUtility.setEntityMatrix(entites);
-       assertEquals(testEntity, UEntityCollisionUtility.isEntityColliding(testEntity2));
+        UEntityCollision.setEntityMatrix(entites);
+       assertEquals(testEntity, UEntityCollision.isEntityColliding(testEntity2));
     }
 }

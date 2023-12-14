@@ -1,6 +1,6 @@
 package com.group11.model.gameentites;
 
-import com.group11.model.utility.UMovementUtility;
+import com.group11.model.utility.UMovement;
 
 import java.awt.Point;
 
@@ -37,7 +37,7 @@ public abstract class AMovableBody extends ABody {
      */
     protected void moveIfPossible(int [] dirVector) {
         Point currPos = this.getPos();
-        if (UMovementUtility.movementIsPossible(currPos, dirVector)) {
+        if (UMovement.movementIsPossible(currPos, dirVector)) {
             int currX = (int) currPos.getX();
             int currY = (int) currPos.getY();
             this.move(currX + dirVector[0],currY + dirVector[1]);
