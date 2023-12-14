@@ -10,5 +10,4 @@ class Main {
         AApplication app = new SailingGameApplication();
         app.run(60);
     }
-
 }

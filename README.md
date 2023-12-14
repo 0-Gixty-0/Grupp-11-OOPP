@@ -2293,3 +2293,26 @@ Makes the game more playable and eliminates the chance for a bug where the playe
 
 #### User interaction
 The user will notice that the game always will be playable without any need for a restart.
+
+---
+
+### US-113: Quality Control - JavaDoc & Tests
+Date of completion: 14/12/2023
+Completed by: Noa Cavassi
+
+As a user I want to review the Java documentation and all the tests in the code.
+
+#### What
+I went through all the classes to check for missing or incorrect JavaDoc, misspelled words, or old, not updated JavaDoc. I also went through all the tests to check for missing or incorrect JavaDoc, misspelled words, or old, not updated JavaDoc.
+I went through all the tests to check if any tests were missing, not updated, or if any tests were unnecessary.
+I also refactored some packages and changed the names of some classes to make it more clear what they do.
+
+#### How
+I used IntelliJ's build in function to refactor, rename, and move classes and packages. I used IntelliJ's build in function to check for spelling errors in the JavaDoc. I went through all the tests to check if any tests were missing, not updated, or if any tests were unnecessary.
+I also used IntelliJ's build in function to check for spelling errors in the JavaDoc.
+
+#### Why
+To make the code more readable and understandable for the user, and to make it more presentable for the final delivery.
+
+#### User interaction
+The user will interact with this US when reading the source code.
