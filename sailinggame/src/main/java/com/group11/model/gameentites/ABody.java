@@ -10,13 +10,11 @@ import java.awt.Point;
 public abstract class ABody extends APositonable {
     private double hitPoints;
 
-
     /**
      * Constructor for creating objects of type ABody, the physical part of an entity in the game.
      *
      * @param pos       - the position of the body in the tilemap
      * @param hitPoints - the hitpoints of the body
-     * @param description - the description of the body
      */
     protected ABody(Point pos, double hitPoints) {
         super(pos);
@@ -25,6 +23,7 @@ public abstract class ABody extends APositonable {
 
     /**
      * Reduces the hitpoints of the body
+     *
      * @param damage - the amount of damage taken by the body
      */
     protected void takeDamage(int damage){
@@ -33,6 +32,7 @@ public abstract class ABody extends APositonable {
 
     /**
      * Returns the current hitpoints of the body
+     *
      * @return the current hitpoints of the body
      */
     protected double getHitPoints() {
@@ -41,6 +41,7 @@ public abstract class ABody extends APositonable {
 
     /**
      * Sets the hitpoints of the body
+     *
      * @param newHitpoints - the new hitpoints value of the body
      */
     protected void setHitPoints(int newHitpoints) {

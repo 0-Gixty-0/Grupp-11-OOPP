@@ -169,5 +169,4 @@ public abstract class AModelInitializer {
     protected List<AEntity> getEntityList() {
         return this.entityList;
     }
-
 }

@@ -3,7 +3,7 @@ package com.group11.controller;
 import javax.swing.*;
 
 /*A pure testclass for testing input */
-public class Keyboardtester {
+public class KeyboardTester {
 
     public static void main(String[] args) throws InterruptedException {
         JFrame frame = new JFrame("Keyboard Controller Test");
@@ -16,9 +16,6 @@ public class Keyboardtester {
         while (true){
         System.out.println(keyboardController.getInput());
         Thread.sleep(100);
-    
-    }
-        
-       
+        }
     }
 }

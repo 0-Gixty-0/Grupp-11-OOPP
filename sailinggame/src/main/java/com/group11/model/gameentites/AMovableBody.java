@@ -12,10 +12,9 @@ import java.awt.Point;
 public abstract class AMovableBody extends ABody {
 
     /**
-     * Constructor for a movable body, like a body but its meant to move around the game world.
+     * Constructor for a movable body, like a body, but it's meant to move around the game world.
      * @param pos       The starting position of the body as a Java Point
      * @param hitPoints The hitpoints of the body
-     * @param description The description of the body   
      */
     protected AMovableBody(Point pos, double hitPoints){
         super(pos, hitPoints);
