@@ -10,7 +10,7 @@ import java.util.Random;
 import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.utility.UAStar;
-import com.group11.model.utility.UTileMatrixDecoder;
+import com.group11.model.utility.UViewTileMatrixDecoder;
 
 /**
  * Class representing controller for AI controlled entities
@@ -25,7 +25,7 @@ public class AICommander {
 
     public AICommander(List<List<AEntity>> entityMatrix) {
         this.entityMatrix = entityMatrix;
-        this.terrainMatrixEncoded = UTileMatrixDecoder.decodeIntoIntMatrix();
+        this.terrainMatrixEncoded = UViewTileMatrixDecoder.decodeIntoIntMatrix();
     }
 
     /**
@@ -41,7 +41,7 @@ public class AICommander {
      * @param terrainMatrix The object terrain matrix to set as encoded
      */
     public void updateTerrainMatrixEncoded() {
-        this.terrainMatrixEncoded = UTileMatrixDecoder.decodeIntoIntMatrix();
+        this.terrainMatrixEncoded = UViewTileMatrixDecoder.decodeIntoIntMatrix();
     }
 
     /**

@@ -9,7 +9,7 @@ import com.group11.model.gameworld.LandTile;
 import com.group11.model.gameworld.SeaTile;
 import com.group11.model.modelinitialization.AICommander;
 import com.group11.model.utility.UMovement;
-import com.group11.model.utility.UTileMatrixDecoder;
+import com.group11.model.utility.UViewTileMatrixDecoder;
 import com.group11.model.utility.UEntityMatrixGenerator;
 import org.junit.Before;
 import org.junit.Test;
@@ -84,7 +84,7 @@ public class AICommanderTest {
         this.terrainMatrix.add(tileRow);
 
         UMovement.setTileMatrix(this.terrainMatrix);
-        UTileMatrixDecoder.setTilematrix(terrainMatrix);
+        UViewTileMatrixDecoder.setTilematrix(terrainMatrix);
     }
 
     @Test

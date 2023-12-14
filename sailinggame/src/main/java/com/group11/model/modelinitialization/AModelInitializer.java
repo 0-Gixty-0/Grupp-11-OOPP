@@ -9,7 +9,7 @@ import com.group11.model.gameworld.World;
 import com.group11.model.utility.UEntityCollision;
 import com.group11.model.utility.UEntityMatrixDecoder;
 import com.group11.model.utility.UMovement;
-import com.group11.model.utility.UTileMatrixDecoder;
+import com.group11.model.utility.UViewTileMatrixDecoder;
 
 /**
  * Abstract class for initializing a model.
@@ -41,7 +41,7 @@ public abstract class AModelInitializer {
         this.entityMatrix = initializeEntityMatrix();
         UMovement.setTileMatrix(map.getTileMatrix());
         UEntityCollision.setEntityMatrix(entityMatrix);
-        UTileMatrixDecoder.setTilematrix(map.getTileMatrix());
+        UViewTileMatrixDecoder.setTilematrix(map.getTileMatrix());
         UEntityMatrixDecoder.setEntityMatrix(entityMatrix);
         this.aiCommander = initializeAICommander();
         this.playerManager = new PlayerManager(player);
@@ -111,7 +111,7 @@ public abstract class AModelInitializer {
      * @return the terrain matrix in integer format
      */
     public List<List<Integer>> getDecodedTerrainMatrix() {
-        return UTileMatrixDecoder.decodeIntoIntMatrix();
+        return UViewTileMatrixDecoder.decodeIntoIntMatrix();
     }
 
     /**
