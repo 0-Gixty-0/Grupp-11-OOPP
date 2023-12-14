@@ -10,11 +10,12 @@ import java.util.List;
 public class BasicMapGenerator implements IMapGenerator {
 
     @Override
-    /*
-     Don't use this method if you are making a new World,
-     use this if you want to generate a new map for an old world.
-     Leaving this method public and not protected for that reason.
-     */
+    /**
+     Primarly used for testing purposes as this type of map is no longer used in the game.
+     @param mapWidth the width of the map to be generated
+     @param mapHeight the height of the map to be generated
+     @return a Map object with the specified dimensions
+    */
     public Map generateMap(int mapWidth, int mapHeight) {
 
         Integer quarterWidth = mapWidth/4;
