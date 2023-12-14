@@ -14,7 +14,8 @@ public class BasicCannonBall extends AProjectile {
 
     /**
      * Constructs a new BasicCannonBall with the given parameters.
-     * The distance traveled is initialized to 0, the maximum range is 30, the damage is 10, the direction is {0, 0}, and the hitpoints is 1.
+     * @param pos the position of the BasicCannonBall
+     * @param direction the direction of the BasicCannonBall
      */
     public BasicCannonBall(Point pos, int [] direction) {
         super(pos, 20, 10, direction, "CannonBall");

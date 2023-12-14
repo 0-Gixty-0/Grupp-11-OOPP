@@ -19,9 +19,11 @@ public abstract class AProjectile extends ABody{
 
     /**
      * Constructs a new projectile with the given parameters.
+     * @param startingPos the starting position of the projectile
      * @param maxRange the maximum range the projectile can travel
      * @param damage the damage the projectile can cause
      * @param direction the direction the projectile is traveling in
+     * @param projectileName the name of the projectile
      */
 
     protected AProjectile(Point startingPos, int maxRange, int damage, int [] direction, String projectileName){
