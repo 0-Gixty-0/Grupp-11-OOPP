@@ -27,12 +27,12 @@ public interface IEntityBuilder {
 
     /**
      * Creates the entity object and returns it
-     * @return Created entity object from builder
+     * @return Created an entity object from builder
      */
     AEntity createEntity();
 
     /**
-     * Resets builder attributes
+     * Reset builder attributes
      */
     void reset();
 
