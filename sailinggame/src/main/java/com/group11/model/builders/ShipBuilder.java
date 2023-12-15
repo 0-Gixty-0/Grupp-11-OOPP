@@ -2,7 +2,15 @@ package com.group11.model.builders;
 
 import java.awt.*;
 
-import com.group11.model.gameentites.*;
+import com.group11.model.gameentites.AEntity;
+import com.group11.model.gameentites.AMovableBody;
+import com.group11.model.gameentites.CommandableEntity;
+import com.group11.model.gameentites.AWeapon;
+import com.group11.model.gameentites.BasicCannon;
+import com.group11.model.gameentites.BasicCannonBall;
+import com.group11.model.gameentites.Ship;
+
+
 
 /**
  * Builder class representing creation methods and attributes for creating entities with the
