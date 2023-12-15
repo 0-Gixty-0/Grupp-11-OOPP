@@ -3,7 +3,7 @@ package com.group11.model.gameentites;
 import java.awt.Point;
 
 /**
- * An entity represents anything interactive in the world, it could be a town, creature, ship etc.
+ * An entity represents anything interactive in the world; it could be a town, creature, ship, etc.
  */
 public abstract class AEntity {
     
@@ -13,7 +13,7 @@ public abstract class AEntity {
 
     /**
      * Used to construct an entity
-     * @param name The entities name
+     * @param name The entity's name
      * @param friendly A single factor which assigns the lifelong allegiance of the entity
      * @param body The body of the entity
      */
@@ -95,8 +95,8 @@ public abstract class AEntity {
 
     /**
      * A safe (without giving outside access and possibility to modify position)
-     * way to return the position of the entities body.
-     * @return (Point) The position of the entities body
+     * way to return the position of the entity body.
+     * @return (Point) The position of the entity body
      */
     public Point getPos() {
         return this.body.getPos();

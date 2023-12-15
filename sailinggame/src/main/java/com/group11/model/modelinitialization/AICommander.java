@@ -1,6 +1,5 @@
 package com.group11.model.modelinitialization;
 
-
 import java.awt.Point;
 import java.time.temporal.ValueRange;
 import java.util.HashMap;
@@ -13,7 +12,7 @@ import com.group11.model.utility.UAStar;
 import com.group11.model.utility.UViewTileMatrixDecoder;
 
 /**
- * Class representing controller for CommandableEntities that arent controlled by the player.
+ * Class representing controller for CommandableEntities that aren't controlled by the player.
  */
 public class AICommander {
 
@@ -30,6 +29,7 @@ public class AICommander {
 
     /**
      * Sets the current entity matrix
+     *
      * @param entityMatrix The desired entity matrix
      */
     public void setEntityMatrix(List<List<AEntity>> entityMatrix) {
@@ -38,7 +38,6 @@ public class AICommander {
 
     /**
      * Sets the current encoded terrain matrix through the object terrain matrix
-     * @param terrainMatrix The object terrain matrix to set as encoded
      */
     public void updateTerrainMatrixEncoded() {
         this.terrainMatrixEncoded = UViewTileMatrixDecoder.decodeIntoIntMatrix();
@@ -46,10 +45,11 @@ public class AICommander {
 
     /**
      * This method moves the enemies in the input list based on their proximity to the player.
-     * If the enemy is within the class specified radius the method runs an AStar search from the enemy
+     * If the enemy is within the class specified radius, the method runs an AStar search from the enemy
      * to the player and moves the enemy one step closer in the shortest path direction to the player.
-     * If the player has the enemy within a specified radius then the enemy will choose a random directional value
-     * If the player is not in proximity than a random directional value is selected
+     * If the player has the enemy within a specified radius, then the enemy will choose a random directional value
+     * If the player is not in proximity, then a random directional value is selected
+     *
      * @param enemies The list of enemies to move
      */
     public void moveEnemies(List<CommandableEntity> enemies) {
@@ -75,6 +75,7 @@ public class AICommander {
 
     /**
      * Helper method checking if the input entity is in proximity to an enemy
+     *
      * @param entityPos The position to center the proximity search
      * @return True: Enemy is near, False: Enemy is not near
      */
@@ -88,8 +89,9 @@ public class AICommander {
     /**
      * Gets the surrounding entities and their respective positions centered from input position.
      * Searches in a box radius around the center with side length specified through radius attribute
-     * @param row Row index of center
-     * @param col Column index of center
+     *
+     * @param row Row index of the center
+     * @param col Column index of the center
      * @return HashMap with keys as entity names and values as entity positions
      */
     private HashMap<String, Point> getSurroundingEntityNameAndPos(int row, int col, int radius) {
@@ -121,6 +123,7 @@ public class AICommander {
     /**
      * Method checks if two points are nearly equal defined by if dx is within -1 - 1 or dy is within -1 - 1
      * If the above is true then returns true else false.
+     *
      * @param p1 First point
      * @param p2 Second point
      * @return True: dx or dy within range -1 - 1, False: dx or dy not within range -1 - 1
@@ -133,6 +136,7 @@ public class AICommander {
     /**
      * This method checks if the path between two points is clear. That meaning there are no impassable terrain between
      * the two locations in the direction given as parameter
+     *
      * @param direction The direction to move the path in
      * @param start The start point
      * @param goal The end point
@@ -154,6 +158,7 @@ public class AICommander {
      * This method fires the weapons of the entities that are passed as parameter.
      * It checks if the entity is within a range of the player and then checks if the projectile
      * path is clear from impassable terrain. If the above is true then the entity will attack in the direction of the player
+     *
      * @param entities The list of entities to issue fire commands for at the player
      */
     public void fireWeapons(List<CommandableEntity> entities) {

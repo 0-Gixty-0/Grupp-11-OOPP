@@ -51,25 +51,23 @@ public class SailingGameLoop implements IGameLoop {
         aiCommander.moveEnemies(enemyList);
         aiCommander.fireWeapons(enemyList);
 
-        UProjectile.updateProjectiles(entityList); // Adds new projectiles to entity list and removes old dead projectiles.
+        UProjectile.updateProjectiles(entityList); // Adds new projectiles to an entity list and removes old dead projectiles.
 
         UProjectile.moveProjectiles(entityList); // Moves the projectiles.
         UEntityMatrixGenerator.updateEntityMatrix(entityList); // Updates the entity matrix.
         UProjectile.checkProjectileCollisions(entityList); // Checks for collisions.
         
-        // Two iterations so that projectiles moves faster than other entities.
+        // Two iterations so that projectiles move faster than other entities.
         UProjectile.moveProjectiles(entityList);
         UEntityMatrixGenerator.updateEntityMatrix(entityList);
         UProjectile.checkProjectileCollisions(entityList);
         
         // Removes dead entities
         entityManager.removeEntitiesWithZeroHp(waveNumber);
-
     }
 
     @Override
     public boolean isGameOver() {
         return player.getHitPoints() <= 0;
     }
-
 }

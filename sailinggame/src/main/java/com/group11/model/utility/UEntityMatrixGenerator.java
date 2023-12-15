@@ -22,23 +22,25 @@ public final class UEntityMatrixGenerator {
     }
 
     /**
-     * Creates the entity matrix populated with entities. The most recently created entity matrix is the only one that
-     * can be updated by calling updateEntityMatrix.
-     * @param width Number of columns in matrix.
-     * @param height Number of rows in matrix.
-     * @param entityList List of entities to add to matrix.
-     * @return Populated entity matrix.
+     * Creates a 2D matrix of AEntity objects with the specified width and height, and populates it with the entities from the provided list.
+     * The position of each entity in the matrix corresponds to its position in the game world.
+     * The most recently created matrix is stored as an instance variable and can be updated by calling updateEntityMatrix.
+     *
+     * @param width the number of columns in the matrix
+     * @param height the number of rows in the matrix
+     * @param entityList the list of entities to be added to the matrix
+     * @return the populated matrix of AEntity objects
+     * @throws IllegalArgumentException if an entity's position is out of bounds for the matrix dimensions
      */
     public static List<List<AEntity>> createEntityMatrix(int width, int height, List<AEntity> entityList) {
 
-        // Check that entity positions are within bounds of entity matrix.
-        // adding entities to occupiedPositions list to easier update.
+        // Check that entity positions are within the bounds of entity matrix.
+        // Adding entities to occupiedPositions list to easier update.
         for (AEntity entity : entityList) {
             if (entity.getPos().x >= height || entity.getPos().y >= width) {
                 throw new IllegalArgumentException("Entity position out of bounds for entityMatrix dimensions");
             }
         }
-
         updateOccupiedPositions(entityList);
 
         List<List<AEntity>> entityMatrix = new ArrayList<>();
@@ -50,7 +52,6 @@ public final class UEntityMatrixGenerator {
             }
             entityMatrix.add(row);
         }
-        
         addEntitiesToMatrix(entityMatrix, entityList);
 
         entityMatrixInstance = entityMatrix;
@@ -59,8 +60,12 @@ public final class UEntityMatrixGenerator {
     }
 
     /**
-     * Updates the entity matrix instance with new entities
-     * @param entityList The list of entities to update the entity matrix with
+     * Updates the most recently created matrix with the entities from the provided list.
+     * The position of each entity in the matrix corresponds to its position in the game world.
+     * The list of occupied positions is updated accordingly.
+     *
+     * @param entityList the list of entities to be added to the matrix
+     * @throws IllegalStateException if createEntityMatrix has not been called before this method
      */
     public static void updateEntityMatrix(List<AEntity> entityList) {
         
@@ -81,6 +86,7 @@ public final class UEntityMatrixGenerator {
 
     /**
      * Adds entities to the entity matrix
+     *
      * @param entityMatrix The entity matrix to add entities to
      * @param entities The entities to add to the entity matrix
      */
@@ -92,6 +98,11 @@ public final class UEntityMatrixGenerator {
         }
     }
 
+    /**
+     * Updates the list of occupied positions with the positions of the entities from the provided list.
+     *
+     * @param entities the list of entities whose positions are to be added to the list of occupied positions
+     */
     private static void updateOccupiedPositions(List<AEntity> entities) {
         occupiedPositions.clear();
         for (AEntity entity : entities) {

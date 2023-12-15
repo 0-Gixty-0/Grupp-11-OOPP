@@ -18,6 +18,7 @@ public class PlayerManager {
 
     /**
      * Gets the score of the player
+     *
      * @return the score of the player
      */
     protected int getPlayerScore() {

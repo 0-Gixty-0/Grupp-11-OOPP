@@ -16,11 +16,3 @@ public class KeyboardInterpretor extends AControllerInterpretor{
         return this.keycodeToDir(inputSet, 38, 40, 37,39);
     }
 }
-
-    
-
-
-
-
-
-

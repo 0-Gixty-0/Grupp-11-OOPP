@@ -8,19 +8,23 @@ import javax.swing.ImageIcon;
 
 import com.group11.view.uicomponents.ViewTile;
 
-
-
 /**
  * The class is an abstract factory for creating ViewTile objects.
  */
 public abstract class AViewTileFactory extends AImageUser {
 
-    private static int tileWidth = 16; //Default values.
+    private static int tileWidth = 16; // Default values.
     private static int tileHeight = 16; 
-    private int maxTextureId; //The maximum terrain type id.
-    private List<ImageIcon> initializedIcons; //The list of ImageIcons for each terrain type.
-    private ImageIcon emptyIcon; //The empty ImageIcon.
+    private int maxTextureId; // The maximum terrain type id.
+    private List<ImageIcon> initializedIcons; // The list of ImageIcons for each terrain type.
+    private ImageIcon emptyIcon; // The empty ImageIcon.
 
+    /**
+     * Constructs an AViewTileFactory with the specified maximum texture ID.
+     * Initializes the list of ImageIcons and the empty ImageIcon.
+     *
+     * @param maxTextureId the maximum texture ID
+     */
     protected AViewTileFactory(int maxTextureId) {
         super();
         this.maxTextureId = maxTextureId;
@@ -30,6 +34,7 @@ public abstract class AViewTileFactory extends AImageUser {
 
     /**
      * Set the tile dimensions to be used for creating the ViewTiles. Default at instantiation is 16x16.
+     *
      * @param tileWidth The width of the tiles.
      * @param tileHeight The height of the tiles.
      */
@@ -40,6 +45,7 @@ public abstract class AViewTileFactory extends AImageUser {
 
     /**
      * The method creates a ViewTile object based on the terrain type id, dimension, matrix position, and pixel position.
+     *
      * @param id The texture id of the tile.
      * @return ViewTile object.
      */
@@ -59,6 +65,7 @@ public abstract class AViewTileFactory extends AImageUser {
 
     /**
      * The method creates a list of ImageIcons for each texture used in the factory.
+     *
      * @return ArrayList of ImageIcons.
      */
     private ArrayList<ImageIcon> initIcons() {
@@ -71,6 +78,7 @@ public abstract class AViewTileFactory extends AImageUser {
 
     /**
      * The method validates that the terrain type id is in a valid range.
+     *
      * @param id The terrain type id.
      */
     private void validateTextureId(int id) {
@@ -78,6 +86,4 @@ public abstract class AViewTileFactory extends AImageUser {
             throw new IllegalArgumentException("Invalid terrain ID for entity tile");
         }
     }
-
-    
 }

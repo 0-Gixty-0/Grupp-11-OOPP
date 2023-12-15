@@ -21,7 +21,7 @@ public final class UEntityCollision {
 
     /**
      * Set the entities to check for collision.
-     * @param bodies Matrix of entities.
+     * @param entities Matrix of entities.
      */
     public static void setEntityMatrix(List<List<AEntity>> entities) {
         UEntityCollision.entities = entities;
@@ -36,7 +36,7 @@ public final class UEntityCollision {
     /**
      * Check if a position is occupied by another entity.
      * @param pos Position in the matrix to check.
-     * @return (ABody) if the position is occupied by a entity, null otherwise.
+     * @return (ABody) if the position is occupied by an entity, null otherwise.
      */
     public static AEntity isPositionOccupied(Point pos) {
 
@@ -49,9 +49,10 @@ public final class UEntityCollision {
     }
 
     /**
-     * Check if a entity is colliding with another entity.
-     * @param body Entity to check.
-     * @return (ABody) if the position is occupied by a entity, null otherwise.
+     * Check if an entity is colliding with another entity.
+     *
+     * @param entity Entity to check.
+     * @return (ABody) if the position is occupied by an entity, null otherwise.
      */
     public static AEntity isEntityColliding(AEntity entity) {
         

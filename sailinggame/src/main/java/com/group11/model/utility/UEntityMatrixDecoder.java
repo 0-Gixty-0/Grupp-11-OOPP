@@ -36,6 +36,7 @@ public final class UEntityMatrixDecoder {
     /**
      * Returns the integer ID corresponding to the given entity.
      * The ID is the index of the entity's name in entityNames.
+     *
      * @param entity the entity whose ID is to be retrieved
      * @return the integer ID of the entity
      * @throws IllegalArgumentException if the entity's name is not found in entityNames
@@ -51,14 +52,11 @@ public final class UEntityMatrixDecoder {
                 break;
             }
         }
-    
         if (entityId == null) {
             throw new IllegalArgumentException("Entity name not found: " + entityName);
         }
-    
         return entityId;
     }
-
 
     public static void setEntityMatrix(List<List<AEntity>> entityMatrix) {
         UEntityMatrixDecoder.entityMatrix = entityMatrix;
@@ -68,7 +66,7 @@ public final class UEntityMatrixDecoder {
      * Converts a 2D matrix of AEntity objects into a 2D matrix of integers.
      * Each AEntity object is replaced by its corresponding integer ID, as determined by the getEntityId method.
      * Null entities are represented by -1.
-     * @param matrix the 2D matrix of AEntity objects to be converted
+     *
      * @return the converted 2D matrix of integers
      */
     public static List<List<Integer>> decodeIntoIntMatrix() {

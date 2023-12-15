@@ -8,7 +8,8 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 /**
- * this class is used to create an application window (JFrame) for hosting views. This is the top level class in the view.
+ * This class is used to create an application window (JFrame) for hosting views.
+ * This is the top level class in the view.
  */ 
 public class AppFrame extends JFrame {
 
@@ -21,6 +22,7 @@ public class AppFrame extends JFrame {
 
     /**
      * Constructor for creating an AppFrame.
+     *
      * @param width width of the frame
      * @param height height of the frame
      */
@@ -67,6 +69,7 @@ public class AppFrame extends JFrame {
 
     /**
      * Gets the value from the start button and resets it
+     *
      * @return boolean value of the start button
      */
     public boolean getStartButtonPressed() {
@@ -77,6 +80,7 @@ public class AppFrame extends JFrame {
 
     /**
      * Gets the value from the back to menu button and resets it
+     *
      * @return boolean value of the back to menu button
      */
     public boolean getBackToMenuButtonPressed() {
@@ -87,6 +91,7 @@ public class AppFrame extends JFrame {
 
     /**
      * Updates the entities in the game view.
+     *
      * @param entityMatrix the matrix of entities to be updated
      */
     public void updateEntities(List<List<Integer>> entityMatrix) {
@@ -95,6 +100,7 @@ public class AppFrame extends JFrame {
 
     /**
      * Updates the terrain in the game view.
+     *
      * @param terrainMatrix the matrix of terrain to be updated
      */
     public void updateTerrain(List<List<Integer>> terrainMatrix) {
@@ -103,6 +109,7 @@ public class AppFrame extends JFrame {
 
     /**
      * Updates the score in the game view.
+     *
      * @param score the score to be updated
      */
     public void updateScore(int score) {
@@ -112,6 +119,7 @@ public class AppFrame extends JFrame {
 
     /**
      * Updates the hp in the game view.
+     *
      * @param hp the hp to be updated
      */
     public void updateHp(int hp) {
@@ -120,6 +128,7 @@ public class AppFrame extends JFrame {
 
     /**
      * Removes a view from the window
+     *
      * @param view The view to be removed
      */
     private void removeViewFromWindow(JComponent view) {
@@ -127,9 +136,9 @@ public class AppFrame extends JFrame {
         this.repaint();
     }
 
-
     /**
      * Adds a view to the window
+     *
      * @param view The view to be added
      */
     private void addViewToWindow(JComponent view) {

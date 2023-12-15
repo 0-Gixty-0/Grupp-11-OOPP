@@ -7,7 +7,7 @@ import com.group11.view.uicomponents.ViewTile;
 
 /**
  * A static utility class that creates a matrix of ViewTiles from a matrix of integers. 
- * In other words this class encodes a universal language into a domain (View) specific language.
+ * In other words, this class encodes a universal language into a domain (View) specific language.
  */
 public class UViewTileMatrixEncoder {
     
@@ -29,6 +29,7 @@ public class UViewTileMatrixEncoder {
 
     /**
      * Create a matrix of ViewTiles representing terrain from a matrix of integers.
+     *
      * @param intMatrix The matrix of integers.
      * @return The matrix of ViewTiles.
      */
@@ -38,7 +39,7 @@ public class UViewTileMatrixEncoder {
 
     /**
      * Add an entity AViewDrawable to a row of AViewDrawables.
-     * @param rowIndex The index of the row.
+     *
      * @param intRow The row of integers.
      * @param tileRow The row of ViewTiles.
      * @param columnIndex The index of the column.
@@ -50,7 +51,7 @@ public class UViewTileMatrixEncoder {
 
     /**
      * Add a terrain AViewDrawable to a row of ViewDrawables.
-     * @param rowIndex The index of the row.
+     *
      * @param intRow The row of integers.
      * @param tileRow The row of ViewTiles.
      * @param columnIndex The index of the column.
@@ -62,6 +63,7 @@ public class UViewTileMatrixEncoder {
 
     /**
      * Extracted function for creating a matrix of ViewTiles from a matrix of integers.
+     *
      * @param intMatrix The matrix of integers.
      * @param terrainOrEntity 0 for terrain, 1 for entity.
      * @return The matrix of ViewTiles.
@@ -83,12 +85,9 @@ public class UViewTileMatrixEncoder {
                 } else if (terrainOrEntity == 1) {
                     addEntityTile(intRow, tileRow, columnIndex);
                 }
-                
             }
-            
             tileMatrix.add(tileRow);
         }
-        
         return tileMatrix;
     }
 }

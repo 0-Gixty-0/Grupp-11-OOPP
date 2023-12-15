@@ -54,4 +54,3 @@ public class EntityDirector {
         return builder.createEntity();
     }
 }
-

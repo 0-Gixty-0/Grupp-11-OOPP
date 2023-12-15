@@ -1,7 +1,7 @@
 package com.group11.model.gameentites;
 
 /**
- * An entity that can be controlled by by the client
+ * An entity that can be controlled by the client
  */
 public class CommandableEntity extends AEntity {
 
@@ -46,7 +46,7 @@ public class CommandableEntity extends AEntity {
     }
 
     /**
-     * This method checks if the entities body has a weapon and if so fires it in the desired direction
+     * This method checks if the entity body has a weapon and if so, fires it in the desired direction
      * @param direction The direction to fire the weapon
      */
     public void attackIfPossible(Integer direction) {

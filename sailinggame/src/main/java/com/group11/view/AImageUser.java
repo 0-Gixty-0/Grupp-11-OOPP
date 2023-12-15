@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
  */
 public abstract class AImageUser {
 
-    private static final int SCALE = 16; //The scale of the image, ex: 16 bit, 32 bit, 64 bit....
+    private static final int SCALE = 16; // The scale of the image, ex: 16 bit, 32 bit, 64 bit....
     private ImageIcon textureMapImage;
 
     protected AImageUser() {
@@ -23,6 +23,7 @@ public abstract class AImageUser {
      * The method creates the ImageIcon for a terrain type based on the texture map file.
      * The image icon is a scaled and sliced portion of the texture map based on the terrain type id
      * and desired width and height.
+     *
      * @param id The terrain type id corresponding to a place in the texture map file.
      * @param width The desired width of the image.
      * @param height The desired height of the image.
@@ -52,6 +53,7 @@ public abstract class AImageUser {
 
     /**
      * The method returns the coordinates of the terrain type id in the texture map file.
+     *
      * @param id The terrain type id.
      * @return Point object containing the matrix coordinate of the terrain type id.
      */

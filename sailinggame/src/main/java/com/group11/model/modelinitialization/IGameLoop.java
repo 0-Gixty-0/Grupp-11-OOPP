@@ -8,5 +8,4 @@ public interface IGameLoop {
     public void runLoopOnce(int movementInput, int fireInput);
 
     public boolean isGameOver();
-
 }

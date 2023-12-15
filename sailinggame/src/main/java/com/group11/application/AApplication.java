@@ -15,5 +15,4 @@ public abstract class AApplication {
     }
 
     public abstract void run(int cyclespeedMS) throws InterruptedException;
-
 }

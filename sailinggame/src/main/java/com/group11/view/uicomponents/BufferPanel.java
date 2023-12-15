@@ -7,11 +7,11 @@ public class BufferPanel extends AStandardPanel {
     
     /**
      * Constructor for creating a BufferPanel.
+     *
      * @param width width of the panel
      * @param height height of the panel
      */
     protected BufferPanel(int width, int height) {
         super(width, height);
     }
-
 }

@@ -53,5 +53,4 @@ public class MainMenuPanel extends AStandardPanel {
             this.startButtonPressed = true;
         }
     }
-
 }

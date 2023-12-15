@@ -41,7 +41,7 @@ public class StatsPanel extends AStandardPanel {
     /**
      * Constructs a new StatsPanel with a specified width and height.
      * Initializes the score, level, and hitpoints labels, as well as the movement and shooting icons.
-     * Sets the layout to a centered FlowLayout.
+     * Set the layout to a centered FlowLayout.
      *
      * @param width the width of the panel
      * @param height the height of the panel

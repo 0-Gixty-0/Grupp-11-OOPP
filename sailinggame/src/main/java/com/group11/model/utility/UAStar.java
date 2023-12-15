@@ -32,6 +32,7 @@ public class UAStar {
 
     /**
      * AStar method from start position to goal position
+     *
      * @param grid Encoded terrain matrix with only values of 1 as passable
      * @param startX Start row index
      * @param startY Start column index
@@ -85,6 +86,7 @@ public class UAStar {
 
     /**
      * Simple chebyshev distance calculator. Distance value with all 8 grid movements allowed
+     *
      * @param x1 First node row index
      * @param y1 First node column index
      * @param x2 Second node row index
@@ -97,6 +99,7 @@ public class UAStar {
 
     /**
      * This method gets the directional value based on directional change values in AStar
+     *
      * @param dx Difference in column index
      * @param dy Difference in row index
      * @return Directional value 0-7
@@ -111,4 +114,3 @@ public class UAStar {
         }
     }
 }
-

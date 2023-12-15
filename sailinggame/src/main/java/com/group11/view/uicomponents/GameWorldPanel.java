@@ -32,6 +32,7 @@ public class GameWorldPanel extends AStandardPanel {
 
         /**
          * Add the tiles to the panel.
+         *
          * @param tileMatrix The matrix of tiles to be added.
          */
         private void addTiles(List<List<ViewTile>> tileMatrix) {
@@ -52,11 +53,11 @@ public class GameWorldPanel extends AStandardPanel {
                 this.remove(tile);
             }
         }
-
     }
 
     /**
      * Constructor for creating a GameWorldPanel.
+     *
      * @param width width of the panel
      * @param height height of the panel
      */
@@ -72,6 +73,7 @@ public class GameWorldPanel extends AStandardPanel {
 
     /**
      * Update the terrain panel with the new terrain matrix.
+     *
      * @param terrainMatrix The new terrain matrix.
      */
     protected void updateTerrainPanel(List<List<ViewTile>> terrainMatrix) {
@@ -83,6 +85,7 @@ public class GameWorldPanel extends AStandardPanel {
 
     /**
      * Update the entity panel with the new entity matrix.
+     *
      * @param entityMatrix The new entity matrix.
      */
     protected void updateEntityPanel(List<List<ViewTile>> entityMatrix) {
@@ -91,5 +94,4 @@ public class GameWorldPanel extends AStandardPanel {
         this.revalidate();
         this.repaint();
     }
-
 }

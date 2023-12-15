@@ -29,6 +29,7 @@ public final class UMovement {
 
     /**
      * Check if movement is possible in a given direction.
+     *
      * @param currPos Current position of the body.
      * @param dirVector Direction vector of the movement.
      * @return (Boolean) true if movement is possible, false otherwise.

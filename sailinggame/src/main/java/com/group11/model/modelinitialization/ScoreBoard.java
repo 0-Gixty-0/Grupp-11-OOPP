@@ -62,5 +62,4 @@ public final class ScoreBoard {
     protected static void clearScoreBoard() {
         scoreMap.clear();
     }
-    
 }

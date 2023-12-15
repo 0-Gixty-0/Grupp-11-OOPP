@@ -10,8 +10,6 @@ import com.group11.model.gameentites.BasicCannon;
 import com.group11.model.gameentites.BasicCannonBall;
 import com.group11.model.gameentites.Ship;
 
-
-
 /**
  * Builder class representing creation methods and attributes for creating entities with the
  * body being an object of type Ship

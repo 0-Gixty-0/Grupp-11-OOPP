@@ -17,6 +17,7 @@ public class GamePanel extends AStandardPanel {
     
     /**
      * Constructor for creating a GamePanel.
+     *
      * @param width width of the panel
      * @param height height of the panel
      * @param mapWidth width of the map
@@ -42,6 +43,7 @@ public class GamePanel extends AStandardPanel {
 
     /**
      * Updates the hp label in the stats panel.
+     *
      * @param newHp The new hp value.
      */
     protected void updateHp(int newHp) {
@@ -50,6 +52,7 @@ public class GamePanel extends AStandardPanel {
 
     /**
      * Updates the lvl label in the stats panel.
+     *
      * @param newLvl The new lvl value.
      */
     protected void updateLvl(int newLvl) {
@@ -58,6 +61,7 @@ public class GamePanel extends AStandardPanel {
 
     /**
      * Updates the score label in the stats panel.
+     *
      * @param newScore The new score value.
      */
     protected void updateScore(int newScore) {
@@ -66,6 +70,7 @@ public class GamePanel extends AStandardPanel {
 
     /**
      * Updates the entities on the map.
+     *
      * @param intMatrix The matrix of integers representing the entities.
      */
     protected void updateEntities(List<List<Integer>> intMatrix) {
@@ -75,6 +80,7 @@ public class GamePanel extends AStandardPanel {
 
     /**
      * Updates the terrain on the map.
+     *
      * @param intMatrix The matrix of integers representing the terrain.
      */
     protected void updateTerrain(List<List<Integer>> intMatrix) {

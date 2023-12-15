@@ -13,5 +13,4 @@ public interface IMapGenerator {
      * @return a Map object 
      */
     public Map generateMap(int mapWidth, int mapHeight);
-
 }

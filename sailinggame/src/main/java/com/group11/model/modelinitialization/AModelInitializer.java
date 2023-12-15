@@ -51,6 +51,7 @@ public abstract class AModelInitializer {
 
     /**
      * Initializes the world
+     *
      * @param worldWidth the width of the world
      * @param worldHeight the height of the world
      * @return the world

@@ -10,7 +10,6 @@ import com.group11.model.gameentites.AEntity;
 import com.group11.model.gameentites.CommandableEntity;
 import com.group11.model.gameworld.Map;
 
-
 /**
  * The EntitySpawner class is responsible for spawning entities in the world.
  * It uses the EntityDirector to create entities and places them at a random position in the world.
@@ -23,7 +22,8 @@ public final class EntitySpawner {
 
     /**
      * Constructs an EntitySpawner with the specified world and director.
-     * @param world the game world where entities will be spawned
+     *
+     * @param map the world to spawn entities in
      * @param builder the director used to create entities
      */
     public EntitySpawner(Map map, IEntityBuilder builder) {
@@ -33,6 +33,7 @@ public final class EntitySpawner {
 
     /**
      * Spawns an enemy entity at a random passable position in the world.
+     *
      * @param level the level of the enemy to be spawned
      * @return the spawned enemy entity
      */
@@ -48,6 +49,7 @@ public final class EntitySpawner {
 
     /**
      * Spawns a ship entity at a random passable position in the world.
+     *
      * @return the spawned ship entity
      */
     public void changeBuilder(IEntityBuilder builder) {
@@ -56,6 +58,7 @@ public final class EntitySpawner {
 
     /**
      * Spawns a ship entity at a random passable position in the world.
+     *
      * @return the spawned ship entity
      */
     public void changeWorld(Map map) {
@@ -64,6 +67,7 @@ public final class EntitySpawner {
 
     /**
      * Spawns a player entity at a random passable position in the world.
+     *
      * @return the spawned player entity
      */
     public CommandableEntity spawnPlayer() {
@@ -78,6 +82,7 @@ public final class EntitySpawner {
 
     /**
      * Checks if a position in the world is passable.
+     *
      * @param pos the position to check
      * @return true if the position is passable, false otherwise
      */
@@ -87,6 +92,7 @@ public final class EntitySpawner {
 
     /**
      * Generates a random position in the world.
+     *
      * @return the generated position
      */
     private Point generateRandomPos() {
@@ -97,6 +103,7 @@ public final class EntitySpawner {
 
     /**
      * This algorithm creates a list of enemy entities based on the desired wave
+     *
      * @param waveNumber The wave number for which to generate
      * @return A list of enemies
      */

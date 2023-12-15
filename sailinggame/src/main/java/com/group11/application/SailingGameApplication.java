@@ -10,7 +10,7 @@ import com.group11.view.uicomponents.AppFrame;
 
 /**
  * A class containing logic specific to the SailingGame application. The idea of our project was to make the source
- * code as extendable as possibile, therefore if you wanted to create a new game you would only need to change this class.
+ * code as extendable as possible, therefore, if you wanted to create a new game you would only need to change this class.
  */
 public class SailingGameApplication extends AApplication {
 
@@ -85,5 +85,4 @@ public class SailingGameApplication extends AApplication {
             }
         }
     }
-    
 }
