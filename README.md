@@ -17,7 +17,7 @@ Joise 1.0.2 is used to generate random maps,<br>
 Java 17 is specified as project JDK in the pom.xml file,<br>
 the runnable Jar requires you to have Java 17 or higher.
 
-**Documentation:** Indepth docs of all project features is available under the **Implemented features** tab of this README, JavaDoc for the project is available [here](placeholderlink).
+**Documentation:** Indepth docs of all project features is available under the **Implemented features** tab of this README, the source code of the project is commented using the JavaDoc format.
 
 **Credit:** <br>
 Noa Cavassi [@cavassi](https://github.com/cavassi), <br>
@@ -30,6 +30,24 @@ Erik Andreasson [@0-Gixty-0](https://github.com/0-Gixty-0), <br>
 
 ## Game Tutorial
 The game itself is very simple, once you have compiled the source code to a runnable format you will be greeted by a simple menu. If you choose to start the game you will spawn in a randomly generated map togheter with 1 single enemy. The goal is to get a score as high as possible by destroying enemy ships (the dark coloured ship). When you destroy all enemy ships on the screen a new wave of (more and stronger) enemies will spawn repeatedly until you eventually meet your demise.
+
+### Controls
+
+#### Movement:
+W = up <br>
+W+D = up-right <br>
+W+A = up-left <br>
+S = down <br>
+S+D = down-right <br>
+S+A = down-left <br>
+
+#### Attacking:
+Arrow-up = up <br>
+Arrow-up + arrow-right = up-right <br>
+Arrow-up + arrow-left = up-left <br>
+Arrow-down = down <br>
+Arrow-down + arrow-right = down-right <br>
+Arrow-down + arrow-left = down-left <br>
 
 ## ❗ A note about Issues ❗
 In the beginning of this project we followed another form of workflow for creating issues which we now deem as confusing and inefficient. Issues created during this time will have titles starting with

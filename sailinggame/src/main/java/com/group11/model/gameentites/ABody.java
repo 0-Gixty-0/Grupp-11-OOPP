@@ -3,10 +3,8 @@ package com.group11.model.gameentites;
 import java.awt.Point;
 
 /**
- * Abstract class representing an abstract body. Implements the IDamageable interface
- * since a body can take damage.
+ * Abstract class representing an abstract body that is used by entities in the game.
  */
-
 public abstract class ABody extends APositonable {
     private double hitPoints;
 

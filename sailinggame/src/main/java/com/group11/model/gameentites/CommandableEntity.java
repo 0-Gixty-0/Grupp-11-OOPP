@@ -1,7 +1,7 @@
 package com.group11.model.gameentites;
 
 /**
- * A movable entity is a subset of entities that can move around the gameworld
+ * An entity that can be controlled by by the client
  */
 public class CommandableEntity extends AEntity {
 

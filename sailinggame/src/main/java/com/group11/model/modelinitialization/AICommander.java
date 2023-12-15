@@ -13,7 +13,7 @@ import com.group11.model.utility.UAStar;
 import com.group11.model.utility.UViewTileMatrixDecoder;
 
 /**
- * Class representing controller for AI controlled entities
+ * Class representing controller for CommandableEntities that arent controlled by the player.
  */
 public class AICommander {
 

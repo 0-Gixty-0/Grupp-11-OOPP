@@ -12,7 +12,8 @@ import com.group11.model.utility.UMovement;
 import com.group11.model.utility.UViewTileMatrixDecoder;
 
 /**
- * Abstract class for initializing a model.
+ * Abstract class for initializing a model. The AModelInitializer is a
+ * facade for the model package that can be used by the application to reduce coupling
  */
 public abstract class AModelInitializer {
     
